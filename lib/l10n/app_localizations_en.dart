@@ -52,6 +52,41 @@ class AppLocalizationsEn extends AppLocalizations {
   String get onboardingGetStarted => 'Get started';
 
   @override
+  String get onboardingTitle1 => 'The heritage of MagiCarré';
+
+  @override
+  String get onboardingDescription1 =>
+      'Rediscover the Togolese strategy game that brings generations together around the same board.';
+
+  @override
+  String get onboardingTitle2 => 'Challenge your friends, wherever you are';
+
+  @override
+  String get onboardingDescription2 =>
+      'Create a game, invite a friend and play in real time, at home or away.';
+
+  @override
+  String get onboardingTitle3 => 'Climb the ranks';
+
+  @override
+  String get onboardingDescription3 =>
+      'Track your wins, improve with every game and become a master of the board.';
+
+  @override
+  String onboardingProgressLabel(int current, int total) {
+    return 'Page $current of $total';
+  }
+
+  @override
+  String onboardingNotificationTitle(String appName) {
+    return 'Welcome to $appName';
+  }
+
+  @override
+  String get onboardingNotificationBody =>
+      'Your board awaits — start your first game now.';
+
+  @override
   String get authLoginTitle => 'Sign in';
 
   @override

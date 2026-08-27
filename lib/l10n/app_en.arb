@@ -2,56 +2,186 @@
   "@@locale": "en",
 
   "appName": "MagiCarré",
+  "@appName": {
+    "description": "Application name"
+  },
 
+  "@__sectionCommon": {
+    "description": "━━━━ COMMON — Generic actions and messages ━━━━"
+  },
   "commonOk": "OK",
+  "@commonOk": { "description": "Generic confirm button label" },
+
   "commonCancel": "Cancel",
+  "@commonCancel": { "description": "Cancel button label" },
+
   "commonConfirm": "Confirm",
+  "@commonConfirm": { "description": "Confirm button label" },
+
   "commonRetry": "Retry",
+  "@commonRetry": { "description": "Retry button label" },
+
   "commonSave": "Save",
+  "@commonSave": { "description": "Save button label" },
+
   "commonClose": "Close",
+  "@commonClose": { "description": "Close button label" },
+
   "commonNext": "Next",
+  "@commonNext": { "description": "Next step navigation button label" },
+
   "commonBack": "Back",
+  "@commonBack": { "description": "Back button label" },
+
   "commonLoading": "Loading…",
+  "@commonLoading": { "description": "Message shown while loading" },
+
   "commonError": "Something went wrong",
+  "@commonError": { "description": "Generic error message" },
+
   "commonNetworkError": "No connection. Check your internet.",
+  "@commonNetworkError": { "description": "Network error message" },
 
+  "@__sectionOnboarding": {
+    "description": "━━━━ ONBOARDING — 3 heritage slides + navigation ━━━━"
+  },
   "onboardingSkip": "Skip",
-  "onboardingGetStarted": "Get started",
+  "@onboardingSkip": { "description": "Button to skip onboarding" },
 
+  "onboardingGetStarted": "Get started",
+  "@onboardingGetStarted": { "description": "Finish onboarding button (last slide)" },
+
+  "onboardingTitle1": "The heritage of MagiCarré",
+  "@onboardingTitle1": { "description": "Title of onboarding slide 1 — Togolese heritage" },
+
+  "onboardingDescription1": "Rediscover the Togolese strategy game that brings generations together around the same board.",
+  "@onboardingDescription1": { "description": "Description of slide 1 — rediscovering the playful heritage" },
+
+  "onboardingTitle2": "Challenge your friends, wherever you are",
+  "@onboardingTitle2": { "description": "Title of onboarding slide 2 — multiplayer" },
+
+  "onboardingDescription2": "Create a game, invite a friend and play in real time, at home or away.",
+  "@onboardingDescription2": { "description": "Description of slide 2 — creating a game and inviting" },
+
+  "onboardingTitle3": "Climb the ranks",
+  "@onboardingTitle3": { "description": "Title of onboarding slide 3 — progression and competition" },
+
+  "onboardingDescription3": "Track your wins, improve with every game and become a master of the board.",
+  "@onboardingDescription3": { "description": "Description of slide 3 — tracking wins and mastery" },
+
+  "onboardingProgressLabel": "Page {current} of {total}",
+  "@onboardingProgressLabel": {
+    "description": "Accessibility label for onboarding progress indicator",
+    "placeholders": {
+      "current": { "type": "int", "example": "1" },
+      "total": { "type": "int", "example": "3" }
+    }
+  },
+
+  "onboardingNotificationTitle": "Welcome to {appName}",
+  "@onboardingNotificationTitle": {
+    "description": "Title of the notification shown at the end of onboarding",
+    "placeholders": {
+      "appName": { "type": "String", "example": "MagiCarré" }
+    }
+  },
+
+  "onboardingNotificationBody": "Your board awaits — start your first game now.",
+  "@onboardingNotificationBody": { "description": "Body of the end-of-onboarding notification" },
+
+  "@__sectionAuth": {
+    "description": "━━━━ AUTH — Sign in, sign up and passwords ━━━━"
+  },
   "authLoginTitle": "Sign in",
+  "@authLoginTitle": { "description": "Sign-in page title" },
+
   "authLoginSubtitle": "Sign in to join the game.",
+  "@authLoginSubtitle": { "description": "Sign-in page subtitle" },
+
   "authLoginButton": "Sign in",
+  "@authLoginButton": { "description": "Sign-in button label" },
 
   "authSignupTitle": "Create an account",
+  "@authSignupTitle": { "description": "Sign-up page title" },
+
   "authSignupSubtitle": "Join the MagiCarré community.",
+  "@authSignupSubtitle": { "description": "Sign-up page subtitle" },
+
   "authSignupButton": "Sign up",
+  "@authSignupButton": { "description": "Sign-up button label" },
 
   "authForgotPasswordTitle": "Forgot password",
+  "@authForgotPasswordTitle": { "description": "Forgot password page title" },
+
   "authForgotPasswordSubtitle": "Enter your email address to receive a reset link.",
+  "@authForgotPasswordSubtitle": { "description": "Forgot password page subtitle" },
+
   "authForgotPasswordButton": "Send link",
+  "@authForgotPasswordButton": { "description": "Send reset link button label" },
 
   "authResetPasswordTitle": "New password",
+  "@authResetPasswordTitle": { "description": "Reset password page title" },
+
   "authResetPasswordButton": "Reset",
+  "@authResetPasswordButton": { "description": "Reset password button label" },
 
   "authEmailLabel": "Email address",
+  "@authEmailLabel": { "description": "Email field label" },
+
   "authEmailHint": "you@email.com",
+  "@authEmailHint": { "description": "Email field placeholder" },
+
   "authPasswordLabel": "Password",
+  "@authPasswordLabel": { "description": "Password field label" },
+
   "authPasswordHint": "At least 8 characters",
+  "@authPasswordHint": { "description": "Password field placeholder" },
+
   "authConfirmPasswordLabel": "Confirm password",
+  "@authConfirmPasswordLabel": { "description": "Confirm password field label" },
+
   "authUsernameLabel": "Username",
+  "@authUsernameLabel": { "description": "Username field label" },
 
   "authForgotPasswordLink": "Forgot password?",
+  "@authForgotPasswordLink": { "description": "Link to password recovery page" },
+
   "authAlreadyHaveAccount": "Already have an account?",
+  "@authAlreadyHaveAccount": { "description": "Text before sign-in link" },
+
   "authNoAccount": "No account yet?",
+  "@authNoAccount": { "description": "Text before sign-up link" },
+
   "authLoginLink": "Sign in",
+  "@authLoginLink": { "description": "Link to sign-in page" },
+
   "authSignupLink": "Create an account",
+  "@authSignupLink": { "description": "Link to sign-up page" },
 
+  "@__sectionValidation": {
+    "description": "━━━━ VALIDATION — Form error messages ━━━━"
+  },
   "validationRequired": "This field is required.",
-  "validationInvalidEmail": "Invalid email address.",
-  "validationPasswordTooShort": "Password must be at least 8 characters.",
-  "validationPasswordsDoNotMatch": "Passwords do not match.",
+  "@validationRequired": { "description": "Error for empty required field" },
 
+  "validationInvalidEmail": "Invalid email address.",
+  "@validationInvalidEmail": { "description": "Error for badly formatted email" },
+
+  "validationPasswordTooShort": "Password must be at least 8 characters.",
+  "@validationPasswordTooShort": { "description": "Error for password too short" },
+
+  "validationPasswordsDoNotMatch": "Passwords do not match.",
+  "@validationPasswordsDoNotMatch": { "description": "Error when passwords differ" },
+
+  "@__sectionSettings": {
+    "description": "━━━━ SETTINGS — Settings ━━━━"
+  },
   "settingsLanguage": "Language",
+  "@settingsLanguage": { "description": "Language choice section label in settings" },
+
   "settingsLanguageFr": "Français",
-  "settingsLanguageEn": "English"
+  "@settingsLanguageFr": { "description": "French language option label" },
+
+  "settingsLanguageEn": "English",
+  "@settingsLanguageEn": { "description": "English language option label" }
 }

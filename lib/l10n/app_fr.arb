@@ -6,6 +6,9 @@
     "description": "Nom de l'application"
   },
 
+  "@__sectionCommon": {
+    "description": "━━━━ COMMON — Actions et messages génériques ━━━━"
+  },
   "commonOk": "OK",
   "@commonOk": { "description": "Libellé du bouton de validation générique" },
 
@@ -39,12 +42,56 @@
   "commonNetworkError": "Connexion indisponible. Vérifie ta connexion internet.",
   "@commonNetworkError": { "description": "Message d'erreur réseau" },
 
+  "@__sectionOnboarding": {
+    "description": "━━━━ ONBOARDING — 3 slides patrimoniales + navigation ━━━━"
+  },
   "onboardingSkip": "Passer",
   "@onboardingSkip": { "description": "Bouton pour ignorer l'onboarding" },
 
   "onboardingGetStarted": "Commencer",
-  "@onboardingGetStarted": { "description": "Bouton de fin d'onboarding" },
+  "@onboardingGetStarted": { "description": "Bouton de fin d'onboarding (dernier slide)" },
 
+  "onboardingTitle1": "L'héritage du MagiCarré",
+  "@onboardingTitle1": { "description": "Titre du slide 1 d'onboarding — héritage togolais" },
+
+  "onboardingDescription1": "Redécouvre le jeu de stratégie togolais qui rassemble les générations autour d'un même carré.",
+  "@onboardingDescription1": { "description": "Description du slide 1 — invite à redécouvrir le patrimoine ludique" },
+
+  "onboardingTitle2": "Défie tes proches, où que tu sois",
+  "@onboardingTitle2": { "description": "Titre du slide 2 d'onboarding — jeu multijoueur" },
+
+  "onboardingDescription2": "Crée une partie, invite un ami et joue en temps réel, à la maison ou à distance.",
+  "@onboardingDescription2": { "description": "Description du slide 2 — création de partie et invitation" },
+
+  "onboardingTitle3": "Grimpe au classement",
+  "@onboardingTitle3": { "description": "Titre du slide 3 d'onboarding — progression et compétition" },
+
+  "onboardingDescription3": "Suis tes victoires, progresse à chaque partie et deviens maître du carré.",
+  "@onboardingDescription3": { "description": "Description du slide 3 — suivi des victoires et maîtrise" },
+
+  "onboardingProgressLabel": "Page {current} sur {total}",
+  "@onboardingProgressLabel": {
+    "description": "Label d'accessibilité pour l'indicateur de progression de l'onboarding",
+    "placeholders": {
+      "current": { "type": "int", "example": "1" },
+      "total": { "type": "int", "example": "3" }
+    }
+  },
+
+  "onboardingNotificationTitle": "Bienvenue sur {appName}",
+  "@onboardingNotificationTitle": {
+    "description": "Titre de la notification affichée à la fin de l'onboarding",
+    "placeholders": {
+      "appName": { "type": "String", "example": "MagiCarré" }
+    }
+  },
+
+  "onboardingNotificationBody": "Ton plateau t'attend — lance ta première partie dès maintenant.",
+  "@onboardingNotificationBody": { "description": "Corps de la notification de fin d'onboarding" },
+
+  "@__sectionAuth": {
+    "description": "━━━━ AUTH — Connexion, inscription et mots de passe ━━━━"
+  },
   "authLoginTitle": "Connexion",
   "@authLoginTitle": { "description": "Titre de la page de connexion" },
 
@@ -111,6 +158,9 @@
   "authSignupLink": "Créer un compte",
   "@authSignupLink": { "description": "Lien vers la page d'inscription" },
 
+  "@__sectionValidation": {
+    "description": "━━━━ VALIDATION — Messages d'erreur de formulaire ━━━━"
+  },
   "validationRequired": "Ce champ est obligatoire.",
   "@validationRequired": { "description": "Message d'erreur pour un champ obligatoire vide" },
 
@@ -123,6 +173,9 @@
   "validationPasswordsDoNotMatch": "Les mots de passe ne correspondent pas.",
   "@validationPasswordsDoNotMatch": { "description": "Message d'erreur quand les deux mots de passe diffèrent" },
 
+  "@__sectionSettings": {
+    "description": "━━━━ SETTINGS — Paramètres ━━━━"
+  },
   "settingsLanguage": "Langue",
   "@settingsLanguage": { "description": "Label de la section de choix de la langue dans les paramètres" },
 

@@ -6,6 +6,9 @@ import "package:flutter_riverpod/flutter_riverpod.dart";
 import "../../../../core/constants/app_assets.dart";
 import "../../../../core/extensions/navigation_extensions.dart";
 import "../../../../core/theme/app_spacing.dart";
+import "../../../../shared/domain/entities/storage_key.dart";
+import "../../../../shared/presentation/providers/index.dart"
+    show storageServiceProvider, supabaseClientProvider;
 import "../../../../shared/presentation/widgets/layouts/app_scaffold.dart";
 
 class SplashPage extends ConsumerStatefulWidget {
@@ -89,7 +92,7 @@ class _SplashPageState extends ConsumerState<SplashPage>
       }
     });
 
-    _exitController.addStatusListener((status) {
+    _exitController.addStatusListener((status) async {
       if (status == AnimationStatus.completed) {
         // Hydrate le contexte persisté, puis route selon l'état onboarding
         // et l'état d'authentification :
@@ -97,27 +100,23 @@ class _SplashPageState extends ConsumerState<SplashPage>
         // - Onboarding complété + session → /home.
         // - Onboarding complété + pas de session → /auth/login.
 
-        // if (!mounted) return;
-        // final storage = ref.read(storageServiceProvider);
-        // await ref.read(userContextTypeProvider.notifier).loadFromStorage();
-        // if (!mounted) return;
-        // final onboardingDone =
-        //     await storage.readBool(StorageKey.onboardingCompleted) ?? false;
-        // if (!mounted) return;
-        //
-        // if (onboardingDone) {
-        //   final supabase = ref.read(supabaseClientProvider);
-        //   final user = supabase.auth.currentSession?.user;
-        //   if (user != null) {
-        //     context.go(AppRoutes.home);
-        //   } else {
-        //     context.go(AppRoutes.authLogin);
-        //   }
-        // } else {
-        //   context.goOnboarding();
-        // }
         if (!mounted) return;
-        context.goOnboarding();
+        final storage = ref.read(storageServiceProvider);
+        final onboardingDone =
+            await storage.readBool(StorageKey.onboardingCompleted) ?? false;
+        if (!mounted) return;
+
+        if (onboardingDone) {
+          final supabase = ref.read(supabaseClientProvider);
+          final user = supabase.auth.currentSession?.user;
+          if (user != null) {
+            context.goHome();
+          } else {
+            context.goAuthLogin();
+          }
+        } else {
+          context.goOnboarding();
+        }
       }
     });
 

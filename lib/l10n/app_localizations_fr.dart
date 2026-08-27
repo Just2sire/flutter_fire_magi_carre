@@ -53,6 +53,41 @@ class AppLocalizationsFr extends AppLocalizations {
   String get onboardingGetStarted => 'Commencer';
 
   @override
+  String get onboardingTitle1 => 'L\'héritage du MagiCarré';
+
+  @override
+  String get onboardingDescription1 =>
+      'Redécouvre le jeu de stratégie togolais qui rassemble les générations autour d\'un même carré.';
+
+  @override
+  String get onboardingTitle2 => 'Défie tes proches, où que tu sois';
+
+  @override
+  String get onboardingDescription2 =>
+      'Crée une partie, invite un ami et joue en temps réel, à la maison ou à distance.';
+
+  @override
+  String get onboardingTitle3 => 'Grimpe au classement';
+
+  @override
+  String get onboardingDescription3 =>
+      'Suis tes victoires, progresse à chaque partie et deviens maître du carré.';
+
+  @override
+  String onboardingProgressLabel(int current, int total) {
+    return 'Page $current sur $total';
+  }
+
+  @override
+  String onboardingNotificationTitle(String appName) {
+    return 'Bienvenue sur $appName';
+  }
+
+  @override
+  String get onboardingNotificationBody =>
+      'Ton plateau t\'attend — lance ta première partie dès maintenant.';
+
+  @override
   String get authLoginTitle => 'Connexion';
 
   @override

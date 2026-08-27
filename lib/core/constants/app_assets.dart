@@ -12,16 +12,15 @@ class AppAssets {
   static const String logoNotif = "$_imagesBase/logo_notif.jpg";
   static const String logoDark = "$_imagesBase/logo_dark.jpg";
 
-  // // ------------- ONBOARDING -------------
-  // static const String onboarding1 = "$_imagesBase/step_1.jpg";
-  // static const String onboarding2 = "$_imagesBase/step_2.jpg";
-  // static const String onboarding3 = "$_imagesBase/step_3.jpg";
-  //
+  // ------------- ONBOARDING -------------
+  static const String onboarding1 = "$_imagesBase/onboarding_1.jpg";
+  static const String onboarding2 = "$_imagesBase/onboarding_2.jpg";
+  static const String onboarding3 = "$_imagesBase/onboarding_3.jpg";
+
   // // ------------- AUTH -------------
   // static const String googleLogo = "$_imagesBase/google.png";
   // static const String login = "$_imagesBase/login.png";
   // static const String register = "$_imagesBase/register.png";
   // static const String forgotPassword = "$_imagesBase/forgot_password.png";
   // static const String resetPassword = "$_imagesBase/reset_password.png";
-
 }

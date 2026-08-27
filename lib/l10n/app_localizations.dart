@@ -176,11 +176,65 @@ abstract class AppLocalizations {
   /// **'Passer'**
   String get onboardingSkip;
 
-  /// Bouton de fin d'onboarding
+  /// Bouton de fin d'onboarding (dernier slide)
   ///
   /// In fr, this message translates to:
   /// **'Commencer'**
   String get onboardingGetStarted;
+
+  /// Titre du slide 1 d'onboarding — héritage togolais
+  ///
+  /// In fr, this message translates to:
+  /// **'L\'héritage du MagiCarré'**
+  String get onboardingTitle1;
+
+  /// Description du slide 1 — invite à redécouvrir le patrimoine ludique
+  ///
+  /// In fr, this message translates to:
+  /// **'Redécouvre le jeu de stratégie togolais qui rassemble les générations autour d\'un même carré.'**
+  String get onboardingDescription1;
+
+  /// Titre du slide 2 d'onboarding — jeu multijoueur
+  ///
+  /// In fr, this message translates to:
+  /// **'Défie tes proches, où que tu sois'**
+  String get onboardingTitle2;
+
+  /// Description du slide 2 — création de partie et invitation
+  ///
+  /// In fr, this message translates to:
+  /// **'Crée une partie, invite un ami et joue en temps réel, à la maison ou à distance.'**
+  String get onboardingDescription2;
+
+  /// Titre du slide 3 d'onboarding — progression et compétition
+  ///
+  /// In fr, this message translates to:
+  /// **'Grimpe au classement'**
+  String get onboardingTitle3;
+
+  /// Description du slide 3 — suivi des victoires et maîtrise
+  ///
+  /// In fr, this message translates to:
+  /// **'Suis tes victoires, progresse à chaque partie et deviens maître du carré.'**
+  String get onboardingDescription3;
+
+  /// Label d'accessibilité pour l'indicateur de progression de l'onboarding
+  ///
+  /// In fr, this message translates to:
+  /// **'Page {current} sur {total}'**
+  String onboardingProgressLabel(int current, int total);
+
+  /// Titre de la notification affichée à la fin de l'onboarding
+  ///
+  /// In fr, this message translates to:
+  /// **'Bienvenue sur {appName}'**
+  String onboardingNotificationTitle(String appName);
+
+  /// Corps de la notification de fin d'onboarding
+  ///
+  /// In fr, this message translates to:
+  /// **'Ton plateau t\'attend — lance ta première partie dès maintenant.'**
+  String get onboardingNotificationBody;
 
   /// Titre de la page de connexion
   ///

@@ -1,7 +1,7 @@
 import "package:flutter/material.dart";
 import "package:go_router/go_router.dart";
 
-import "../../features/welcome/presentation/pages/splash_page.dart";
+import "../../features/welcome/presentation/pages/index.dart";
 import "../configs/env.dart";
 import "../constants/app_icons.dart";
 import "../theme/index.dart" show AppSpacing, AppColors;
@@ -45,7 +45,7 @@ GoRouter buildRouter() => GoRouter(
       pageBuilder: (context, state) => AppTransitions.fade(
         context: context,
         state: state,
-        child: const _Placeholder(title: "Onboarding"),
+        child: const OnboardingPage(),
       ),
     ),
 
