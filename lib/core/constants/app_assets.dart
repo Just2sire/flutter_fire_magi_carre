@@ -7,10 +7,10 @@ class AppAssets {
 
   static const String _imagesBase = "assets/images";
 
-  static const String logo = "$_imagesBase/logo.png";
-  // static const String logoLight = "$_imagesBase/docu_light.png";
-  // static const String logoNotif = "$_imagesBase/docu_notif.png";
-  // static const String logoDark = "$_imagesBase/docu_dark.png";
+  static const String logo = "$_imagesBase/logo_light.jpg";
+  static const String logoLight = "$_imagesBase/logo_light.jpg";
+  static const String logoNotif = "$_imagesBase/logo_notif.jpg";
+  static const String logoDark = "$_imagesBase/logo_dark.jpg";
 
   // // ------------- ONBOARDING -------------
   // static const String onboarding1 = "$_imagesBase/step_1.jpg";
