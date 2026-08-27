@@ -1,0 +1,134 @@
+{
+  "@@locale": "fr",
+
+  "appName": "MagiCarré",
+  "@appName": {
+    "description": "Nom de l'application"
+  },
+
+  "commonOk": "OK",
+  "@commonOk": { "description": "Libellé du bouton de validation générique" },
+
+  "commonCancel": "Annuler",
+  "@commonCancel": { "description": "Libellé du bouton d'annulation" },
+
+  "commonConfirm": "Confirmer",
+  "@commonConfirm": { "description": "Libellé du bouton de confirmation" },
+
+  "commonRetry": "Réessayer",
+  "@commonRetry": { "description": "Libellé du bouton de nouvelle tentative" },
+
+  "commonSave": "Enregistrer",
+  "@commonSave": { "description": "Libellé du bouton de sauvegarde" },
+
+  "commonClose": "Fermer",
+  "@commonClose": { "description": "Libellé du bouton de fermeture" },
+
+  "commonNext": "Suivant",
+  "@commonNext": { "description": "Libellé du bouton de navigation vers l'étape suivante" },
+
+  "commonBack": "Retour",
+  "@commonBack": { "description": "Libellé du bouton de retour" },
+
+  "commonLoading": "Chargement…",
+  "@commonLoading": { "description": "Message affiché pendant le chargement" },
+
+  "commonError": "Une erreur est survenue",
+  "@commonError": { "description": "Message d'erreur générique" },
+
+  "commonNetworkError": "Connexion indisponible. Vérifie ta connexion internet.",
+  "@commonNetworkError": { "description": "Message d'erreur réseau" },
+
+  "onboardingSkip": "Passer",
+  "@onboardingSkip": { "description": "Bouton pour ignorer l'onboarding" },
+
+  "onboardingGetStarted": "Commencer",
+  "@onboardingGetStarted": { "description": "Bouton de fin d'onboarding" },
+
+  "authLoginTitle": "Connexion",
+  "@authLoginTitle": { "description": "Titre de la page de connexion" },
+
+  "authLoginSubtitle": "Connecte-toi pour rejoindre la partie.",
+  "@authLoginSubtitle": { "description": "Sous-titre de la page de connexion" },
+
+  "authLoginButton": "Se connecter",
+  "@authLoginButton": { "description": "Libellé du bouton de connexion" },
+
+  "authSignupTitle": "Créer un compte",
+  "@authSignupTitle": { "description": "Titre de la page d'inscription" },
+
+  "authSignupSubtitle": "Rejoins la communauté MagiCarré.",
+  "@authSignupSubtitle": { "description": "Sous-titre de la page d'inscription" },
+
+  "authSignupButton": "S'inscrire",
+  "@authSignupButton": { "description": "Libellé du bouton d'inscription" },
+
+  "authForgotPasswordTitle": "Mot de passe oublié",
+  "@authForgotPasswordTitle": { "description": "Titre de la page de mot de passe oublié" },
+
+  "authForgotPasswordSubtitle": "Saisis ton adresse e-mail pour recevoir un lien de réinitialisation.",
+  "@authForgotPasswordSubtitle": { "description": "Sous-titre de la page de mot de passe oublié" },
+
+  "authForgotPasswordButton": "Envoyer le lien",
+  "@authForgotPasswordButton": { "description": "Libellé du bouton d'envoi du lien de réinitialisation" },
+
+  "authResetPasswordTitle": "Nouveau mot de passe",
+  "@authResetPasswordTitle": { "description": "Titre de la page de réinitialisation du mot de passe" },
+
+  "authResetPasswordButton": "Réinitialiser",
+  "@authResetPasswordButton": { "description": "Libellé du bouton de réinitialisation du mot de passe" },
+
+  "authEmailLabel": "Adresse e-mail",
+  "@authEmailLabel": { "description": "Label du champ e-mail" },
+
+  "authEmailHint": "ton@email.com",
+  "@authEmailHint": { "description": "Placeholder du champ e-mail" },
+
+  "authPasswordLabel": "Mot de passe",
+  "@authPasswordLabel": { "description": "Label du champ mot de passe" },
+
+  "authPasswordHint": "Au moins 8 caractères",
+  "@authPasswordHint": { "description": "Placeholder du champ mot de passe" },
+
+  "authConfirmPasswordLabel": "Confirmer le mot de passe",
+  "@authConfirmPasswordLabel": { "description": "Label du champ de confirmation de mot de passe" },
+
+  "authUsernameLabel": "Nom d'utilisateur",
+  "@authUsernameLabel": { "description": "Label du champ nom d'utilisateur" },
+
+  "authForgotPasswordLink": "Mot de passe oublié ?",
+  "@authForgotPasswordLink": { "description": "Lien vers la page de récupération de mot de passe" },
+
+  "authAlreadyHaveAccount": "Déjà un compte ?",
+  "@authAlreadyHaveAccount": { "description": "Texte précédant le lien vers la page de connexion" },
+
+  "authNoAccount": "Pas encore de compte ?",
+  "@authNoAccount": { "description": "Texte précédant le lien vers la page d'inscription" },
+
+  "authLoginLink": "Se connecter",
+  "@authLoginLink": { "description": "Lien vers la page de connexion" },
+
+  "authSignupLink": "Créer un compte",
+  "@authSignupLink": { "description": "Lien vers la page d'inscription" },
+
+  "validationRequired": "Ce champ est obligatoire.",
+  "@validationRequired": { "description": "Message d'erreur pour un champ obligatoire vide" },
+
+  "validationInvalidEmail": "Adresse e-mail invalide.",
+  "@validationInvalidEmail": { "description": "Message d'erreur pour un e-mail mal formaté" },
+
+  "validationPasswordTooShort": "Le mot de passe doit contenir au moins 8 caractères.",
+  "@validationPasswordTooShort": { "description": "Message d'erreur pour un mot de passe trop court" },
+
+  "validationPasswordsDoNotMatch": "Les mots de passe ne correspondent pas.",
+  "@validationPasswordsDoNotMatch": { "description": "Message d'erreur quand les deux mots de passe diffèrent" },
+
+  "settingsLanguage": "Langue",
+  "@settingsLanguage": { "description": "Label de la section de choix de la langue dans les paramètres" },
+
+  "settingsLanguageFr": "Français",
+  "@settingsLanguageFr": { "description": "Libellé de l'option langue française" },
+
+  "settingsLanguageEn": "English",
+  "@settingsLanguageEn": { "description": "Libellé de l'option langue anglaise" }
+}

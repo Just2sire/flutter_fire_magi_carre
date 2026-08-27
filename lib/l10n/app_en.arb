@@ -1,0 +1,57 @@
+{
+  "@@locale": "en",
+
+  "appName": "MagiCarré",
+
+  "commonOk": "OK",
+  "commonCancel": "Cancel",
+  "commonConfirm": "Confirm",
+  "commonRetry": "Retry",
+  "commonSave": "Save",
+  "commonClose": "Close",
+  "commonNext": "Next",
+  "commonBack": "Back",
+  "commonLoading": "Loading…",
+  "commonError": "Something went wrong",
+  "commonNetworkError": "No connection. Check your internet.",
+
+  "onboardingSkip": "Skip",
+  "onboardingGetStarted": "Get started",
+
+  "authLoginTitle": "Sign in",
+  "authLoginSubtitle": "Sign in to join the game.",
+  "authLoginButton": "Sign in",
+
+  "authSignupTitle": "Create an account",
+  "authSignupSubtitle": "Join the MagiCarré community.",
+  "authSignupButton": "Sign up",
+
+  "authForgotPasswordTitle": "Forgot password",
+  "authForgotPasswordSubtitle": "Enter your email address to receive a reset link.",
+  "authForgotPasswordButton": "Send link",
+
+  "authResetPasswordTitle": "New password",
+  "authResetPasswordButton": "Reset",
+
+  "authEmailLabel": "Email address",
+  "authEmailHint": "you@email.com",
+  "authPasswordLabel": "Password",
+  "authPasswordHint": "At least 8 characters",
+  "authConfirmPasswordLabel": "Confirm password",
+  "authUsernameLabel": "Username",
+
+  "authForgotPasswordLink": "Forgot password?",
+  "authAlreadyHaveAccount": "Already have an account?",
+  "authNoAccount": "No account yet?",
+  "authLoginLink": "Sign in",
+  "authSignupLink": "Create an account",
+
+  "validationRequired": "This field is required.",
+  "validationInvalidEmail": "Invalid email address.",
+  "validationPasswordTooShort": "Password must be at least 8 characters.",
+  "validationPasswordsDoNotMatch": "Passwords do not match.",
+
+  "settingsLanguage": "Language",
+  "settingsLanguageFr": "Français",
+  "settingsLanguageEn": "English"
+}

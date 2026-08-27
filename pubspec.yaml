@@ -7,13 +7,67 @@ environment:
   sdk: ^3.14.0-68.0.dev
 
 dependencies:
+  connectivity_plus: ^7.3.1
   flutter:
     sdk: flutter
+  flutter_dotenv: ^6.0.1
+  flutter_local_notifications: ^22.3.0
+  flutter_localizations:
+    sdk: flutter
+  flutter_riverpod: ^3.4.2
+  flutter_timezone: ^5.1.0
+  go_router: ^18.0.0
+  intl: any
+  lucide_icons_flutter: ^3.1.17
+  riverpod_annotation: ^4.0.6
+  shared_preferences: ^2.5.5
+  supabase_flutter: ^2.17.2
+  timezone: ^0.11.1
 
 dev_dependencies:
   flutter_test:
     sdk: flutter
   flutter_lints: ^6.0.0
+  riverpod_generator: ^4.0.8
+  build_runner: ^2.16.0
+  flutter_native_splash: ^2.4.8
+  flutter_launcher_icons: ^0.14.4
 
 flutter:
   uses-material-design: true
+  generate: true
+
+  assets:
+    - .env
+    - assets/images/
+    - assets/fonts/
+
+  fonts:
+    - family: Unbounded
+      fonts:
+        - asset: assets/fonts/Unbounded-Bold.ttf
+          weight: 700
+    - family: Syne
+      fonts:
+        - asset: assets/fonts/Syne-Regular.ttf
+          weight: 400
+        - asset: assets/fonts/Syne-SemiBold.ttf
+          weight: 600
+    - family: Literata
+      fonts:
+        - asset: assets/fonts/Literata-Regular.ttf
+          weight: 400
+        - asset: assets/fonts/Literata-SemiBold.ttf
+          weight: 600
+    - family: JetBrainsMono
+      fonts:
+        - asset: assets/fonts/JetBrainsMono-Regular.ttf
+          weight: 400
+
+
+## flutter pub run flutter_native_splash:create
+flutter_native_splash:
+  color: "#fefefe"
+  #  color_dark: "#1C1B1F"
+  image: assets/images/logo.png
+#  image_dark: assets/images/nyala_dark.png

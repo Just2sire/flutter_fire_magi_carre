@@ -1,16 +1,89 @@
-import 'package:flutter/material.dart';
+import "package:flutter/material.dart";
+import "package:flutter_dotenv/flutter_dotenv.dart";
+import "package:flutter_local_notifications/flutter_local_notifications.dart";
+import "package:flutter_riverpod/flutter_riverpod.dart";
+import "package:flutter_timezone/flutter_timezone.dart";
+import "package:go_router/go_router.dart" show GoRouterHelper;
+import "package:shared_preferences/shared_preferences.dart";
+import "package:supabase_flutter/supabase_flutter.dart";
+import "package:timezone/data/latest_all.dart" as tz;
+import "package:timezone/timezone.dart" as tz;
 
-void main() {
-  runApp(const MainApp());
+import "app.dart";
+import "core/configs/index.dart";
+import "core/routing/app_navigator_key.dart";
+import "shared/data/services/notification_service.dart";
+import "shared/presentation/providers/index.dart"
+    show sharedPreferencesProvider, flutterLocalNotificationsPluginProvider;
+
+void main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+
+  // Initialisation de la configuration globale
+  AppConfig.initialize(environment: Env.current);
+
+  // Configure Logger
+  AppLogger.configure(
+    enabled: Env.enableLogging,
+    showTimestamp: true,
+    showEmoji: true,
+    minLevel: Env.isDevelopment ? LogLevel.debug : LogLevel.warning,
+    appName: Env.appName,
+  );
+
+  Log.i("Starting application in ${Env.current.name} mode...");
+
+  await dotenv.load();
+  Log.i("dotenv loaded");
+
+  // SharedPreferences doit être initialisé avant runApp
+  final prefs = await SharedPreferences.getInstance();
+
+  // Timezone — requis pour zonedSchedule (notifications planifiées)
+  tz.initializeTimeZones();
+  final timezoneInfo = await FlutterTimezone.getLocalTimezone();
+  tz.setLocalLocation(tz.getLocation(timezoneInfo.identifier));
+  Log.d("Timezone local: ${timezoneInfo.identifier}");
+
+  // Notifications
+  final notificationPlugin = await NotificationService.createAndInit(
+    onTap: _onNotificationTap,
+  );
+  Log.i("NotificationService initialisé");
+
+  if (dotenv.env["USE_SUPABASE"] == "true") {
+    await Supabase.initialize(
+      url: AppConfig.supabaseUrl,
+      publishableKey: AppConfig.supabaseAnonKey,
+    );
+    Log.i(
+      "Supabase initialisé : ${Supabase.instance.client.auth.currentSession}",
+    );
+  }
+
+  runApp(
+    ProviderScope(
+      overrides: [
+        sharedPreferencesProvider.overrideWithValue(prefs),
+        flutterLocalNotificationsPluginProvider.overrideWithValue(
+          notificationPlugin,
+        ),
+      ],
+      child: const MainApp(),
+    ),
+  );
 }
 
-class MainApp extends StatelessWidget {
-  const MainApp({super.key});
+// Tap depuis premier plan ou arrière-plan (app vivante)
+void _onNotificationTap(NotificationResponse response) {
+  final rawPayload = response.payload;
+  if (rawPayload == null || rawPayload.isEmpty) return;
 
-  @override
-  Widget build(BuildContext context) {
-    return const MaterialApp(
-      home: Scaffold(body: Center(child: Text('Hello World!'))),
-    );
+  try {
+    final payload = NotificationPayload.fromJsonString(rawPayload);
+    Log.i("Notification tappée, route: ${payload.route}");
+    AppNavigatorKey.instance.currentState?.context.go(payload.route);
+  } catch (e, st) {
+    Log.e("Échec parsing payload notification", error: e, stackTrace: st);
   }
 }
