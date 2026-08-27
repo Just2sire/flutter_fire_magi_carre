@@ -42,6 +42,9 @@
   "commonNetworkError": "Connexion indisponible. Vérifie ta connexion internet.",
   "@commonNetworkError": { "description": "Message d'erreur réseau" },
 
+  "commonOr": "Ou",
+  "@commonOr": { "description": "Séparateur générique entre deux options (ex: entre formulaire et OAuth)" },
+
   "@__sectionOnboarding": {
     "description": "━━━━ ONBOARDING — 3 slides patrimoniales + navigation ━━━━"
   },
@@ -157,6 +160,15 @@
 
   "authSignupLink": "Créer un compte",
   "@authSignupLink": { "description": "Lien vers la page d'inscription" },
+
+  "authOAuthGoogle": "Continuer avec Google",
+  "@authOAuthGoogle": { "description": "Bouton OAuth — continuer avec Google" },
+
+  "authOAuthGithub": "Continuer avec GitHub",
+  "@authOAuthGithub": { "description": "Bouton OAuth — continuer avec GitHub" },
+
+  "authOAuthApple": "Continuer avec Apple",
+  "@authOAuthApple": { "description": "Bouton OAuth — continuer avec Apple" },
 
   "@__sectionValidation": {
     "description": "━━━━ VALIDATION — Messages d'erreur de formulaire ━━━━"

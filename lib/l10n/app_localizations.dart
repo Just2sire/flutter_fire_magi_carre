@@ -170,6 +170,12 @@ abstract class AppLocalizations {
   /// **'Connexion indisponible. Vérifie ta connexion internet.'**
   String get commonNetworkError;
 
+  /// Séparateur générique entre deux options (ex: entre formulaire et OAuth)
+  ///
+  /// In fr, this message translates to:
+  /// **'Ou'**
+  String get commonOr;
+
   /// Bouton pour ignorer l'onboarding
   ///
   /// In fr, this message translates to:
@@ -367,6 +373,24 @@ abstract class AppLocalizations {
   /// In fr, this message translates to:
   /// **'Créer un compte'**
   String get authSignupLink;
+
+  /// Bouton OAuth — continuer avec Google
+  ///
+  /// In fr, this message translates to:
+  /// **'Continuer avec Google'**
+  String get authOAuthGoogle;
+
+  /// Bouton OAuth — continuer avec GitHub
+  ///
+  /// In fr, this message translates to:
+  /// **'Continuer avec GitHub'**
+  String get authOAuthGithub;
+
+  /// Bouton OAuth — continuer avec Apple
+  ///
+  /// In fr, this message translates to:
+  /// **'Continuer avec Apple'**
+  String get authOAuthApple;
 
   /// Message d'erreur pour un champ obligatoire vide
   ///

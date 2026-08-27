@@ -47,6 +47,9 @@ class AppLocalizationsFr extends AppLocalizations {
       'Connexion indisponible. Vérifie ta connexion internet.';
 
   @override
+  String get commonOr => 'Ou';
+
+  @override
   String get onboardingSkip => 'Passer';
 
   @override
@@ -153,6 +156,15 @@ class AppLocalizationsFr extends AppLocalizations {
 
   @override
   String get authSignupLink => 'Créer un compte';
+
+  @override
+  String get authOAuthGoogle => 'Continuer avec Google';
+
+  @override
+  String get authOAuthGithub => 'Continuer avec GitHub';
+
+  @override
+  String get authOAuthApple => 'Continuer avec Apple';
 
   @override
   String get validationRequired => 'Ce champ est obligatoire.';

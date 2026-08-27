@@ -46,6 +46,9 @@ class AppLocalizationsEn extends AppLocalizations {
   String get commonNetworkError => 'No connection. Check your internet.';
 
   @override
+  String get commonOr => 'Or';
+
+  @override
   String get onboardingSkip => 'Skip';
 
   @override
@@ -152,6 +155,15 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get authSignupLink => 'Create an account';
+
+  @override
+  String get authOAuthGoogle => 'Continue with Google';
+
+  @override
+  String get authOAuthGithub => 'Continue with GitHub';
+
+  @override
+  String get authOAuthApple => 'Continue with Apple';
 
   @override
   String get validationRequired => 'This field is required.';

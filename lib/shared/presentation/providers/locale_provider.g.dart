@@ -8,18 +8,18 @@ part of 'locale_provider.dart';
 
 // GENERATED CODE - DO NOT MODIFY BY HAND
 // ignore_for_file: type=lint, type=warning
-/// Locale active de l'application, persistée dans [SharedPreferences].
+/// Locale active de l'application, persistée dans les préférences partagées.
 ///
 /// Défaut : `fr`. Langues supportées : `fr`, `en`.
 
 @ProviderFor(AppLocale)
 final appLocaleProvider = AppLocaleProvider._();
 
-/// Locale active de l'application, persistée dans [SharedPreferences].
+/// Locale active de l'application, persistée dans les préférences partagées.
 ///
 /// Défaut : `fr`. Langues supportées : `fr`, `en`.
 final class AppLocaleProvider extends $NotifierProvider<AppLocale, Locale> {
-  /// Locale active de l'application, persistée dans [SharedPreferences].
+  /// Locale active de l'application, persistée dans les préférences partagées.
   ///
   /// Défaut : `fr`. Langues supportées : `fr`, `en`.
   AppLocaleProvider._()
@@ -49,9 +49,9 @@ final class AppLocaleProvider extends $NotifierProvider<AppLocale, Locale> {
   }
 }
 
-String _$appLocaleHash() => r'd3156bf89ceb408058e8533f1926d2d1cb380438';
+String _$appLocaleHash() => r'0e871dd8c5f251880cd2ca0705e5cba288840800';
 
-/// Locale active de l'application, persistée dans [SharedPreferences].
+/// Locale active de l'application, persistée dans les préférences partagées.
 ///
 /// Défaut : `fr`. Langues supportées : `fr`, `en`.
 

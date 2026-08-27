@@ -42,6 +42,9 @@
   "commonNetworkError": "No connection. Check your internet.",
   "@commonNetworkError": { "description": "Network error message" },
 
+  "commonOr": "Or",
+  "@commonOr": { "description": "Generic separator between two options (e.g. between form and OAuth)" },
+
   "@__sectionOnboarding": {
     "description": "━━━━ ONBOARDING — 3 heritage slides + navigation ━━━━"
   },
@@ -157,6 +160,15 @@
 
   "authSignupLink": "Create an account",
   "@authSignupLink": { "description": "Link to sign-up page" },
+
+  "authOAuthGoogle": "Continue with Google",
+  "@authOAuthGoogle": { "description": "OAuth button — continue with Google" },
+
+  "authOAuthGithub": "Continue with GitHub",
+  "@authOAuthGithub": { "description": "OAuth button — continue with GitHub" },
+
+  "authOAuthApple": "Continue with Apple",
+  "@authOAuthApple": { "description": "OAuth button — continue with Apple" },
 
   "@__sectionValidation": {
     "description": "━━━━ VALIDATION — Form error messages ━━━━"
