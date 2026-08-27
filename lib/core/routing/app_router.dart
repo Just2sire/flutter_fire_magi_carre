@@ -1,6 +1,7 @@
 import "package:flutter/material.dart";
 import "package:go_router/go_router.dart";
 
+import "../../features/welcome/presentation/pages/splash_page.dart";
 import "../configs/env.dart";
 import "../constants/app_icons.dart";
 import "../theme/index.dart" show AppSpacing, AppColors;
@@ -34,14 +35,14 @@ GoRouter buildRouter() => GoRouter(
       pageBuilder: (context, state) => AppTransitions.fade(
         context: context,
         state: state,
-        child: const _Placeholder(title: "Splash"),
+        child: const SplashPage(),
       ),
     ),
 
     // ─── Onboarding ───────────────────────────
     GoRoute(
       path: AppRoutes.onboarding,
-      pageBuilder: (context, state) => AppTransitions.fadeSlide(
+      pageBuilder: (context, state) => AppTransitions.fade(
         context: context,
         state: state,
         child: const _Placeholder(title: "Onboarding"),
@@ -90,9 +91,7 @@ GoRouter buildRouter() => GoRouter(
         context: context,
         state: state,
         begin: const Offset(0.0, 1.0), // monte depuis le bas
-        child: _Placeholder(
-          title: "Partie ${state.pathParameters['gameId']}",
-        ),
+        child: _Placeholder(title: "Partie ${state.pathParameters['gameId']}"),
       ),
       routes: [
         GoRoute(
@@ -186,8 +185,7 @@ GoRouter buildRouter() => GoRouter(
                     context: context,
                     state: state,
                     child: _Placeholder(
-                      title:
-                          "Rejoindre ${state.pathParameters['inviteCode']}",
+                      title: "Rejoindre ${state.pathParameters['inviteCode']}",
                     ),
                   ),
                 ),
@@ -284,14 +282,8 @@ class _ShellScaffold extends StatelessWidget {
           initialLocation: index == navigationShell.currentIndex,
         ),
         destinations: const [
-          NavigationDestination(
-            icon: Icon(AppIcons.navHome),
-            label: "Accueil",
-          ),
-          NavigationDestination(
-            icon: Icon(AppIcons.navLobby),
-            label: "Lobby",
-          ),
+          NavigationDestination(icon: Icon(AppIcons.navHome), label: "Accueil"),
+          NavigationDestination(icon: Icon(AppIcons.navLobby), label: "Lobby"),
           NavigationDestination(
             icon: Icon(AppIcons.navLeaderboard),
             label: "Classement",
