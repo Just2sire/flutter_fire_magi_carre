@@ -42,7 +42,7 @@ class AppOutlinedButton extends StatelessWidget {
     this.buttonMinSize,
     this.child,
     this.iconAlignment,
-    this.margin = AppSpacing.insetXs,
+    this.margin = AppSpacing.insetVXs,
     this.isLoading = false,
     this.enabled = true,
     this.elevation = AppSpacing.elevationNone,
@@ -115,17 +115,16 @@ class AppOutlinedButton extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final theme = Theme.of(context);
+    final cc = theme.colorScheme;
     final isInteractive = enabled && !isLoading;
 
     final effectiveContentColor = enabled
-        ? (textColor ?? theme.primaryColor)
+        ? (textColor ?? cc.primary)
         : theme.disabledColor;
     final effectiveBorderSide =
         border ??
         BorderSide(
-          color: enabled
-              ? (borderColor ?? theme.primaryColor)
-              : theme.disabledColor,
+          color: enabled ? (borderColor ?? cc.primary) : theme.disabledColor,
           width: borderWidth,
         );
 

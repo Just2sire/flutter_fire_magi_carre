@@ -115,9 +115,7 @@ class AppTextFormField extends StatelessWidget {
     return Padding(
       padding: padding ?? EdgeInsets.zero,
       child: ConstrainedBox(
-        constraints: BoxConstraints(
-          minHeight: height ?? 0,
-        ),
+        constraints: BoxConstraints(minHeight: height ?? 0),
         child: TextFormField(
           obscureText: obscureText,
           initialValue: initialValue,
@@ -136,7 +134,8 @@ class AppTextFormField extends StatelessWidget {
           inputFormatters: inputFormatters,
           maxLength: maxLength,
           textAlign: textAlign,
-          style: style ??
+          style:
+              style ??
               theme.textTheme.bodyLarge?.copyWith(
                 fontWeight: bold ? FontWeight.bold : null,
                 fontSize: textFontSize,
@@ -155,26 +154,33 @@ class AppTextFormField extends StatelessWidget {
               .applyDefaults(theme.inputDecorationTheme)
               .copyWith(
                 contentPadding: contentPadding,
-                prefixIcon: prefixIcon ??
+                prefixIcon:
+                    prefixIcon ??
                     (prefixIconData == null
                         ? null
                         : IconButton(
                             onPressed: prefixIconOnClick,
                             icon: Icon(prefixIconData, size: AppSpacing.iconMd),
                           )),
-                suffixIcon: suffixIcon ??
+                suffixIcon:
+                    suffixIcon ??
                     (suffixIconData != null
                         ? IconButton(
                             onPressed: suffixIconOnClick,
-                            icon: Icon(
-                              suffixIconData,
-                              size: AppSpacing.iconMd,
-                            ),
+                            icon: Icon(suffixIconData, size: AppSpacing.iconMd),
                           )
                         : null),
                 filled: filled,
                 fillColor: fillColor,
                 hintText: hintText,
+                labelStyle: theme.textTheme.labelLarge!.copyWith(
+                  color:
+                      labelColor ??
+                      (enabled
+                          ? theme.inputDecorationTheme.labelStyle?.color!
+                                .withValues(alpha: 0.75)
+                          : theme.disabledColor),
+                ),
                 alignLabelWithHint: maxLines != null && maxLines! > 1,
                 isCollapsed: false, // Better alignment with custom themes
                 labelText: labelText.isNotEmpty

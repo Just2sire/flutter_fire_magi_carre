@@ -19,6 +19,7 @@ class AppIcons {
   // ─── Authentification & Formulaires ───────
   static const IconData email = LucideIcons.mail;
   static const IconData mail = LucideIcons.mail;
+  static const IconData newLock = LucideIcons.rotateCcwKey;
   static const IconData lock = LucideIcons.lockKeyhole;
   static const IconData lockKeyhole = LucideIcons.lockKeyhole;
   static const IconData eye = LucideIcons.eye;

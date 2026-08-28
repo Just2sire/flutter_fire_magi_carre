@@ -69,6 +69,7 @@ class AppTopbar extends StatelessWidget {
                 message: leadingButtonTooltip ?? "Retour",
                 child: leading ??
                     InkWell(
+                      borderRadius: AppSpacing.roundedLg,
                       onTap: () {
                         if (onPop != null) return onPop!();
                         if (context.canPop) context.pop();
@@ -79,15 +80,6 @@ class AppTopbar extends StatelessWidget {
                       ),
                     ),
               ),
-                  // IconButton(
-                  //   onPressed: () {
-                  //     if (onPop != null) return onPop!();
-                  //     if (context.canPop) context.pop();
-                  //   },
-                  //   icon: const Icon(AppIcons.arrowLeft),
-                  //   iconSize: AppSpacing.iconXl,
-                  //   tooltip: "Retour",
-                  // ),
             if (showLeading)
               SizedBox(width: spacing == 0 ? AppSpacing.sm : spacing),
             if (subtitle != null && subtitle!.isNotEmpty)

@@ -247,7 +247,15 @@ class _RegisterPageState extends ConsumerState<RegisterPage> {
     );
   }
 
-  void _skipAuth() {}
+  Future<void> _skipAuth() async {
+    final confirmed = await context.showConfirmDialog(
+      title: context.l10n.authSkipTitle,
+      content: context.l10n.authSkipMessage,
+      confirmLabel: context.l10n.authSkipConfirm,
+      cancelLabel: context.l10n.authSkipCancel,
+    );
+    if (confirmed == true && mounted) context.goHome();
+  }
 
   void _togglePasswordVisibility() =>
       setState(() => _obscurePassword = !_obscurePassword);

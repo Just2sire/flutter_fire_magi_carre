@@ -72,7 +72,7 @@ GoRouter buildRouter() => GoRouter(
       pageBuilder: (context, state) => AppTransitions.pushedScreen(
         context: context,
         state: state,
-        child: const _Placeholder(title: "Mot de passe oublié"),
+        child: const ForgotPassword(),
       ),
     ),
     GoRoute(
@@ -80,7 +80,7 @@ GoRouter buildRouter() => GoRouter(
       pageBuilder: (context, state) => AppTransitions.fadeSlide(
         context: context,
         state: state,
-        child: const _Placeholder(title: "Nouveau mot de passe"),
+        child: const ResetPassword(),
       ),
     ),
 

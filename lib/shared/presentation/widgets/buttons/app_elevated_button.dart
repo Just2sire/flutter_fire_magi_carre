@@ -39,7 +39,7 @@ class AppElevatedButton extends StatelessWidget {
     this.buttonMinSize,
     this.child,
     this.iconAlignment,
-    this.margin = AppSpacing.insetXs,
+    this.margin = AppSpacing.insetVXs,
     this.isLoading = false,
     this.enabled = true,
     this.elevation = AppSpacing.elevationXs,
