@@ -45,6 +45,9 @@
   "commonOr": "Or",
   "@commonOr": { "description": "Generic separator between two options (e.g. between form and OAuth)" },
 
+  "authOrContinueWith": "Or continue with",
+  "@authOrContinueWith": { "description": "Divider label between email/password form and multiple OAuth providers (Google/GitHub/Apple)" },
+
   "@__sectionOnboarding": {
     "description": "━━━━ ONBOARDING — 3 heritage slides + navigation ━━━━"
   },
@@ -188,6 +191,32 @@
       "provider": { "type": "String", "example": "Google" }
     }
   },
+
+  "authOAuthSuccess": "Signed in with {provider} successfully!",
+  "@authOAuthSuccess": {
+    "description": "Generic OAuth success message with provider name",
+    "placeholders": {
+      "provider": { "type": "String", "example": "Google" }
+    }
+  },
+
+  "authOAuthSuccessGoogle": "Signed in with Google successfully!",
+  "@authOAuthSuccessGoogle": { "description": "OAuth Google success message" },
+
+  "authOAuthSuccessGithub": "Signed in with GitHub successfully!",
+  "@authOAuthSuccessGithub": { "description": "OAuth GitHub success message" },
+
+  "authOAuthErrorGoogle": "Failed to sign in with Google. Try again.",
+  "@authOAuthErrorGoogle": { "description": "OAuth Google error message" },
+
+  "authOAuthErrorGithub": "Failed to sign in with GitHub. Try again.",
+  "@authOAuthErrorGithub": { "description": "OAuth GitHub error message" },
+
+  "authOAuthCancelledGoogle": "Google sign-in cancelled.",
+  "@authOAuthCancelledGoogle": { "description": "OAuth Google cancelled message" },
+
+  "authOAuthCancelledGithub": "GitHub sign-in cancelled.",
+  "@authOAuthCancelledGithub": { "description": "OAuth GitHub cancelled message" },
 
   "authContinue": "Continue",
   "@authContinue": { "description": "Generic Continue button label (OAuth complete, etc.)" },
@@ -401,17 +430,30 @@
   "validationInvalidEmail": "Invalid email address.",
   "@validationInvalidEmail": { "description": "Error for badly formatted email" },
 
+  "validationEmailIncorrect": "Incorrect email address.",
+  "@validationEmailIncorrect": { "description": "Error for email that does not match any account / incorrect on sign-in" },
+
   "validationPasswordTooShort": "Password must be at least 8 characters.",
   "@validationPasswordTooShort": { "description": "Error for password too short" },
 
   "validationPasswordsDoNotMatch": "Passwords do not match.",
   "@validationPasswordsDoNotMatch": { "description": "Error when passwords differ" },
 
-  "validationUsernameTooShort": "At least 3 characters.",
-  "@validationUsernameTooShort": { "description": "Error when username is too short" },
+  "validationUsernameTooShort": "At least {minLength} characters.",
+  "@validationUsernameTooShort": {
+    "description": "Error when username is too short",
+    "placeholders": {
+      "minLength": { "type": "int", "example": "3" }
+    }
+  },
 
-  "validationUsernameTooLong": "20 characters max.",
-  "@validationUsernameTooLong": { "description": "Error when username is too long" },
+  "validationUsernameTooLong": "{maxLength} characters max.",
+  "@validationUsernameTooLong": {
+    "description": "Error when username is too long",
+    "placeholders": {
+      "maxLength": { "type": "int", "example": "20" }
+    }
+  },
 
   "validationUsernameInvalid": "Letters, numbers and _ only.",
   "@validationUsernameInvalid": { "description": "Error when username contains invalid characters" },

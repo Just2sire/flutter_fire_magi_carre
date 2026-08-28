@@ -25,6 +25,7 @@ class AppTopbar extends StatelessWidget {
     this.showLeading = true,
     this.centerTitle = false,
     this.padding = .zero,
+    this.leadingButtonTooltip,
     super.key,
   });
 
@@ -42,6 +43,7 @@ class AppTopbar extends StatelessWidget {
   final TextStyle? titleTextStyle;
   final TextStyle? subTitleTextStyle;
   final EdgeInsets padding;
+  final String? leadingButtonTooltip;
 
   @override
   Widget build(BuildContext context) {
@@ -63,16 +65,29 @@ class AppTopbar extends StatelessWidget {
               : MainAxisAlignment.start,
           children: [
             if (showLeading)
-              leading ??
-                  IconButton(
-                    onPressed: () {
-                      if (onPop != null) return onPop!();
-                      if (context.canPop) context.pop();
-                    },
-                    icon: const Icon(AppIcons.arrowLeft),
-                    iconSize: AppSpacing.iconXl,
-                    tooltip: "Retour",
-                  ),
+              Tooltip(
+                message: leadingButtonTooltip ?? "Retour",
+                child: leading ??
+                    InkWell(
+                      onTap: () {
+                        if (onPop != null) return onPop!();
+                        if (context.canPop) context.pop();
+                      },
+                      child: const Icon(
+                        AppIcons.arrowLeft,
+                        size: AppSpacing.iconXl,
+                      ),
+                    ),
+              ),
+                  // IconButton(
+                  //   onPressed: () {
+                  //     if (onPop != null) return onPop!();
+                  //     if (context.canPop) context.pop();
+                  //   },
+                  //   icon: const Icon(AppIcons.arrowLeft),
+                  //   iconSize: AppSpacing.iconXl,
+                  //   tooltip: "Retour",
+                  // ),
             if (showLeading)
               SizedBox(width: spacing == 0 ? AppSpacing.sm : spacing),
             if (subtitle != null && subtitle!.isNotEmpty)

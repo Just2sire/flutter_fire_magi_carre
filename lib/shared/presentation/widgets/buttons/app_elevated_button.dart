@@ -111,7 +111,7 @@ class AppElevatedButton extends StatelessWidget {
           style:
               style ??
               theme.textTheme.titleMedium!.copyWith(
-                color: textColor ?? theme.colorScheme.onPrimaryContainer,
+                color: textColor ?? theme.colorScheme.onPrimary,
                 fontWeight: FontWeight.bold,
               ),
         );
@@ -120,7 +120,7 @@ class AppElevatedButton extends StatelessWidget {
       backgroundColor: enabled
           ? isLoading
                 ? Colors.grey
-                : backgroundColor ?? theme.primaryColor
+                : backgroundColor ?? theme.colorScheme.primary
           : Colors.grey,
       fixedSize:
           buttonSize ??

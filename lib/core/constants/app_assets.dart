@@ -17,8 +17,11 @@ class AppAssets {
   static const String onboarding2 = "$_imagesBase/onboarding_2.jpg";
   static const String onboarding3 = "$_imagesBase/onboarding_3.jpg";
 
-  // // ------------- AUTH -------------
-  // static const String googleLogo = "$_imagesBase/google.png";
+  // ------------- AUTH -------------
+  static const String googleLogo = "$_imagesBase/google.png";
+  static const String githubLogo = "$_imagesBase/github.png";
+  static const String githubLightLogo = "$_imagesBase/github-light.png";
+  static const String githubDarkLogo = "$_imagesBase/github-dark.png";
   // static const String login = "$_imagesBase/login.png";
   // static const String register = "$_imagesBase/register.png";
   // static const String forgotPassword = "$_imagesBase/forgot_password.png";

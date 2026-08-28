@@ -50,6 +50,9 @@ class AppLocalizationsFr extends AppLocalizations {
   String get commonOr => 'Ou';
 
   @override
+  String get authOrContinueWith => 'Ou continuer avec';
+
+  @override
   String get onboardingSkip => 'Passer';
 
   @override
@@ -178,6 +181,31 @@ class AppLocalizationsFr extends AppLocalizations {
   String authOAuthFailed(String provider) {
     return 'Échec de la connexion $provider. Réessaie.';
   }
+
+  @override
+  String authOAuthSuccess(String provider) {
+    return 'Connexion avec $provider réussie !';
+  }
+
+  @override
+  String get authOAuthSuccessGoogle => 'Connexion avec Google réussie !';
+
+  @override
+  String get authOAuthSuccessGithub => 'Connexion avec GitHub réussie !';
+
+  @override
+  String get authOAuthErrorGoogle =>
+      'Échec de la connexion avec Google. Réessaie.';
+
+  @override
+  String get authOAuthErrorGithub =>
+      'Échec de la connexion avec GitHub. Réessaie.';
+
+  @override
+  String get authOAuthCancelledGoogle => 'Connexion Google annulée.';
+
+  @override
+  String get authOAuthCancelledGithub => 'Connexion GitHub annulée.';
 
   @override
   String get authContinue => 'Continuer';
@@ -389,6 +417,9 @@ class AppLocalizationsFr extends AppLocalizations {
   String get validationInvalidEmail => 'Adresse e-mail invalide.';
 
   @override
+  String get validationEmailIncorrect => 'Adresse e-mail incorrecte.';
+
+  @override
   String get validationPasswordTooShort =>
       'Le mot de passe doit contenir au moins 8 caractères.';
 
@@ -397,10 +428,14 @@ class AppLocalizationsFr extends AppLocalizations {
       'Les mots de passe ne correspondent pas.';
 
   @override
-  String get validationUsernameTooShort => 'Au moins 3 caractères.';
+  String validationUsernameTooShort(int minLength) {
+    return 'Au moins $minLength caractères.';
+  }
 
   @override
-  String get validationUsernameTooLong => '20 caractères maximum.';
+  String validationUsernameTooLong(int maxLength) {
+    return '$maxLength caractères maximum.';
+  }
 
   @override
   String get validationUsernameInvalid => 'Lettres, chiffres et _ uniquement.';

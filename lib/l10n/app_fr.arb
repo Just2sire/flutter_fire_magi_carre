@@ -45,6 +45,9 @@
   "commonOr": "Ou",
   "@commonOr": { "description": "Séparateur générique entre deux options (ex: entre formulaire et OAuth)" },
 
+  "authOrContinueWith": "Ou continuer avec",
+  "@authOrContinueWith": { "description": "Séparateur DIVIDER entre formulaire email/password et boutons OAuth multiples (Google/GitHub/Apple)" },
+
   "@__sectionOnboarding": {
     "description": "━━━━ ONBOARDING — 3 slides patrimoniales + navigation ━━━━"
   },
@@ -188,6 +191,32 @@
       "provider": { "type": "String", "example": "Google" }
     }
   },
+
+  "authOAuthSuccess": "Connexion avec {provider} réussie !",
+  "@authOAuthSuccess": {
+    "description": "Message générique de succès OAuth avec nom du provider",
+    "placeholders": {
+      "provider": { "type": "String", "example": "Google" }
+    }
+  },
+
+  "authOAuthSuccessGoogle": "Connexion avec Google réussie !",
+  "@authOAuthSuccessGoogle": { "description": "Message de succès OAuth Google" },
+
+  "authOAuthSuccessGithub": "Connexion avec GitHub réussie !",
+  "@authOAuthSuccessGithub": { "description": "Message de succès OAuth GitHub" },
+
+  "authOAuthErrorGoogle": "Échec de la connexion avec Google. Réessaie.",
+  "@authOAuthErrorGoogle": { "description": "Message d'erreur OAuth Google" },
+
+  "authOAuthErrorGithub": "Échec de la connexion avec GitHub. Réessaie.",
+  "@authOAuthErrorGithub": { "description": "Message d'erreur OAuth GitHub" },
+
+  "authOAuthCancelledGoogle": "Connexion Google annulée.",
+  "@authOAuthCancelledGoogle": { "description": "Message d'annulation OAuth Google" },
+
+  "authOAuthCancelledGithub": "Connexion GitHub annulée.",
+  "@authOAuthCancelledGithub": { "description": "Message d'annulation OAuth GitHub" },
 
   "authContinue": "Continuer",
   "@authContinue": { "description": "Libellé du bouton générique Continuer (OAuth complete, etc.)" },
@@ -401,17 +430,30 @@
   "validationInvalidEmail": "Adresse e-mail invalide.",
   "@validationInvalidEmail": { "description": "Message d'erreur pour un e-mail mal formaté" },
 
+  "validationEmailIncorrect": "Adresse e-mail incorrecte.",
+  "@validationEmailIncorrect": { "description": "Message d'erreur pour un e-mail ne correspondant à aucun compte / incorrect lors de la connexion" },
+
   "validationPasswordTooShort": "Le mot de passe doit contenir au moins 8 caractères.",
   "@validationPasswordTooShort": { "description": "Message d'erreur pour un mot de passe trop court" },
 
   "validationPasswordsDoNotMatch": "Les mots de passe ne correspondent pas.",
   "@validationPasswordsDoNotMatch": { "description": "Message d'erreur quand les deux mots de passe diffèrent" },
 
-  "validationUsernameTooShort": "Au moins 3 caractères.",
-  "@validationUsernameTooShort": { "description": "Message d'erreur quand le nom d'utilisateur est trop court" },
+  "validationUsernameTooShort": "Au moins {minLength} caractères.",
+  "@validationUsernameTooShort": {
+    "description": "Message d'erreur quand le nom d'utilisateur est trop court",
+    "placeholders": {
+      "minLength": { "type": "int", "example": "3" }
+    }
+  },
 
-  "validationUsernameTooLong": "20 caractères maximum.",
-  "@validationUsernameTooLong": { "description": "Message d'erreur quand le nom d'utilisateur est trop long" },
+  "validationUsernameTooLong": "{maxLength} caractères maximum.",
+  "@validationUsernameTooLong": {
+    "description": "Message d'erreur quand le nom d'utilisateur est trop long",
+    "placeholders": {
+      "maxLength": { "type": "int", "example": "20" }
+    }
+  },
 
   "validationUsernameInvalid": "Lettres, chiffres et _ uniquement.",
   "@validationUsernameInvalid": { "description": "Message d'erreur quand le nom d'utilisateur contient des caractères invalides" },

@@ -49,6 +49,9 @@ class AppLocalizationsEn extends AppLocalizations {
   String get commonOr => 'Or';
 
   @override
+  String get authOrContinueWith => 'Or continue with';
+
+  @override
   String get onboardingSkip => 'Skip';
 
   @override
@@ -177,6 +180,31 @@ class AppLocalizationsEn extends AppLocalizations {
   String authOAuthFailed(String provider) {
     return 'Failed to sign in with $provider. Try again.';
   }
+
+  @override
+  String authOAuthSuccess(String provider) {
+    return 'Signed in with $provider successfully!';
+  }
+
+  @override
+  String get authOAuthSuccessGoogle => 'Signed in with Google successfully!';
+
+  @override
+  String get authOAuthSuccessGithub => 'Signed in with GitHub successfully!';
+
+  @override
+  String get authOAuthErrorGoogle =>
+      'Failed to sign in with Google. Try again.';
+
+  @override
+  String get authOAuthErrorGithub =>
+      'Failed to sign in with GitHub. Try again.';
+
+  @override
+  String get authOAuthCancelledGoogle => 'Google sign-in cancelled.';
+
+  @override
+  String get authOAuthCancelledGithub => 'GitHub sign-in cancelled.';
 
   @override
   String get authContinue => 'Continue';
@@ -385,6 +413,9 @@ class AppLocalizationsEn extends AppLocalizations {
   String get validationInvalidEmail => 'Invalid email address.';
 
   @override
+  String get validationEmailIncorrect => 'Incorrect email address.';
+
+  @override
   String get validationPasswordTooShort =>
       'Password must be at least 8 characters.';
 
@@ -392,10 +423,14 @@ class AppLocalizationsEn extends AppLocalizations {
   String get validationPasswordsDoNotMatch => 'Passwords do not match.';
 
   @override
-  String get validationUsernameTooShort => 'At least 3 characters.';
+  String validationUsernameTooShort(int minLength) {
+    return 'At least $minLength characters.';
+  }
 
   @override
-  String get validationUsernameTooLong => '20 characters max.';
+  String validationUsernameTooLong(int maxLength) {
+    return '$maxLength characters max.';
+  }
 
   @override
   String get validationUsernameInvalid => 'Letters, numbers and _ only.';

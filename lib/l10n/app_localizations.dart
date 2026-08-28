@@ -176,6 +176,12 @@ abstract class AppLocalizations {
   /// **'Ou'**
   String get commonOr;
 
+  /// Séparateur DIVIDER entre formulaire email/password et boutons OAuth multiples (Google/GitHub/Apple)
+  ///
+  /// In fr, this message translates to:
+  /// **'Ou continuer avec'**
+  String get authOrContinueWith;
+
   /// Bouton pour ignorer l'onboarding
   ///
   /// In fr, this message translates to:
@@ -409,6 +415,48 @@ abstract class AppLocalizations {
   /// In fr, this message translates to:
   /// **'Échec de la connexion {provider}. Réessaie.'**
   String authOAuthFailed(String provider);
+
+  /// Message générique de succès OAuth avec nom du provider
+  ///
+  /// In fr, this message translates to:
+  /// **'Connexion avec {provider} réussie !'**
+  String authOAuthSuccess(String provider);
+
+  /// Message de succès OAuth Google
+  ///
+  /// In fr, this message translates to:
+  /// **'Connexion avec Google réussie !'**
+  String get authOAuthSuccessGoogle;
+
+  /// Message de succès OAuth GitHub
+  ///
+  /// In fr, this message translates to:
+  /// **'Connexion avec GitHub réussie !'**
+  String get authOAuthSuccessGithub;
+
+  /// Message d'erreur OAuth Google
+  ///
+  /// In fr, this message translates to:
+  /// **'Échec de la connexion avec Google. Réessaie.'**
+  String get authOAuthErrorGoogle;
+
+  /// Message d'erreur OAuth GitHub
+  ///
+  /// In fr, this message translates to:
+  /// **'Échec de la connexion avec GitHub. Réessaie.'**
+  String get authOAuthErrorGithub;
+
+  /// Message d'annulation OAuth Google
+  ///
+  /// In fr, this message translates to:
+  /// **'Connexion Google annulée.'**
+  String get authOAuthCancelledGoogle;
+
+  /// Message d'annulation OAuth GitHub
+  ///
+  /// In fr, this message translates to:
+  /// **'Connexion GitHub annulée.'**
+  String get authOAuthCancelledGithub;
 
   /// Libellé du bouton générique Continuer (OAuth complete, etc.)
   ///
@@ -782,6 +830,12 @@ abstract class AppLocalizations {
   /// **'Adresse e-mail invalide.'**
   String get validationInvalidEmail;
 
+  /// Message d'erreur pour un e-mail ne correspondant à aucun compte / incorrect lors de la connexion
+  ///
+  /// In fr, this message translates to:
+  /// **'Adresse e-mail incorrecte.'**
+  String get validationEmailIncorrect;
+
   /// Message d'erreur pour un mot de passe trop court
   ///
   /// In fr, this message translates to:
@@ -797,14 +851,14 @@ abstract class AppLocalizations {
   /// Message d'erreur quand le nom d'utilisateur est trop court
   ///
   /// In fr, this message translates to:
-  /// **'Au moins 3 caractères.'**
-  String get validationUsernameTooShort;
+  /// **'Au moins {minLength} caractères.'**
+  String validationUsernameTooShort(int minLength);
 
   /// Message d'erreur quand le nom d'utilisateur est trop long
   ///
   /// In fr, this message translates to:
-  /// **'20 caractères maximum.'**
-  String get validationUsernameTooLong;
+  /// **'{maxLength} caractères maximum.'**
+  String validationUsernameTooLong(int maxLength);
 
   /// Message d'erreur quand le nom d'utilisateur contient des caractères invalides
   ///
