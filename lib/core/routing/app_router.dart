@@ -1,6 +1,7 @@
 import "package:flutter/material.dart";
 import "package:go_router/go_router.dart";
 
+import "../../features/auth/presentation/pages/index.dart";
 import "../../features/welcome/presentation/pages/index.dart";
 import "../configs/env.dart";
 import "../constants/app_icons.dart";
@@ -55,7 +56,7 @@ GoRouter buildRouter() => GoRouter(
       pageBuilder: (context, state) => AppTransitions.fadeSlide(
         context: context,
         state: state,
-        child: const _Placeholder(title: "Connexion"),
+        child: const LoginPage(),
       ),
     ),
     GoRoute(
@@ -63,7 +64,7 @@ GoRouter buildRouter() => GoRouter(
       pageBuilder: (context, state) => AppTransitions.pushedScreen(
         context: context,
         state: state,
-        child: const _Placeholder(title: "Inscription"),
+        child: const RegisterPage(),
       ),
     ),
     GoRoute(

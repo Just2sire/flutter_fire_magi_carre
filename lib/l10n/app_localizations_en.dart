@@ -133,7 +133,9 @@ class AppLocalizationsEn extends AppLocalizations {
   String get authPasswordLabel => 'Password';
 
   @override
-  String get authPasswordHint => 'At least 8 characters';
+  String authPasswordHint(int length) {
+    return 'At least $length characters';
+  }
 
   @override
   String get authConfirmPasswordLabel => 'Confirm password';
@@ -166,6 +168,217 @@ class AppLocalizationsEn extends AppLocalizations {
   String get authOAuthApple => 'Continue with Apple';
 
   @override
+  String get authOAuthLoading => 'Signing in…';
+
+  @override
+  String get authOAuthCancelled => 'Sign-in cancelled.';
+
+  @override
+  String authOAuthFailed(String provider) {
+    return 'Failed to sign in with $provider. Try again.';
+  }
+
+  @override
+  String get authContinue => 'Continue';
+
+  @override
+  String get authCompleteProfileTitle => 'Complete your profile';
+
+  @override
+  String get authCompleteProfileSubtitle =>
+      'Choose a username to appear in the game.';
+
+  @override
+  String get authCompleteProfileButton => 'Done';
+
+  @override
+  String get authUsernameHint => 'E.g. MagiMaster, Player_123456';
+
+  @override
+  String get authUsernameHelper => 'Leave empty to auto-generate.';
+
+  @override
+  String get authShowPassword => 'Show password';
+
+  @override
+  String get authHidePassword => 'Hide password';
+
+  @override
+  String get authBackToLogin => 'Back to sign in';
+
+  @override
+  String get authCheckEmailTitle => 'Check your email';
+
+  @override
+  String get authCheckEmailSubtitle =>
+      'If an account exists, you will receive a reset link.';
+
+  @override
+  String get authForgotPasswordSuccess => 'Link sent! Check your inbox.';
+
+  @override
+  String get authResetPasswordSubtitle => 'Choose a new secure password.';
+
+  @override
+  String get authNewPasswordLabel => 'New password';
+
+  @override
+  String get authNewPasswordHint =>
+      'At least 8 characters, 1 uppercase, 1 number';
+
+  @override
+  String get authConfirmNewPasswordLabel => 'Confirm new password';
+
+  @override
+  String get authResetSuccessTitle => 'Password updated!';
+
+  @override
+  String get authResetSuccessMessage =>
+      'You can now sign in with your new password.';
+
+  @override
+  String get authInvalidResetLink =>
+      'Invalid or expired link. Request a new one.';
+
+  @override
+  String get authPasswordUpdateSuccess => 'Password changed successfully.';
+
+  @override
+  String get authVerifyEmailTitle => 'Check your inbox';
+
+  @override
+  String authVerifyEmailSubtitle(String email) {
+    return 'A verification link has been sent to $email.';
+  }
+
+  @override
+  String get authResendEmail => 'Resend email';
+
+  @override
+  String authSignupSuccess(String username) {
+    return 'Account created! Welcome $username!';
+  }
+
+  @override
+  String get authLogout => 'Sign out';
+
+  @override
+  String get authLogoutButton => 'Sign out';
+
+  @override
+  String get authLogoutConfirmTitle => 'Sign out?';
+
+  @override
+  String get authLogoutConfirmMessage => 'Are you sure you want to sign out?';
+
+  @override
+  String get authLogoutSuccess => 'Signed out successfully.';
+
+  @override
+  String authLoginSuccess(String username) {
+    return 'Welcome back, $username!';
+  }
+
+  @override
+  String get authLoginError => 'Failed to sign in. Check your credentials.';
+
+  @override
+  String get authSignupError => 'Failed to create account. Try again.';
+
+  @override
+  String get authLogoutError => 'Failed to sign out. Try again.';
+
+  @override
+  String get authResendSuccess => 'Email resent!';
+
+  @override
+  String get authResendError => 'Failed to send email. Try again.';
+
+  @override
+  String authCompleteProfileSuccess(String username) {
+    return 'Profile completed! Welcome $username!';
+  }
+
+  @override
+  String get authVerifySuccessTitle => 'Email verified!';
+
+  @override
+  String get authVerifySuccessMessage =>
+      'Your email address has been verified successfully.';
+
+  @override
+  String get authGenericSuccess => 'Operation successful.';
+
+  @override
+  String get authGenericError => 'Something went wrong. Try again.';
+
+  @override
+  String get authErrorInvalidCredentials =>
+      'Invalid credentials. Check your email and password.';
+
+  @override
+  String get authErrorSessionExpired =>
+      'Session expired. Please sign in again.';
+
+  @override
+  String get authErrorUnauthorized => 'Unauthorized access.';
+
+  @override
+  String get authErrorUserNotFound => 'User not found.';
+
+  @override
+  String get authErrorOAuthCancelled => 'Sign-in cancelled.';
+
+  @override
+  String get authErrorGoogleCancelled => 'Google sign-in cancelled.';
+
+  @override
+  String get authErrorWeakPassword => 'Password is too weak.';
+
+  @override
+  String get authErrorTooManyRequests =>
+      'Too many attempts. Try again in a few minutes.';
+
+  @override
+  String get authEmailAlreadyExists =>
+      'An account already exists with this email.';
+
+  @override
+  String get authTermsPrefix => 'By creating an account, you agree to our';
+
+  @override
+  String get authTermsLink => 'Terms of Service';
+
+  @override
+  String get authTermsAnd => 'and our';
+
+  @override
+  String get authPrivacyLink => 'Privacy Policy';
+
+  @override
+  String get authTermsSuffix => '.';
+
+  @override
+  String get authSkipTitle => 'Continue without an account?';
+
+  @override
+  String get authSkipMessage =>
+      'Without an account, you won\'t be able to play online, save your progress or appear on the leaderboard. You can still play offline.';
+
+  @override
+  String get authSkipConfirm => 'Continue as guest';
+
+  @override
+  String get authSkipCancel => 'Create an account';
+
+  @override
+  String get authGuestWarning => 'Guest mode — progress not saved';
+
+  @override
+  String get authOnlineRequiresAccount =>
+      'An account is required to play online.';
+
+  @override
   String get validationRequired => 'This field is required.';
 
   @override
@@ -177,6 +390,38 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get validationPasswordsDoNotMatch => 'Passwords do not match.';
+
+  @override
+  String get validationUsernameTooShort => 'At least 3 characters.';
+
+  @override
+  String get validationUsernameTooLong => '20 characters max.';
+
+  @override
+  String get validationUsernameInvalid => 'Letters, numbers and _ only.';
+
+  @override
+  String get routerErrorTitle => 'This screen does not exist yet.';
+
+  @override
+  String get routerErrorSubtitle => 'Come back later, or return to home.';
+
+  @override
+  String routerSoon(String title) {
+    return '$title — coming soon.';
+  }
+
+  @override
+  String get errorNetwork => 'Network error. Check your internet connection.';
+
+  @override
+  String get errorServer => 'Server error. Try again later.';
+
+  @override
+  String get errorValidation => 'Invalid data. Check the fields.';
+
+  @override
+  String get errorUnknown => 'An unknown error occurred.';
 
   @override
   String get settingsLanguage => 'Language';

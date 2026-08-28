@@ -137,8 +137,13 @@
   "authPasswordLabel": "Password",
   "@authPasswordLabel": { "description": "Password field label" },
 
-  "authPasswordHint": "At least 8 characters",
-  "@authPasswordHint": { "description": "Password field placeholder" },
+  "authPasswordHint": "At least {length} characters",
+  "@authPasswordHint": {
+    "description": "Password field placeholder",
+    "placeholders": {
+      "length": { "type": "int", "example": "6" }
+    }
+  },
 
   "authConfirmPasswordLabel": "Confirm password",
   "@authConfirmPasswordLabel": { "description": "Confirm password field label" },
@@ -170,6 +175,223 @@
   "authOAuthApple": "Continue with Apple",
   "@authOAuthApple": { "description": "OAuth button — continue with Apple" },
 
+  "authOAuthLoading": "Signing in…",
+  "@authOAuthLoading": { "description": "Loading text during OAuth sign-in" },
+
+  "authOAuthCancelled": "Sign-in cancelled.",
+  "@authOAuthCancelled": { "description": "Message when user cancels OAuth flow" },
+
+  "authOAuthFailed": "Failed to sign in with {provider}. Try again.",
+  "@authOAuthFailed": {
+    "description": "OAuth failure message with provider name",
+    "placeholders": {
+      "provider": { "type": "String", "example": "Google" }
+    }
+  },
+
+  "authContinue": "Continue",
+  "@authContinue": { "description": "Generic Continue button label (OAuth complete, etc.)" },
+
+  "authCompleteProfileTitle": "Complete your profile",
+  "@authCompleteProfileTitle": { "description": "Title of the OAuth profile completion page" },
+
+  "authCompleteProfileSubtitle": "Choose a username to appear in the game.",
+  "@authCompleteProfileSubtitle": { "description": "Subtitle of the profile completion page" },
+
+  "authCompleteProfileButton": "Done",
+  "@authCompleteProfileButton": { "description": "Confirm button for profile completion" },
+
+  "authUsernameHint": "E.g. MagiMaster, Player_123456",
+  "@authUsernameHint": { "description": "Placeholder for username field" },
+
+  "authUsernameHelper": "Leave empty to auto-generate.",
+  "@authUsernameHelper": { "description": "Helper text under username field when auto-generation is available" },
+
+  "authShowPassword": "Show password",
+  "@authShowPassword": { "description": "Tooltip/accessibility to show password" },
+
+  "authHidePassword": "Hide password",
+  "@authHidePassword": { "description": "Tooltip/accessibility to hide password" },
+
+  "authBackToLogin": "Back to sign in",
+  "@authBackToLogin": { "description": "Link back to sign-in page from forgot/reset" },
+
+  "authCheckEmailTitle": "Check your email",
+  "@authCheckEmailTitle": { "description": "Title of the success screen after sending reset link" },
+
+  "authCheckEmailSubtitle": "If an account exists, you will receive a reset link.",
+  "@authCheckEmailSubtitle": { "description": "Anti-enumeration subtitle on check email screen" },
+
+  "authForgotPasswordSuccess": "Link sent! Check your inbox.",
+  "@authForgotPasswordSuccess": { "description": "Success message after requesting password reset" },
+
+  "authResetPasswordSubtitle": "Choose a new secure password.",
+  "@authResetPasswordSubtitle": { "description": "Subtitle of the reset password page" },
+
+  "authNewPasswordLabel": "New password",
+  "@authNewPasswordLabel": { "description": "Label for new password field" },
+
+  "authNewPasswordHint": "At least 8 characters, 1 uppercase, 1 number",
+  "@authNewPasswordHint": { "description": "Placeholder for new password field" },
+
+  "authConfirmNewPasswordLabel": "Confirm new password",
+  "@authConfirmNewPasswordLabel": { "description": "Label for confirm new password field" },
+
+  "authResetSuccessTitle": "Password updated!",
+  "@authResetSuccessTitle": { "description": "Title of success screen after password reset" },
+
+  "authResetSuccessMessage": "You can now sign in with your new password.",
+  "@authResetSuccessMessage": { "description": "Success message after password reset" },
+
+  "authInvalidResetLink": "Invalid or expired link. Request a new one.",
+  "@authInvalidResetLink": { "description": "Message when reset link is invalid or expired" },
+
+  "authPasswordUpdateSuccess": "Password changed successfully.",
+  "@authPasswordUpdateSuccess": { "description": "Success message after changing password from profile" },
+
+  "authVerifyEmailTitle": "Check your inbox",
+  "@authVerifyEmailTitle": { "description": "Title of email verification screen after sign-up" },
+
+  "authVerifyEmailSubtitle": "A verification link has been sent to {email}.",
+  "@authVerifyEmailSubtitle": {
+    "description": "Subtitle of email verification with address",
+    "placeholders": {
+      "email": { "type": "String", "example": "you@email.com" }
+    }
+  },
+
+  "authResendEmail": "Resend email",
+  "@authResendEmail": { "description": "Button to resend verification/reset email" },
+
+  "authSignupSuccess": "Account created! Welcome {username}!",
+  "@authSignupSuccess": {
+    "description": "Success message after sign-up with username",
+    "placeholders": {
+      "username": { "type": "String", "example": "MagiMaster" }
+    }
+  },
+
+  "authLogout": "Sign out",
+  "@authLogout": { "description": "Generic sign-out label" },
+
+  "authLogoutButton": "Sign out",
+  "@authLogoutButton": { "description": "Sign-out button" },
+
+  "authLogoutConfirmTitle": "Sign out?",
+  "@authLogoutConfirmTitle": { "description": "Title of sign-out confirmation dialog" },
+
+  "authLogoutConfirmMessage": "Are you sure you want to sign out?",
+  "@authLogoutConfirmMessage": { "description": "Message of sign-out confirmation dialog" },
+
+  "authLogoutSuccess": "Signed out successfully.",
+  "@authLogoutSuccess": { "description": "Success message after sign-out" },
+
+  "authLoginSuccess": "Welcome back, {username}!",
+  "@authLoginSuccess": {
+    "description": "Success message after sign-in",
+    "placeholders": {
+      "username": { "type": "String", "example": "MagiMaster" }
+    }
+  },
+
+  "authLoginError": "Failed to sign in. Check your credentials.",
+  "@authLoginError": { "description": "Generic error message after sign-in failure" },
+
+  "authSignupError": "Failed to create account. Try again.",
+  "@authSignupError": { "description": "Generic error message after sign-up failure" },
+
+  "authLogoutError": "Failed to sign out. Try again.",
+  "@authLogoutError": { "description": "Error message after sign-out failure" },
+
+  "authResendSuccess": "Email resent!",
+  "@authResendSuccess": { "description": "Success message after resending email" },
+
+  "authResendError": "Failed to send email. Try again.",
+  "@authResendError": { "description": "Error message after resending email failure" },
+
+  "authCompleteProfileSuccess": "Profile completed! Welcome {username}!",
+  "@authCompleteProfileSuccess": {
+    "description": "Success message after OAuth profile completion",
+    "placeholders": {
+      "username": { "type": "String", "example": "MagiMaster" }
+    }
+  },
+
+  "authVerifySuccessTitle": "Email verified!",
+  "@authVerifySuccessTitle": { "description": "Title of success after email verification" },
+
+  "authVerifySuccessMessage": "Your email address has been verified successfully.",
+  "@authVerifySuccessMessage": { "description": "Success message after email verification" },
+
+  "authGenericSuccess": "Operation successful.",
+  "@authGenericSuccess": { "description": "Generic success message" },
+
+  "authGenericError": "Something went wrong. Try again.",
+  "@authGenericError": { "description": "Generic auth error message" },
+
+  "@__sectionAuthErrors": {
+    "description": "━━━━ AUTH ERRORS — Errors mapped from Failures ━━━━"
+  },
+  "authErrorInvalidCredentials": "Invalid credentials. Check your email and password.",
+  "@authErrorInvalidCredentials": { "description": "InvalidCredentialsFailure error" },
+
+  "authErrorSessionExpired": "Session expired. Please sign in again.",
+  "@authErrorSessionExpired": { "description": "SessionExpiredFailure error" },
+
+  "authErrorUnauthorized": "Unauthorized access.",
+  "@authErrorUnauthorized": { "description": "UnauthorizedFailure error (403)" },
+
+  "authErrorUserNotFound": "User not found.",
+  "@authErrorUserNotFound": { "description": "UserNotFoundFailure error" },
+
+  "authErrorOAuthCancelled": "Sign-in cancelled.",
+  "@authErrorOAuthCancelled": { "description": "OAuthCancelledFailure error" },
+
+  "authErrorGoogleCancelled": "Google sign-in cancelled.",
+  "@authErrorGoogleCancelled": { "description": "GoogleSignInCancelledFailure error" },
+
+  "authErrorWeakPassword": "Password is too weak.",
+  "@authErrorWeakPassword": { "description": "Supabase weak password error" },
+
+  "authErrorTooManyRequests": "Too many attempts. Try again in a few minutes.",
+  "@authErrorTooManyRequests": { "description": "Rate-limit / too many requests error" },
+
+  "authEmailAlreadyExists": "An account already exists with this email.",
+  "@authEmailAlreadyExists": { "description": "Sign-up error — email already in use" },
+
+  "authTermsPrefix": "By creating an account, you agree to our",
+  "@authTermsPrefix": { "description": "Prefix before Terms link" },
+
+  "authTermsLink": "Terms of Service",
+  "@authTermsLink": { "description": "Link to Terms of Service" },
+
+  "authTermsAnd": "and our",
+  "@authTermsAnd": { "description": "Conjunction between Terms and Privacy links" },
+
+  "authPrivacyLink": "Privacy Policy",
+  "@authPrivacyLink": { "description": "Link to Privacy Policy" },
+
+  "authTermsSuffix": ".",
+  "@authTermsSuffix": { "description": "Punctuation suffix after CGU links" },
+
+  "authSkipTitle": "Continue without an account?",
+  "@authSkipTitle": { "description": "Title of the warning dialog when skipping auth" },
+
+  "authSkipMessage": "Without an account, you won't be able to play online, save your progress or appear on the leaderboard. You can still play offline.",
+  "@authSkipMessage": { "description": "Warning message for guest mode — online limitations" },
+
+  "authSkipConfirm": "Continue as guest",
+  "@authSkipConfirm": { "description": "Confirm button to continue without account (guest mode)" },
+
+  "authSkipCancel": "Create an account",
+  "@authSkipCancel": { "description": "Cancel button of skip dialog — goes to sign-up" },
+
+  "authGuestWarning": "Guest mode — progress not saved",
+  "@authGuestWarning": { "description": "Banner/chip shown when user is in guest mode" },
+
+  "authOnlineRequiresAccount": "An account is required to play online.",
+  "@authOnlineRequiresAccount": { "description": "Blocking message when trying to access online play without account" },
+
   "@__sectionValidation": {
     "description": "━━━━ VALIDATION — Form error messages ━━━━"
   },
@@ -184,6 +406,47 @@
 
   "validationPasswordsDoNotMatch": "Passwords do not match.",
   "@validationPasswordsDoNotMatch": { "description": "Error when passwords differ" },
+
+  "validationUsernameTooShort": "At least 3 characters.",
+  "@validationUsernameTooShort": { "description": "Error when username is too short" },
+
+  "validationUsernameTooLong": "20 characters max.",
+  "@validationUsernameTooLong": { "description": "Error when username is too long" },
+
+  "validationUsernameInvalid": "Letters, numbers and _ only.",
+  "@validationUsernameInvalid": { "description": "Error when username contains invalid characters" },
+
+  "@__sectionRouting": {
+    "description": "━━━━ ROUTING — Errors and placeholders ━━━━"
+  },
+  "routerErrorTitle": "This screen does not exist yet.",
+  "@routerErrorTitle": { "description": "Title of routing error page" },
+
+  "routerErrorSubtitle": "Come back later, or return to home.",
+  "@routerErrorSubtitle": { "description": "Subtitle of routing error page" },
+
+  "routerSoon": "{title} — coming soon.",
+  "@routerSoon": {
+    "description": "Generic placeholder for coming-soon screen",
+    "placeholders": {
+      "title": { "type": "String", "example": "Lobby" }
+    }
+  },
+
+  "@__sectionGenericErrors": {
+    "description": "━━━━ GENERIC ERRORS — Network/server/validation errors ━━━━"
+  },
+  "errorNetwork": "Network error. Check your internet connection.",
+  "@errorNetwork": { "description": "Generic network error (NetworkFailure)" },
+
+  "errorServer": "Server error. Try again later.",
+  "@errorServer": { "description": "Generic server error (ServerFailure)" },
+
+  "errorValidation": "Invalid data. Check the fields.",
+  "@errorValidation": { "description": "Generic validation error (ValidationFailure)" },
+
+  "errorUnknown": "An unknown error occurred.",
+  "@errorUnknown": { "description": "Unknown error (fallback Failure)" },
 
   "@__sectionSettings": {
     "description": "━━━━ SETTINGS — Settings ━━━━"

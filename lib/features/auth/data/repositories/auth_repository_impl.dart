@@ -1,7 +1,10 @@
+import "package:supabase_flutter/supabase_flutter.dart" as sb;
+
 import "../../../../shared/data/services/http_service/either.dart";
 import "../../../../shared/domain/failures/auth_failure.dart";
 import "../../../../shared/domain/failures/failure.dart";
 import "../../../../shared/domain/failures/server_failure.dart";
+import "../../domain/entities/auth_event.dart";
 import "../../domain/entities/user_profile.dart";
 import "../../domain/repositories/auth_repository.dart";
 import "../datasources/auth_local_datasource.dart";
@@ -40,7 +43,7 @@ class AuthRepositoryImpl implements AuthRepository {
       );
 
       return Right(profile);
-    } on _AuthException catch (e) {
+    } on sb.AuthException catch (e) {
       return Left(InvalidCredentialsFailure(message: e.message));
     } on Exception catch (e) {
       return Left(ServerFailure(message: e.toString()));
@@ -65,7 +68,7 @@ class AuthRepositoryImpl implements AuthRepository {
       );
 
       return Right(profile);
-    } on _AuthException catch (e) {
+    } on sb.AuthException catch (e) {
       return Left(InvalidCredentialsFailure(message: e.message));
     } on Exception catch (e) {
       return Left(ServerFailure(message: e.toString()));
@@ -88,7 +91,7 @@ class AuthRepositoryImpl implements AuthRepository {
     try {
       await _remoteDataSource.signInWithOAuth(provider);
       return const Right(null);
-    } on _AuthException catch (e) {
+    } on sb.AuthException catch (e) {
       if (e.message.contains("cancelled")) {
         return const Left(OAuthCancelledFailure());
       }
@@ -117,6 +120,20 @@ class AuthRepositoryImpl implements AuthRepository {
         onboardingCompleted: profile.onboardingCompleted,
       );
 
+      return Right(profile);
+    } on Exception catch (e) {
+      return Left(ServerFailure(message: e.toString()));
+    }
+  }
+
+  @override
+  Future<Either<Failure, UserProfile>> fetchCurrentProfile() async {
+    try {
+      final userId = _remoteDataSource.getCurrentUserId();
+      if (userId == null) {
+        return const Left(UserNotFoundFailure());
+      }
+      final profile = await _remoteDataSource.fetchProfile(userId: userId);
       return Right(profile);
     } on Exception catch (e) {
       return Left(ServerFailure(message: e.toString()));
@@ -167,15 +184,12 @@ class AuthRepositoryImpl implements AuthRepository {
   Future<Either<Failure, UserProfile>> updateBio(String bio) async {
     try {
       final userId = _remoteDataSource.getCurrentUserId();
-      if (userId == null) {
-        return const Left(UserNotFoundFailure());
-      }
+      if (userId == null) return const Left(UserNotFoundFailure());
 
       final profile = await _remoteDataSource.updateBio(
         userId: userId,
         bio: bio,
       );
-
       return Right(profile);
     } on Exception catch (e) {
       return Left(ServerFailure(message: e.toString()));
@@ -186,15 +200,12 @@ class AuthRepositoryImpl implements AuthRepository {
   Future<Either<Failure, UserProfile>> updateAvatarUrl(String url) async {
     try {
       final userId = _remoteDataSource.getCurrentUserId();
-      if (userId == null) {
-        return const Left(UserNotFoundFailure());
-      }
+      if (userId == null) return const Left(UserNotFoundFailure());
 
       final profile = await _remoteDataSource.updateAvatarUrl(
         userId: userId,
         url: url,
       );
-
       return Right(profile);
     } on Exception catch (e) {
       return Left(ServerFailure(message: e.toString()));
@@ -205,15 +216,9 @@ class AuthRepositoryImpl implements AuthRepository {
   Future<Either<Failure, void>> addFriend(String friendId) async {
     try {
       final userId = _remoteDataSource.getCurrentUserId();
-      if (userId == null) {
-        return const Left(UserNotFoundFailure());
-      }
+      if (userId == null) return const Left(UserNotFoundFailure());
 
-      await _remoteDataSource.addFriend(
-        userId: userId,
-        friendId: friendId,
-      );
-
+      await _remoteDataSource.addFriend(userId: userId, friendId: friendId);
       return const Right(null);
     } on Exception catch (e) {
       return Left(ServerFailure(message: e.toString()));
@@ -224,31 +229,32 @@ class AuthRepositoryImpl implements AuthRepository {
   Future<Either<Failure, void>> removeFriend(String friendId) async {
     try {
       final userId = _remoteDataSource.getCurrentUserId();
-      if (userId == null) {
-        return const Left(UserNotFoundFailure());
-      }
+      if (userId == null) return const Left(UserNotFoundFailure());
 
-      await _remoteDataSource.removeFriend(
-        userId: userId,
-        friendId: friendId,
-      );
-
+      await _remoteDataSource.removeFriend(userId: userId, friendId: friendId);
       return const Right(null);
     } on Exception catch (e) {
       return Left(ServerFailure(message: e.toString()));
     }
   }
 
+  @override
+  Stream<AuthEvent> watchAuthState() {
+    return _remoteDataSource.watchAuthState().map((supabaseState) {
+      return switch (supabaseState.event) {
+        sb.AuthChangeEvent.initialSession => AuthEvent.initialSession,
+        sb.AuthChangeEvent.signedIn => AuthEvent.signedIn,
+        sb.AuthChangeEvent.signedOut => AuthEvent.signedOut,
+        sb.AuthChangeEvent.tokenRefreshed => AuthEvent.tokenRefreshed,
+        sb.AuthChangeEvent.passwordRecovery => AuthEvent.passwordRecovery,
+        sb.AuthChangeEvent.userUpdated => AuthEvent.userUpdated,
+        _ => AuthEvent.signedOut,
+      };
+    });
+  }
+
   String _generateDefaultUsername() {
     final random = DateTime.now().millisecondsSinceEpoch % 999999;
-    return "Player_${random.toString().padLeft(6, "0")}";
+    return "Aloba_${random.toString().padLeft(6, "0")}";
   }
-}
-
-class _AuthException implements Exception {
-  _AuthException(this.message);
-  final String message;
-
-  @override
-  String toString() => message;
 }

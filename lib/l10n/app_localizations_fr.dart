@@ -125,7 +125,7 @@ class AppLocalizationsFr extends AppLocalizations {
   String get authResetPasswordButton => 'Réinitialiser';
 
   @override
-  String get authEmailLabel => 'Adresse e-mail';
+  String get authEmailLabel => 'Email';
 
   @override
   String get authEmailHint => 'ton@email.com';
@@ -134,7 +134,9 @@ class AppLocalizationsFr extends AppLocalizations {
   String get authPasswordLabel => 'Mot de passe';
 
   @override
-  String get authPasswordHint => 'Au moins 8 caractères';
+  String authPasswordHint(int length) {
+    return 'Au moins $length caractères';
+  }
 
   @override
   String get authConfirmPasswordLabel => 'Confirmer le mot de passe';
@@ -149,7 +151,7 @@ class AppLocalizationsFr extends AppLocalizations {
   String get authAlreadyHaveAccount => 'Déjà un compte ?';
 
   @override
-  String get authNoAccount => 'Pas encore de compte ?';
+  String get authNoAccount => 'Pas de compte ?';
 
   @override
   String get authLoginLink => 'Se connecter';
@@ -167,6 +169,220 @@ class AppLocalizationsFr extends AppLocalizations {
   String get authOAuthApple => 'Continuer avec Apple';
 
   @override
+  String get authOAuthLoading => 'Connexion en cours…';
+
+  @override
+  String get authOAuthCancelled => 'Connexion annulée.';
+
+  @override
+  String authOAuthFailed(String provider) {
+    return 'Échec de la connexion $provider. Réessaie.';
+  }
+
+  @override
+  String get authContinue => 'Continuer';
+
+  @override
+  String get authCompleteProfileTitle => 'Finalise ton profil';
+
+  @override
+  String get authCompleteProfileSubtitle =>
+      'Choisis un nom d\'utilisateur pour apparaître dans le jeu.';
+
+  @override
+  String get authCompleteProfileButton => 'Terminer';
+
+  @override
+  String get authUsernameHint => 'Ex : MagiMaster, Player_123456';
+
+  @override
+  String get authUsernameHelper => 'Laisse vide pour générer automatiquement.';
+
+  @override
+  String get authShowPassword => 'Afficher le mot de passe';
+
+  @override
+  String get authHidePassword => 'Masquer le mot de passe';
+
+  @override
+  String get authBackToLogin => 'Retour à la connexion';
+
+  @override
+  String get authCheckEmailTitle => 'Vérifie tes e-mails';
+
+  @override
+  String get authCheckEmailSubtitle =>
+      'Si un compte existe, tu recevras un lien de réinitialisation.';
+
+  @override
+  String get authForgotPasswordSuccess =>
+      'Lien envoyé ! Vérifie ta messagerie.';
+
+  @override
+  String get authResetPasswordSubtitle =>
+      'Choisis un nouveau mot de passe sécurisé.';
+
+  @override
+  String get authNewPasswordLabel => 'Nouveau mot de passe';
+
+  @override
+  String get authNewPasswordHint =>
+      'Au moins 8 caractères, 1 majuscule, 1 chiffre';
+
+  @override
+  String get authConfirmNewPasswordLabel => 'Confirmer le nouveau mot de passe';
+
+  @override
+  String get authResetSuccessTitle => 'Mot de passe mis à jour !';
+
+  @override
+  String get authResetSuccessMessage =>
+      'Tu peux maintenant te connecter avec ton nouveau mot de passe.';
+
+  @override
+  String get authInvalidResetLink =>
+      'Lien invalide ou expiré. Demande un nouveau lien.';
+
+  @override
+  String get authPasswordUpdateSuccess => 'Mot de passe modifié avec succès.';
+
+  @override
+  String get authVerifyEmailTitle => 'Vérifie ta boîte mail';
+
+  @override
+  String authVerifyEmailSubtitle(String email) {
+    return 'Un lien de vérification a été envoyé à $email.';
+  }
+
+  @override
+  String get authResendEmail => 'Renvoyer l\'e-mail';
+
+  @override
+  String authSignupSuccess(String username) {
+    return 'Compte créé ! Bienvenue $username !';
+  }
+
+  @override
+  String get authLogout => 'Déconnexion';
+
+  @override
+  String get authLogoutButton => 'Se déconnecter';
+
+  @override
+  String get authLogoutConfirmTitle => 'Se déconnecter ?';
+
+  @override
+  String get authLogoutConfirmMessage =>
+      'Es-tu sûr de vouloir te déconnecter ?';
+
+  @override
+  String get authLogoutSuccess => 'Déconnecté avec succès.';
+
+  @override
+  String authLoginSuccess(String username) {
+    return 'Connexion réussie ! Ravie de te revoir, $username !';
+  }
+
+  @override
+  String get authLoginError =>
+      'Échec de la connexion. Vérifie tes identifiants.';
+
+  @override
+  String get authSignupError => 'Échec de l\'inscription. Réessaie.';
+
+  @override
+  String get authLogoutError => 'Échec de la déconnexion. Réessaie.';
+
+  @override
+  String get authResendSuccess => 'E-mail renvoyé !';
+
+  @override
+  String get authResendError => 'Impossible d\'envoyer l\'e-mail. Réessaie.';
+
+  @override
+  String authCompleteProfileSuccess(String username) {
+    return 'Profil complété ! Bienvenue $username !';
+  }
+
+  @override
+  String get authVerifySuccessTitle => 'Adresse vérifiée !';
+
+  @override
+  String get authVerifySuccessMessage =>
+      'Ton adresse e-mail a été vérifiée avec succès.';
+
+  @override
+  String get authGenericSuccess => 'Opération réussie.';
+
+  @override
+  String get authGenericError => 'Une erreur est survenue. Réessaie.';
+
+  @override
+  String get authErrorInvalidCredentials =>
+      'Identifiants invalides. Vérifie ton e-mail et ton mot de passe.';
+
+  @override
+  String get authErrorSessionExpired =>
+      'Session expirée. Veuillez vous reconnecter.';
+
+  @override
+  String get authErrorUnauthorized => 'Accès non autorisé.';
+
+  @override
+  String get authErrorUserNotFound => 'Utilisateur introuvable.';
+
+  @override
+  String get authErrorOAuthCancelled => 'Connexion annulée.';
+
+  @override
+  String get authErrorGoogleCancelled => 'Connexion Google annulée.';
+
+  @override
+  String get authErrorWeakPassword => 'Mot de passe trop faible.';
+
+  @override
+  String get authErrorTooManyRequests =>
+      'Trop de tentatives. Réessaie dans quelques minutes.';
+
+  @override
+  String get authEmailAlreadyExists => 'Un compte existe déjà avec cet e-mail.';
+
+  @override
+  String get authTermsPrefix => 'En créant un compte, tu acceptes nos';
+
+  @override
+  String get authTermsLink => 'Conditions d\'utilisation';
+
+  @override
+  String get authTermsAnd => 'et notre';
+
+  @override
+  String get authPrivacyLink => 'Politique de confidentialité';
+
+  @override
+  String get authTermsSuffix => '.';
+
+  @override
+  String get authSkipTitle => 'Continuer sans compte ?';
+
+  @override
+  String get authSkipMessage =>
+      'Sans compte, tu ne pourras pas jouer en ligne, sauvegarder ta progression ni apparaître au classement. Tu pourras toujours jouer hors ligne.';
+
+  @override
+  String get authSkipConfirm => 'Continuer en invité';
+
+  @override
+  String get authSkipCancel => 'Créer un compte';
+
+  @override
+  String get authGuestWarning => 'Mode invité — progression non sauvegardée';
+
+  @override
+  String get authOnlineRequiresAccount =>
+      'Un compte est requis pour jouer en ligne.';
+
+  @override
   String get validationRequired => 'Ce champ est obligatoire.';
 
   @override
@@ -179,6 +395,39 @@ class AppLocalizationsFr extends AppLocalizations {
   @override
   String get validationPasswordsDoNotMatch =>
       'Les mots de passe ne correspondent pas.';
+
+  @override
+  String get validationUsernameTooShort => 'Au moins 3 caractères.';
+
+  @override
+  String get validationUsernameTooLong => '20 caractères maximum.';
+
+  @override
+  String get validationUsernameInvalid => 'Lettres, chiffres et _ uniquement.';
+
+  @override
+  String get routerErrorTitle => 'Cet écran n\'existe pas encore.';
+
+  @override
+  String get routerErrorSubtitle =>
+      'Reviens plus tard, ou reprends depuis l\'accueil.';
+
+  @override
+  String routerSoon(String title) {
+    return '$title — bientôt.';
+  }
+
+  @override
+  String get errorNetwork => 'Erreur réseau. Vérifie ta connexion internet.';
+
+  @override
+  String get errorServer => 'Erreur serveur. Réessaie plus tard.';
+
+  @override
+  String get errorValidation => 'Données invalides. Vérifie les champs.';
+
+  @override
+  String get errorUnknown => 'Une erreur inconnue est survenue.';
 
   @override
   String get settingsLanguage => 'Langue';

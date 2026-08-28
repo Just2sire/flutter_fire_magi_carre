@@ -311,7 +311,7 @@ abstract class AppLocalizations {
   /// Label du champ e-mail
   ///
   /// In fr, this message translates to:
-  /// **'Adresse e-mail'**
+  /// **'Email'**
   String get authEmailLabel;
 
   /// Placeholder du champ e-mail
@@ -329,8 +329,8 @@ abstract class AppLocalizations {
   /// Placeholder du champ mot de passe
   ///
   /// In fr, this message translates to:
-  /// **'Au moins 8 caractères'**
-  String get authPasswordHint;
+  /// **'Au moins {length} caractères'**
+  String authPasswordHint(int length);
 
   /// Label du champ de confirmation de mot de passe
   ///
@@ -359,7 +359,7 @@ abstract class AppLocalizations {
   /// Texte précédant le lien vers la page d'inscription
   ///
   /// In fr, this message translates to:
-  /// **'Pas encore de compte ?'**
+  /// **'Pas de compte ?'**
   String get authNoAccount;
 
   /// Lien vers la page de connexion
@@ -392,6 +392,384 @@ abstract class AppLocalizations {
   /// **'Continuer avec Apple'**
   String get authOAuthApple;
 
+  /// Texte de chargement pendant l'auth OAuth
+  ///
+  /// In fr, this message translates to:
+  /// **'Connexion en cours…'**
+  String get authOAuthLoading;
+
+  /// Message quand l'utilisateur annule le flow OAuth
+  ///
+  /// In fr, this message translates to:
+  /// **'Connexion annulée.'**
+  String get authOAuthCancelled;
+
+  /// Message d'échec OAuth avec nom du provider
+  ///
+  /// In fr, this message translates to:
+  /// **'Échec de la connexion {provider}. Réessaie.'**
+  String authOAuthFailed(String provider);
+
+  /// Libellé du bouton générique Continuer (OAuth complete, etc.)
+  ///
+  /// In fr, this message translates to:
+  /// **'Continuer'**
+  String get authContinue;
+
+  /// Titre de la page de finalisation du profil après OAuth
+  ///
+  /// In fr, this message translates to:
+  /// **'Finalise ton profil'**
+  String get authCompleteProfileTitle;
+
+  /// Sous-titre de la page de finalisation du profil
+  ///
+  /// In fr, this message translates to:
+  /// **'Choisis un nom d\'utilisateur pour apparaître dans le jeu.'**
+  String get authCompleteProfileSubtitle;
+
+  /// Bouton de validation de la finalisation du profil
+  ///
+  /// In fr, this message translates to:
+  /// **'Terminer'**
+  String get authCompleteProfileButton;
+
+  /// Placeholder du champ nom d'utilisateur
+  ///
+  /// In fr, this message translates to:
+  /// **'Ex : MagiMaster, Player_123456'**
+  String get authUsernameHint;
+
+  /// Texte d'aide sous le champ nom d'utilisateur quand génération auto possible
+  ///
+  /// In fr, this message translates to:
+  /// **'Laisse vide pour générer automatiquement.'**
+  String get authUsernameHelper;
+
+  /// Tooltip/accessibilité pour afficher le mot de passe
+  ///
+  /// In fr, this message translates to:
+  /// **'Afficher le mot de passe'**
+  String get authShowPassword;
+
+  /// Tooltip/accessibilité pour masquer le mot de passe
+  ///
+  /// In fr, this message translates to:
+  /// **'Masquer le mot de passe'**
+  String get authHidePassword;
+
+  /// Lien de retour vers la page de connexion depuis forgot/reset
+  ///
+  /// In fr, this message translates to:
+  /// **'Retour à la connexion'**
+  String get authBackToLogin;
+
+  /// Titre de l'écran de succès après envoi du lien de réinitialisation
+  ///
+  /// In fr, this message translates to:
+  /// **'Vérifie tes e-mails'**
+  String get authCheckEmailTitle;
+
+  /// Sous-titre anti-énumération sur l'écran check email
+  ///
+  /// In fr, this message translates to:
+  /// **'Si un compte existe, tu recevras un lien de réinitialisation.'**
+  String get authCheckEmailSubtitle;
+
+  /// Message de succès après demande de réinitialisation
+  ///
+  /// In fr, this message translates to:
+  /// **'Lien envoyé ! Vérifie ta messagerie.'**
+  String get authForgotPasswordSuccess;
+
+  /// Sous-titre de la page de réinitialisation du mot de passe
+  ///
+  /// In fr, this message translates to:
+  /// **'Choisis un nouveau mot de passe sécurisé.'**
+  String get authResetPasswordSubtitle;
+
+  /// Label du champ nouveau mot de passe
+  ///
+  /// In fr, this message translates to:
+  /// **'Nouveau mot de passe'**
+  String get authNewPasswordLabel;
+
+  /// Placeholder du champ nouveau mot de passe
+  ///
+  /// In fr, this message translates to:
+  /// **'Au moins 8 caractères, 1 majuscule, 1 chiffre'**
+  String get authNewPasswordHint;
+
+  /// Label du champ de confirmation du nouveau mot de passe
+  ///
+  /// In fr, this message translates to:
+  /// **'Confirmer le nouveau mot de passe'**
+  String get authConfirmNewPasswordLabel;
+
+  /// Titre de l'écran de succès après réinitialisation
+  ///
+  /// In fr, this message translates to:
+  /// **'Mot de passe mis à jour !'**
+  String get authResetSuccessTitle;
+
+  /// Message de succès après mise à jour du mot de passe
+  ///
+  /// In fr, this message translates to:
+  /// **'Tu peux maintenant te connecter avec ton nouveau mot de passe.'**
+  String get authResetSuccessMessage;
+
+  /// Message quand le lien de réinitialisation est invalide ou expiré
+  ///
+  /// In fr, this message translates to:
+  /// **'Lien invalide ou expiré. Demande un nouveau lien.'**
+  String get authInvalidResetLink;
+
+  /// Message de succès après changement de mot de passe depuis le profil
+  ///
+  /// In fr, this message translates to:
+  /// **'Mot de passe modifié avec succès.'**
+  String get authPasswordUpdateSuccess;
+
+  /// Titre de l'écran de vérification d'e-mail après inscription
+  ///
+  /// In fr, this message translates to:
+  /// **'Vérifie ta boîte mail'**
+  String get authVerifyEmailTitle;
+
+  /// Sous-titre de vérification d'e-mail avec adresse
+  ///
+  /// In fr, this message translates to:
+  /// **'Un lien de vérification a été envoyé à {email}.'**
+  String authVerifyEmailSubtitle(String email);
+
+  /// Bouton pour renvoyer l'e-mail de vérification/réinitialisation
+  ///
+  /// In fr, this message translates to:
+  /// **'Renvoyer l\'e-mail'**
+  String get authResendEmail;
+
+  /// Message de succès après inscription avec pseudo
+  ///
+  /// In fr, this message translates to:
+  /// **'Compte créé ! Bienvenue {username} !'**
+  String authSignupSuccess(String username);
+
+  /// Libellé générique de déconnexion
+  ///
+  /// In fr, this message translates to:
+  /// **'Déconnexion'**
+  String get authLogout;
+
+  /// Bouton de déconnexion
+  ///
+  /// In fr, this message translates to:
+  /// **'Se déconnecter'**
+  String get authLogoutButton;
+
+  /// Titre du dialogue de confirmation de déconnexion
+  ///
+  /// In fr, this message translates to:
+  /// **'Se déconnecter ?'**
+  String get authLogoutConfirmTitle;
+
+  /// Message du dialogue de confirmation de déconnexion
+  ///
+  /// In fr, this message translates to:
+  /// **'Es-tu sûr de vouloir te déconnecter ?'**
+  String get authLogoutConfirmMessage;
+
+  /// Message de succès après déconnexion
+  ///
+  /// In fr, this message translates to:
+  /// **'Déconnecté avec succès.'**
+  String get authLogoutSuccess;
+
+  /// Message de succès après connexion
+  ///
+  /// In fr, this message translates to:
+  /// **'Connexion réussie ! Ravie de te revoir, {username} !'**
+  String authLoginSuccess(String username);
+
+  /// Message d'erreur générique après échec de connexion
+  ///
+  /// In fr, this message translates to:
+  /// **'Échec de la connexion. Vérifie tes identifiants.'**
+  String get authLoginError;
+
+  /// Message d'erreur générique après échec d'inscription
+  ///
+  /// In fr, this message translates to:
+  /// **'Échec de l\'inscription. Réessaie.'**
+  String get authSignupError;
+
+  /// Message d'erreur après échec de déconnexion
+  ///
+  /// In fr, this message translates to:
+  /// **'Échec de la déconnexion. Réessaie.'**
+  String get authLogoutError;
+
+  /// Message de succès après renvoi d'e-mail
+  ///
+  /// In fr, this message translates to:
+  /// **'E-mail renvoyé !'**
+  String get authResendSuccess;
+
+  /// Message d'erreur après échec de renvoi d'e-mail
+  ///
+  /// In fr, this message translates to:
+  /// **'Impossible d\'envoyer l\'e-mail. Réessaie.'**
+  String get authResendError;
+
+  /// Message de succès après finalisation du profil OAuth
+  ///
+  /// In fr, this message translates to:
+  /// **'Profil complété ! Bienvenue {username} !'**
+  String authCompleteProfileSuccess(String username);
+
+  /// Titre de succès après vérification d'e-mail
+  ///
+  /// In fr, this message translates to:
+  /// **'Adresse vérifiée !'**
+  String get authVerifySuccessTitle;
+
+  /// Message de succès après vérification d'e-mail
+  ///
+  /// In fr, this message translates to:
+  /// **'Ton adresse e-mail a été vérifiée avec succès.'**
+  String get authVerifySuccessMessage;
+
+  /// Message générique de succès
+  ///
+  /// In fr, this message translates to:
+  /// **'Opération réussie.'**
+  String get authGenericSuccess;
+
+  /// Message générique d'erreur auth
+  ///
+  /// In fr, this message translates to:
+  /// **'Une erreur est survenue. Réessaie.'**
+  String get authGenericError;
+
+  /// Erreur InvalidCredentialsFailure
+  ///
+  /// In fr, this message translates to:
+  /// **'Identifiants invalides. Vérifie ton e-mail et ton mot de passe.'**
+  String get authErrorInvalidCredentials;
+
+  /// Erreur SessionExpiredFailure
+  ///
+  /// In fr, this message translates to:
+  /// **'Session expirée. Veuillez vous reconnecter.'**
+  String get authErrorSessionExpired;
+
+  /// Erreur UnauthorizedFailure (403)
+  ///
+  /// In fr, this message translates to:
+  /// **'Accès non autorisé.'**
+  String get authErrorUnauthorized;
+
+  /// Erreur UserNotFoundFailure
+  ///
+  /// In fr, this message translates to:
+  /// **'Utilisateur introuvable.'**
+  String get authErrorUserNotFound;
+
+  /// Erreur OAuthCancelledFailure
+  ///
+  /// In fr, this message translates to:
+  /// **'Connexion annulée.'**
+  String get authErrorOAuthCancelled;
+
+  /// Erreur GoogleSignInCancelledFailure
+  ///
+  /// In fr, this message translates to:
+  /// **'Connexion Google annulée.'**
+  String get authErrorGoogleCancelled;
+
+  /// Erreur mot de passe faible Supabase
+  ///
+  /// In fr, this message translates to:
+  /// **'Mot de passe trop faible.'**
+  String get authErrorWeakPassword;
+
+  /// Erreur rate-limit / trop de requêtes
+  ///
+  /// In fr, this message translates to:
+  /// **'Trop de tentatives. Réessaie dans quelques minutes.'**
+  String get authErrorTooManyRequests;
+
+  /// Erreur inscription — e-mail déjà utilisé
+  ///
+  /// In fr, this message translates to:
+  /// **'Un compte existe déjà avec cet e-mail.'**
+  String get authEmailAlreadyExists;
+
+  /// Préfixe du texte CGU avant le lien Conditions
+  ///
+  /// In fr, this message translates to:
+  /// **'En créant un compte, tu acceptes nos'**
+  String get authTermsPrefix;
+
+  /// Lien vers les Conditions d'utilisation
+  ///
+  /// In fr, this message translates to:
+  /// **'Conditions d\'utilisation'**
+  String get authTermsLink;
+
+  /// Conjonction entre CGU et Politique de confidentialité
+  ///
+  /// In fr, this message translates to:
+  /// **'et notre'**
+  String get authTermsAnd;
+
+  /// Lien vers la Politique de confidentialité
+  ///
+  /// In fr, this message translates to:
+  /// **'Politique de confidentialité'**
+  String get authPrivacyLink;
+
+  /// Suffixe ponctuation après les liens CGU
+  ///
+  /// In fr, this message translates to:
+  /// **'.'**
+  String get authTermsSuffix;
+
+  /// Titre du dialogue d'avertissement quand on skip l'auth
+  ///
+  /// In fr, this message translates to:
+  /// **'Continuer sans compte ?'**
+  String get authSkipTitle;
+
+  /// Message d'avertissement skip auth — limitations du mode invité
+  ///
+  /// In fr, this message translates to:
+  /// **'Sans compte, tu ne pourras pas jouer en ligne, sauvegarder ta progression ni apparaître au classement. Tu pourras toujours jouer hors ligne.'**
+  String get authSkipMessage;
+
+  /// Bouton confirmer pour continuer sans compte (mode invité)
+  ///
+  /// In fr, this message translates to:
+  /// **'Continuer en invité'**
+  String get authSkipConfirm;
+
+  /// Bouton annuler du dialogue skip — redirige vers inscription
+  ///
+  /// In fr, this message translates to:
+  /// **'Créer un compte'**
+  String get authSkipCancel;
+
+  /// Bannière/chip affichée quand l'utilisateur est en mode invité
+  ///
+  /// In fr, this message translates to:
+  /// **'Mode invité — progression non sauvegardée'**
+  String get authGuestWarning;
+
+  /// Message bloquant quand on tente d'accéder au jeu en ligne sans compte
+  ///
+  /// In fr, this message translates to:
+  /// **'Un compte est requis pour jouer en ligne.'**
+  String get authOnlineRequiresAccount;
+
   /// Message d'erreur pour un champ obligatoire vide
   ///
   /// In fr, this message translates to:
@@ -415,6 +793,66 @@ abstract class AppLocalizations {
   /// In fr, this message translates to:
   /// **'Les mots de passe ne correspondent pas.'**
   String get validationPasswordsDoNotMatch;
+
+  /// Message d'erreur quand le nom d'utilisateur est trop court
+  ///
+  /// In fr, this message translates to:
+  /// **'Au moins 3 caractères.'**
+  String get validationUsernameTooShort;
+
+  /// Message d'erreur quand le nom d'utilisateur est trop long
+  ///
+  /// In fr, this message translates to:
+  /// **'20 caractères maximum.'**
+  String get validationUsernameTooLong;
+
+  /// Message d'erreur quand le nom d'utilisateur contient des caractères invalides
+  ///
+  /// In fr, this message translates to:
+  /// **'Lettres, chiffres et _ uniquement.'**
+  String get validationUsernameInvalid;
+
+  /// Titre de la page d'erreur de routing
+  ///
+  /// In fr, this message translates to:
+  /// **'Cet écran n\'existe pas encore.'**
+  String get routerErrorTitle;
+
+  /// Sous-titre de la page d'erreur de routing
+  ///
+  /// In fr, this message translates to:
+  /// **'Reviens plus tard, ou reprends depuis l\'accueil.'**
+  String get routerErrorSubtitle;
+
+  /// Placeholder générique pour écran bientôt disponible
+  ///
+  /// In fr, this message translates to:
+  /// **'{title} — bientôt.'**
+  String routerSoon(String title);
+
+  /// Erreur réseau générique (NetworkFailure)
+  ///
+  /// In fr, this message translates to:
+  /// **'Erreur réseau. Vérifie ta connexion internet.'**
+  String get errorNetwork;
+
+  /// Erreur serveur générique (ServerFailure)
+  ///
+  /// In fr, this message translates to:
+  /// **'Erreur serveur. Réessaie plus tard.'**
+  String get errorServer;
+
+  /// Erreur de validation générique (ValidationFailure)
+  ///
+  /// In fr, this message translates to:
+  /// **'Données invalides. Vérifie les champs.'**
+  String get errorValidation;
+
+  /// Erreur inconnue (fallback Failure)
+  ///
+  /// In fr, this message translates to:
+  /// **'Une erreur inconnue est survenue.'**
+  String get errorUnknown;
 
   /// Label de la section de choix de la langue dans les paramètres
   ///
