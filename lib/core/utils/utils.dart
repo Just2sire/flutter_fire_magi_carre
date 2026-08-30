@@ -78,9 +78,10 @@ class AppUtils {
 
   /// Vérifie si le format de l'e-mail est valide.
   static bool isValidEmail(String email) {
-    return RegExp(
-      r"^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?(?:\.[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?)*$",
-    ).hasMatch(email);
+    return email.contains("@");
+    // return RegExp(
+    //   r"^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?(?:\.[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?)*$",
+    // ).hasMatch(email);
   }
 
   // ─────────────────────────────────────────────

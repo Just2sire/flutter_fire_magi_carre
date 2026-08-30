@@ -7,5 +7,5 @@ part "router_provider.g.dart";
 
 @riverpod
 GoRouter appRouter(Ref ref) {
-  return buildRouter();
+  return buildRouter(ref);
 }

@@ -17,6 +17,7 @@ import "../../../../shared/presentation/widgets/index.dart"
         AppTextFormField,
         AppElevatedButton,
         AppDivider;
+import "../../domain/entities/auth_state.dart";
 import "../providers/auth_providers.dart";
 
 class LoginPage extends ConsumerStatefulWidget {
@@ -192,47 +193,42 @@ class _LoginPageState extends ConsumerState<LoginPage> {
 
   Future<void> _googleSignUp() async {
     setState(() => _isLoading = true);
-    final googleSignIn = await ref.read(signInWithGoogleUseCaseProvider).call();
+    await ref.read(authProvider.notifier).signInWithGoogle();
     if (mounted) setState(() => _isLoading = false);
-    googleSignIn.fold(
-      (error) {
-        context.showSnackBar(context.localizeFailure(error));
-      },
-      (user) {
-        context.showSnackBar(context.l10n.authOAuthSuccessGoogle);
-      },
-    );
+    if (!mounted) return;
+    final state = ref.read(authProvider);
+    if (state case AuthFailureState(:final failure)) {
+      context.showSnackBar(context.localizeFailure(failure));
+    }
   }
 
   Future<void> _githubLogin() async {
     setState(() => _isLoading = true);
-    final githubLogin = await ref.read(signInWithGithubUseCaseProvider).call();
+    await ref.read(authProvider.notifier).signInWithGithub();
     if (mounted) setState(() => _isLoading = false);
-    githubLogin.fold(
-      (error) {
-        context.showSnackBar(context.localizeFailure(error));
-      },
-      (user) {
-        context.showSnackBar(context.l10n.authOAuthSuccessGithub);
-      },
-    );
+    if (!mounted) return;
+    final state = ref.read(authProvider);
+    if (state case AuthFailureState(:final failure)) {
+      context.showSnackBar(context.localizeFailure(failure));
+    }
   }
 
   Future<void> _login() async {
     if (!_formKey.currentState!.validate()) return;
     setState(() => _isLoading = true);
-    final loginResult = await ref
-        .read(loginUseCaseProvider)
-        .call(_emailController.text, _passwordController.text);
+    await ref
+        .read(authProvider.notifier)
+        .login(_emailController.text, _passwordController.text);
     if (mounted) setState(() => _isLoading = false);
-    loginResult.fold(
-      (error) {
-        context.showSnackBar(context.localizeFailure(error));
-      },
-      (user) {
-        context.showSnackBar(context.l10n.authLoginSuccess(user.username));
-      },
-    );
+    if (!mounted) return;
+    switch (ref.read(authProvider)) {
+      case AuthFailureState(:final failure):
+        context.showSnackBar(context.localizeFailure(failure));
+      case AuthAuthenticated(:final profile):
+        context.showSnackBar(context.l10n.authLoginSuccess(profile.username));
+      default:
+        break;
+    }
   }
 
   Future<void> _skipAuth() async {
@@ -242,7 +238,9 @@ class _LoginPageState extends ConsumerState<LoginPage> {
       confirmLabel: context.l10n.authSkipConfirm,
       cancelLabel: context.l10n.authSkipCancel,
     );
-    if (confirmed == true && mounted) context.goHome();
+    if (confirmed == true && mounted) {
+      ref.read(authProvider.notifier).skipAuth();
+    }
   }
 
   void _togglePasswordVisibility() =>

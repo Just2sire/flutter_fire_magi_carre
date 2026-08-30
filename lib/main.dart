@@ -51,15 +51,14 @@ void main() async {
   );
   Log.i("NotificationService initialisé");
 
-  if (dotenv.env["USE_SUPABASE"] == "true") {
-    await Supabase.initialize(
-      url: AppConfig.supabaseUrl,
-      publishableKey: AppConfig.supabaseAnonKey,
-    );
-    Log.i(
-      "Supabase initialisé : ${Supabase.instance.client.auth.currentSession}",
-    );
-  }
+  // if (dotenv.env["USE_SUPABASE"] == "true") {}
+  await Supabase.initialize(
+    url: AppConfig.supabaseUrl,
+    publishableKey: AppConfig.supabaseAnonKey,
+  );
+  Log.i(
+    "Supabase initialisé : ${Supabase.instance.client.auth.currentSession}",
+  );
 
   runApp(
     ProviderScope(

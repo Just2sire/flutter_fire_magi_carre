@@ -10,6 +10,7 @@ extension FailureLocalization on BuildContext {
       InvalidCredentialsFailure() => l10n.authErrorInvalidCredentials,
       UserNotFoundFailure() => l10n.authErrorUserNotFound,
       OAuthCancelledFailure() => l10n.authErrorOAuthCancelled,
+      GoogleSignInCancelledFailure() => l10n.authErrorGoogleCancelled,
       NetworkFailure() => l10n.errorNetwork,
       ValidationFailure(:final fieldErrors) =>
         fieldErrors?.values.first ?? l10n.errorValidation,

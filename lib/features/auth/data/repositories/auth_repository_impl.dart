@@ -1,5 +1,7 @@
+import "package:google_sign_in/google_sign_in.dart";
 import "package:supabase_flutter/supabase_flutter.dart" as sb;
 
+import "../../../../core/configs/logger.dart";
 import "../../../../shared/data/services/http_service/either.dart";
 import "../../../../shared/domain/failures/auth_failure.dart";
 import "../../../../shared/domain/failures/failure.dart";
@@ -91,7 +93,16 @@ class AuthRepositoryImpl implements AuthRepository {
     try {
       await _remoteDataSource.signInWithOAuth(provider);
       return const Right(null);
+    } on GoogleSignInException catch (e) {
+      if (e.code == GoogleSignInExceptionCode.canceled) {
+        return const Left(GoogleSignInCancelledFailure());
+      }
+      return Left(ServerFailure(message: e.description ?? e.toString()));
     } on sb.AuthException catch (e) {
+      Log.e(
+        "signInWithOAuth($provider) rejeté par Supabase : "
+        "${e.message} (code: ${e.code}, status: ${e.statusCode})",
+      );
       if (e.message.contains("cancelled")) {
         return const Left(OAuthCancelledFailure());
       }

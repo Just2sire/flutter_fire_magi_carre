@@ -1,15 +1,27 @@
+import "package:google_sign_in/google_sign_in.dart";
 import "package:supabase_flutter/supabase_flutter.dart" as sb;
 
+import "../../../../core/configs/app_config.dart";
 import "../../domain/repositories/auth_repository.dart";
 import "../models/user_profile_model.dart";
 import "auth_remote_datasource.dart";
 
+/// Scopes demandés lors de l'autorisation Google — le strict minimum pour
+/// obtenir un accessToken valide en plus de l'idToken.
+const List<String> _googleAuthScopes = <String>["email"];
+
 /// Implémentation Supabase de [AuthRemoteDataSource].
 class AuthRemoteDataSourceImpl implements AuthRemoteDataSource {
-  AuthRemoteDataSourceImpl({required sb.SupabaseClient supabaseClient})
-      : _supabase = supabaseClient;
+  AuthRemoteDataSourceImpl({
+    required sb.SupabaseClient supabaseClient,
+    GoogleSignIn? googleSignIn,
+  }) : _supabase = supabaseClient,
+       _googleSignIn = googleSignIn ?? GoogleSignIn.instance;
 
   final sb.SupabaseClient _supabase;
+  final GoogleSignIn _googleSignIn;
+
+  bool _googleSignInInitialized = false;
 
   @override
   Future<UserProfileModel> signup({
@@ -50,17 +62,70 @@ class AuthRemoteDataSourceImpl implements AuthRemoteDataSource {
   }
 
   @override
-  Future<void> logout() => _supabase.auth.signOut();
+  Future<void> logout() async {
+    await _supabase.auth.signOut();
+    if (_googleSignInInitialized) {
+      await _googleSignIn.signOut();
+    }
+  }
 
   @override
-  Future<void> signInWithOAuth(AuthProvider provider) async {
-    final supabaseProvider = switch (provider) {
-      AuthProvider.google => sb.OAuthProvider.google,
-      AuthProvider.github => sb.OAuthProvider.github,
-      AuthProvider.apple => sb.OAuthProvider.apple,
+  Future<void> signInWithOAuth(AuthProvider provider) {
+    return switch (provider) {
+      AuthProvider.google => _signInWithGoogleNative(),
+      AuthProvider.github => _signInWithBrowserOAuth(sb.OAuthProvider.github),
+      AuthProvider.apple => _signInWithBrowserOAuth(sb.OAuthProvider.apple),
     };
+  }
 
-    await _supabase.auth.signInWithOAuth(supabaseProvider);
+  /// Connexion Google via le sélecteur de compte natif (Play Services).
+  ///
+  /// Récupère l'idToken + accessToken du compte choisi et les échange
+  /// contre une session Supabase — pas de redirection navigateur, pas de
+  /// deep link.
+  Future<void> _signInWithGoogleNative() async {
+    await _ensureGoogleSignInInitialized();
+
+    final account = await _googleSignIn.authenticate();
+    final idToken = account.authentication.idToken;
+    if (idToken == null) {
+      throw const sb.AuthException(
+        "Aucun idToken retourné par Google Sign-In.",
+      );
+    }
+
+    final authorization =
+        await account.authorizationClient.authorizationForScopes(
+          _googleAuthScopes,
+        ) ??
+        await account.authorizationClient.authorizeScopes(_googleAuthScopes);
+
+    await _supabase.auth.signInWithIdToken(
+      provider: sb.OAuthProvider.google,
+      idToken: idToken,
+      accessToken: authorization.accessToken,
+    );
+  }
+
+  /// `GoogleSignIn.initialize` ne doit être appelé qu'une fois par run —
+  /// on le déclenche paresseusement au premier sign-in plutôt qu'au
+  /// démarrage de l'app, puisqu'il nécessite [AppConfig.googleWebClientId].
+  Future<void> _ensureGoogleSignInInitialized() async {
+    if (_googleSignInInitialized) return;
+    await _googleSignIn.initialize(
+      serverClientId: AppConfig.googleWebClientId,
+      clientId: AppConfig.googleIosClientId.isNotEmpty
+          ? AppConfig.googleIosClientId
+          : null,
+    );
+    _googleSignInInitialized = true;
+  }
+
+  Future<void> _signInWithBrowserOAuth(sb.OAuthProvider provider) {
+    return _supabase.auth.signInWithOAuth(
+      provider,
+      redirectTo: "magicarre://auth/callback",
+    );
   }
 
   @override
@@ -124,7 +189,10 @@ class AuthRemoteDataSourceImpl implements AuthRemoteDataSource {
 
   @override
   Future<void> resetPassword(String email) =>
-      _supabase.auth.resetPasswordForEmail(email);
+      _supabase.auth.resetPasswordForEmail(
+        email,
+        redirectTo: "magicarre://auth/reset-password",
+      );
 
   @override
   Future<void> updatePassword(String newPassword) =>

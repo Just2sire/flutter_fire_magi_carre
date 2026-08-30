@@ -140,10 +140,11 @@ class AuthNotifier extends _$AuthNotifier {
         if (state is AuthOAuthPending) _completeOAuthFlow();
       case AuthEvent.signedOut:
         state = const AuthUnauthenticated();
+      case AuthEvent.passwordRecovery:
+        state = const AuthPasswordRecovery();
       case AuthEvent.initialSession:
       case AuthEvent.tokenRefreshed:
       case AuthEvent.userUpdated:
-      case AuthEvent.passwordRecovery:
         break;
     }
   }
@@ -209,6 +210,10 @@ class AuthNotifier extends _$AuthNotifier {
       (_) => const AuthUnauthenticated(),
     );
   }
+
+  /// Passe en mode invité — accès à l'app sans authentification, à la
+  /// demande explicite de l'utilisateur (bouton "Continuer sans compte").
+  void skipAuth() => state = const AuthGuest();
 
   /// Marque l'onboarding comme terminé et met à jour le profil en state.
   Future<void> completeOnboarding() async {

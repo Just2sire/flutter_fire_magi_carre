@@ -13,15 +13,15 @@ class AppConfig {
   static String get supabaseUrl => dotenv.env["SUPABASE_URL"]!;
 
   static String get supabaseAnonKey => dotenv.env["SUPABASE_ANON_KEY"]!;
-  //
-  // /// Client OAuth Web — requis par Google Sign-In natif même sur Android
-  // /// (voir `serverClientId` dans `GoogleSignIn.initialize`).
-  // static String get googleWebClientId =>
-  //     dotenv.env["GOOGLE_WEB_CLIENT_ID"] ?? "";
-  //
-  // /// Client OAuth iOS — optionnel, uniquement nécessaire pour builder iOS.
-  // static String get googleIosClientId =>
-  //     dotenv.env["GOOGLE_IOS_CLIENT_ID"] ?? "";
+
+  /// Client OAuth Web — requis par Google Sign-In natif même sur Android
+  /// (voir `serverClientId` dans `GoogleSignIn.initialize`).
+  static String get googleWebClientId =>
+      dotenv.env["GOOGLE_WEB_CLIENT_ID"] ?? "";
+
+  /// Client OAuth iOS — optionnel, uniquement nécessaire pour builder iOS.
+  static String get googleIosClientId =>
+      dotenv.env["GOOGLE_IOS_CLIENT_ID"] ?? "";
 
   static void initialize({
     required Environment environment,

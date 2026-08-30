@@ -137,9 +137,10 @@ class _ResetPasswordState extends ConsumerState<ResetPassword> {
     if (mounted) setState(() => _isLoading = false);
     result.fold(
       (error) => context.showSnackBar(context.localizeFailure(error)),
-      (_) {
+      (_) async {
         context.showSuccess(context.l10n.authPasswordUpdateSuccess);
-        context.goAuthLogin();
+        await ref.read(authProvider.notifier).logout();
+        // AuthUnauthenticated → router redirige vers /auth/login automatiquement
       },
     );
   }

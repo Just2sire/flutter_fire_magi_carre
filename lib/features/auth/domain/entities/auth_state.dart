@@ -28,6 +28,18 @@ class AuthAuthenticated extends AuthState {
   final UserProfile profile;
 }
 
+/// Lien de réinitialisation reçu — session temporaire active, en attente
+/// du nouveau mot de passe.
+class AuthPasswordRecovery extends AuthState {
+  const AuthPasswordRecovery();
+}
+
+/// L'utilisateur a choisi de continuer sans compte — accès à l'app sans
+/// session Supabase active.
+class AuthGuest extends AuthState {
+  const AuthGuest();
+}
+
 /// Une opération d'auth a échoué.
 class AuthFailureState extends AuthState {
   const AuthFailureState(this.failure);
