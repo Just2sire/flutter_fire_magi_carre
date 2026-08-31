@@ -1,3 +1,5 @@
+import "dart:typed_data";
+
 import "package:google_sign_in/google_sign_in.dart";
 import "package:supabase_flutter/supabase_flutter.dart" as sb;
 
@@ -208,6 +210,25 @@ class AuthRepositoryImpl implements AuthRepository {
   }
 
   @override
+  Future<Either<Failure, UserProfile>> updateUsername(String username) async {
+    try {
+      final userId = _remoteDataSource.getCurrentUserId();
+      if (userId == null) return const Left(UserNotFoundFailure());
+
+      final profile = await _remoteDataSource.updateUsername(
+        userId: userId,
+        username: username,
+      );
+      return Right(profile);
+    } on sb.PostgrestException catch (e) {
+      if (e.code == "23505") return const Left(UsernameTakenFailure());
+      return Left(ServerFailure(message: e.message));
+    } on Exception catch (e) {
+      return Left(ServerFailure(message: e.toString()));
+    }
+  }
+
+  @override
   Future<Either<Failure, UserProfile>> updateAvatarUrl(String url) async {
     try {
       final userId = _remoteDataSource.getCurrentUserId();
@@ -218,6 +239,32 @@ class AuthRepositoryImpl implements AuthRepository {
         url: url,
       );
       return Right(profile);
+    } on Exception catch (e) {
+      return Left(ServerFailure(message: e.toString()));
+    }
+  }
+
+  @override
+  Future<Either<Failure, UserProfile>> uploadAvatar(
+    Uint8List bytes,
+    String fileExtension,
+  ) async {
+    try {
+      final userId = _remoteDataSource.getCurrentUserId();
+      if (userId == null) return const Left(UserNotFoundFailure());
+
+      final publicUrl = await _remoteDataSource.uploadAvatarImage(
+        userId: userId,
+        bytes: bytes,
+        fileExtension: fileExtension,
+      );
+      final profile = await _remoteDataSource.updateAvatarUrl(
+        userId: userId,
+        url: publicUrl,
+      );
+      return Right(profile);
+    } on sb.StorageException catch (e) {
+      return Left(ServerFailure(message: e.message));
     } on Exception catch (e) {
       return Left(ServerFailure(message: e.toString()));
     }

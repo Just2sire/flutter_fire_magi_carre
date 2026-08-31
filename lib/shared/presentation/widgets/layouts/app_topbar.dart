@@ -67,16 +67,20 @@ class AppTopbar extends StatelessWidget {
             if (showLeading)
               Tooltip(
                 message: leadingButtonTooltip ?? "Retour",
-                child: leading ??
+                child:
+                    leading ??
                     InkWell(
                       borderRadius: AppSpacing.roundedLg,
                       onTap: () {
                         if (onPop != null) return onPop!();
                         if (context.canPop) context.pop();
                       },
-                      child: const Icon(
+                      child: Icon(
                         AppIcons.arrowLeft,
                         size: AppSpacing.iconXl,
+                        color: context.isDarkMode
+                            ? theme.colorScheme.primary
+                            : theme.colorScheme.onSurface,
                       ),
                     ),
               ),

@@ -366,6 +366,9 @@ class AppLocalizationsFr extends AppLocalizations {
   String get authErrorGoogleCancelled => 'Connexion Google annulée.';
 
   @override
+  String get authErrorUsernameTaken => 'Ce nom d\'utilisateur est déjà pris.';
+
+  @override
   String get authErrorWeakPassword => 'Mot de passe trop faible.';
 
   @override
@@ -465,6 +468,9 @@ class AppLocalizationsFr extends AppLocalizations {
   String get errorUnknown => 'Une erreur inconnue est survenue.';
 
   @override
+  String get settingsTitle => 'Paramètres';
+
+  @override
   String get settingsLanguage => 'Langue';
 
   @override
@@ -472,4 +478,62 @@ class AppLocalizationsFr extends AppLocalizations {
 
   @override
   String get settingsLanguageEn => 'English';
+
+  @override
+  String get settingsTheme => 'Thème';
+
+  @override
+  String get settingsThemeSystem => 'Système';
+
+  @override
+  String get settingsThemeLight => 'Clair';
+
+  @override
+  String get settingsThemeDark => 'Sombre';
+
+  @override
+  String get settingsLogout => 'Se déconnecter';
+
+  @override
+  String get settingsLogoutConfirmTitle => 'Se déconnecter ?';
+
+  @override
+  String get settingsLogoutConfirmMessage =>
+      'Tu devras te reconnecter pour accéder à ton compte.';
+
+  @override
+  String get settingsAccountSection => 'Compte';
+
+  @override
+  String get profileTitle => 'Profil';
+
+  @override
+  String get profileEditTitle => 'Modifier le profil';
+
+  @override
+  String get profileEditUsernameLabel => 'Nom d\'utilisateur';
+
+  @override
+  String get profileEditBioLabel => 'Bio';
+
+  @override
+  String get profileUpdateSuccess => 'Profil mis à jour avec succès.';
+
+  @override
+  String get profileAvatarChangeCta => 'Changer la photo';
+
+  @override
+  String get profileChangePasswordCta => 'Modifier le mot de passe';
+
+  @override
+  String get profileRatingLabel => 'Classement';
+
+  @override
+  String get profileFriendsLabel => 'Amis';
+
+  @override
+  String get profileGuestMessage => 'Connecte-toi pour accéder à ton profil.';
+
+  @override
+  String get profileGuestCta => 'Se connecter';
 }

@@ -572,6 +572,148 @@ final class UpdatePasswordUseCaseProvider
 String _$updatePasswordUseCaseHash() =>
     r'f686146f4d5d26bf19d76f7eb8ce974a6fadec44';
 
+@ProviderFor(updateBioUseCase)
+final updateBioUseCaseProvider = UpdateBioUseCaseProvider._();
+
+final class UpdateBioUseCaseProvider
+    extends
+        $FunctionalProvider<
+          UpdateBioUseCase,
+          UpdateBioUseCase,
+          UpdateBioUseCase
+        >
+    with $Provider<UpdateBioUseCase> {
+  UpdateBioUseCaseProvider._()
+    : super(
+        from: null,
+        argument: null,
+        retry: null,
+        name: r'updateBioUseCaseProvider',
+        isAutoDispose: true,
+        dependencies: null,
+        $allTransitiveDependencies: null,
+      );
+
+  @override
+  String debugGetCreateSourceHash() => _$updateBioUseCaseHash();
+
+  @$internal
+  @override
+  $ProviderElement<UpdateBioUseCase> $createElement($ProviderPointer pointer) =>
+      $ProviderElement(pointer);
+
+  @override
+  UpdateBioUseCase create(Ref ref) {
+    return updateBioUseCase(ref);
+  }
+
+  /// {@macro riverpod.override_with_value}
+  Override overrideWithValue(UpdateBioUseCase value) {
+    return $ProviderOverride(
+      origin: this,
+      providerOverride: $SyncValueProvider<UpdateBioUseCase>(value),
+    );
+  }
+}
+
+String _$updateBioUseCaseHash() => r'fc7ea49451dbb395d42cd94d32cccd0537f6784c';
+
+@ProviderFor(updateUsernameUseCase)
+final updateUsernameUseCaseProvider = UpdateUsernameUseCaseProvider._();
+
+final class UpdateUsernameUseCaseProvider
+    extends
+        $FunctionalProvider<
+          UpdateUsernameUseCase,
+          UpdateUsernameUseCase,
+          UpdateUsernameUseCase
+        >
+    with $Provider<UpdateUsernameUseCase> {
+  UpdateUsernameUseCaseProvider._()
+    : super(
+        from: null,
+        argument: null,
+        retry: null,
+        name: r'updateUsernameUseCaseProvider',
+        isAutoDispose: true,
+        dependencies: null,
+        $allTransitiveDependencies: null,
+      );
+
+  @override
+  String debugGetCreateSourceHash() => _$updateUsernameUseCaseHash();
+
+  @$internal
+  @override
+  $ProviderElement<UpdateUsernameUseCase> $createElement(
+    $ProviderPointer pointer,
+  ) => $ProviderElement(pointer);
+
+  @override
+  UpdateUsernameUseCase create(Ref ref) {
+    return updateUsernameUseCase(ref);
+  }
+
+  /// {@macro riverpod.override_with_value}
+  Override overrideWithValue(UpdateUsernameUseCase value) {
+    return $ProviderOverride(
+      origin: this,
+      providerOverride: $SyncValueProvider<UpdateUsernameUseCase>(value),
+    );
+  }
+}
+
+String _$updateUsernameUseCaseHash() =>
+    r'66e832b1f4236c75039cbbe6c37bb830c730d12d';
+
+@ProviderFor(uploadAvatarUseCase)
+final uploadAvatarUseCaseProvider = UploadAvatarUseCaseProvider._();
+
+final class UploadAvatarUseCaseProvider
+    extends
+        $FunctionalProvider<
+          UploadAvatarUseCase,
+          UploadAvatarUseCase,
+          UploadAvatarUseCase
+        >
+    with $Provider<UploadAvatarUseCase> {
+  UploadAvatarUseCaseProvider._()
+    : super(
+        from: null,
+        argument: null,
+        retry: null,
+        name: r'uploadAvatarUseCaseProvider',
+        isAutoDispose: true,
+        dependencies: null,
+        $allTransitiveDependencies: null,
+      );
+
+  @override
+  String debugGetCreateSourceHash() => _$uploadAvatarUseCaseHash();
+
+  @$internal
+  @override
+  $ProviderElement<UploadAvatarUseCase> $createElement(
+    $ProviderPointer pointer,
+  ) => $ProviderElement(pointer);
+
+  @override
+  UploadAvatarUseCase create(Ref ref) {
+    return uploadAvatarUseCase(ref);
+  }
+
+  /// {@macro riverpod.override_with_value}
+  Override overrideWithValue(UploadAvatarUseCase value) {
+    return $ProviderOverride(
+      origin: this,
+      providerOverride: $SyncValueProvider<UploadAvatarUseCase>(value),
+    );
+  }
+}
+
+String _$uploadAvatarUseCaseHash() =>
+    r'ce6e027ccbb2078182af0e540b7af1851be617f7';
+
 @ProviderFor(watchAuthStateUseCase)
 final watchAuthStateUseCaseProvider = WatchAuthStateUseCaseProvider._();
 
@@ -668,7 +810,7 @@ final class AuthNotifierProvider
   }
 }
 
-String _$authNotifierHash() => r'cad261277a033d9a44467edc9c94af832d56089c';
+String _$authNotifierHash() => r'32a812221a3b2d1a620527882dfa83ba4549c940';
 
 /// Notifier central de l'état d'authentification.
 ///

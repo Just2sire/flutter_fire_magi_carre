@@ -379,6 +379,9 @@
   "authErrorGoogleCancelled": "Connexion Google annulée.",
   "@authErrorGoogleCancelled": { "description": "Erreur GoogleSignInCancelledFailure" },
 
+  "authErrorUsernameTaken": "Ce nom d'utilisateur est déjà pris.",
+  "@authErrorUsernameTaken": { "description": "Erreur UsernameTakenFailure" },
+
   "authErrorWeakPassword": "Mot de passe trop faible.",
   "@authErrorWeakPassword": { "description": "Erreur mot de passe faible Supabase" },
 
@@ -493,6 +496,9 @@
   "@__sectionSettings": {
     "description": "━━━━ SETTINGS — Paramètres ━━━━"
   },
+  "settingsTitle": "Paramètres",
+  "@settingsTitle": { "description": "Titre de la page des paramètres" },
+
   "settingsLanguage": "Langue",
   "@settingsLanguage": { "description": "Label de la section de choix de la langue dans les paramètres" },
 
@@ -500,5 +506,65 @@
   "@settingsLanguageFr": { "description": "Libellé de l'option langue française" },
 
   "settingsLanguageEn": "English",
-  "@settingsLanguageEn": { "description": "Libellé de l'option langue anglaise" }
+  "@settingsLanguageEn": { "description": "Libellé de l'option langue anglaise" },
+
+  "settingsTheme": "Thème",
+  "@settingsTheme": { "description": "Label de la section de choix du thème dans les paramètres" },
+
+  "settingsThemeSystem": "Système",
+  "@settingsThemeSystem": { "description": "Libellé de l'option thème système" },
+
+  "settingsThemeLight": "Clair",
+  "@settingsThemeLight": { "description": "Libellé de l'option thème clair" },
+
+  "settingsThemeDark": "Sombre",
+  "@settingsThemeDark": { "description": "Libellé de l'option thème sombre" },
+
+  "settingsLogout": "Se déconnecter",
+  "@settingsLogout": { "description": "Libellé du bouton de déconnexion dans les paramètres" },
+
+  "settingsLogoutConfirmTitle": "Se déconnecter ?",
+  "@settingsLogoutConfirmTitle": { "description": "Titre du dialogue de confirmation de déconnexion" },
+
+  "settingsLogoutConfirmMessage": "Tu devras te reconnecter pour accéder à ton compte.",
+  "@settingsLogoutConfirmMessage": { "description": "Message du dialogue de confirmation de déconnexion" },
+
+  "settingsAccountSection": "Compte",
+  "@settingsAccountSection": { "description": "Libellé de la section Compte (profil, mot de passe, déconnexion)" },
+
+  "@__sectionProfile": {
+    "description": "━━━━ PROFILE — Profil utilisateur ━━━━"
+  },
+  "profileTitle": "Profil",
+  "@profileTitle": { "description": "Titre de la page de profil" },
+
+  "profileEditTitle": "Modifier le profil",
+  "@profileEditTitle": { "description": "Titre de la page d'édition du profil" },
+
+  "profileEditUsernameLabel": "Nom d'utilisateur",
+  "@profileEditUsernameLabel": { "description": "Label du champ nom d'utilisateur" },
+
+  "profileEditBioLabel": "Bio",
+  "@profileEditBioLabel": { "description": "Label du champ bio" },
+
+  "profileUpdateSuccess": "Profil mis à jour avec succès.",
+  "@profileUpdateSuccess": { "description": "Message de succès après mise à jour du profil" },
+
+  "profileAvatarChangeCta": "Changer la photo",
+  "@profileAvatarChangeCta": { "description": "Libellé de l'action pour changer l'avatar" },
+
+  "profileChangePasswordCta": "Modifier le mot de passe",
+  "@profileChangePasswordCta": { "description": "Libellé du bouton menant à l'écran de changement de mot de passe" },
+
+  "profileRatingLabel": "Classement",
+  "@profileRatingLabel": { "description": "Label du score/rating affiché sur le profil" },
+
+  "profileFriendsLabel": "Amis",
+  "@profileFriendsLabel": { "description": "Label du nombre d'amis affiché sur le profil" },
+
+  "profileGuestMessage": "Connecte-toi pour accéder à ton profil.",
+  "@profileGuestMessage": { "description": "Message affiché sur /profile pour un utilisateur en mode invité" },
+
+  "profileGuestCta": "Se connecter",
+  "@profileGuestCta": { "description": "Bouton de connexion affiché sur /profile en mode invité" }
 }
