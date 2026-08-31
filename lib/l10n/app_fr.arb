@@ -493,6 +493,21 @@
   "errorUnknown": "Une erreur inconnue est survenue.",
   "@errorUnknown": { "description": "Erreur inconnue (fallback Failure)" },
 
+  "@__sectionShell": {
+    "description": "━━━━ SHELL — Navigation principale (bottom bar) ━━━━"
+  },
+  "navHome": "Accueil",
+  "@navHome": { "description": "Label de la destination Accueil dans la barre de navigation" },
+
+  "navLobby": "Lobby",
+  "@navLobby": { "description": "Label de la destination Lobby dans la barre de navigation" },
+
+  "navLeaderboard": "Classement",
+  "@navLeaderboard": { "description": "Label de la destination Classement dans la barre de navigation" },
+
+  "navProfile": "Profil",
+  "@navProfile": { "description": "Label de la destination Profil dans la barre de navigation" },
+
   "@__sectionSettings": {
     "description": "━━━━ SETTINGS — Paramètres ━━━━"
   },

@@ -914,6 +914,30 @@ abstract class AppLocalizations {
   /// **'Une erreur inconnue est survenue.'**
   String get errorUnknown;
 
+  /// Label de la destination Accueil dans la barre de navigation
+  ///
+  /// In fr, this message translates to:
+  /// **'Accueil'**
+  String get navHome;
+
+  /// Label de la destination Lobby dans la barre de navigation
+  ///
+  /// In fr, this message translates to:
+  /// **'Lobby'**
+  String get navLobby;
+
+  /// Label de la destination Classement dans la barre de navigation
+  ///
+  /// In fr, this message translates to:
+  /// **'Classement'**
+  String get navLeaderboard;
+
+  /// Label de la destination Profil dans la barre de navigation
+  ///
+  /// In fr, this message translates to:
+  /// **'Profil'**
+  String get navProfile;
+
   /// Titre de la page des paramètres
   ///
   /// In fr, this message translates to:

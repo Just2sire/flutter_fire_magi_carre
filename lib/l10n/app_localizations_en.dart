@@ -462,6 +462,18 @@ class AppLocalizationsEn extends AppLocalizations {
   String get errorUnknown => 'An unknown error occurred.';
 
   @override
+  String get navHome => 'Home';
+
+  @override
+  String get navLobby => 'Lobby';
+
+  @override
+  String get navLeaderboard => 'Leaderboard';
+
+  @override
+  String get navProfile => 'Profile';
+
+  @override
   String get settingsTitle => 'Settings';
 
   @override

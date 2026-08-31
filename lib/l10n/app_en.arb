@@ -493,6 +493,21 @@
   "errorUnknown": "An unknown error occurred.",
   "@errorUnknown": { "description": "Unknown error (fallback Failure)" },
 
+  "@__sectionShell": {
+    "description": "━━━━ SHELL — Main navigation (bottom bar) ━━━━"
+  },
+  "navHome": "Home",
+  "@navHome": { "description": "Label for Home destination in navigation bar" },
+
+  "navLobby": "Lobby",
+  "@navLobby": { "description": "Label for Lobby destination in navigation bar" },
+
+  "navLeaderboard": "Leaderboard",
+  "@navLeaderboard": { "description": "Label for Leaderboard destination in navigation bar" },
+
+  "navProfile": "Profile",
+  "@navProfile": { "description": "Label for Profile destination in navigation bar" },
+
   "@__sectionSettings": {
     "description": "━━━━ SETTINGS — Settings ━━━━"
   },
