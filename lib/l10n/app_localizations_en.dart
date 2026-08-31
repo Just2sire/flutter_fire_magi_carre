@@ -474,6 +474,53 @@ class AppLocalizationsEn extends AppLocalizations {
   String get navProfile => 'Profile';
 
   @override
+  String get leaderboardTitle => 'Leaderboard';
+
+  @override
+  String get leaderboardSubtitle => 'MagiCarré\'s best players';
+
+  @override
+  String get leaderboardTop50 => 'Top 50';
+
+  @override
+  String get leaderboardMyRank => 'Your rank';
+
+  @override
+  String get leaderboardRank => 'Rank';
+
+  @override
+  String get leaderboardPlayer => 'Player';
+
+  @override
+  String get leaderboardRating => 'Score';
+
+  @override
+  String leaderboardRankLabel(int rank) {
+    return '#$rank';
+  }
+
+  @override
+  String leaderboardRatingLabel(int rating) {
+    return '$rating pts';
+  }
+
+  @override
+  String get leaderboardYou => 'You';
+
+  @override
+  String get leaderboardEmptyTitle => 'No leaderboard available';
+
+  @override
+  String get leaderboardEmptySubtitle => 'Be the first to reach the top!';
+
+  @override
+  String get leaderboardErrorTitle => 'Loading error';
+
+  @override
+  String get leaderboardErrorMessage =>
+      'Failed to load the leaderboard. Try again.';
+
+  @override
   String get settingsTitle => 'Settings';
 
   @override

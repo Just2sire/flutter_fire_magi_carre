@@ -8,10 +8,9 @@ import "../../../../core/theme/app_spacing.dart";
 import "../../../../shared/presentation/widgets/index.dart"
     show AppScaffold, AppTopbar, AppElevatedButton;
 import "../../../../shared/presentation/widgets/others/index.dart"
-    show AppSectionLabel, AppGroupedCard, AppTileRow;
+    show AppSectionLabel, AppGroupedCard, AppTileRow, AppAvatar;
 import "../../../auth/domain/entities/auth_state.dart";
 import "../../../auth/presentation/providers/auth_providers.dart";
-import "../widgets/profile_avatar.dart";
 
 class ProfilePage extends ConsumerWidget {
   const ProfilePage({super.key});
@@ -91,7 +90,7 @@ class ProfilePage extends ConsumerWidget {
             child: Row(
               spacing: AppSpacing.md,
               children: [
-                ProfileAvatar(avatarUrl: profile.avatarUrl),
+                AppAvatar(avatarUrl: profile.avatarUrl),
                 Column(
                   crossAxisAlignment: .start,
                   children: [

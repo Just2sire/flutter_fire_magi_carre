@@ -5,6 +5,7 @@ import "package:go_router/go_router.dart";
 import "../../features/auth/domain/entities/auth_state.dart";
 import "../../features/auth/presentation/pages/index.dart";
 import "../../features/auth/presentation/providers/auth_providers.dart";
+import "../../features/leaderboard/presentation/pages/leaderboard_page.dart";
 import "../../features/profile/presentation/pages/index.dart";
 import "../../features/settings/presentation/pages/index.dart";
 import "../../features/welcome/presentation/pages/index.dart";
@@ -239,7 +240,7 @@ GoRouter buildRouter(Ref ref) {
                 pageBuilder: (context, state) => AppTransitions.fade(
                   context: context,
                   state: state,
-                  child: const _Placeholder(title: "Classement"),
+                  child: const LeaderboardPage(),
                 ),
               ),
             ],
