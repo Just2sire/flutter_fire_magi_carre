@@ -1,13 +1,15 @@
 import "package:flutter/material.dart";
 import "package:flutter_riverpod/flutter_riverpod.dart";
 import "package:go_router/go_router.dart";
-import "package:magi_carre/features/auth/domain/entities/auth_state.dart";
-import "package:magi_carre/features/auth/presentation/providers/auth_providers.dart";
 
+import "../../features/auth/domain/entities/auth_state.dart";
 import "../../features/auth/presentation/pages/index.dart";
+import "../../features/auth/presentation/providers/auth_providers.dart";
+import "../../features/leaderboard/presentation/pages/leaderboard_page.dart";
 import "../../features/profile/presentation/pages/index.dart";
 import "../../features/settings/presentation/pages/index.dart";
 import "../../features/welcome/presentation/pages/index.dart";
+import "../../shared/presentation/pages/app_shell.dart";
 import "../configs/env.dart";
 import "../constants/app_icons.dart";
 import "../theme/index.dart" show AppSpacing, AppColors;
@@ -178,7 +180,7 @@ GoRouter buildRouter(Ref ref) {
       // ─── Shell — bottom navigation bar ────────
       StatefulShellRoute.indexedStack(
         builder: (context, state, navigationShell) =>
-            _ShellScaffold(navigationShell: navigationShell),
+            AppShell(navigationShell: navigationShell),
         branches: [
           // Branche 1 : Accueil
           StatefulShellBranch(
@@ -238,7 +240,7 @@ GoRouter buildRouter(Ref ref) {
                 pageBuilder: (context, state) => AppTransitions.fade(
                   context: context,
                   state: state,
-                  child: const _Placeholder(title: "Classement"),
+                  child: const LeaderboardPage(),
                 ),
               ),
             ],
@@ -301,40 +303,6 @@ GoRouter buildRouter(Ref ref) {
       ),
     ],
   );
-}
-
-// ─── Shell scaffold ────────────────────────────────────────────────────────
-
-class _ShellScaffold extends StatelessWidget {
-  const _ShellScaffold({required this.navigationShell});
-
-  final StatefulNavigationShell navigationShell;
-
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      body: navigationShell,
-      bottomNavigationBar: NavigationBar(
-        selectedIndex: navigationShell.currentIndex,
-        onDestinationSelected: (index) => navigationShell.goBranch(
-          index,
-          initialLocation: index == navigationShell.currentIndex,
-        ),
-        destinations: const [
-          NavigationDestination(icon: Icon(AppIcons.navHome), label: "Accueil"),
-          NavigationDestination(icon: Icon(AppIcons.navLobby), label: "Lobby"),
-          NavigationDestination(
-            icon: Icon(AppIcons.navLeaderboard),
-            label: "Classement",
-          ),
-          NavigationDestination(
-            icon: Icon(AppIcons.navProfile),
-            label: "Profil",
-          ),
-        ],
-      ),
-    );
-  }
 }
 
 // ─── Widgets utilitaires ───────────────────────────────────────────────────

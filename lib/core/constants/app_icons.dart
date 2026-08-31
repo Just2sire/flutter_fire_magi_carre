@@ -96,6 +96,9 @@ class AppIcons {
   // ─── Profil ───────────────────────────────
   static const IconData camera = LucideIcons.camera;
 
+  // ─── Classement ───────────────────────────
+  static const IconData crown = LucideIcons.crown;
+
   // ─── États & Erreurs ──────────────────────
   static const IconData offline = LucideIcons.wifiOff;
   static const IconData wifiOff = LucideIcons.wifiOff;

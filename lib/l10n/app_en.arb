@@ -493,6 +493,76 @@
   "errorUnknown": "An unknown error occurred.",
   "@errorUnknown": { "description": "Unknown error (fallback Failure)" },
 
+  "@__sectionShell": {
+    "description": "━━━━ SHELL — Main navigation (bottom bar) ━━━━"
+  },
+  "navHome": "Home",
+  "@navHome": { "description": "Label for Home destination in navigation bar" },
+
+  "navLobby": "Lobby",
+  "@navLobby": { "description": "Label for Lobby destination in navigation bar" },
+
+  "navLeaderboard": "Leaderboard",
+  "@navLeaderboard": { "description": "Label for Leaderboard destination in navigation bar" },
+
+  "navProfile": "Profile",
+  "@navProfile": { "description": "Label for Profile destination in navigation bar" },
+
+  "@__sectionLeaderboard": {
+    "description": "━━━━ LEADERBOARD — Global ranking ━━━━"
+  },
+  "leaderboardTitle": "Leaderboard",
+  "@leaderboardTitle": { "description": "Leaderboard page title" },
+
+  "leaderboardSubtitle": "MagiCarré's best players",
+  "@leaderboardSubtitle": { "description": "Leaderboard page subtitle" },
+
+  "leaderboardTop50": "Top 50",
+  "@leaderboardTop50": { "description": "Label for Top 50 players" },
+
+  "leaderboardMyRank": "Your rank",
+  "@leaderboardMyRank": { "description": "Title of the personal rank section" },
+
+  "leaderboardRank": "Rank",
+  "@leaderboardRank": { "description": "Column header for Rank" },
+
+  "leaderboardPlayer": "Player",
+  "@leaderboardPlayer": { "description": "Column header for Player" },
+
+  "leaderboardRating": "Score",
+  "@leaderboardRating": { "description": "Column header for Score / rating" },
+
+  "leaderboardRankLabel": "#{rank}",
+  "@leaderboardRankLabel": {
+    "description": "Rank label with number",
+    "placeholders": {
+      "rank": { "type": "int", "example": "1" }
+    }
+  },
+
+  "leaderboardRatingLabel": "{rating} pts",
+  "@leaderboardRatingLabel": {
+    "description": "Score label with points",
+    "placeholders": {
+      "rating": { "type": "int", "example": "1250" }
+    }
+  },
+
+  "leaderboardYou": "You",
+  "@leaderboardYou": { "description": "Badge shown for the current user in the list" },
+
+  "leaderboardEmptyTitle": "No leaderboard available",
+  "@leaderboardEmptyTitle": { "description": "Title of the empty leaderboard state" },
+
+  "leaderboardEmptySubtitle": "Be the first to reach the top!",
+  "@leaderboardEmptySubtitle": { "description": "Subtitle of the empty leaderboard state" },
+
+  "leaderboardErrorTitle": "Loading error",
+  "@leaderboardErrorTitle": { "description": "Title of the leaderboard error state" },
+
+  "leaderboardErrorMessage": "Failed to load the leaderboard. Try again.",
+  "@leaderboardErrorMessage": { "description": "Error message when loading the leaderboard fails" },
+
   "@__sectionSettings": {
     "description": "━━━━ SETTINGS — Settings ━━━━"
   },

@@ -493,6 +493,76 @@
   "errorUnknown": "Une erreur inconnue est survenue.",
   "@errorUnknown": { "description": "Erreur inconnue (fallback Failure)" },
 
+  "@__sectionShell": {
+    "description": "━━━━ SHELL — Navigation principale (bottom bar) ━━━━"
+  },
+  "navHome": "Accueil",
+  "@navHome": { "description": "Label de la destination Accueil dans la barre de navigation" },
+
+  "navLobby": "Lobby",
+  "@navLobby": { "description": "Label de la destination Lobby dans la barre de navigation" },
+
+  "navLeaderboard": "Classement",
+  "@navLeaderboard": { "description": "Label de la destination Classement dans la barre de navigation" },
+
+  "navProfile": "Profil",
+  "@navProfile": { "description": "Label de la destination Profil dans la barre de navigation" },
+
+  "@__sectionLeaderboard": {
+    "description": "━━━━ LEADERBOARD — Classement global ━━━━"
+  },
+  "leaderboardTitle": "Classement",
+  "@leaderboardTitle": { "description": "Titre de la page de classement" },
+
+  "leaderboardSubtitle": "Les meilleurs joueurs de MagiCarré",
+  "@leaderboardSubtitle": { "description": "Sous-titre de la page de classement" },
+
+  "leaderboardTop50": "Top 50",
+  "@leaderboardTop50": { "description": "Label du Top 50 joueurs" },
+
+  "leaderboardMyRank": "Ton rang",
+  "@leaderboardMyRank": { "description": "Titre de la section rang personnel" },
+
+  "leaderboardRank": "Rang",
+  "@leaderboardRank": { "description": "En-tête de colonne Rang" },
+
+  "leaderboardPlayer": "Joueur",
+  "@leaderboardPlayer": { "description": "En-tête de colonne Joueur" },
+
+  "leaderboardRating": "Score",
+  "@leaderboardRating": { "description": "En-tête de colonne Score / rating" },
+
+  "leaderboardRankLabel": "#{rank}",
+  "@leaderboardRankLabel": {
+    "description": "Label du rang avec numéro",
+    "placeholders": {
+      "rank": { "type": "int", "example": "1" }
+    }
+  },
+
+  "leaderboardRatingLabel": "{rating} pts",
+  "@leaderboardRatingLabel": {
+    "description": "Label du score avec points",
+    "placeholders": {
+      "rating": { "type": "int", "example": "1250" }
+    }
+  },
+
+  "leaderboardYou": "Toi",
+  "@leaderboardYou": { "description": "Badge affiché pour l'utilisateur courant dans la liste" },
+
+  "leaderboardEmptyTitle": "Aucun classement disponible",
+  "@leaderboardEmptyTitle": { "description": "Titre de l'état vide du classement" },
+
+  "leaderboardEmptySubtitle": "Sois le premier à grimper au sommet !",
+  "@leaderboardEmptySubtitle": { "description": "Sous-titre de l'état vide du classement" },
+
+  "leaderboardErrorTitle": "Erreur de chargement",
+  "@leaderboardErrorTitle": { "description": "Titre de l'état d'erreur du classement" },
+
+  "leaderboardErrorMessage": "Impossible de charger le classement. Réessaie.",
+  "@leaderboardErrorMessage": { "description": "Message d'erreur de chargement du classement" },
+
   "@__sectionSettings": {
     "description": "━━━━ SETTINGS — Paramètres ━━━━"
   },

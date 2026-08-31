@@ -310,6 +310,8 @@ class AppSpacing {
   static const double chipHeight = 32.0;
 
   // App bar
+  static const double appBarHeightLg = 72.0;
+  static const double appBarHeightMd = 60.0;
   static const double appBarHeight = 56.0;
   static const double toolbarHeight = 56.0;
 

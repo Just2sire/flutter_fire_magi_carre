@@ -9,9 +9,10 @@ import "../../../../core/extensions/index.dart"
 import "../../../../core/theme/app_spacing.dart";
 import "../../../../shared/presentation/widgets/index.dart"
     show AppScaffold, AppTopbar, AppTextFormField, AppElevatedButton;
+import "../../../../shared/presentation/widgets/others/index.dart"
+    show AppAvatar;
 import "../../../auth/domain/entities/auth_state.dart";
 import "../../../auth/presentation/providers/auth_providers.dart";
-import "../widgets/profile_avatar.dart";
 
 class ProfileEditPage extends ConsumerStatefulWidget {
   const ProfileEditPage({super.key});
@@ -61,7 +62,7 @@ class _ProfileEditPageState extends ConsumerState<ProfileEditPage> {
               onTap: _isLoading ? null : _pickAvatar,
               child: Stack(
                 children: [
-                  ProfileAvatar(avatarUrl: _pendingAvatarUrl),
+                  AppAvatar(avatarUrl: _pendingAvatarUrl),
                   Positioned(
                     right: 0,
                     bottom: 0,
