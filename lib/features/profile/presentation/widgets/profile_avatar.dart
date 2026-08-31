@@ -1,8 +1,8 @@
 import "package:flutter/material.dart";
-import "package:magi_carre/core/theme/app_spacing.dart";
 
 import "../../../../core/constants/app_icons.dart";
 import "../../../../core/extensions/build_context_extensions.dart";
+import "../../../../core/theme/app_spacing.dart";
 
 /// Avatar circulaire d'un profil — affiche l'image distante si présente,
 /// sinon une icône de repli.
