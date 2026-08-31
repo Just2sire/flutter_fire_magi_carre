@@ -90,6 +90,11 @@ class AppIcons {
   static const IconData settings = LucideIcons.settings;
   static const IconData sun = LucideIcons.sun;
   static const IconData moon = LucideIcons.moon;
+  static const IconData logout = LucideIcons.logOut;
+  static const IconData monitor = LucideIcons.monitor;
+
+  // ─── Profil ───────────────────────────────
+  static const IconData camera = LucideIcons.camera;
 
   // ─── États & Erreurs ──────────────────────
   static const IconData offline = LucideIcons.wifiOff;

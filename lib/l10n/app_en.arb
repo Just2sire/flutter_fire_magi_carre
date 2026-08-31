@@ -379,6 +379,9 @@
   "authErrorGoogleCancelled": "Google sign-in cancelled.",
   "@authErrorGoogleCancelled": { "description": "GoogleSignInCancelledFailure error" },
 
+  "authErrorUsernameTaken": "This username is already taken.",
+  "@authErrorUsernameTaken": { "description": "UsernameTakenFailure error" },
+
   "authErrorWeakPassword": "Password is too weak.",
   "@authErrorWeakPassword": { "description": "Supabase weak password error" },
 
@@ -493,6 +496,9 @@
   "@__sectionSettings": {
     "description": "━━━━ SETTINGS — Settings ━━━━"
   },
+  "settingsTitle": "Settings",
+  "@settingsTitle": { "description": "Settings page title" },
+
   "settingsLanguage": "Language",
   "@settingsLanguage": { "description": "Language choice section label in settings" },
 
@@ -500,5 +506,65 @@
   "@settingsLanguageFr": { "description": "French language option label" },
 
   "settingsLanguageEn": "English",
-  "@settingsLanguageEn": { "description": "English language option label" }
+  "@settingsLanguageEn": { "description": "English language option label" },
+
+  "settingsTheme": "Theme",
+  "@settingsTheme": { "description": "Theme choice section label in settings" },
+
+  "settingsThemeSystem": "System",
+  "@settingsThemeSystem": { "description": "System theme option label" },
+
+  "settingsThemeLight": "Light",
+  "@settingsThemeLight": { "description": "Light theme option label" },
+
+  "settingsThemeDark": "Dark",
+  "@settingsThemeDark": { "description": "Dark theme option label" },
+
+  "settingsLogout": "Log out",
+  "@settingsLogout": { "description": "Logout button label in settings" },
+
+  "settingsLogoutConfirmTitle": "Log out?",
+  "@settingsLogoutConfirmTitle": { "description": "Logout confirmation dialog title" },
+
+  "settingsLogoutConfirmMessage": "You'll need to sign in again to access your account.",
+  "@settingsLogoutConfirmMessage": { "description": "Logout confirmation dialog message" },
+
+  "settingsAccountSection": "Account",
+  "@settingsAccountSection": { "description": "Account section label (profile, password, logout)" },
+
+  "@__sectionProfile": {
+    "description": "━━━━ PROFILE — User profile ━━━━"
+  },
+  "profileTitle": "Profile",
+  "@profileTitle": { "description": "Profile page title" },
+
+  "profileEditTitle": "Edit profile",
+  "@profileEditTitle": { "description": "Edit profile page title" },
+
+  "profileEditUsernameLabel": "Username",
+  "@profileEditUsernameLabel": { "description": "Username field label" },
+
+  "profileEditBioLabel": "Bio",
+  "@profileEditBioLabel": { "description": "Bio field label" },
+
+  "profileUpdateSuccess": "Profile updated successfully.",
+  "@profileUpdateSuccess": { "description": "Success message after profile update" },
+
+  "profileAvatarChangeCta": "Change photo",
+  "@profileAvatarChangeCta": { "description": "Label for the avatar change action" },
+
+  "profileChangePasswordCta": "Change password",
+  "@profileChangePasswordCta": { "description": "Button label leading to the change-password screen" },
+
+  "profileRatingLabel": "Rating",
+  "@profileRatingLabel": { "description": "Label for the rating/score shown on the profile" },
+
+  "profileFriendsLabel": "Friends",
+  "@profileFriendsLabel": { "description": "Label for the friends count shown on the profile" },
+
+  "profileGuestMessage": "Sign in to access your profile.",
+  "@profileGuestMessage": { "description": "Message shown on /profile for a guest-mode user" },
+
+  "profileGuestCta": "Sign in",
+  "@profileGuestCta": { "description": "Sign-in button shown on /profile in guest mode" }
 }

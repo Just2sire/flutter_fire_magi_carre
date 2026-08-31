@@ -9,6 +9,7 @@ extension FailureLocalization on BuildContext {
     return switch (failure) {
       InvalidCredentialsFailure() => l10n.authErrorInvalidCredentials,
       UserNotFoundFailure() => l10n.authErrorUserNotFound,
+      UsernameTakenFailure() => l10n.authErrorUsernameTaken,
       OAuthCancelledFailure() => l10n.authErrorOAuthCancelled,
       GoogleSignInCancelledFailure() => l10n.authErrorGoogleCancelled,
       NetworkFailure() => l10n.errorNetwork,

@@ -1,5 +1,9 @@
+import "dart:typed_data";
+
 import "package:riverpod_annotation/riverpod_annotation.dart";
 
+import "../../../../shared/data/services/http_service/either.dart";
+import "../../../../shared/domain/failures/failure.dart";
 import "../../../../shared/presentation/providers/storage_providers.dart";
 import "../../../../shared/presentation/providers/supabase_provider.dart";
 import "../../data/datasources/auth_local_datasource.dart";
@@ -7,6 +11,7 @@ import "../../data/datasources/auth_remote_datasource_impl.dart";
 import "../../data/repositories/auth_repository_impl.dart";
 import "../../domain/entities/auth_event.dart";
 import "../../domain/entities/auth_state.dart";
+import "../../domain/entities/user_profile.dart";
 import "../../domain/repositories/auth_repository.dart";
 import "../../domain/usecases/complete_oauth_signin_usecase.dart";
 import "../../domain/usecases/complete_onboarding_usecase.dart";
@@ -16,7 +21,10 @@ import "../../domain/usecases/reset_password_use_case.dart";
 import "../../domain/usecases/sign_in_with_github_usecase.dart";
 import "../../domain/usecases/sign_in_with_google_usecase.dart";
 import "../../domain/usecases/signup_usecase.dart";
+import "../../domain/usecases/update_bio_usecase.dart";
 import "../../domain/usecases/update_password_use_case.dart";
+import "../../domain/usecases/update_username_usecase.dart";
+import "../../domain/usecases/upload_avatar_usecase.dart";
 import "../../domain/usecases/watch_auth_state_usecase.dart";
 
 part "auth_providers.g.dart";
@@ -87,6 +95,18 @@ ResetPasswordUseCase resetPasswordUseCase(Ref ref) =>
 @riverpod
 UpdatePasswordUseCase updatePasswordUseCase(Ref ref) =>
     UpdatePasswordUseCase(ref.watch(authRepositoryProvider));
+
+@riverpod
+UpdateBioUseCase updateBioUseCase(Ref ref) =>
+    UpdateBioUseCase(ref.watch(authRepositoryProvider));
+
+@riverpod
+UpdateUsernameUseCase updateUsernameUseCase(Ref ref) =>
+    UpdateUsernameUseCase(ref.watch(authRepositoryProvider));
+
+@riverpod
+UploadAvatarUseCase uploadAvatarUseCase(Ref ref) =>
+    UploadAvatarUseCase(ref.watch(authRepositoryProvider));
 
 @riverpod
 WatchAuthStateUseCase watchAuthStateUseCase(Ref ref) =>
@@ -214,6 +234,38 @@ class AuthNotifier extends _$AuthNotifier {
   /// Passe en mode invité — accès à l'app sans authentification, à la
   /// demande explicite de l'utilisateur (bouton "Continuer sans compte").
   void skipAuth() => state = const AuthGuest();
+
+  /// Met à jour la bio du profil courant.
+  ///
+  /// Contrairement à [login]/[signup], un échec ne fait PAS basculer
+  /// `state` vers [AuthFailureState] — l'utilisateur reste authentifié,
+  /// l'erreur est simplement renvoyée à l'appelant pour affichage local.
+  Future<Either<Failure, UserProfile>> updateBio(String bio) async {
+    final result = await ref.read(updateBioUseCaseProvider).call(bio);
+    result.fold((_) {}, (profile) => state = AuthAuthenticated(profile));
+    return result;
+  }
+
+  /// Met à jour le nom d'utilisateur du profil courant. Voir [updateBio]
+  /// pour la sémantique d'échec (ne déauthentifie jamais l'utilisateur).
+  Future<Either<Failure, UserProfile>> updateUsername(String username) async {
+    final result = await ref.read(updateUsernameUseCaseProvider).call(username);
+    result.fold((_) {}, (profile) => state = AuthAuthenticated(profile));
+    return result;
+  }
+
+  /// Upload une nouvelle image d'avatar et met à jour le profil courant.
+  /// Voir [updateBio] pour la sémantique d'échec.
+  Future<Either<Failure, UserProfile>> uploadAvatar(
+    Uint8List bytes,
+    String fileExtension,
+  ) async {
+    final result = await ref
+        .read(uploadAvatarUseCaseProvider)
+        .call(bytes, fileExtension);
+    result.fold((_) {}, (profile) => state = AuthAuthenticated(profile));
+    return result;
+  }
 
   /// Marque l'onboarding comme terminé et met à jour le profil en state.
   Future<void> completeOnboarding() async {

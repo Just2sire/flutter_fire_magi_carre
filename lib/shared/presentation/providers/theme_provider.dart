@@ -1,26 +1,43 @@
 import "package:flutter/material.dart";
 import "package:riverpod_annotation/riverpod_annotation.dart";
 
+import "../../../core/constants/app_keys.dart";
 import "../../../core/theme/app_theme.dart";
+import "storage_providers.dart";
+
 part "theme_provider.g.dart";
 
-@riverpod
+/// Thème actif de l'application, persisté dans les préférences partagées.
+@Riverpod(keepAlive: true)
 class AppThemeMode extends _$AppThemeMode {
   @override
   ThemeMode build() {
-    return ThemeMode.system;
+    final prefs = ref.read(sharedPreferencesProvider);
+    final saved = prefs.getString(AppKeys.themeMode);
+    return ThemeMode.values.firstWhere(
+      (mode) => mode.name == saved,
+      orElse: () => ThemeMode.system,
+    );
+  }
+
+  /// Change et persiste le thème.
+  Future<void> setTheme(ThemeMode mode) async {
+    final prefs = ref.read(sharedPreferencesProvider);
+    await prefs.setString(AppKeys.themeMode, mode.name);
+    state = mode;
   }
 
   void toggleTheme() {
-    state = state == ThemeMode.system
+    final next = state == ThemeMode.system
         ? ThemeMode.light
         : (state == ThemeMode.light ? ThemeMode.dark : ThemeMode.light);
+    setTheme(next);
   }
 
   ThemeMode get theme => state;
 
   set theme(ThemeMode theme) {
-    state = theme;
+    setTheme(theme);
   }
 }
 

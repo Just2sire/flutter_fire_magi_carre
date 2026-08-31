@@ -361,6 +361,9 @@ class AppLocalizationsEn extends AppLocalizations {
   String get authErrorGoogleCancelled => 'Google sign-in cancelled.';
 
   @override
+  String get authErrorUsernameTaken => 'This username is already taken.';
+
+  @override
   String get authErrorWeakPassword => 'Password is too weak.';
 
   @override
@@ -459,6 +462,9 @@ class AppLocalizationsEn extends AppLocalizations {
   String get errorUnknown => 'An unknown error occurred.';
 
   @override
+  String get settingsTitle => 'Settings';
+
+  @override
   String get settingsLanguage => 'Language';
 
   @override
@@ -466,4 +472,62 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get settingsLanguageEn => 'English';
+
+  @override
+  String get settingsTheme => 'Theme';
+
+  @override
+  String get settingsThemeSystem => 'System';
+
+  @override
+  String get settingsThemeLight => 'Light';
+
+  @override
+  String get settingsThemeDark => 'Dark';
+
+  @override
+  String get settingsLogout => 'Log out';
+
+  @override
+  String get settingsLogoutConfirmTitle => 'Log out?';
+
+  @override
+  String get settingsLogoutConfirmMessage =>
+      'You\'ll need to sign in again to access your account.';
+
+  @override
+  String get settingsAccountSection => 'Account';
+
+  @override
+  String get profileTitle => 'Profile';
+
+  @override
+  String get profileEditTitle => 'Edit profile';
+
+  @override
+  String get profileEditUsernameLabel => 'Username';
+
+  @override
+  String get profileEditBioLabel => 'Bio';
+
+  @override
+  String get profileUpdateSuccess => 'Profile updated successfully.';
+
+  @override
+  String get profileAvatarChangeCta => 'Change photo';
+
+  @override
+  String get profileChangePasswordCta => 'Change password';
+
+  @override
+  String get profileRatingLabel => 'Rating';
+
+  @override
+  String get profileFriendsLabel => 'Friends';
+
+  @override
+  String get profileGuestMessage => 'Sign in to access your profile.';
+
+  @override
+  String get profileGuestCta => 'Sign in';
 }

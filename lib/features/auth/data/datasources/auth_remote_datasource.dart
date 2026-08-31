@@ -1,3 +1,5 @@
+import "dart:typed_data";
+
 import "package:supabase_flutter/supabase_flutter.dart" as sb;
 
 import "../../domain/repositories/auth_repository.dart";
@@ -35,9 +37,22 @@ abstract class AuthRemoteDataSource {
     required String bio,
   });
 
+  Future<UserProfileModel> updateUsername({
+    required String userId,
+    required String username,
+  });
+
   Future<UserProfileModel> updateAvatarUrl({
     required String userId,
     required String url,
+  });
+
+  /// Upload une image d'avatar dans le bucket Storage et retourne son URL
+  /// publique.
+  Future<String> uploadAvatarImage({
+    required String userId,
+    required Uint8List bytes,
+    required String fileExtension,
   });
 
   Future<void> addFriend({

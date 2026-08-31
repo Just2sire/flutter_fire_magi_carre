@@ -734,6 +734,12 @@ abstract class AppLocalizations {
   /// **'Connexion Google annulée.'**
   String get authErrorGoogleCancelled;
 
+  /// Erreur UsernameTakenFailure
+  ///
+  /// In fr, this message translates to:
+  /// **'Ce nom d\'utilisateur est déjà pris.'**
+  String get authErrorUsernameTaken;
+
   /// Erreur mot de passe faible Supabase
   ///
   /// In fr, this message translates to:
@@ -908,6 +914,12 @@ abstract class AppLocalizations {
   /// **'Une erreur inconnue est survenue.'**
   String get errorUnknown;
 
+  /// Titre de la page des paramètres
+  ///
+  /// In fr, this message translates to:
+  /// **'Paramètres'**
+  String get settingsTitle;
+
   /// Label de la section de choix de la langue dans les paramètres
   ///
   /// In fr, this message translates to:
@@ -925,6 +937,120 @@ abstract class AppLocalizations {
   /// In fr, this message translates to:
   /// **'English'**
   String get settingsLanguageEn;
+
+  /// Label de la section de choix du thème dans les paramètres
+  ///
+  /// In fr, this message translates to:
+  /// **'Thème'**
+  String get settingsTheme;
+
+  /// Libellé de l'option thème système
+  ///
+  /// In fr, this message translates to:
+  /// **'Système'**
+  String get settingsThemeSystem;
+
+  /// Libellé de l'option thème clair
+  ///
+  /// In fr, this message translates to:
+  /// **'Clair'**
+  String get settingsThemeLight;
+
+  /// Libellé de l'option thème sombre
+  ///
+  /// In fr, this message translates to:
+  /// **'Sombre'**
+  String get settingsThemeDark;
+
+  /// Libellé du bouton de déconnexion dans les paramètres
+  ///
+  /// In fr, this message translates to:
+  /// **'Se déconnecter'**
+  String get settingsLogout;
+
+  /// Titre du dialogue de confirmation de déconnexion
+  ///
+  /// In fr, this message translates to:
+  /// **'Se déconnecter ?'**
+  String get settingsLogoutConfirmTitle;
+
+  /// Message du dialogue de confirmation de déconnexion
+  ///
+  /// In fr, this message translates to:
+  /// **'Tu devras te reconnecter pour accéder à ton compte.'**
+  String get settingsLogoutConfirmMessage;
+
+  /// Libellé de la section Compte (profil, mot de passe, déconnexion)
+  ///
+  /// In fr, this message translates to:
+  /// **'Compte'**
+  String get settingsAccountSection;
+
+  /// Titre de la page de profil
+  ///
+  /// In fr, this message translates to:
+  /// **'Profil'**
+  String get profileTitle;
+
+  /// Titre de la page d'édition du profil
+  ///
+  /// In fr, this message translates to:
+  /// **'Modifier le profil'**
+  String get profileEditTitle;
+
+  /// Label du champ nom d'utilisateur
+  ///
+  /// In fr, this message translates to:
+  /// **'Nom d\'utilisateur'**
+  String get profileEditUsernameLabel;
+
+  /// Label du champ bio
+  ///
+  /// In fr, this message translates to:
+  /// **'Bio'**
+  String get profileEditBioLabel;
+
+  /// Message de succès après mise à jour du profil
+  ///
+  /// In fr, this message translates to:
+  /// **'Profil mis à jour avec succès.'**
+  String get profileUpdateSuccess;
+
+  /// Libellé de l'action pour changer l'avatar
+  ///
+  /// In fr, this message translates to:
+  /// **'Changer la photo'**
+  String get profileAvatarChangeCta;
+
+  /// Libellé du bouton menant à l'écran de changement de mot de passe
+  ///
+  /// In fr, this message translates to:
+  /// **'Modifier le mot de passe'**
+  String get profileChangePasswordCta;
+
+  /// Label du score/rating affiché sur le profil
+  ///
+  /// In fr, this message translates to:
+  /// **'Classement'**
+  String get profileRatingLabel;
+
+  /// Label du nombre d'amis affiché sur le profil
+  ///
+  /// In fr, this message translates to:
+  /// **'Amis'**
+  String get profileFriendsLabel;
+
+  /// Message affiché sur /profile pour un utilisateur en mode invité
+  ///
+  /// In fr, this message translates to:
+  /// **'Connecte-toi pour accéder à ton profil.'**
+  String get profileGuestMessage;
+
+  /// Bouton de connexion affiché sur /profile en mode invité
+  ///
+  /// In fr, this message translates to:
+  /// **'Se connecter'**
+  String get profileGuestCta;
 }
 
 class _AppLocalizationsDelegate

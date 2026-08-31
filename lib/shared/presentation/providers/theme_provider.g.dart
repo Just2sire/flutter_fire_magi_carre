@@ -8,19 +8,22 @@ part of 'theme_provider.dart';
 
 // GENERATED CODE - DO NOT MODIFY BY HAND
 // ignore_for_file: type=lint, type=warning
+/// Thème actif de l'application, persisté dans les préférences partagées.
 
 @ProviderFor(AppThemeMode)
 final appThemeModeProvider = AppThemeModeProvider._();
 
+/// Thème actif de l'application, persisté dans les préférences partagées.
 final class AppThemeModeProvider
     extends $NotifierProvider<AppThemeMode, ThemeMode> {
+  /// Thème actif de l'application, persisté dans les préférences partagées.
   AppThemeModeProvider._()
     : super(
         from: null,
         argument: null,
         retry: null,
         name: r'appThemeModeProvider',
-        isAutoDispose: true,
+        isAutoDispose: false,
         dependencies: null,
         $allTransitiveDependencies: null,
       );
@@ -41,7 +44,9 @@ final class AppThemeModeProvider
   }
 }
 
-String _$appThemeModeHash() => r'a2accb4d3e6a3140a32b931ad6ef65f0a0bc8a24';
+String _$appThemeModeHash() => r'e9d6ec8f510d6dba7784011b793f9a945bc2517e';
+
+/// Thème actif de l'application, persisté dans les préférences partagées.
 
 abstract class _$AppThemeMode extends $Notifier<ThemeMode> {
   ThemeMode build();

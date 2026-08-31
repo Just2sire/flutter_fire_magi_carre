@@ -43,6 +43,14 @@ class OAuthCancelledFailure extends Failure {
   });
 }
 
+/// Le nom d'utilisateur choisi est déjà pris par un autre compte.
+class UsernameTakenFailure extends Failure {
+  const UsernameTakenFailure({
+    super.message = "Nom d'utilisateur déjà pris",
+    super.cause,
+  });
+}
+
 /// Profil utilisateur introuvable — l'entrée n'existe pas en base.
 class UserNotFoundFailure extends Failure {
   const UserNotFoundFailure({

@@ -1,3 +1,5 @@
+import "dart:typed_data";
+
 import "package:google_sign_in/google_sign_in.dart";
 import "package:supabase_flutter/supabase_flutter.dart" as sb;
 
@@ -53,10 +55,7 @@ class AuthRemoteDataSourceImpl implements AuthRemoteDataSource {
     required String email,
     required String password,
   }) async {
-    await _supabase.auth.signInWithPassword(
-      email: email,
-      password: password,
-    );
+    await _supabase.auth.signInWithPassword(email: email, password: password);
 
     return fetchProfile(userId: _supabase.auth.currentUser!.id);
   }
@@ -203,9 +202,19 @@ class AuthRemoteDataSourceImpl implements AuthRemoteDataSource {
     required String userId,
     required String bio,
   }) async {
+    await _supabase.from("user_profiles").update({"bio": bio}).eq("id", userId);
+
+    return fetchProfile(userId: userId);
+  }
+
+  @override
+  Future<UserProfileModel> updateUsername({
+    required String userId,
+    required String username,
+  }) async {
     await _supabase
         .from("user_profiles")
-        .update({"bio": bio})
+        .update({"username": username})
         .eq("id", userId);
 
     return fetchProfile(userId: userId);
@@ -222,6 +231,24 @@ class AuthRemoteDataSourceImpl implements AuthRemoteDataSource {
         .eq("id", userId);
 
     return fetchProfile(userId: userId);
+  }
+
+  @override
+  Future<String> uploadAvatarImage({
+    required String userId,
+    required Uint8List bytes,
+    required String fileExtension,
+  }) async {
+    final path = "$userId/avatar.$fileExtension";
+    await _supabase.storage
+        .from("avatars")
+        .uploadBinary(
+          path,
+          bytes,
+          fileOptions: const sb.FileOptions(upsert: true),
+        );
+
+    return _supabase.storage.from("avatars").getPublicUrl(path);
   }
 
   @override
@@ -243,8 +270,10 @@ class AuthRemoteDataSourceImpl implements AuthRemoteDataSource {
     await _supabase
         .from("friendships")
         .delete()
-        .or("user_id.eq.$userId,friend_id.eq.$friendId,"
-            "user_id.eq.$friendId,friend_id.eq.$userId");
+        .or(
+          "user_id.eq.$userId,friend_id.eq.$friendId,"
+          "user_id.eq.$friendId,friend_id.eq.$userId",
+        );
   }
 
   @override

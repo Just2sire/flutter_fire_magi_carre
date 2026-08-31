@@ -5,6 +5,8 @@ import "package:magi_carre/features/auth/domain/entities/auth_state.dart";
 import "package:magi_carre/features/auth/presentation/providers/auth_providers.dart";
 
 import "../../features/auth/presentation/pages/index.dart";
+import "../../features/profile/presentation/pages/index.dart";
+import "../../features/settings/presentation/pages/index.dart";
 import "../../features/welcome/presentation/pages/index.dart";
 import "../configs/env.dart";
 import "../constants/app_icons.dart";
@@ -54,8 +56,8 @@ GoRouter buildRouter(Ref ref) {
           location == AppRoutes.authResetPassword
               ? null
               : AppRoutes.authResetPassword,
-        AuthAuthenticated() || AuthGuest() =>
-          isAuthRoute || isBootstrapRoute ? AppRoutes.home : null,
+        AuthAuthenticated() ||
+        AuthGuest() => isAuthRoute || isBootstrapRoute ? AppRoutes.home : null,
       };
     },
     routes: [
@@ -169,7 +171,7 @@ GoRouter buildRouter(Ref ref) {
         pageBuilder: (context, state) => AppTransitions.pushedScreen(
           context: context,
           state: state,
-          child: const _Placeholder(title: "Paramètres"),
+          child: const SettingsPage(),
         ),
       ),
 
@@ -250,7 +252,7 @@ GoRouter buildRouter(Ref ref) {
                 pageBuilder: (context, state) => AppTransitions.fade(
                   context: context,
                   state: state,
-                  child: const _Placeholder(title: "Profil"),
+                  child: const ProfilePage(),
                 ),
                 routes: [
                   GoRoute(
@@ -259,9 +261,7 @@ GoRouter buildRouter(Ref ref) {
                         AppTransitions.pushedScreen(
                           context: context,
                           state: state,
-                          child: const _Placeholder(
-                            title: "Modifier le profil",
-                          ),
+                          child: const ProfileEditPage(),
                         ),
                   ),
                   GoRoute(
@@ -270,9 +270,7 @@ GoRouter buildRouter(Ref ref) {
                         AppTransitions.pushedScreen(
                           context: context,
                           state: state,
-                          child: const _Placeholder(
-                            title: "Modifier le mot de passe",
-                          ),
+                          child: const ProfileChangePasswordPage(),
                         ),
                   ),
                   GoRoute(
