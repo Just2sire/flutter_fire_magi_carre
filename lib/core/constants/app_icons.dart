@@ -19,6 +19,7 @@ class AppIcons {
   // ─── Authentification & Formulaires ───────
   static const IconData email = LucideIcons.mail;
   static const IconData mail = LucideIcons.mail;
+  static const IconData newLock = LucideIcons.rotateCcwKey;
   static const IconData lock = LucideIcons.lockKeyhole;
   static const IconData lockKeyhole = LucideIcons.lockKeyhole;
   static const IconData eye = LucideIcons.eye;
@@ -26,7 +27,8 @@ class AppIcons {
 
   // ─── Actions générales ────────────────────
   static const IconData plus = LucideIcons.plus;
-  static const IconData arrowLeft = LucideIcons.arrowLeft500;
+  static const IconData arrowLeft = LucideIcons.arrowLeft;
+  static const IconData arrowLeft500 = LucideIcons.arrowLeft500;
   static const IconData arrowRight = LucideIcons.arrowRight;
   static const IconData arrowRightBold = LucideIcons.arrowRight600;
   static const IconData check = LucideIcons.check;
@@ -39,6 +41,7 @@ class AppIcons {
   static const IconData x = LucideIcons.x;
   static const IconData refresh = LucideIcons.refreshCw;
   static const IconData alertCircle = LucideIcons.alertCircle;
+  static const IconData user = LucideIcons.userRound;
 
   // ─── Scan & OCR ───────────────────────────
   static const IconData scan = LucideIcons.scanText;
@@ -87,6 +90,11 @@ class AppIcons {
   static const IconData settings = LucideIcons.settings;
   static const IconData sun = LucideIcons.sun;
   static const IconData moon = LucideIcons.moon;
+  static const IconData logout = LucideIcons.logOut;
+  static const IconData monitor = LucideIcons.monitor;
+
+  // ─── Profil ───────────────────────────────
+  static const IconData camera = LucideIcons.camera;
 
   // ─── États & Erreurs ──────────────────────
   static const IconData offline = LucideIcons.wifiOff;

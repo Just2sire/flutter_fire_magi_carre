@@ -82,4 +82,21 @@ class StorageRepositoryImpl {
   // ─── Utilitaires ────────────────────────────────
 
   Future<bool> has(StorageKey key) async => (await read(key)) != null;
+
+  Future<void> saveTokens({
+    required String accessToken,
+    required String refreshToken,
+  }) async {
+    await write(StorageKey.accessToken, accessToken);
+    await write(StorageKey.refreshToken, refreshToken);
+  }
+
+  Future<String?> getAccessToken() => read(StorageKey.accessToken);
+
+  Future<String?> getRefreshToken() => read(StorageKey.refreshToken);
+
+  Future<void> clearTokens() async {
+    await delete(StorageKey.accessToken);
+    await delete(StorageKey.refreshToken);
+  }
 }

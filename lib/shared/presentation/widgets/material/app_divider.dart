@@ -41,6 +41,8 @@ class AppDivider extends StatelessWidget {
     // Calculez les valeurs flex basées sur textPosition
     final leftFlex = adjustedTextPosition.round();
     final rightFlex = (100 - adjustedTextPosition).round();
+    
+    final primaryColor = theme.colorScheme.primary;
 
     return Container(
       margin: margin,
@@ -48,7 +50,7 @@ class AppDivider extends StatelessWidget {
       child: (child == null && (label == null || label!.isEmpty))
           ? Divider(
               thickness: thickness,
-              color: color ?? theme.primaryColor,
+              color: color ?? primaryColor,
               indent: indent,
               endIndent: endIndent,
             )
@@ -59,7 +61,7 @@ class AppDivider extends StatelessWidget {
                   flex: leftFlex,
                   child: Divider(
                     thickness: thickness,
-                    color: color ?? theme.primaryColor,
+                    color: color ?? primaryColor,
                     indent: indent,
                     endIndent: 0,
                   ),
@@ -74,7 +76,7 @@ class AppDivider extends StatelessWidget {
                         label!,
                         style:
                             style ??
-                            Theme.of(context).textTheme.bodyLarge!.copyWith(
+                            theme.textTheme.bodyLarge!.copyWith(
                               color: textColor ?? color,
                             ),
                       ),
@@ -84,7 +86,7 @@ class AppDivider extends StatelessWidget {
                   flex: rightFlex,
                   child: Divider(
                     thickness: thickness,
-                    color: color ?? theme.primaryColor,
+                    color: color ?? primaryColor,
                     indent: 0,
                     endIndent: endIndent,
                   ),

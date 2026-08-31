@@ -118,13 +118,13 @@ extension BuildContextExtensions on BuildContext {
       builder: (context) => AlertDialog(
         title: Text(
           title,
-          style: Theme.of(context).textTheme.bodyMedium?.copyWith(
+          style: Theme.of(context).textTheme.titleLarge?.copyWith(
             fontWeight: FontWeight.w600,
           ),
         ),
         content: Text(
           content,
-          style: Theme.of(context).textTheme.bodyMedium?.copyWith(
+          style: Theme.of(context).textTheme.labelLarge?.copyWith(
             color: context.isDarkMode
                 ? AppColors.textSecondaryDark
                 : AppColors.textSecondary,

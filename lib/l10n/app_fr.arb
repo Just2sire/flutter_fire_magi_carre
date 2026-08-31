@@ -6,6 +6,9 @@
     "description": "Nom de l'application"
   },
 
+  "@__sectionCommon": {
+    "description": "━━━━ COMMON — Actions et messages génériques ━━━━"
+  },
   "commonOk": "OK",
   "@commonOk": { "description": "Libellé du bouton de validation générique" },
 
@@ -39,12 +42,62 @@
   "commonNetworkError": "Connexion indisponible. Vérifie ta connexion internet.",
   "@commonNetworkError": { "description": "Message d'erreur réseau" },
 
+  "commonOr": "Ou",
+  "@commonOr": { "description": "Séparateur générique entre deux options (ex: entre formulaire et OAuth)" },
+
+  "authOrContinueWith": "Ou continuer avec",
+  "@authOrContinueWith": { "description": "Séparateur DIVIDER entre formulaire email/password et boutons OAuth multiples (Google/GitHub/Apple)" },
+
+  "@__sectionOnboarding": {
+    "description": "━━━━ ONBOARDING — 3 slides patrimoniales + navigation ━━━━"
+  },
   "onboardingSkip": "Passer",
   "@onboardingSkip": { "description": "Bouton pour ignorer l'onboarding" },
 
   "onboardingGetStarted": "Commencer",
-  "@onboardingGetStarted": { "description": "Bouton de fin d'onboarding" },
+  "@onboardingGetStarted": { "description": "Bouton de fin d'onboarding (dernier slide)" },
 
+  "onboardingTitle1": "L'héritage du MagiCarré",
+  "@onboardingTitle1": { "description": "Titre du slide 1 d'onboarding — héritage togolais" },
+
+  "onboardingDescription1": "Redécouvre le jeu de stratégie togolais qui rassemble les générations autour d'un même carré.",
+  "@onboardingDescription1": { "description": "Description du slide 1 — invite à redécouvrir le patrimoine ludique" },
+
+  "onboardingTitle2": "Défie tes proches, où que tu sois",
+  "@onboardingTitle2": { "description": "Titre du slide 2 d'onboarding — jeu multijoueur" },
+
+  "onboardingDescription2": "Crée une partie, invite un ami et joue en temps réel, à la maison ou à distance.",
+  "@onboardingDescription2": { "description": "Description du slide 2 — création de partie et invitation" },
+
+  "onboardingTitle3": "Grimpe au classement",
+  "@onboardingTitle3": { "description": "Titre du slide 3 d'onboarding — progression et compétition" },
+
+  "onboardingDescription3": "Suis tes victoires, progresse à chaque partie et deviens maître du carré.",
+  "@onboardingDescription3": { "description": "Description du slide 3 — suivi des victoires et maîtrise" },
+
+  "onboardingProgressLabel": "Page {current} sur {total}",
+  "@onboardingProgressLabel": {
+    "description": "Label d'accessibilité pour l'indicateur de progression de l'onboarding",
+    "placeholders": {
+      "current": { "type": "int", "example": "1" },
+      "total": { "type": "int", "example": "3" }
+    }
+  },
+
+  "onboardingNotificationTitle": "Bienvenue sur {appName}",
+  "@onboardingNotificationTitle": {
+    "description": "Titre de la notification affichée à la fin de l'onboarding",
+    "placeholders": {
+      "appName": { "type": "String", "example": "MagiCarré" }
+    }
+  },
+
+  "onboardingNotificationBody": "Ton plateau t'attend — lance ta première partie dès maintenant.",
+  "@onboardingNotificationBody": { "description": "Corps de la notification de fin d'onboarding" },
+
+  "@__sectionAuth": {
+    "description": "━━━━ AUTH — Connexion, inscription et mots de passe ━━━━"
+  },
   "authLoginTitle": "Connexion",
   "@authLoginTitle": { "description": "Titre de la page de connexion" },
 
@@ -78,7 +131,7 @@
   "authResetPasswordButton": "Réinitialiser",
   "@authResetPasswordButton": { "description": "Libellé du bouton de réinitialisation du mot de passe" },
 
-  "authEmailLabel": "Adresse e-mail",
+  "authEmailLabel": "Email",
   "@authEmailLabel": { "description": "Label du champ e-mail" },
 
   "authEmailHint": "ton@email.com",
@@ -87,8 +140,13 @@
   "authPasswordLabel": "Mot de passe",
   "@authPasswordLabel": { "description": "Label du champ mot de passe" },
 
-  "authPasswordHint": "Au moins 8 caractères",
-  "@authPasswordHint": { "description": "Placeholder du champ mot de passe" },
+  "authPasswordHint": "Au moins {length} caractères",
+  "@authPasswordHint": {
+    "description": "Placeholder du champ mot de passe",
+    "placeholders": {
+      "length": { "type": "int", "example": "6" }
+    }
+  },
 
   "authConfirmPasswordLabel": "Confirmer le mot de passe",
   "@authConfirmPasswordLabel": { "description": "Label du champ de confirmation de mot de passe" },
@@ -102,7 +160,7 @@
   "authAlreadyHaveAccount": "Déjà un compte ?",
   "@authAlreadyHaveAccount": { "description": "Texte précédant le lien vers la page de connexion" },
 
-  "authNoAccount": "Pas encore de compte ?",
+  "authNoAccount": "Pas de compte ?",
   "@authNoAccount": { "description": "Texte précédant le lien vers la page d'inscription" },
 
   "authLoginLink": "Se connecter",
@@ -111,17 +169,335 @@
   "authSignupLink": "Créer un compte",
   "@authSignupLink": { "description": "Lien vers la page d'inscription" },
 
+  "authOAuthGoogle": "Continuer avec Google",
+  "@authOAuthGoogle": { "description": "Bouton OAuth — continuer avec Google" },
+
+  "authOAuthGithub": "Continuer avec GitHub",
+  "@authOAuthGithub": { "description": "Bouton OAuth — continuer avec GitHub" },
+
+  "authOAuthApple": "Continuer avec Apple",
+  "@authOAuthApple": { "description": "Bouton OAuth — continuer avec Apple" },
+
+  "authOAuthLoading": "Connexion en cours…",
+  "@authOAuthLoading": { "description": "Texte de chargement pendant l'auth OAuth" },
+
+  "authOAuthCancelled": "Connexion annulée.",
+  "@authOAuthCancelled": { "description": "Message quand l'utilisateur annule le flow OAuth" },
+
+  "authOAuthFailed": "Échec de la connexion {provider}. Réessaie.",
+  "@authOAuthFailed": {
+    "description": "Message d'échec OAuth avec nom du provider",
+    "placeholders": {
+      "provider": { "type": "String", "example": "Google" }
+    }
+  },
+
+  "authOAuthSuccess": "Connexion avec {provider} réussie !",
+  "@authOAuthSuccess": {
+    "description": "Message générique de succès OAuth avec nom du provider",
+    "placeholders": {
+      "provider": { "type": "String", "example": "Google" }
+    }
+  },
+
+  "authOAuthSuccessGoogle": "Connexion avec Google réussie !",
+  "@authOAuthSuccessGoogle": { "description": "Message de succès OAuth Google" },
+
+  "authOAuthSuccessGithub": "Connexion avec GitHub réussie !",
+  "@authOAuthSuccessGithub": { "description": "Message de succès OAuth GitHub" },
+
+  "authOAuthErrorGoogle": "Échec de la connexion avec Google. Réessaie.",
+  "@authOAuthErrorGoogle": { "description": "Message d'erreur OAuth Google" },
+
+  "authOAuthErrorGithub": "Échec de la connexion avec GitHub. Réessaie.",
+  "@authOAuthErrorGithub": { "description": "Message d'erreur OAuth GitHub" },
+
+  "authOAuthCancelledGoogle": "Connexion Google annulée.",
+  "@authOAuthCancelledGoogle": { "description": "Message d'annulation OAuth Google" },
+
+  "authOAuthCancelledGithub": "Connexion GitHub annulée.",
+  "@authOAuthCancelledGithub": { "description": "Message d'annulation OAuth GitHub" },
+
+  "authContinue": "Continuer",
+  "@authContinue": { "description": "Libellé du bouton générique Continuer (OAuth complete, etc.)" },
+
+  "authCompleteProfileTitle": "Finalise ton profil",
+  "@authCompleteProfileTitle": { "description": "Titre de la page de finalisation du profil après OAuth" },
+
+  "authCompleteProfileSubtitle": "Choisis un nom d'utilisateur pour apparaître dans le jeu.",
+  "@authCompleteProfileSubtitle": { "description": "Sous-titre de la page de finalisation du profil" },
+
+  "authCompleteProfileButton": "Terminer",
+  "@authCompleteProfileButton": { "description": "Bouton de validation de la finalisation du profil" },
+
+  "authUsernameHint": "Ex : MagiMaster, Player_123456",
+  "@authUsernameHint": { "description": "Placeholder du champ nom d'utilisateur" },
+
+  "authUsernameHelper": "Laisse vide pour générer automatiquement.",
+  "@authUsernameHelper": { "description": "Texte d'aide sous le champ nom d'utilisateur quand génération auto possible" },
+
+  "authShowPassword": "Afficher le mot de passe",
+  "@authShowPassword": { "description": "Tooltip/accessibilité pour afficher le mot de passe" },
+
+  "authHidePassword": "Masquer le mot de passe",
+  "@authHidePassword": { "description": "Tooltip/accessibilité pour masquer le mot de passe" },
+
+  "authBackToLogin": "Retour à la connexion",
+  "@authBackToLogin": { "description": "Lien de retour vers la page de connexion depuis forgot/reset" },
+
+  "authCheckEmailTitle": "Vérifie tes e-mails",
+  "@authCheckEmailTitle": { "description": "Titre de l'écran de succès après envoi du lien de réinitialisation" },
+
+  "authCheckEmailSubtitle": "Si un compte existe, tu recevras un lien de réinitialisation.",
+  "@authCheckEmailSubtitle": { "description": "Sous-titre anti-énumération sur l'écran check email" },
+
+  "authForgotPasswordSuccess": "Lien envoyé ! Vérifie ta messagerie.",
+  "@authForgotPasswordSuccess": { "description": "Message de succès après demande de réinitialisation" },
+
+  "authResetPasswordSubtitle": "Choisis un nouveau mot de passe sécurisé.",
+  "@authResetPasswordSubtitle": { "description": "Sous-titre de la page de réinitialisation du mot de passe" },
+
+  "authNewPasswordLabel": "Nouveau mot de passe",
+  "@authNewPasswordLabel": { "description": "Label du champ nouveau mot de passe" },
+
+  "authNewPasswordHint": "Au moins 8 caractères, 1 majuscule, 1 chiffre",
+  "@authNewPasswordHint": { "description": "Placeholder du champ nouveau mot de passe" },
+
+  "authConfirmNewPasswordLabel": "Confirmer le nouveau mot de passe",
+  "@authConfirmNewPasswordLabel": { "description": "Label du champ de confirmation du nouveau mot de passe" },
+
+  "authResetSuccessTitle": "Mot de passe mis à jour !",
+  "@authResetSuccessTitle": { "description": "Titre de l'écran de succès après réinitialisation" },
+
+  "authResetSuccessMessage": "Tu peux maintenant te connecter avec ton nouveau mot de passe.",
+  "@authResetSuccessMessage": { "description": "Message de succès après mise à jour du mot de passe" },
+
+  "authInvalidResetLink": "Lien invalide ou expiré. Demande un nouveau lien.",
+  "@authInvalidResetLink": { "description": "Message quand le lien de réinitialisation est invalide ou expiré" },
+
+  "authPasswordUpdateSuccess": "Mot de passe modifié avec succès.",
+  "@authPasswordUpdateSuccess": { "description": "Message de succès après changement de mot de passe depuis le profil" },
+
+  "authVerifyEmailTitle": "Vérifie ta boîte mail",
+  "@authVerifyEmailTitle": { "description": "Titre de l'écran de vérification d'e-mail après inscription" },
+
+  "authVerifyEmailSubtitle": "Un lien de vérification a été envoyé à {email}.",
+  "@authVerifyEmailSubtitle": {
+    "description": "Sous-titre de vérification d'e-mail avec adresse",
+    "placeholders": {
+      "email": { "type": "String", "example": "ton@email.com" }
+    }
+  },
+
+  "authResendEmail": "Renvoyer l'e-mail",
+  "@authResendEmail": { "description": "Bouton pour renvoyer l'e-mail de vérification/réinitialisation" },
+
+  "authSignupSuccess": "Compte créé ! Bienvenue {username} !",
+  "@authSignupSuccess": {
+    "description": "Message de succès après inscription avec pseudo",
+    "placeholders": {
+      "username": { "type": "String", "example": "MagiMaster" }
+    }
+  },
+
+  "authLogout": "Déconnexion",
+  "@authLogout": { "description": "Libellé générique de déconnexion" },
+
+  "authLogoutButton": "Se déconnecter",
+  "@authLogoutButton": { "description": "Bouton de déconnexion" },
+
+  "authLogoutConfirmTitle": "Se déconnecter ?",
+  "@authLogoutConfirmTitle": { "description": "Titre du dialogue de confirmation de déconnexion" },
+
+  "authLogoutConfirmMessage": "Es-tu sûr de vouloir te déconnecter ?",
+  "@authLogoutConfirmMessage": { "description": "Message du dialogue de confirmation de déconnexion" },
+
+  "authLogoutSuccess": "Déconnecté avec succès.",
+  "@authLogoutSuccess": { "description": "Message de succès après déconnexion" },
+
+  "authLoginSuccess": "Connexion réussie ! Ravie de te revoir, {username} !",
+  "@authLoginSuccess": {
+    "description": "Message de succès après connexion",
+    "placeholders": {
+      "username": { "type": "String", "example": "MagiMaster" }
+    }
+  },
+
+  "authLoginError": "Échec de la connexion. Vérifie tes identifiants.",
+  "@authLoginError": { "description": "Message d'erreur générique après échec de connexion" },
+
+  "authSignupError": "Échec de l'inscription. Réessaie.",
+  "@authSignupError": { "description": "Message d'erreur générique après échec d'inscription" },
+
+  "authLogoutError": "Échec de la déconnexion. Réessaie.",
+  "@authLogoutError": { "description": "Message d'erreur après échec de déconnexion" },
+
+  "authResendSuccess": "E-mail renvoyé !",
+  "@authResendSuccess": { "description": "Message de succès après renvoi d'e-mail" },
+
+  "authResendError": "Impossible d'envoyer l'e-mail. Réessaie.",
+  "@authResendError": { "description": "Message d'erreur après échec de renvoi d'e-mail" },
+
+  "authCompleteProfileSuccess": "Profil complété ! Bienvenue {username} !",
+  "@authCompleteProfileSuccess": {
+    "description": "Message de succès après finalisation du profil OAuth",
+    "placeholders": {
+      "username": { "type": "String", "example": "MagiMaster" }
+    }
+  },
+
+  "authVerifySuccessTitle": "Adresse vérifiée !",
+  "@authVerifySuccessTitle": { "description": "Titre de succès après vérification d'e-mail" },
+
+  "authVerifySuccessMessage": "Ton adresse e-mail a été vérifiée avec succès.",
+  "@authVerifySuccessMessage": { "description": "Message de succès après vérification d'e-mail" },
+
+  "authGenericSuccess": "Opération réussie.",
+  "@authGenericSuccess": { "description": "Message générique de succès" },
+
+  "authGenericError": "Une erreur est survenue. Réessaie.",
+  "@authGenericError": { "description": "Message générique d'erreur auth" },
+
+  "@__sectionAuthErrors": {
+    "description": "━━━━ AUTH ERRORS — Erreurs mappées depuis Failures ━━━━"
+  },
+  "authErrorInvalidCredentials": "Identifiants invalides. Vérifie ton e-mail et ton mot de passe.",
+  "@authErrorInvalidCredentials": { "description": "Erreur InvalidCredentialsFailure" },
+
+  "authErrorSessionExpired": "Session expirée. Veuillez vous reconnecter.",
+  "@authErrorSessionExpired": { "description": "Erreur SessionExpiredFailure" },
+
+  "authErrorUnauthorized": "Accès non autorisé.",
+  "@authErrorUnauthorized": { "description": "Erreur UnauthorizedFailure (403)" },
+
+  "authErrorUserNotFound": "Utilisateur introuvable.",
+  "@authErrorUserNotFound": { "description": "Erreur UserNotFoundFailure" },
+
+  "authErrorOAuthCancelled": "Connexion annulée.",
+  "@authErrorOAuthCancelled": { "description": "Erreur OAuthCancelledFailure" },
+
+  "authErrorGoogleCancelled": "Connexion Google annulée.",
+  "@authErrorGoogleCancelled": { "description": "Erreur GoogleSignInCancelledFailure" },
+
+  "authErrorUsernameTaken": "Ce nom d'utilisateur est déjà pris.",
+  "@authErrorUsernameTaken": { "description": "Erreur UsernameTakenFailure" },
+
+  "authErrorWeakPassword": "Mot de passe trop faible.",
+  "@authErrorWeakPassword": { "description": "Erreur mot de passe faible Supabase" },
+
+  "authErrorTooManyRequests": "Trop de tentatives. Réessaie dans quelques minutes.",
+  "@authErrorTooManyRequests": { "description": "Erreur rate-limit / trop de requêtes" },
+
+  "authEmailAlreadyExists": "Un compte existe déjà avec cet e-mail.",
+  "@authEmailAlreadyExists": { "description": "Erreur inscription — e-mail déjà utilisé" },
+
+  "authTermsPrefix": "En créant un compte, tu acceptes nos",
+  "@authTermsPrefix": { "description": "Préfixe du texte CGU avant le lien Conditions" },
+
+  "authTermsLink": "Conditions d'utilisation",
+  "@authTermsLink": { "description": "Lien vers les Conditions d'utilisation" },
+
+  "authTermsAnd": "et notre",
+  "@authTermsAnd": { "description": "Conjonction entre CGU et Politique de confidentialité" },
+
+  "authPrivacyLink": "Politique de confidentialité",
+  "@authPrivacyLink": { "description": "Lien vers la Politique de confidentialité" },
+
+  "authTermsSuffix": ".",
+  "@authTermsSuffix": { "description": "Suffixe ponctuation après les liens CGU" },
+
+  "authSkipTitle": "Continuer sans compte ?",
+  "@authSkipTitle": { "description": "Titre du dialogue d'avertissement quand on skip l'auth" },
+
+  "authSkipMessage": "Sans compte, tu ne pourras pas jouer en ligne, sauvegarder ta progression ni apparaître au classement. Tu pourras toujours jouer hors ligne.",
+  "@authSkipMessage": { "description": "Message d'avertissement skip auth — limitations du mode invité" },
+
+  "authSkipConfirm": "Continuer en invité",
+  "@authSkipConfirm": { "description": "Bouton confirmer pour continuer sans compte (mode invité)" },
+
+  "authSkipCancel": "Créer un compte",
+  "@authSkipCancel": { "description": "Bouton annuler du dialogue skip — redirige vers inscription" },
+
+  "authGuestWarning": "Mode invité — progression non sauvegardée",
+  "@authGuestWarning": { "description": "Bannière/chip affichée quand l'utilisateur est en mode invité" },
+
+  "authOnlineRequiresAccount": "Un compte est requis pour jouer en ligne.",
+  "@authOnlineRequiresAccount": { "description": "Message bloquant quand on tente d'accéder au jeu en ligne sans compte" },
+
+  "@__sectionValidation": {
+    "description": "━━━━ VALIDATION — Messages d'erreur de formulaire ━━━━"
+  },
   "validationRequired": "Ce champ est obligatoire.",
   "@validationRequired": { "description": "Message d'erreur pour un champ obligatoire vide" },
 
   "validationInvalidEmail": "Adresse e-mail invalide.",
   "@validationInvalidEmail": { "description": "Message d'erreur pour un e-mail mal formaté" },
 
+  "validationEmailIncorrect": "Adresse e-mail incorrecte.",
+  "@validationEmailIncorrect": { "description": "Message d'erreur pour un e-mail ne correspondant à aucun compte / incorrect lors de la connexion" },
+
   "validationPasswordTooShort": "Le mot de passe doit contenir au moins 8 caractères.",
   "@validationPasswordTooShort": { "description": "Message d'erreur pour un mot de passe trop court" },
 
   "validationPasswordsDoNotMatch": "Les mots de passe ne correspondent pas.",
   "@validationPasswordsDoNotMatch": { "description": "Message d'erreur quand les deux mots de passe diffèrent" },
+
+  "validationUsernameTooShort": "Au moins {minLength} caractères.",
+  "@validationUsernameTooShort": {
+    "description": "Message d'erreur quand le nom d'utilisateur est trop court",
+    "placeholders": {
+      "minLength": { "type": "int", "example": "3" }
+    }
+  },
+
+  "validationUsernameTooLong": "{maxLength} caractères maximum.",
+  "@validationUsernameTooLong": {
+    "description": "Message d'erreur quand le nom d'utilisateur est trop long",
+    "placeholders": {
+      "maxLength": { "type": "int", "example": "20" }
+    }
+  },
+
+  "validationUsernameInvalid": "Lettres, chiffres et _ uniquement.",
+  "@validationUsernameInvalid": { "description": "Message d'erreur quand le nom d'utilisateur contient des caractères invalides" },
+
+  "@__sectionRouting": {
+    "description": "━━━━ ROUTING — Erreurs et placeholders ━━━━"
+  },
+  "routerErrorTitle": "Cet écran n'existe pas encore.",
+  "@routerErrorTitle": { "description": "Titre de la page d'erreur de routing" },
+
+  "routerErrorSubtitle": "Reviens plus tard, ou reprends depuis l'accueil.",
+  "@routerErrorSubtitle": { "description": "Sous-titre de la page d'erreur de routing" },
+
+  "routerSoon": "{title} — bientôt.",
+  "@routerSoon": {
+    "description": "Placeholder générique pour écran bientôt disponible",
+    "placeholders": {
+      "title": { "type": "String", "example": "Lobby" }
+    }
+  },
+
+  "@__sectionGenericErrors": {
+    "description": "━━━━ GENERIC ERRORS — Erreurs réseau/serveur/validation ━━━━"
+  },
+  "errorNetwork": "Erreur réseau. Vérifie ta connexion internet.",
+  "@errorNetwork": { "description": "Erreur réseau générique (NetworkFailure)" },
+
+  "errorServer": "Erreur serveur. Réessaie plus tard.",
+  "@errorServer": { "description": "Erreur serveur générique (ServerFailure)" },
+
+  "errorValidation": "Données invalides. Vérifie les champs.",
+  "@errorValidation": { "description": "Erreur de validation générique (ValidationFailure)" },
+
+  "errorUnknown": "Une erreur inconnue est survenue.",
+  "@errorUnknown": { "description": "Erreur inconnue (fallback Failure)" },
+
+  "@__sectionSettings": {
+    "description": "━━━━ SETTINGS — Paramètres ━━━━"
+  },
+  "settingsTitle": "Paramètres",
+  "@settingsTitle": { "description": "Titre de la page des paramètres" },
 
   "settingsLanguage": "Langue",
   "@settingsLanguage": { "description": "Label de la section de choix de la langue dans les paramètres" },
@@ -130,5 +506,65 @@
   "@settingsLanguageFr": { "description": "Libellé de l'option langue française" },
 
   "settingsLanguageEn": "English",
-  "@settingsLanguageEn": { "description": "Libellé de l'option langue anglaise" }
+  "@settingsLanguageEn": { "description": "Libellé de l'option langue anglaise" },
+
+  "settingsTheme": "Thème",
+  "@settingsTheme": { "description": "Label de la section de choix du thème dans les paramètres" },
+
+  "settingsThemeSystem": "Système",
+  "@settingsThemeSystem": { "description": "Libellé de l'option thème système" },
+
+  "settingsThemeLight": "Clair",
+  "@settingsThemeLight": { "description": "Libellé de l'option thème clair" },
+
+  "settingsThemeDark": "Sombre",
+  "@settingsThemeDark": { "description": "Libellé de l'option thème sombre" },
+
+  "settingsLogout": "Se déconnecter",
+  "@settingsLogout": { "description": "Libellé du bouton de déconnexion dans les paramètres" },
+
+  "settingsLogoutConfirmTitle": "Se déconnecter ?",
+  "@settingsLogoutConfirmTitle": { "description": "Titre du dialogue de confirmation de déconnexion" },
+
+  "settingsLogoutConfirmMessage": "Tu devras te reconnecter pour accéder à ton compte.",
+  "@settingsLogoutConfirmMessage": { "description": "Message du dialogue de confirmation de déconnexion" },
+
+  "settingsAccountSection": "Compte",
+  "@settingsAccountSection": { "description": "Libellé de la section Compte (profil, mot de passe, déconnexion)" },
+
+  "@__sectionProfile": {
+    "description": "━━━━ PROFILE — Profil utilisateur ━━━━"
+  },
+  "profileTitle": "Profil",
+  "@profileTitle": { "description": "Titre de la page de profil" },
+
+  "profileEditTitle": "Modifier le profil",
+  "@profileEditTitle": { "description": "Titre de la page d'édition du profil" },
+
+  "profileEditUsernameLabel": "Nom d'utilisateur",
+  "@profileEditUsernameLabel": { "description": "Label du champ nom d'utilisateur" },
+
+  "profileEditBioLabel": "Bio",
+  "@profileEditBioLabel": { "description": "Label du champ bio" },
+
+  "profileUpdateSuccess": "Profil mis à jour avec succès.",
+  "@profileUpdateSuccess": { "description": "Message de succès après mise à jour du profil" },
+
+  "profileAvatarChangeCta": "Changer la photo",
+  "@profileAvatarChangeCta": { "description": "Libellé de l'action pour changer l'avatar" },
+
+  "profileChangePasswordCta": "Modifier le mot de passe",
+  "@profileChangePasswordCta": { "description": "Libellé du bouton menant à l'écran de changement de mot de passe" },
+
+  "profileRatingLabel": "Classement",
+  "@profileRatingLabel": { "description": "Label du score/rating affiché sur le profil" },
+
+  "profileFriendsLabel": "Amis",
+  "@profileFriendsLabel": { "description": "Label du nombre d'amis affiché sur le profil" },
+
+  "profileGuestMessage": "Connecte-toi pour accéder à ton profil.",
+  "@profileGuestMessage": { "description": "Message affiché sur /profile pour un utilisateur en mode invité" },
+
+  "profileGuestCta": "Se connecter",
+  "@profileGuestCta": { "description": "Bouton de connexion affiché sur /profile en mode invité" }
 }

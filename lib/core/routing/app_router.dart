@@ -1,6 +1,13 @@
 import "package:flutter/material.dart";
+import "package:flutter_riverpod/flutter_riverpod.dart";
 import "package:go_router/go_router.dart";
+import "package:magi_carre/features/auth/domain/entities/auth_state.dart";
+import "package:magi_carre/features/auth/presentation/providers/auth_providers.dart";
 
+import "../../features/auth/presentation/pages/index.dart";
+import "../../features/profile/presentation/pages/index.dart";
+import "../../features/settings/presentation/pages/index.dart";
+import "../../features/welcome/presentation/pages/index.dart";
 import "../configs/env.dart";
 import "../constants/app_icons.dart";
 import "../theme/index.dart" show AppSpacing, AppColors;
@@ -18,253 +25,283 @@ import "app_transitions.dart";
 ///   `/home`, `/lobby`, `/leaderboard`, `/profile`.
 ///
 /// Le redirect sera câblé en Phase 2 (auth + onboarding via guards).
-GoRouter buildRouter() => GoRouter(
-  navigatorKey: AppNavigatorKey.instance,
-  debugLogDiagnostics: Env.enableLogging,
-  initialLocation: AppRoutes.root,
-  errorBuilder: (context, state) => const _RouterErrorPage(),
-  redirect: (context, state) {
-    // Phase 2 : brancher AuthGuard + OnboardingGuard ici.
-    return null;
-  },
-  routes: [
-    // ─── Splash ───────────────────────────────
-    GoRoute(
-      path: AppRoutes.root,
-      pageBuilder: (context, state) => AppTransitions.fade(
-        context: context,
-        state: state,
-        child: const _Placeholder(title: "Splash"),
-      ),
-    ),
+GoRouter buildRouter(Ref ref) {
+  final refreshNotifier = _RouterRefreshNotifier();
 
-    // ─── Onboarding ───────────────────────────
-    GoRoute(
-      path: AppRoutes.onboarding,
-      pageBuilder: (context, state) => AppTransitions.fadeSlide(
-        context: context,
-        state: state,
-        child: const _Placeholder(title: "Onboarding"),
-      ),
-    ),
+  ref
+    ..listen<AuthState>(authProvider, (_, _) => refreshNotifier.notify())
+    ..onDispose(refreshNotifier.dispose);
 
-    // ─── Auth ─────────────────────────────────
-    GoRoute(
-      path: AppRoutes.authLogin,
-      pageBuilder: (context, state) => AppTransitions.fadeSlide(
-        context: context,
-        state: state,
-        child: const _Placeholder(title: "Connexion"),
-      ),
-    ),
-    GoRoute(
-      path: AppRoutes.authSignup,
-      pageBuilder: (context, state) => AppTransitions.pushedScreen(
-        context: context,
-        state: state,
-        child: const _Placeholder(title: "Inscription"),
-      ),
-    ),
-    GoRoute(
-      path: AppRoutes.authForgot,
-      pageBuilder: (context, state) => AppTransitions.pushedScreen(
-        context: context,
-        state: state,
-        child: const _Placeholder(title: "Mot de passe oublié"),
-      ),
-    ),
-    GoRoute(
-      path: AppRoutes.authResetPassword,
-      pageBuilder: (context, state) => AppTransitions.fadeSlide(
-        context: context,
-        state: state,
-        child: const _Placeholder(title: "Nouveau mot de passe"),
-      ),
-    ),
+  return GoRouter(
+    navigatorKey: AppNavigatorKey.instance,
+    debugLogDiagnostics: Env.enableLogging,
+    initialLocation: AppRoutes.root,
+    refreshListenable: refreshNotifier,
+    errorBuilder: (context, state) => const _RouterErrorPage(),
+    redirect: (context, state) {
+      final authState = ref.read(authProvider);
+      final location = state.matchedLocation;
 
-    // ─── Partie — plein écran hors-shell ──────
-    GoRoute(
-      path: AppRoutes.game,
-      parentNavigatorKey: AppNavigatorKey.instance,
-      pageBuilder: (context, state) => AppTransitions.slide(
-        context: context,
-        state: state,
-        begin: const Offset(0.0, 1.0), // monte depuis le bas
-        child: _Placeholder(
-          title: "Partie ${state.pathParameters['gameId']}",
+      final isAuthRoute = location.startsWith("/auth");
+      final isBootstrapRoute =
+          location == AppRoutes.root || location == AppRoutes.onboarding;
+
+      return switch (authState) {
+        AuthLoading() =>
+          isAuthRoute || isBootstrapRoute ? null : AppRoutes.root,
+        AuthUnauthenticated() || AuthFailureState() =>
+          isAuthRoute || isBootstrapRoute ? null : AppRoutes.authLogin,
+        AuthOAuthPending() => null,
+        AuthPasswordRecovery() =>
+          location == AppRoutes.authResetPassword
+              ? null
+              : AppRoutes.authResetPassword,
+        AuthAuthenticated() ||
+        AuthGuest() => isAuthRoute || isBootstrapRoute ? AppRoutes.home : null,
+      };
+    },
+    routes: [
+      // ─── Splash ───────────────────────────────
+      GoRoute(
+        path: AppRoutes.root,
+        pageBuilder: (context, state) => AppTransitions.fade(
+          context: context,
+          state: state,
+          child: const SplashPage(),
         ),
       ),
-      routes: [
-        GoRoute(
-          path: "result",
-          pageBuilder: (context, state) => AppTransitions.fadeScale(
-            context: context,
-            state: state,
-            child: _Placeholder(
-              title: "Résultat ${state.pathParameters['gameId']}",
-            ),
+
+      // ─── Onboarding ───────────────────────────
+      GoRoute(
+        path: AppRoutes.onboarding,
+        pageBuilder: (context, state) => AppTransitions.fade(
+          context: context,
+          state: state,
+          child: const OnboardingPage(),
+        ),
+      ),
+
+      // ─── Auth ─────────────────────────────────
+      GoRoute(
+        path: AppRoutes.authLogin,
+        pageBuilder: (context, state) => AppTransitions.fadeSlide(
+          context: context,
+          state: state,
+          child: const LoginPage(),
+        ),
+      ),
+      GoRoute(
+        path: AppRoutes.authSignup,
+        pageBuilder: (context, state) => AppTransitions.pushedScreen(
+          context: context,
+          state: state,
+          child: const RegisterPage(),
+        ),
+      ),
+      GoRoute(
+        path: AppRoutes.authForgot,
+        pageBuilder: (context, state) => AppTransitions.pushedScreen(
+          context: context,
+          state: state,
+          child: const ForgotPassword(),
+        ),
+      ),
+      GoRoute(
+        path: AppRoutes.authResetPassword,
+        pageBuilder: (context, state) => AppTransitions.fadeSlide(
+          context: context,
+          state: state,
+          child: const ResetPassword(),
+        ),
+      ),
+
+      // ─── Partie — plein écran hors-shell ──────
+      GoRoute(
+        path: AppRoutes.game,
+        parentNavigatorKey: AppNavigatorKey.instance,
+        pageBuilder: (context, state) => AppTransitions.slide(
+          context: context,
+          state: state,
+          begin: const Offset(0.0, 1.0), // monte depuis le bas
+          child: _Placeholder(
+            title: "Partie ${state.pathParameters['gameId']}",
           ),
         ),
-      ],
-    ),
-
-    // ─── Apprendre — hors-shell ───────────────
-    GoRoute(
-      path: AppRoutes.learn,
-      parentNavigatorKey: AppNavigatorKey.instance,
-      pageBuilder: (context, state) => AppTransitions.pushedScreen(
-        context: context,
-        state: state,
-        child: const _Placeholder(title: "Apprendre"),
-      ),
-      routes: [
-        GoRoute(
-          path: ":chapterId",
-          pageBuilder: (context, state) => AppTransitions.pushedScreen(
-            context: context,
-            state: state,
-            child: _Placeholder(
-              title: "Chapitre ${state.pathParameters['chapterId']}",
+        routes: [
+          GoRoute(
+            path: "result",
+            pageBuilder: (context, state) => AppTransitions.fadeScale(
+              context: context,
+              state: state,
+              child: _Placeholder(
+                title: "Résultat ${state.pathParameters['gameId']}",
+              ),
             ),
           ),
-        ),
-      ],
-    ),
-
-    // ─── Paramètres — hors-shell ──────────────
-    GoRoute(
-      path: AppRoutes.settings,
-      parentNavigatorKey: AppNavigatorKey.instance,
-      pageBuilder: (context, state) => AppTransitions.pushedScreen(
-        context: context,
-        state: state,
-        child: const _Placeholder(title: "Paramètres"),
+        ],
       ),
-    ),
 
-    // ─── Shell — bottom navigation bar ────────
-    StatefulShellRoute.indexedStack(
-      builder: (context, state, navigationShell) =>
-          _ShellScaffold(navigationShell: navigationShell),
-      branches: [
-        // Branche 1 : Accueil
-        StatefulShellBranch(
-          routes: [
-            GoRoute(
-              path: AppRoutes.home,
-              pageBuilder: (context, state) => AppTransitions.fade(
-                context: context,
-                state: state,
-                child: const _Placeholder(title: "Accueil"),
+      // ─── Apprendre — hors-shell ───────────────
+      GoRoute(
+        path: AppRoutes.learn,
+        parentNavigatorKey: AppNavigatorKey.instance,
+        pageBuilder: (context, state) => AppTransitions.pushedScreen(
+          context: context,
+          state: state,
+          child: const _Placeholder(title: "Apprendre"),
+        ),
+        routes: [
+          GoRoute(
+            path: ":chapterId",
+            pageBuilder: (context, state) => AppTransitions.pushedScreen(
+              context: context,
+              state: state,
+              child: _Placeholder(
+                title: "Chapitre ${state.pathParameters['chapterId']}",
               ),
             ),
-          ],
-        ),
+          ),
+        ],
+      ),
 
-        // Branche 2 : Lobby
-        StatefulShellBranch(
-          routes: [
-            GoRoute(
-              path: AppRoutes.lobby,
-              pageBuilder: (context, state) => AppTransitions.fade(
-                context: context,
-                state: state,
-                child: const _Placeholder(title: "Lobby"),
-              ),
-              routes: [
-                GoRoute(
-                  path: "create",
-                  pageBuilder: (context, state) => AppTransitions.pushedScreen(
-                    context: context,
-                    state: state,
-                    child: const _Placeholder(title: "Créer une partie"),
-                  ),
+      // ─── Paramètres — hors-shell ──────────────
+      GoRoute(
+        path: AppRoutes.settings,
+        parentNavigatorKey: AppNavigatorKey.instance,
+        pageBuilder: (context, state) => AppTransitions.pushedScreen(
+          context: context,
+          state: state,
+          child: const SettingsPage(),
+        ),
+      ),
+
+      // ─── Shell — bottom navigation bar ────────
+      StatefulShellRoute.indexedStack(
+        builder: (context, state, navigationShell) =>
+            _ShellScaffold(navigationShell: navigationShell),
+        branches: [
+          // Branche 1 : Accueil
+          StatefulShellBranch(
+            routes: [
+              GoRoute(
+                path: AppRoutes.home,
+                pageBuilder: (context, state) => AppTransitions.fade(
+                  context: context,
+                  state: state,
+                  child: const _Placeholder(title: "Accueil"),
                 ),
-                GoRoute(
-                  path: "join/:inviteCode",
-                  pageBuilder: (context, state) => AppTransitions.pushedScreen(
-                    context: context,
-                    state: state,
-                    child: _Placeholder(
-                      title:
-                          "Rejoindre ${state.pathParameters['inviteCode']}",
+              ),
+            ],
+          ),
+
+          // Branche 2 : Lobby
+          StatefulShellBranch(
+            routes: [
+              GoRoute(
+                path: AppRoutes.lobby,
+                pageBuilder: (context, state) => AppTransitions.fade(
+                  context: context,
+                  state: state,
+                  child: const _Placeholder(title: "Lobby"),
+                ),
+                routes: [
+                  GoRoute(
+                    path: "create",
+                    pageBuilder: (context, state) =>
+                        AppTransitions.pushedScreen(
+                          context: context,
+                          state: state,
+                          child: const _Placeholder(title: "Créer une partie"),
+                        ),
+                  ),
+                  GoRoute(
+                    path: "join/:inviteCode",
+                    pageBuilder: (context, state) => AppTransitions.pushedScreen(
+                      context: context,
+                      state: state,
+                      child: _Placeholder(
+                        title:
+                            "Rejoindre ${state.pathParameters['inviteCode']}",
+                      ),
                     ),
                   ),
-                ),
-              ],
-            ),
-          ],
-        ),
-
-        // Branche 3 : Classement
-        StatefulShellBranch(
-          routes: [
-            GoRoute(
-              path: AppRoutes.leaderboard,
-              pageBuilder: (context, state) => AppTransitions.fade(
-                context: context,
-                state: state,
-                child: const _Placeholder(title: "Classement"),
+                ],
               ),
-            ),
-          ],
-        ),
+            ],
+          ),
 
-        // Branche 4 : Profil
-        StatefulShellBranch(
-          routes: [
-            GoRoute(
-              path: AppRoutes.profile,
-              pageBuilder: (context, state) => AppTransitions.fade(
-                context: context,
-                state: state,
-                child: const _Placeholder(title: "Profil"),
+          // Branche 3 : Classement
+          StatefulShellBranch(
+            routes: [
+              GoRoute(
+                path: AppRoutes.leaderboard,
+                pageBuilder: (context, state) => AppTransitions.fade(
+                  context: context,
+                  state: state,
+                  child: const _Placeholder(title: "Classement"),
+                ),
               ),
-              routes: [
-                GoRoute(
-                  path: "edit",
-                  pageBuilder: (context, state) => AppTransitions.pushedScreen(
-                    context: context,
-                    state: state,
-                    child: const _Placeholder(title: "Modifier le profil"),
-                  ),
+            ],
+          ),
+
+          // Branche 4 : Profil
+          StatefulShellBranch(
+            routes: [
+              GoRoute(
+                path: AppRoutes.profile,
+                pageBuilder: (context, state) => AppTransitions.fade(
+                  context: context,
+                  state: state,
+                  child: const ProfilePage(),
                 ),
-                GoRoute(
-                  path: "change-password",
-                  pageBuilder: (context, state) => AppTransitions.pushedScreen(
-                    context: context,
-                    state: state,
-                    child: const _Placeholder(
-                      title: "Modifier le mot de passe",
-                    ),
+                routes: [
+                  GoRoute(
+                    path: "edit",
+                    pageBuilder: (context, state) =>
+                        AppTransitions.pushedScreen(
+                          context: context,
+                          state: state,
+                          child: const ProfileEditPage(),
+                        ),
                   ),
-                ),
-                GoRoute(
-                  path: "history",
-                  pageBuilder: (context, state) => AppTransitions.pushedScreen(
-                    context: context,
-                    state: state,
-                    child: const _Placeholder(title: "Historique"),
+                  GoRoute(
+                    path: "change-password",
+                    pageBuilder: (context, state) =>
+                        AppTransitions.pushedScreen(
+                          context: context,
+                          state: state,
+                          child: const ProfileChangePasswordPage(),
+                        ),
                   ),
-                ),
-                GoRoute(
-                  path: "friends/:userId",
-                  pageBuilder: (context, state) => AppTransitions.pushedScreen(
-                    context: context,
-                    state: state,
-                    child: _Placeholder(
-                      title: "Joueur ${state.pathParameters['userId']}",
-                    ),
+                  GoRoute(
+                    path: "history",
+                    pageBuilder: (context, state) =>
+                        AppTransitions.pushedScreen(
+                          context: context,
+                          state: state,
+                          child: const _Placeholder(title: "Historique"),
+                        ),
                   ),
-                ),
-              ],
-            ),
-          ],
-        ),
-      ],
-    ),
-  ],
-);
+                  GoRoute(
+                    path: "friends/:userId",
+                    pageBuilder: (context, state) =>
+                        AppTransitions.pushedScreen(
+                          context: context,
+                          state: state,
+                          child: _Placeholder(
+                            title: "Joueur ${state.pathParameters['userId']}",
+                          ),
+                        ),
+                  ),
+                ],
+              ),
+            ],
+          ),
+        ],
+      ),
+    ],
+  );
+}
 
 // ─── Shell scaffold ────────────────────────────────────────────────────────
 
@@ -284,14 +321,8 @@ class _ShellScaffold extends StatelessWidget {
           initialLocation: index == navigationShell.currentIndex,
         ),
         destinations: const [
-          NavigationDestination(
-            icon: Icon(AppIcons.navHome),
-            label: "Accueil",
-          ),
-          NavigationDestination(
-            icon: Icon(AppIcons.navLobby),
-            label: "Lobby",
-          ),
+          NavigationDestination(icon: Icon(AppIcons.navHome), label: "Accueil"),
+          NavigationDestination(icon: Icon(AppIcons.navLobby), label: "Lobby"),
           NavigationDestination(
             icon: Icon(AppIcons.navLeaderboard),
             label: "Classement",
@@ -371,6 +402,13 @@ class _RouterErrorPage extends StatelessWidget {
       ),
     );
   }
+}
+
+// ─── Router refresh ────────────────────────────────────────────────────────
+
+/// Notifie GoRouter de réévaluer le redirect quand l'AuthState change.
+class _RouterRefreshNotifier extends ChangeNotifier {
+  void notify() => notifyListeners();
 }
 
 /// Extensions de navigation impérative sur GoRouter.

@@ -15,6 +15,7 @@ class AppScaffold extends ConsumerWidget {
     this.padding = AppSpacing.screenPadding,
     this.appBar,
     this.color,
+    this.overlayStyle,
     this.statusBarColor,
     this.bottomSafeArea = true,
     this.extendBody = false,
@@ -42,6 +43,7 @@ class AppScaffold extends ConsumerWidget {
   final Widget? bottomNavigationBar;
   final EdgeInsetsGeometry padding;
   final PreferredSizeWidget? appBar;
+  final SystemUiOverlayStyle? overlayStyle;
   final Color? color;
   final Color? statusBarColor;
   final bool bottomSafeArea;
@@ -82,20 +84,22 @@ class AppScaffold extends ConsumerWidget {
     //   light background (light mode) -> dark icons
     // `statusBarIconBrightness` drives Android; `statusBarBrightness` drives
     // iOS (with inverted semantics), and was missing before.
-    final overlayStyle = SystemUiOverlayStyle(
-      statusBarColor: statusBarColor ?? theme.scaffoldBackgroundColor,
-      statusBarIconBrightness: isDarkMode
-          ? Brightness.light
-          : Brightness.dark, // Android
-      statusBarBrightness: isDarkMode
-          ? Brightness.dark
-          : Brightness.light, // iOS
-    );
+    final appOverlay =
+        overlayStyle ??
+        SystemUiOverlayStyle(
+          statusBarColor: statusBarColor ?? theme.scaffoldBackgroundColor,
+          statusBarIconBrightness: isDarkMode
+              ? Brightness.light
+              : Brightness.dark, // Android
+          statusBarBrightness: isDarkMode
+              ? Brightness.dark
+              : Brightness.light, // iOS
+        );
 
     final isScrollable = scrollable || onRefresh != null;
 
     return AnnotatedRegion<SystemUiOverlayStyle>(
-      value: overlayStyle,
+      value: appOverlay,
       child: PopScope(
         canPop: canPop,
         onPopInvokedWithResult: onPopInvokedWithResult,

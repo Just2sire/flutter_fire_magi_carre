@@ -7,21 +7,24 @@ class AppAssets {
 
   static const String _imagesBase = "assets/images";
 
-  static const String logo = "$_imagesBase/logo.png";
-  // static const String logoLight = "$_imagesBase/docu_light.png";
-  // static const String logoNotif = "$_imagesBase/docu_notif.png";
-  // static const String logoDark = "$_imagesBase/docu_dark.png";
+  static const String logo = "$_imagesBase/logo_light.jpg";
+  static const String logoLight = "$_imagesBase/logo_light.jpg";
+  static const String logoNotif = "$_imagesBase/logo_notif.jpg";
+  static const String logoDark = "$_imagesBase/logo_dark.jpg";
 
-  // // ------------- ONBOARDING -------------
-  // static const String onboarding1 = "$_imagesBase/step_1.jpg";
-  // static const String onboarding2 = "$_imagesBase/step_2.jpg";
-  // static const String onboarding3 = "$_imagesBase/step_3.jpg";
-  //
-  // // ------------- AUTH -------------
-  // static const String googleLogo = "$_imagesBase/google.png";
+  // ------------- ONBOARDING -------------
+  static const String onboarding1 = "$_imagesBase/onboarding_1.jpg";
+  static const String onboarding2 = "$_imagesBase/onboarding_2.jpg";
+  static const String onboarding3 = "$_imagesBase/onboarding_3.jpg";
+
+  // ------------- AUTH -------------
+  static const String googleLogo = "$_imagesBase/google.png";
+  static const String githubLogo = "$_imagesBase/github.png";
+  static const String githubLightLogo = "$_imagesBase/github-light.png";
+  static const String githubDarkLogo = "$_imagesBase/github-dark.png";
+  static const String mailSent = "$_imagesBase/mail_sent.png";
   // static const String login = "$_imagesBase/login.png";
   // static const String register = "$_imagesBase/register.png";
   // static const String forgotPassword = "$_imagesBase/forgot_password.png";
   // static const String resetPassword = "$_imagesBase/reset_password.png";
-
 }
