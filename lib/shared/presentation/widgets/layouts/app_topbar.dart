@@ -26,6 +26,7 @@ class AppTopbar extends StatelessWidget {
     this.centerTitle = false,
     this.padding = .zero,
     this.leadingButtonTooltip,
+    this.height = AppSpacing.appBarHeightLg,
     super.key,
   });
 
@@ -44,6 +45,7 @@ class AppTopbar extends StatelessWidget {
   final TextStyle? subTitleTextStyle;
   final EdgeInsets padding;
   final String? leadingButtonTooltip;
+  final double height;
 
   @override
   Widget build(BuildContext context) {
@@ -56,7 +58,7 @@ class AppTopbar extends StatelessWidget {
         );
 
     return SizedBox(
-      height: AppSpacing.appBarHeight,
+      height: height,
       child: Padding(
         padding: padding,
         child: Row(
@@ -88,11 +90,11 @@ class AppTopbar extends StatelessWidget {
               SizedBox(width: spacing == 0 ? AppSpacing.sm : spacing),
             if (subtitle != null && subtitle!.isNotEmpty)
               Column(
+                spacing: titleSubtitleSpacing,
                 mainAxisSize: MainAxisSize.min,
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   Text(title, style: effectiveTitleStyle),
-                  SizedBox(height: titleSubtitleSpacing),
                   Text(
                     subtitle!,
                     style:

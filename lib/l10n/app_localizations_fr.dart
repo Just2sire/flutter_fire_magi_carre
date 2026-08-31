@@ -480,6 +480,54 @@ class AppLocalizationsFr extends AppLocalizations {
   String get navProfile => 'Profil';
 
   @override
+  String get leaderboardTitle => 'Classement';
+
+  @override
+  String get leaderboardSubtitle => 'Les meilleurs joueurs de MagiCarré';
+
+  @override
+  String get leaderboardTop50 => 'Top 50';
+
+  @override
+  String get leaderboardMyRank => 'Ton rang';
+
+  @override
+  String get leaderboardRank => 'Rang';
+
+  @override
+  String get leaderboardPlayer => 'Joueur';
+
+  @override
+  String get leaderboardRating => 'Score';
+
+  @override
+  String leaderboardRankLabel(int rank) {
+    return '#$rank';
+  }
+
+  @override
+  String leaderboardRatingLabel(int rating) {
+    return '$rating pts';
+  }
+
+  @override
+  String get leaderboardYou => 'Toi';
+
+  @override
+  String get leaderboardEmptyTitle => 'Aucun classement disponible';
+
+  @override
+  String get leaderboardEmptySubtitle =>
+      'Sois le premier à grimper au sommet !';
+
+  @override
+  String get leaderboardErrorTitle => 'Erreur de chargement';
+
+  @override
+  String get leaderboardErrorMessage =>
+      'Impossible de charger le classement. Réessaie.';
+
+  @override
   String get settingsTitle => 'Paramètres';
 
   @override

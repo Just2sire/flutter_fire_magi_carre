@@ -938,6 +938,90 @@ abstract class AppLocalizations {
   /// **'Profil'**
   String get navProfile;
 
+  /// Titre de la page de classement
+  ///
+  /// In fr, this message translates to:
+  /// **'Classement'**
+  String get leaderboardTitle;
+
+  /// Sous-titre de la page de classement
+  ///
+  /// In fr, this message translates to:
+  /// **'Les meilleurs joueurs de MagiCarré'**
+  String get leaderboardSubtitle;
+
+  /// Label du Top 50 joueurs
+  ///
+  /// In fr, this message translates to:
+  /// **'Top 50'**
+  String get leaderboardTop50;
+
+  /// Titre de la section rang personnel
+  ///
+  /// In fr, this message translates to:
+  /// **'Ton rang'**
+  String get leaderboardMyRank;
+
+  /// En-tête de colonne Rang
+  ///
+  /// In fr, this message translates to:
+  /// **'Rang'**
+  String get leaderboardRank;
+
+  /// En-tête de colonne Joueur
+  ///
+  /// In fr, this message translates to:
+  /// **'Joueur'**
+  String get leaderboardPlayer;
+
+  /// En-tête de colonne Score / rating
+  ///
+  /// In fr, this message translates to:
+  /// **'Score'**
+  String get leaderboardRating;
+
+  /// Label du rang avec numéro
+  ///
+  /// In fr, this message translates to:
+  /// **'#{rank}'**
+  String leaderboardRankLabel(int rank);
+
+  /// Label du score avec points
+  ///
+  /// In fr, this message translates to:
+  /// **'{rating} pts'**
+  String leaderboardRatingLabel(int rating);
+
+  /// Badge affiché pour l'utilisateur courant dans la liste
+  ///
+  /// In fr, this message translates to:
+  /// **'Toi'**
+  String get leaderboardYou;
+
+  /// Titre de l'état vide du classement
+  ///
+  /// In fr, this message translates to:
+  /// **'Aucun classement disponible'**
+  String get leaderboardEmptyTitle;
+
+  /// Sous-titre de l'état vide du classement
+  ///
+  /// In fr, this message translates to:
+  /// **'Sois le premier à grimper au sommet !'**
+  String get leaderboardEmptySubtitle;
+
+  /// Titre de l'état d'erreur du classement
+  ///
+  /// In fr, this message translates to:
+  /// **'Erreur de chargement'**
+  String get leaderboardErrorTitle;
+
+  /// Message d'erreur de chargement du classement
+  ///
+  /// In fr, this message translates to:
+  /// **'Impossible de charger le classement. Réessaie.'**
+  String get leaderboardErrorMessage;
+
   /// Titre de la page des paramètres
   ///
   /// In fr, this message translates to:
