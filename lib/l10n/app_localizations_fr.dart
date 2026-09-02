@@ -548,4 +548,13 @@ class AppLocalizationsFr extends AppLocalizations {
 
   @override
   String get profileGuestCta => 'Se connecter';
+
+  @override
+  String get profileEditCta => 'Modifier';
+
+  @override
+  String get profileAppearanceLabel => 'Apparence';
+
+  @override
+  String get profileActivityTitle => 'Activité';
 }

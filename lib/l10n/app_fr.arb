@@ -581,5 +581,14 @@
   "@profileGuestMessage": { "description": "Message affiché sur /profile pour un utilisateur en mode invité" },
 
   "profileGuestCta": "Se connecter",
-  "@profileGuestCta": { "description": "Bouton de connexion affiché sur /profile en mode invité" }
+  "@profileGuestCta": { "description": "Bouton de connexion affiché sur /profile en mode invité" },
+
+  "profileEditCta": "Modifier",
+  "@profileEditCta": { "description": "Libellé court du badge d'édition sur la carte de profil" },
+
+  "profileAppearanceLabel": "Apparence",
+  "@profileAppearanceLabel": { "description": "Titre de la section de sélection du thème sur le profil" },
+
+  "profileActivityTitle": "Activité",
+  "@profileActivityTitle": { "description": "Libellé de l'entrée menant à l'historique de partie" }
 }

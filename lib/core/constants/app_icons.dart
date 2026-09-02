@@ -95,6 +95,8 @@ class AppIcons {
 
   // ─── Profil ───────────────────────────────
   static const IconData camera = LucideIcons.camera;
+  static const IconData history = LucideIcons.history;
+  static const IconData edit = LucideIcons.penLine;
 
   // ─── États & Erreurs ──────────────────────
   static const IconData offline = LucideIcons.wifiOff;

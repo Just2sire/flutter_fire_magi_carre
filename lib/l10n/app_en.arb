@@ -581,5 +581,14 @@
   "@profileGuestMessage": { "description": "Message shown on /profile for a guest-mode user" },
 
   "profileGuestCta": "Sign in",
-  "@profileGuestCta": { "description": "Sign-in button shown on /profile in guest mode" }
+  "@profileGuestCta": { "description": "Sign-in button shown on /profile in guest mode" },
+
+  "profileEditCta": "Edit",
+  "@profileEditCta": { "description": "Short label for the edit badge on the profile hero card" },
+
+  "profileAppearanceLabel": "Appearance",
+  "@profileAppearanceLabel": { "description": "Title of the theme-picker section on the profile page" },
+
+  "profileActivityTitle": "Activity",
+  "@profileActivityTitle": { "description": "Label for the entry leading to match history" }
 }

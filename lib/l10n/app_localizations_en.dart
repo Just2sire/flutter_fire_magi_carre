@@ -542,4 +542,13 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get profileGuestCta => 'Sign in';
+
+  @override
+  String get profileEditCta => 'Edit';
+
+  @override
+  String get profileAppearanceLabel => 'Appearance';
+
+  @override
+  String get profileActivityTitle => 'Activity';
 }
