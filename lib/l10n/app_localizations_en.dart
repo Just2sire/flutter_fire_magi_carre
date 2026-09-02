@@ -589,4 +589,70 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get profileGuestCta => 'Sign in';
+
+  @override
+  String get gameTitle => 'Local duel';
+
+  @override
+  String get gameAiThinking => 'AI is thinking…';
+
+  @override
+  String get gameDifficultyTitle => 'AI difficulty';
+
+  @override
+  String get gameDifficultyEasy => 'Beginner';
+
+  @override
+  String get gameDifficultyMedium => 'Intermediate';
+
+  @override
+  String get gameDifficultyHard => 'Expert';
+
+  @override
+  String get gameOverWhiteWinsTitle => 'Victory!';
+
+  @override
+  String get gameOverWhiteWinsMessage => 'You won the match.';
+
+  @override
+  String get gameOverBlackWinsTitle => 'Defeat';
+
+  @override
+  String get gameOverBlackWinsMessage => 'The AI won this match.';
+
+  @override
+  String get gameOverDrawTitle => 'Draw';
+
+  @override
+  String get gameOverDrawMessage => 'Neither player could win.';
+
+  @override
+  String get gameNewGameCta => 'New match';
+
+  @override
+  String get gameQuitCta => 'Quit';
+
+  @override
+  String get gamePlayerBlack => 'Black';
+
+  @override
+  String get gamePlayerWhite => 'White';
+
+  @override
+  String gamePiecesCaptured(int count) {
+    String _temp0 = intl.Intl.pluralLogic(
+      count,
+      locale: localeName,
+      other: '$count pieces captured',
+      one: '1 piece captured',
+      zero: '0 piece captured',
+    );
+    return '$_temp0';
+  }
+
+  @override
+  String get gameUndoCta => 'Undo last move';
+
+  @override
+  String get gameRestartCta => 'Restart match';
 }

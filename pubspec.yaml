@@ -7,6 +7,8 @@ environment:
   sdk: ^3.14.0-68.0.dev
 
 dependencies:
+  carre_magic_logic:
+    path: C:/Users/Desire/Documents/Mobile/plugins/carre_magic_logic
   connectivity_plus: ^7.3.1
   dio: ^5.11.0
   flutter:

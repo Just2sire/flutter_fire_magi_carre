@@ -22,6 +22,9 @@ class AppRoutes {
   static const String game = "/game/:gameId";
   static const String gameResult = "/game/:gameId/result";
 
+  // ─── Partie locale — solo vs IA ───────────
+  static const String gameLocal = "/game/local";
+
   // ─── Lobby — sous-écrans ──────────────────
   static const String lobbyCreate = "/lobby/create";
   static const String lobbyJoin = "/lobby/join/:inviteCode";

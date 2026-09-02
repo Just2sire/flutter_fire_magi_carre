@@ -5,6 +5,7 @@ import "package:go_router/go_router.dart";
 import "../../features/auth/domain/entities/auth_state.dart";
 import "../../features/auth/presentation/pages/index.dart";
 import "../../features/auth/presentation/providers/auth_providers.dart";
+import "../../features/game/presentation/pages/index.dart";
 import "../../features/leaderboard/presentation/pages/leaderboard_page.dart";
 import "../../features/profile/presentation/pages/index.dart";
 import "../../features/settings/presentation/pages/index.dart";
@@ -12,6 +13,7 @@ import "../../features/welcome/presentation/pages/index.dart";
 import "../../shared/presentation/pages/app_shell.dart";
 import "../configs/env.dart";
 import "../constants/app_icons.dart";
+import "../extensions/navigation_extensions.dart";
 import "../theme/index.dart" show AppSpacing, AppColors;
 import "app_navigator_key.dart";
 import "app_routes.dart";
@@ -117,6 +119,18 @@ GoRouter buildRouter(Ref ref) {
         ),
       ),
 
+      // ─── Partie locale — solo vs IA ────────────
+      GoRoute(
+        path: AppRoutes.gameLocal,
+        parentNavigatorKey: AppNavigatorKey.instance,
+        pageBuilder: (context, state) => AppTransitions.slide(
+          context: context,
+          state: state,
+          begin: const Offset(0.0, 1.0), // monte depuis le bas
+          child: const GamePage(),
+        ),
+      ),
+
       // ─── Partie — plein écran hors-shell ──────
       GoRoute(
         path: AppRoutes.game,
@@ -190,7 +204,8 @@ GoRouter buildRouter(Ref ref) {
                 pageBuilder: (context, state) => AppTransitions.fade(
                   context: context,
                   state: state,
-                  child: const _Placeholder(title: "Accueil"),
+                  // TODO: retirer une fois un vrai écran d'accueil construit.
+                  child: const _HomePlaceholder(),
                 ),
               ),
             ],
@@ -325,6 +340,40 @@ class _Placeholder extends StatelessWidget {
             textAlign: TextAlign.center,
             style: Theme.of(context).textTheme.bodyMedium
                 ?.copyWith(color: AppColors.textSecondary),
+          ),
+        ),
+      ),
+    );
+  }
+}
+
+/// Placeholder de l'accueil — avec un bouton "Jouer" temporaire vers la
+/// partie locale, en attendant un vrai écran d'accueil.
+class _HomePlaceholder extends StatelessWidget {
+  const _HomePlaceholder();
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(title: const Text("Accueil"), elevation: 0),
+      body: Center(
+        child: Padding(
+          padding: AppSpacing.screenPaddingH,
+          child: Column(
+            mainAxisSize: MainAxisSize.min,
+            children: [
+              Text(
+                "Accueil — bientôt.",
+                textAlign: TextAlign.center,
+                style: Theme.of(context).textTheme.bodyMedium
+                    ?.copyWith(color: AppColors.textSecondary),
+              ),
+              AppSpacing.gapVLg,
+              ElevatedButton(
+                onPressed: () => context.pushGameLocal<void>(),
+                child: const Text("Jouer"),
+              ),
+            ],
           ),
         ),
       ),

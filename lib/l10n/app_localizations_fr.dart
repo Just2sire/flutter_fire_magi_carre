@@ -596,4 +596,70 @@ class AppLocalizationsFr extends AppLocalizations {
 
   @override
   String get profileGuestCta => 'Se connecter';
+
+  @override
+  String get gameTitle => 'Duel local';
+
+  @override
+  String get gameAiThinking => 'L\'IA réfléchit…';
+
+  @override
+  String get gameDifficultyTitle => 'Difficulté de l\'IA';
+
+  @override
+  String get gameDifficultyEasy => 'Débutant';
+
+  @override
+  String get gameDifficultyMedium => 'Intermédiaire';
+
+  @override
+  String get gameDifficultyHard => 'Expert';
+
+  @override
+  String get gameOverWhiteWinsTitle => 'Victoire !';
+
+  @override
+  String get gameOverWhiteWinsMessage => 'Tu as gagné la partie.';
+
+  @override
+  String get gameOverBlackWinsTitle => 'Défaite';
+
+  @override
+  String get gameOverBlackWinsMessage => 'L\'IA a gagné cette partie.';
+
+  @override
+  String get gameOverDrawTitle => 'Match nul';
+
+  @override
+  String get gameOverDrawMessage => 'Aucun joueur n\'a pu l\'emporter.';
+
+  @override
+  String get gameNewGameCta => 'Nouvelle partie';
+
+  @override
+  String get gameQuitCta => 'Quitter';
+
+  @override
+  String get gamePlayerBlack => 'Noirs';
+
+  @override
+  String get gamePlayerWhite => 'Blancs';
+
+  @override
+  String gamePiecesCaptured(int count) {
+    String _temp0 = intl.Intl.pluralLogic(
+      count,
+      locale: localeName,
+      other: '$count pions capturés',
+      one: '1 pion capturé',
+      zero: '0 pion capturé',
+    );
+    return '$_temp0';
+  }
+
+  @override
+  String get gameUndoCta => 'Annuler le dernier coup';
+
+  @override
+  String get gameRestartCta => 'Recommencer la partie';
 }
