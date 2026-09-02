@@ -662,4 +662,13 @@ class AppLocalizationsFr extends AppLocalizations {
 
   @override
   String get gameRestartCta => 'Recommencer la partie';
+
+  @override
+  String get profileEditCta => 'Modifier';
+
+  @override
+  String get profileAppearanceLabel => 'Apparence';
+
+  @override
+  String get profileActivityTitle => 'Activité';
 }

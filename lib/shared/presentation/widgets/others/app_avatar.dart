@@ -12,25 +12,57 @@ class AppAvatar extends StatelessWidget {
     required this.avatarUrl,
     super.key,
     this.radius = AppSpacing.mega,
+    this.onEdit,
+    this.isEditable = false,
   });
 
   final String? avatarUrl;
   final double radius;
+  final VoidCallback? onEdit;
+  final bool isEditable;
 
   @override
   Widget build(BuildContext context) {
     final cs = context.colorScheme;
     final url = avatarUrl;
 
-    return CircleAvatar(
-      radius: radius,
-      backgroundColor: cs.surfaceContainerHighest,
-      backgroundImage: url != null && url.isNotEmpty
-          ? NetworkImage(url)
-          : null,
-      child: url == null || url.isEmpty
-          ? Icon(AppIcons.user, size: radius, color: cs.onSurfaceVariant)
-          : null,
+    return Stack(
+      children: [
+        CircleAvatar(
+          radius: radius,
+          backgroundColor: cs.surfaceContainerHighest,
+          backgroundImage: url != null && url.isNotEmpty
+              ? NetworkImage(url)
+              : null,
+          child: url == null || url.isEmpty
+              ? Icon(AppIcons.user, size: radius, color: cs.onSurfaceVariant)
+              : null,
+        ),
+        if (isEditable)
+          Positioned(
+            bottom: 0,
+            right: 0,
+            child: Tooltip(
+              message: context.l10n.profileEditCta,
+              child: InkWell(
+                onTap: onEdit,
+                borderRadius: AppSpacing.roundedFull,
+                child: Container(
+                  padding: AppSpacing.insetSm,
+                  decoration: BoxDecoration(
+                    color: cs.surfaceContainer,
+                    shape: .circle,
+                  ),
+                  child: Icon(
+                    AppIcons.edit,
+                    size: AppSpacing.iconMd,
+                    color: cs.onSurface,
+                  ),
+                ),
+              ),
+            ),
+          ),
+      ],
     );
   }
 }

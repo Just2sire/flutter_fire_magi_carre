@@ -699,5 +699,14 @@
   "@gameUndoCta": { "description": "Tooltip for the undo-last-move button" },
 
   "gameRestartCta": "Restart match",
-  "@gameRestartCta": { "description": "Tooltip for the restart-match button" }
+  "@gameRestartCta": { "description": "Tooltip for the restart-match button" },
+
+  "profileEditCta": "Edit",
+  "@profileEditCta": { "description": "Short label for the edit badge on the profile hero card" },
+
+  "profileAppearanceLabel": "Appearance",
+  "@profileAppearanceLabel": { "description": "Title of the theme-picker section on the profile page" },
+
+  "profileActivityTitle": "Activity",
+  "@profileActivityTitle": { "description": "Label for the entry leading to match history" }
 }
