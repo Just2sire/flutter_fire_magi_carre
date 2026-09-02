@@ -636,5 +636,68 @@
   "@profileGuestMessage": { "description": "Message affiché sur /profile pour un utilisateur en mode invité" },
 
   "profileGuestCta": "Se connecter",
-  "@profileGuestCta": { "description": "Bouton de connexion affiché sur /profile en mode invité" }
+  "@profileGuestCta": { "description": "Bouton de connexion affiché sur /profile en mode invité" },
+
+  "@__sectionGame": {
+    "description": "━━━━ GAME — Partie locale solo vs IA ━━━━"
+  },
+  "gameTitle": "Duel local",
+  "@gameTitle": { "description": "Titre de l'écran de partie locale" },
+
+  "gameAiThinking": "L'IA réfléchit…",
+  "@gameAiThinking": { "description": "Indicateur affiché pendant le calcul du coup de l'IA" },
+
+  "gameDifficultyTitle": "Difficulté de l'IA",
+  "@gameDifficultyTitle": { "description": "Titre du sélecteur de difficulté" },
+
+  "gameDifficultyEasy": "Débutant",
+  "@gameDifficultyEasy": { "description": "Libellé du niveau de difficulté facile" },
+
+  "gameDifficultyMedium": "Intermédiaire",
+  "@gameDifficultyMedium": { "description": "Libellé du niveau de difficulté moyen" },
+
+  "gameDifficultyHard": "Expert",
+  "@gameDifficultyHard": { "description": "Libellé du niveau de difficulté difficile" },
+
+  "gameOverWhiteWinsTitle": "Victoire !",
+  "@gameOverWhiteWinsTitle": { "description": "Titre du dialogue de fin de partie — le joueur gagne" },
+
+  "gameOverWhiteWinsMessage": "Tu as gagné la partie.",
+  "@gameOverWhiteWinsMessage": { "description": "Message du dialogue de fin de partie — le joueur gagne" },
+
+  "gameOverBlackWinsTitle": "Défaite",
+  "@gameOverBlackWinsTitle": { "description": "Titre du dialogue de fin de partie — l'IA gagne" },
+
+  "gameOverBlackWinsMessage": "L'IA a gagné cette partie.",
+  "@gameOverBlackWinsMessage": { "description": "Message du dialogue de fin de partie — l'IA gagne" },
+
+  "gameOverDrawTitle": "Match nul",
+  "@gameOverDrawTitle": { "description": "Titre du dialogue de fin de partie — match nul" },
+
+  "gameOverDrawMessage": "Aucun joueur n'a pu l'emporter.",
+  "@gameOverDrawMessage": { "description": "Message du dialogue de fin de partie — match nul" },
+
+  "gameNewGameCta": "Nouvelle partie",
+  "@gameNewGameCta": { "description": "Bouton pour relancer une nouvelle partie" },
+
+  "gameQuitCta": "Quitter",
+  "@gameQuitCta": { "description": "Bouton pour quitter l'écran de partie" },
+
+  "gamePlayerBlack": "Noirs",
+  "@gamePlayerBlack": { "description": "Nom du camp noir (IA)" },
+
+  "gamePlayerWhite": "Blancs",
+  "@gamePlayerWhite": { "description": "Nom du camp blanc (joueur)" },
+
+  "gamePiecesCaptured": "{count, plural, =0{0 pion capturé} =1{1 pion capturé} other{{count} pions capturés}}",
+  "@gamePiecesCaptured": {
+    "description": "Nombre de pions capturés par un joueur",
+    "placeholders": { "count": { "type": "int" } }
+  },
+
+  "gameUndoCta": "Annuler le dernier coup",
+  "@gameUndoCta": { "description": "Tooltip du bouton d'annulation du dernier coup" },
+
+  "gameRestartCta": "Recommencer la partie",
+  "@gameRestartCta": { "description": "Tooltip du bouton de redémarrage de la partie" }
 }

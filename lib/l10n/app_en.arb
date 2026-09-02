@@ -636,5 +636,68 @@
   "@profileGuestMessage": { "description": "Message shown on /profile for a guest-mode user" },
 
   "profileGuestCta": "Sign in",
-  "@profileGuestCta": { "description": "Sign-in button shown on /profile in guest mode" }
+  "@profileGuestCta": { "description": "Sign-in button shown on /profile in guest mode" },
+
+  "@__sectionGame": {
+    "description": "━━━━ GAME — Local solo vs AI match ━━━━"
+  },
+  "gameTitle": "Local duel",
+  "@gameTitle": { "description": "Local match screen title" },
+
+  "gameAiThinking": "AI is thinking…",
+  "@gameAiThinking": { "description": "Indicator shown while the AI's move is being computed" },
+
+  "gameDifficultyTitle": "AI difficulty",
+  "@gameDifficultyTitle": { "description": "Difficulty picker title" },
+
+  "gameDifficultyEasy": "Beginner",
+  "@gameDifficultyEasy": { "description": "Easy difficulty level label" },
+
+  "gameDifficultyMedium": "Intermediate",
+  "@gameDifficultyMedium": { "description": "Medium difficulty level label" },
+
+  "gameDifficultyHard": "Expert",
+  "@gameDifficultyHard": { "description": "Hard difficulty level label" },
+
+  "gameOverWhiteWinsTitle": "Victory!",
+  "@gameOverWhiteWinsTitle": { "description": "Game-over dialog title — the player wins" },
+
+  "gameOverWhiteWinsMessage": "You won the match.",
+  "@gameOverWhiteWinsMessage": { "description": "Game-over dialog message — the player wins" },
+
+  "gameOverBlackWinsTitle": "Defeat",
+  "@gameOverBlackWinsTitle": { "description": "Game-over dialog title — the AI wins" },
+
+  "gameOverBlackWinsMessage": "The AI won this match.",
+  "@gameOverBlackWinsMessage": { "description": "Game-over dialog message — the AI wins" },
+
+  "gameOverDrawTitle": "Draw",
+  "@gameOverDrawTitle": { "description": "Game-over dialog title — draw" },
+
+  "gameOverDrawMessage": "Neither player could win.",
+  "@gameOverDrawMessage": { "description": "Game-over dialog message — draw" },
+
+  "gameNewGameCta": "New match",
+  "@gameNewGameCta": { "description": "Button to start a new match" },
+
+  "gameQuitCta": "Quit",
+  "@gameQuitCta": { "description": "Button to leave the match screen" },
+
+  "gamePlayerBlack": "Black",
+  "@gamePlayerBlack": { "description": "Black side's name (AI)" },
+
+  "gamePlayerWhite": "White",
+  "@gamePlayerWhite": { "description": "White side's name (player)" },
+
+  "gamePiecesCaptured": "{count, plural, =0{0 piece captured} =1{1 piece captured} other{{count} pieces captured}}",
+  "@gamePiecesCaptured": {
+    "description": "Number of pieces captured by a player",
+    "placeholders": { "count": { "type": "int" } }
+  },
+
+  "gameUndoCta": "Undo last move",
+  "@gameUndoCta": { "description": "Tooltip for the undo-last-move button" },
+
+  "gameRestartCta": "Restart match",
+  "@gameRestartCta": { "description": "Tooltip for the restart-match button" }
 }

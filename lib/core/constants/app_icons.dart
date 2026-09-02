@@ -49,6 +49,9 @@ class AppIcons {
   static const IconData copy = LucideIcons.copy;
   static const IconData share2 = LucideIcons.share2;
 
+  // ─── Game ───────────────────────────
+  static const IconData play = LucideIcons.gamepad2;
+
   // ─── Contextes OCR / Documents ────────────
   static const IconData contextStudent = LucideIcons.graduationCap;
   static const IconData contextEducator = LucideIcons.bookOpen;
@@ -98,6 +101,12 @@ class AppIcons {
 
   // ─── Classement ───────────────────────────
   static const IconData crown = LucideIcons.crown;
+
+  // ─── Jeu ──────────────────────────────────
+  static const IconData difficultyEasy = LucideIcons.circle;
+  static const IconData difficultyMedium = LucideIcons.circleDot;
+  static const IconData difficultyHard = LucideIcons.flame;
+  static const IconData undo = LucideIcons.undo2;
 
   // ─── États & Erreurs ──────────────────────
   static const IconData offline = LucideIcons.wifiOff;

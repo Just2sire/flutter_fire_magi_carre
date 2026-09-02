@@ -2,6 +2,7 @@ export "app_animated_switcher.dart";
 export "app_avatar.dart";
 export "app_grouped_card.dart";
 export "app_icon_switcher.dart";
+export "app_options_sheet.dart";
 export "app_section_label.dart";
 export "app_switcher_transitions.dart";
 export "app_tile_row.dart";

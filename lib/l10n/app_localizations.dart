@@ -1159,6 +1159,120 @@ abstract class AppLocalizations {
   /// In fr, this message translates to:
   /// **'Se connecter'**
   String get profileGuestCta;
+
+  /// Titre de l'écran de partie locale
+  ///
+  /// In fr, this message translates to:
+  /// **'Duel local'**
+  String get gameTitle;
+
+  /// Indicateur affiché pendant le calcul du coup de l'IA
+  ///
+  /// In fr, this message translates to:
+  /// **'L\'IA réfléchit…'**
+  String get gameAiThinking;
+
+  /// Titre du sélecteur de difficulté
+  ///
+  /// In fr, this message translates to:
+  /// **'Difficulté de l\'IA'**
+  String get gameDifficultyTitle;
+
+  /// Libellé du niveau de difficulté facile
+  ///
+  /// In fr, this message translates to:
+  /// **'Débutant'**
+  String get gameDifficultyEasy;
+
+  /// Libellé du niveau de difficulté moyen
+  ///
+  /// In fr, this message translates to:
+  /// **'Intermédiaire'**
+  String get gameDifficultyMedium;
+
+  /// Libellé du niveau de difficulté difficile
+  ///
+  /// In fr, this message translates to:
+  /// **'Expert'**
+  String get gameDifficultyHard;
+
+  /// Titre du dialogue de fin de partie — le joueur gagne
+  ///
+  /// In fr, this message translates to:
+  /// **'Victoire !'**
+  String get gameOverWhiteWinsTitle;
+
+  /// Message du dialogue de fin de partie — le joueur gagne
+  ///
+  /// In fr, this message translates to:
+  /// **'Tu as gagné la partie.'**
+  String get gameOverWhiteWinsMessage;
+
+  /// Titre du dialogue de fin de partie — l'IA gagne
+  ///
+  /// In fr, this message translates to:
+  /// **'Défaite'**
+  String get gameOverBlackWinsTitle;
+
+  /// Message du dialogue de fin de partie — l'IA gagne
+  ///
+  /// In fr, this message translates to:
+  /// **'L\'IA a gagné cette partie.'**
+  String get gameOverBlackWinsMessage;
+
+  /// Titre du dialogue de fin de partie — match nul
+  ///
+  /// In fr, this message translates to:
+  /// **'Match nul'**
+  String get gameOverDrawTitle;
+
+  /// Message du dialogue de fin de partie — match nul
+  ///
+  /// In fr, this message translates to:
+  /// **'Aucun joueur n\'a pu l\'emporter.'**
+  String get gameOverDrawMessage;
+
+  /// Bouton pour relancer une nouvelle partie
+  ///
+  /// In fr, this message translates to:
+  /// **'Nouvelle partie'**
+  String get gameNewGameCta;
+
+  /// Bouton pour quitter l'écran de partie
+  ///
+  /// In fr, this message translates to:
+  /// **'Quitter'**
+  String get gameQuitCta;
+
+  /// Nom du camp noir (IA)
+  ///
+  /// In fr, this message translates to:
+  /// **'Noirs'**
+  String get gamePlayerBlack;
+
+  /// Nom du camp blanc (joueur)
+  ///
+  /// In fr, this message translates to:
+  /// **'Blancs'**
+  String get gamePlayerWhite;
+
+  /// Nombre de pions capturés par un joueur
+  ///
+  /// In fr, this message translates to:
+  /// **'{count, plural, =0{0 pion capturé} =1{1 pion capturé} other{{count} pions capturés}}'**
+  String gamePiecesCaptured(int count);
+
+  /// Tooltip du bouton d'annulation du dernier coup
+  ///
+  /// In fr, this message translates to:
+  /// **'Annuler le dernier coup'**
+  String get gameUndoCta;
+
+  /// Tooltip du bouton de redémarrage de la partie
+  ///
+  /// In fr, this message translates to:
+  /// **'Recommencer la partie'**
+  String get gameRestartCta;
 }
 
 class _AppLocalizationsDelegate
