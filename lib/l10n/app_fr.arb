@@ -699,5 +699,14 @@
   "@gameUndoCta": { "description": "Tooltip du bouton d'annulation du dernier coup" },
 
   "gameRestartCta": "Recommencer la partie",
-  "@gameRestartCta": { "description": "Tooltip du bouton de redémarrage de la partie" }
+  "@gameRestartCta": { "description": "Tooltip du bouton de redémarrage de la partie" },
+
+  "profileEditCta": "Modifier",
+  "@profileEditCta": { "description": "Libellé court du badge d'édition sur la carte de profil" },
+
+  "profileAppearanceLabel": "Apparence",
+  "@profileAppearanceLabel": { "description": "Titre de la section de sélection du thème sur le profil" },
+
+  "profileActivityTitle": "Activité",
+  "@profileActivityTitle": { "description": "Libellé de l'entrée menant à l'historique de partie" }
 }

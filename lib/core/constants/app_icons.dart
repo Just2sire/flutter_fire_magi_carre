@@ -98,6 +98,8 @@ class AppIcons {
 
   // ─── Profil ───────────────────────────────
   static const IconData camera = LucideIcons.camera;
+  static const IconData history = LucideIcons.history;
+  static const IconData edit = LucideIcons.penLine;
 
   // ─── Classement ───────────────────────────
   static const IconData crown = LucideIcons.crown;

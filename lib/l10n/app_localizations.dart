@@ -1273,6 +1273,24 @@ abstract class AppLocalizations {
   /// In fr, this message translates to:
   /// **'Recommencer la partie'**
   String get gameRestartCta;
+
+  /// Libellé court du badge d'édition sur la carte de profil
+  ///
+  /// In fr, this message translates to:
+  /// **'Modifier'**
+  String get profileEditCta;
+
+  /// Titre de la section de sélection du thème sur le profil
+  ///
+  /// In fr, this message translates to:
+  /// **'Apparence'**
+  String get profileAppearanceLabel;
+
+  /// Libellé de l'entrée menant à l'historique de partie
+  ///
+  /// In fr, this message translates to:
+  /// **'Activité'**
+  String get profileActivityTitle;
 }
 
 class _AppLocalizationsDelegate
