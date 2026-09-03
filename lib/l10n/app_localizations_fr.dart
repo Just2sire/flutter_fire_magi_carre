@@ -716,4 +716,70 @@ class AppLocalizationsFr extends AppLocalizations {
 
   @override
   String get gameDifficultyHardDescription => 'Pour les maîtres';
+
+  @override
+  String get gameLobbySelectBot => 'Choisis ton adversaire';
+
+  @override
+  String get gameDifficultyApply => 'Appliquer';
+
+  @override
+  String get gameActionUndo => 'Annuler';
+
+  @override
+  String get gameActionNew => 'Nouvelle';
+
+  @override
+  String get gameActionOptions => 'Options';
+
+  @override
+  String get gameDrawClaimTitle => 'Nul possible';
+
+  @override
+  String get gameDrawClaimRepetitionMessage =>
+      'Le même coup a été joué 3 fois. Voulez-vous accepter le nul ?';
+
+  @override
+  String gameDrawClaimNoCaptureMessage(int count) {
+    return 'Aucune capture depuis $count coups. Voulez-vous accepter le nul ?';
+  }
+
+  @override
+  String get gameDrawClaimAccept => 'Accepter le nul';
+
+  @override
+  String get gameDrawClaimDecline => 'Continuer';
+
+  @override
+  String get gameOptionsVisualSection => 'Affichage';
+
+  @override
+  String get gameOptionsMoveHints => 'Coups possibles';
+
+  @override
+  String get gameOptionsLastAiMove => 'Dernier coup de l\'IA';
+
+  @override
+  String get gameLobbyModeLocal2p => '2 Joueurs';
+
+  @override
+  String get gameLobbyModeLocal2pDescription =>
+      'Face-à-face sur le même appareil';
+
+  @override
+  String get gameLobbyLocal2pSettings => 'Configuration';
+
+  @override
+  String get gameLobbyLocal2pFlipBoard => 'Retourner le plateau';
+
+  @override
+  String get gameLobbyLocal2pTimer => 'Minuterie';
+
+  @override
+  String get gameLobbyLocal2pTimerNone => 'Sans limite';
+
+  @override
+  String gameLobbyLocal2pTimerMin(int minutes) {
+    return '$minutes min';
+  }
 }

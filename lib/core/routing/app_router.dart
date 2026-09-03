@@ -245,14 +245,16 @@ GoRouter buildRouter(Ref ref) {
                   ),
                   GoRoute(
                     path: "join/:inviteCode",
-                    pageBuilder: (context, state) => AppTransitions.pushedScreen(
-                      context: context,
-                      state: state,
-                      child: _Placeholder(
-                        title:
-                            "Rejoindre ${state.pathParameters['inviteCode']}",
-                      ),
-                    ),
+                    pageBuilder: (context, state) {
+                      return AppTransitions.pushedScreen(
+                        context: context,
+                        state: state,
+                        child: _Placeholder(
+                          title:
+                              "Rejoindre ${state.pathParameters['inviteCode']}",
+                        ),
+                      );
+                    },
                   ),
                 ],
               ),

@@ -18,6 +18,8 @@ class ClassicGameBoard extends StatelessWidget {
     this.selectedPosition,
     this.legalMoves = const [],
     this.promotionSlots = const [],
+    this.lastMove,
+    this.showLabels = false,
   });
 
   final Board board;
@@ -31,6 +33,14 @@ class ClassicGameBoard extends StatelessWidget {
 
   /// Cases où une promotion en attente peut être résolue.
   final List<Position> promotionSlots;
+
+  /// Dernier coup joué par l'IA — ses cases d'origine et de destination sont
+  /// surlignées d'un bleu subtil pour aider le joueur à suivre le jeu.
+  final Move? lastMove;
+
+  /// Affiche les labels de coordonnées algébriques (a–e, 1–5) autour du
+  /// plateau.
+  final bool showLabels;
 
   final ValueChanged<Position> onCellTap;
 
@@ -87,6 +97,22 @@ class ClassicGameBoard extends StatelessWidget {
                   for (var row = 0; row < size; row++)
                     for (var col = 0; col < size; col++)
                       _pointAt(Position(row: row, col: col), step, margin),
+                  if (showLabels) ...[
+                    // File labels (a, b, c, …) — below the bottom row
+                    for (var col = 0; col < size; col++)
+                      _CoordLabel(
+                        label: String.fromCharCode(97 + col),
+                        left: margin + col * step,
+                        top: margin + (size - 1) * step + margin * 0.35,
+                      ),
+                    // Rank labels (5, 4, 3, …) — left of each row
+                    for (var row = 0; row < size; row++)
+                      _CoordLabel(
+                        label: "${size - row}",
+                        left: margin * 0.25,
+                        top: margin + row * step,
+                      ),
+                  ],
                 ],
               ),
             );
@@ -105,6 +131,8 @@ class ClassicGameBoard extends StatelessWidget {
       isSelected: selectedPosition == pos,
       isPromotionSlot: promotionSlots.contains(pos),
       destinationMove: _destinationMoveTo(pos),
+      isLastMoveFrom: lastMove?.from == pos,
+      isLastMoveTo: lastMove?.to == pos,
       onTap: onCellTap,
     );
   }
@@ -114,6 +142,43 @@ class ClassicGameBoard extends StatelessWidget {
       if (move.to == pos) return move;
     }
     return null;
+  }
+}
+
+/// Label de coordonnée algébrique (lettre de colonne ou chiffre de rangée)
+/// positionné par son centre dans le Stack du plateau.
+class _CoordLabel extends StatelessWidget {
+  const _CoordLabel({
+    required this.label,
+    required this.left,
+    required this.top,
+  });
+
+  final String label;
+  final double left;
+  final double top;
+
+  static const double _size = 14;
+
+  @override
+  Widget build(BuildContext context) {
+    return Positioned(
+      left: left - _size / 2,
+      top: top - _size / 2,
+      width: _size,
+      height: _size,
+      child: Center(
+        child: Text(
+          label,
+          style: const TextStyle(
+            fontSize: 8,
+            fontWeight: FontWeight.w600,
+            color: AppColors.paleMint54,
+            height: 1,
+          ),
+        ),
+      ),
+    );
   }
 }
 
@@ -181,6 +246,8 @@ class _BoardPoint extends StatelessWidget {
     required this.isSelected,
     required this.isPromotionSlot,
     required this.destinationMove,
+    required this.isLastMoveFrom,
+    required this.isLastMoveTo,
     required this.onTap,
   });
 
@@ -193,6 +260,13 @@ class _BoardPoint extends StatelessWidget {
   final bool isSelected;
   final bool isPromotionSlot;
   final Move? destinationMove;
+
+  /// Case d'origine du dernier coup de l'IA.
+  final bool isLastMoveFrom;
+
+  /// Case de destination du dernier coup de l'IA.
+  final bool isLastMoveTo;
+
   final ValueChanged<Position> onTap;
 
   @override
@@ -201,6 +275,7 @@ class _BoardPoint extends StatelessWidget {
     final stoneSize = step * 0.72;
     final isHighlighted =
         isSelected || isPromotionSlot || destinationMove != null;
+    final isLastMove = isLastMoveFrom || isLastMoveTo;
 
     return Positioned(
       left: origin + position.col * step - hitSize / 2,
@@ -214,6 +289,17 @@ class _BoardPoint extends StatelessWidget {
           child: Stack(
             alignment: Alignment.center,
             children: [
+              if (isLastMove)
+                Container(
+                  width: hitSize,
+                  height: hitSize,
+                  decoration: BoxDecoration(
+                    shape: BoxShape.circle,
+                    color: isLastMoveTo
+                        ? AppColors.caseAiMoveTo
+                        : AppColors.caseAiMoveFrom,
+                  ),
+                ),
               if (isHighlighted)
                 Container(
                   width: hitSize,

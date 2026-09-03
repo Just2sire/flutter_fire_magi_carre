@@ -111,6 +111,12 @@ class AppIcons {
   static const IconData difficultyMedium = LucideIcons.circleDot;
   static const IconData difficultyHard = LucideIcons.flame;
   static const IconData undo = LucideIcons.undo2;
+  static const IconData timer = LucideIcons.timer;
+  static const IconData flipBoard = LucideIcons.rotateCcw;
+  static const IconData bullet = LucideIcons.rocket;
+  static const IconData zap = LucideIcons.zap;
+  static const IconData trophy = LucideIcons.trophy;
+  static const IconData equal = LucideIcons.equal;
 
   // ─── États & Erreurs ──────────────────────
   static const IconData offline = LucideIcons.wifiOff;

@@ -1381,6 +1381,126 @@ abstract class AppLocalizations {
   /// In fr, this message translates to:
   /// **'Pour les maîtres'**
   String get gameDifficultyHardDescription;
+
+  /// Titre de la section de sélection du bot adversaire
+  ///
+  /// In fr, this message translates to:
+  /// **'Choisis ton adversaire'**
+  String get gameLobbySelectBot;
+
+  /// Bouton de confirmation du niveau de difficulté
+  ///
+  /// In fr, this message translates to:
+  /// **'Appliquer'**
+  String get gameDifficultyApply;
+
+  /// Libellé court du bouton d'annulation du dernier coup dans la barre d'actions
+  ///
+  /// In fr, this message translates to:
+  /// **'Annuler'**
+  String get gameActionUndo;
+
+  /// Libellé court du bouton de nouvelle partie dans la barre d'actions
+  ///
+  /// In fr, this message translates to:
+  /// **'Nouvelle'**
+  String get gameActionNew;
+
+  /// Libellé court du bouton d'options dans la barre d'actions
+  ///
+  /// In fr, this message translates to:
+  /// **'Options'**
+  String get gameActionOptions;
+
+  /// Titre du dialog de proposition de nul
+  ///
+  /// In fr, this message translates to:
+  /// **'Nul possible'**
+  String get gameDrawClaimTitle;
+
+  /// Message quand le nul est proposé par répétition de coup
+  ///
+  /// In fr, this message translates to:
+  /// **'Le même coup a été joué 3 fois. Voulez-vous accepter le nul ?'**
+  String get gameDrawClaimRepetitionMessage;
+
+  /// Message quand le nul est proposé par absence de capture
+  ///
+  /// In fr, this message translates to:
+  /// **'Aucune capture depuis {count} coups. Voulez-vous accepter le nul ?'**
+  String gameDrawClaimNoCaptureMessage(int count);
+
+  /// CTA pour accepter la proposition de nul
+  ///
+  /// In fr, this message translates to:
+  /// **'Accepter le nul'**
+  String get gameDrawClaimAccept;
+
+  /// CTA pour refuser la proposition de nul et continuer à jouer
+  ///
+  /// In fr, this message translates to:
+  /// **'Continuer'**
+  String get gameDrawClaimDecline;
+
+  /// Titre de la section des options visuelles du plateau
+  ///
+  /// In fr, this message translates to:
+  /// **'Affichage'**
+  String get gameOptionsVisualSection;
+
+  /// Toggle pour afficher / masquer les coups légaux sur le plateau
+  ///
+  /// In fr, this message translates to:
+  /// **'Coups possibles'**
+  String get gameOptionsMoveHints;
+
+  /// Toggle pour afficher / masquer le surlignage du dernier coup de l'IA
+  ///
+  /// In fr, this message translates to:
+  /// **'Dernier coup de l\'IA'**
+  String get gameOptionsLastAiMove;
+
+  /// Libellé de la carte de mode multijoueur local
+  ///
+  /// In fr, this message translates to:
+  /// **'2 Joueurs'**
+  String get gameLobbyModeLocal2p;
+
+  /// Description courte du mode 2 joueurs local
+  ///
+  /// In fr, this message translates to:
+  /// **'Face-à-face sur le même appareil'**
+  String get gameLobbyModeLocal2pDescription;
+
+  /// Titre de la section de configuration du mode 2 joueurs
+  ///
+  /// In fr, this message translates to:
+  /// **'Configuration'**
+  String get gameLobbyLocal2pSettings;
+
+  /// Toggle pour pivoter le plateau entre les tours
+  ///
+  /// In fr, this message translates to:
+  /// **'Retourner le plateau'**
+  String get gameLobbyLocal2pFlipBoard;
+
+  /// Titre de la section de sélection de la durée de la minuterie
+  ///
+  /// In fr, this message translates to:
+  /// **'Minuterie'**
+  String get gameLobbyLocal2pTimer;
+
+  /// Option de minuterie : aucune limite de temps
+  ///
+  /// In fr, this message translates to:
+  /// **'Sans limite'**
+  String get gameLobbyLocal2pTimerNone;
+
+  /// Option de minuterie avec durée en minutes
+  ///
+  /// In fr, this message translates to:
+  /// **'{minutes} min'**
+  String gameLobbyLocal2pTimerMin(int minutes);
 }
 
 class _AppLocalizationsDelegate

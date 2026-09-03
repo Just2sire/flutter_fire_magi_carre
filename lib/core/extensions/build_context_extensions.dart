@@ -118,9 +118,8 @@ extension BuildContextExtensions on BuildContext {
       builder: (context) => AlertDialog(
         title: Text(
           title,
-          style: Theme.of(context).textTheme.titleLarge?.copyWith(
-            fontWeight: FontWeight.w600,
-          ),
+          style: Theme.of(context).textTheme.titleLarge
+              ?.copyWith(fontWeight: FontWeight.w600),
         ),
         content: Text(
           content,
@@ -136,15 +135,22 @@ extension BuildContextExtensions on BuildContext {
             child: Text(cancelLabel),
           ),
           AppSpacing.gapHSm,
-          ElevatedButton(
-            onPressed: () => Navigator.pop(context, true),
+          TextButton(
             style: destructive
-                ? ElevatedButton.styleFrom(
-                    backgroundColor: AppColors.semanticError,
-                  )
+                ? TextButton.styleFrom(backgroundColor: AppColors.semanticError)
                 : null,
+            onPressed: () => Navigator.pop(context, true),
             child: Text(confirmLabel),
           ),
+          // ElevatedButton(
+          //   onPressed: () => Navigator.pop(context, true),
+          //   style: destructive
+          //       ? ElevatedButton.styleFrom(
+          //           backgroundColor: AppColors.semanticError,
+          //         )
+          //       : null,
+          //   child: Text(confirmLabel),
+          // ),
         ],
       ),
     );
@@ -161,14 +167,10 @@ extension BuildContextExtensions on BuildContext {
       builder: (context) => AlertDialog(
         title: Text(
           title,
-          style: Theme.of(context).textTheme.bodyMedium?.copyWith(
-            fontWeight: FontWeight.w600,
-          ),
+          style: Theme.of(context).textTheme.bodyMedium
+              ?.copyWith(fontWeight: FontWeight.w600),
         ),
-        content: Text(
-          content,
-          style: Theme.of(context).textTheme.bodyMedium,
-        ),
+        content: Text(content, style: Theme.of(context).textTheme.bodyMedium),
         actions: [
           TextButton(
             onPressed: () => Navigator.pop(context),
