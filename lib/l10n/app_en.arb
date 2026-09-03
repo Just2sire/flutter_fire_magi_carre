@@ -421,6 +421,21 @@
   "authGuestWarning": "Guest mode — progress not saved",
   "@authGuestWarning": { "description": "Banner/chip shown when user is in guest mode" },
 
+  "authGateTitle": "Sign in to continue",
+  "@authGateTitle": { "description": "Title of the auth gate bottom sheet for guests" },
+
+  "authGateSubtitle": "Save your progress, play online, and climb the leaderboard.",
+  "@authGateSubtitle": { "description": "Subtitle of the auth gate bottom sheet" },
+
+  "authGateLoginWithEmail": "Sign in with email",
+  "@authGateLoginWithEmail": { "description": "Email login button in the gate sheet" },
+
+  "authGateCreateAccount": "Create an account",
+  "@authGateCreateAccount": { "description": "Sign-up button in the gate sheet" },
+
+  "authGateContinueAsGuest": "Continue as guest",
+  "@authGateContinueAsGuest": { "description": "Button to dismiss the gate sheet and stay as guest" },
+
   "authOnlineRequiresAccount": "An account is required to play online.",
   "@authOnlineRequiresAccount": { "description": "Blocking message when trying to access online play without account" },
 
@@ -636,5 +651,181 @@
   "@profileGuestMessage": { "description": "Message shown on /profile for a guest-mode user" },
 
   "profileGuestCta": "Sign in",
-  "@profileGuestCta": { "description": "Sign-in button shown on /profile in guest mode" }
+  "@profileGuestCta": { "description": "Sign-in button shown on /profile in guest mode" },
+
+  "@__sectionGame": {
+    "description": "━━━━ GAME — Local solo vs AI match ━━━━"
+  },
+  "gameTitle": "Local duel",
+  "@gameTitle": { "description": "Local match screen title" },
+
+  "gameAiThinking": "AI is thinking…",
+  "@gameAiThinking": { "description": "Indicator shown while the AI's move is being computed" },
+
+  "gameDifficultyTitle": "AI difficulty",
+  "@gameDifficultyTitle": { "description": "Difficulty picker title" },
+
+  "gameDifficultyEasy": "Beginner",
+  "@gameDifficultyEasy": { "description": "Easy difficulty level label" },
+
+  "gameDifficultyMedium": "Intermediate",
+  "@gameDifficultyMedium": { "description": "Medium difficulty level label" },
+
+  "gameDifficultyHard": "Expert",
+  "@gameDifficultyHard": { "description": "Hard difficulty level label" },
+
+  "gameOverWhiteWinsTitle": "Victory!",
+  "@gameOverWhiteWinsTitle": { "description": "Game-over dialog title — the player wins" },
+
+  "gameOverWhiteWinsMessage": "You won the match.",
+  "@gameOverWhiteWinsMessage": { "description": "Game-over dialog message — the player wins" },
+
+  "gameOverBlackWinsTitle": "Defeat",
+  "@gameOverBlackWinsTitle": { "description": "Game-over dialog title — the AI wins" },
+
+  "gameOverBlackWinsMessage": "The AI won this match.",
+  "@gameOverBlackWinsMessage": { "description": "Game-over dialog message — the AI wins" },
+
+  "gameOverDrawTitle": "Draw",
+  "@gameOverDrawTitle": { "description": "Game-over dialog title — draw" },
+
+  "gameOverDrawMessage": "Neither player could win.",
+  "@gameOverDrawMessage": { "description": "Game-over dialog message — draw" },
+
+  "gameNewGameCta": "New match",
+  "@gameNewGameCta": { "description": "Button to start a new match" },
+
+  "gameQuitCta": "Quit",
+  "@gameQuitCta": { "description": "Button to leave the match screen" },
+
+  "gamePlayerBlack": "Black",
+  "@gamePlayerBlack": { "description": "Black side's name (AI)" },
+
+  "gamePlayerWhite": "White",
+  "@gamePlayerWhite": { "description": "White side's name (player)" },
+
+  "gamePiecesCaptured": "{count, plural, =0{0 piece captured} =1{1 piece captured} other{{count} pieces captured}}",
+  "@gamePiecesCaptured": {
+    "description": "Number of pieces captured by a player",
+    "placeholders": { "count": { "type": "int" } }
+  },
+
+  "gameUndoCta": "Undo last move",
+  "@gameUndoCta": { "description": "Tooltip for the undo-last-move button" },
+
+  "gameRestartCta": "Restart match",
+  "@gameRestartCta": { "description": "Tooltip for the restart-match button" },
+
+  "profileEditCta": "Edit",
+  "@profileEditCta": { "description": "Short label for the edit badge on the profile hero card" },
+
+  "profileAppearanceLabel": "Appearance",
+  "@profileAppearanceLabel": { "description": "Title of the theme-picker section on the profile page" },
+
+  "profileActivityTitle": "Activity",
+  "@profileActivityTitle": { "description": "Label for the entry leading to match history" },
+
+  "gameLobbyTitle": "New match",
+  "@gameLobbyTitle": { "description": "Title of the match configuration page" },
+
+  "gameLobbyModeSolo": "Solo",
+  "@gameLobbyModeSolo": { "description": "Solo mode against AI" },
+
+  "gameLobbyModeSoloDescription": "Play against the AI",
+  "@gameLobbyModeSoloDescription": { "description": "Short description of solo mode" },
+
+  "gameLobbyModeOnline": "Online",
+  "@gameLobbyModeOnline": { "description": "Online multiplayer mode" },
+
+  "gameLobbyModeOnlineDescription": "Play against a friend",
+  "@gameLobbyModeOnlineDescription": { "description": "Short description of online mode" },
+
+  "gameLobbyAiSection": "AI level",
+  "@gameLobbyAiSection": { "description": "Title of the AI difficulty selection section" },
+
+  "gameLobbyStartCta": "Start match",
+  "@gameLobbyStartCta": { "description": "Button to start the match after configuration" },
+
+  "gameLobbyComingSoon": "Coming soon",
+  "@gameLobbyComingSoon": { "description": "Badge shown on features not yet available" },
+
+  "gameLobbyInviteTitle": "Invite a friend",
+  "@gameLobbyInviteTitle": { "description": "Title of the invite section in online mode" },
+
+  "gameLobbyInviteSubtitle": "Share a link to play together",
+  "@gameLobbyInviteSubtitle": { "description": "Description of the invite-by-link feature" },
+
+  "gameLobbyFriendsTitle": "Online friends",
+  "@gameLobbyFriendsTitle": { "description": "Title of the connected friends section in online mode" },
+
+  "gameLobbyFriendsEmpty": "No friends online right now",
+  "@gameLobbyFriendsEmpty": { "description": "Message shown when no friends are online" },
+
+  "gameDifficultyEasyDescription": "Perfect for beginners",
+  "@gameDifficultyEasyDescription": { "description": "Description of the easy difficulty" },
+
+  "gameDifficultyMediumDescription": "A real challenge",
+  "@gameDifficultyMediumDescription": { "description": "Description of the medium difficulty" },
+
+  "gameDifficultyHardDescription": "For the masters",
+  "@gameDifficultyHardDescription": { "description": "Description of the hard difficulty" },
+
+  "gameLobbySelectBot": "Choose your opponent",
+  "@gameLobbySelectBot": { "description": "Section header for bot opponent selection" },
+
+  "gameDifficultyApply": "Apply",
+  "@gameDifficultyApply": { "description": "Confirm button for the difficulty selection sheet" },
+
+  "gameActionUndo": "Undo",
+  "@gameActionUndo": { "description": "Short label for the undo button in the game action bar" },
+
+  "gameActionNew": "New",
+  "@gameActionNew": { "description": "Short label for the new game button in the game action bar" },
+
+  "gameActionOptions": "Options",
+
+  "gameDrawClaimTitle": "Draw available",
+  "@gameDrawClaimTitle": { "description": "Title of the draw-claim dialog" },
+  "gameDrawClaimRepetitionMessage": "The same move was played 3 times. Accept a draw?",
+  "@gameDrawClaimRepetitionMessage": { "description": "Message when draw is offered by move repetition" },
+  "gameDrawClaimNoCaptureMessage": "No capture in {count} moves. Accept a draw?",
+  "@gameDrawClaimNoCaptureMessage": {
+    "description": "Message when draw is offered by no-capture streak",
+    "placeholders": { "count": { "type": "int" } }
+  },
+  "gameDrawClaimAccept": "Accept draw",
+  "@gameDrawClaimAccept": { "description": "CTA to accept the draw offer" },
+  "gameDrawClaimDecline": "Continue",
+  "@gameDrawClaimDecline": { "description": "CTA to decline the draw offer and keep playing" },
+
+  "@__sectionGameOptions": {
+    "description": "━━━━ GAME OPTIONS — visual toggles ━━━━"
+  },
+  "gameOptionsVisualSection": "Display",
+  "@gameOptionsVisualSection": { "description": "Section title for board visual options" },
+  "gameOptionsMoveHints": "Legal move hints",
+  "@gameOptionsMoveHints": { "description": "Toggle to show / hide legal move highlights on the board" },
+  "gameOptionsLastAiMove": "Last AI move",
+  "@gameOptionsLastAiMove": { "description": "Toggle to show / hide the last AI move highlight on the board" },
+
+  "@__sectionLocal2P": {
+    "description": "━━━━ LOCAL 2-PLAYER MODE ━━━━"
+  },
+  "gameLobbyModeLocal2p": "2 Players",
+  "@gameLobbyModeLocal2p": { "description": "Label for the local multiplayer mode card" },
+  "gameLobbyModeLocal2pDescription": "Face off on the same device",
+  "@gameLobbyModeLocal2pDescription": { "description": "Short description for the local 2-player mode" },
+  "gameLobbyLocal2pSettings": "Settings",
+  "@gameLobbyLocal2pSettings": { "description": "Section title for local 2-player configuration" },
+  "gameLobbyLocal2pFlipBoard": "Flip board between turns",
+  "@gameLobbyLocal2pFlipBoard": { "description": "Toggle to rotate the board 180° between turns" },
+  "gameLobbyLocal2pTimer": "Chess clock",
+  "@gameLobbyLocal2pTimer": { "description": "Section title for timer duration selection" },
+  "gameLobbyLocal2pTimerNone": "No limit",
+  "@gameLobbyLocal2pTimerNone": { "description": "Timer option: no time limit" },
+  "gameLobbyLocal2pTimerMin": "{minutes} min",
+  "@gameLobbyLocal2pTimerMin": {
+    "description": "Timer option chip label with duration in minutes",
+    "placeholders": { "minutes": { "type": "int" } }
+  }
 }

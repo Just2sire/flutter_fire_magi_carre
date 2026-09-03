@@ -123,7 +123,7 @@ class AppScaffold extends ConsumerWidget {
                 // left/right are correct in RTL locales.
                 final resolvedPadding = padding.resolve(
                   Directionality.of(context),
-                );
+                ).copyWith(top: 0);
 
                 // The SafeArea already handled the system insets, so we only
                 // apply the caller's decorative padding here. Behind a bottom

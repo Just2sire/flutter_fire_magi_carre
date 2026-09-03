@@ -240,6 +240,7 @@ class _LoginPageState extends ConsumerState<LoginPage> {
     );
     if (confirmed == true && mounted) {
       ref.read(authProvider.notifier).skipAuth();
+      if (mounted) context.goHome();
     }
   }
 

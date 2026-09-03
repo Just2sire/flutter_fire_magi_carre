@@ -9,10 +9,8 @@ import "../../../../shared/presentation/providers/index.dart"
     show appThemeModeProvider, appLocaleProvider;
 import "../../../../shared/presentation/widgets/index.dart"
     show AppScaffold, AppTopbar;
-import "../../../../shared/presentation/widgets/material/index.dart"
-    show AppBottomSheetHandleBar;
 import "../../../../shared/presentation/widgets/others/index.dart"
-    show AppSectionLabel, AppGroupedCard, AppTileRow;
+    show AppSectionLabel, AppGroupedCard, AppTileRow, AppOptionsSheet;
 import "../../../auth/presentation/providers/auth_providers.dart";
 
 /// Écran des paramètres — apparence, langue et gestion du compte.
@@ -106,7 +104,7 @@ class SettingsPage extends ConsumerWidget {
     final l10n = context.l10n;
     final selected = await showModalBottomSheet<ThemeMode>(
       context: context,
-      builder: (sheetContext) => _OptionsSheet<ThemeMode>(
+      builder: (sheetContext) => AppOptionsSheet<ThemeMode>(
         title: l10n.settingsTheme,
         current: current,
         options: [
@@ -141,7 +139,7 @@ class SettingsPage extends ConsumerWidget {
     final l10n = context.l10n;
     final selected = await showModalBottomSheet<Locale>(
       context: context,
-      builder: (sheetContext) => _OptionsSheet<Locale>(
+      builder: (sheetContext) => AppOptionsSheet<Locale>(
         title: l10n.settingsLanguage,
         current: current,
         options: [
@@ -174,46 +172,5 @@ class SettingsPage extends ConsumerWidget {
     if (confirmed == true) {
       await ref.read(authProvider.notifier).logout();
     }
-  }
-}
-
-/// Bottom sheet de sélection générique (thème, langue…).
-class _OptionsSheet<T> extends StatelessWidget {
-  const _OptionsSheet({
-    required this.title,
-    required this.current,
-    required this.options,
-  });
-
-  final String title;
-  final T current;
-  final List<({T value, String label, IconData icon})> options;
-
-  @override
-  Widget build(BuildContext context) {
-    final cs = context.colorScheme;
-
-    return SafeArea(
-      child: Column(
-        mainAxisSize: MainAxisSize.min,
-        children: [
-          const AppBottomSheetHandleBar(),
-          Padding(
-            padding: const EdgeInsets.all(AppSpacing.md),
-            child: Text(title, style: context.textTheme.titleMedium),
-          ),
-          for (final option in options)
-            ListTile(
-              leading: Icon(option.icon, color: cs.primary),
-              title: Text(option.label),
-              trailing: option.value == current
-                  ? Icon(AppIcons.check, color: cs.primary)
-                  : null,
-              onTap: () => Navigator.of(context).pop(option.value),
-            ),
-          AppSpacing.gapVSm,
-        ],
-      ),
-    );
   }
 }

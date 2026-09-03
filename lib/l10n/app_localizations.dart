@@ -818,6 +818,36 @@ abstract class AppLocalizations {
   /// **'Mode invité — progression non sauvegardée'**
   String get authGuestWarning;
 
+  /// Titre du bottom sheet d'invite à la connexion pour les invités
+  ///
+  /// In fr, this message translates to:
+  /// **'Connecte-toi pour continuer'**
+  String get authGateTitle;
+
+  /// Sous-titre du bottom sheet d'invite à la connexion
+  ///
+  /// In fr, this message translates to:
+  /// **'Sauvegarde ta progression, joue en ligne et grimpe au classement.'**
+  String get authGateSubtitle;
+
+  /// Bouton de connexion par e-mail dans le gate sheet
+  ///
+  /// In fr, this message translates to:
+  /// **'Se connecter par e-mail'**
+  String get authGateLoginWithEmail;
+
+  /// Bouton d'inscription dans le gate sheet
+  ///
+  /// In fr, this message translates to:
+  /// **'Créer un compte'**
+  String get authGateCreateAccount;
+
+  /// Bouton pour fermer le gate sheet et rester invité
+  ///
+  /// In fr, this message translates to:
+  /// **'Continuer en invité'**
+  String get authGateContinueAsGuest;
+
   /// Message bloquant quand on tente d'accéder au jeu en ligne sans compte
   ///
   /// In fr, this message translates to:
@@ -1159,6 +1189,348 @@ abstract class AppLocalizations {
   /// In fr, this message translates to:
   /// **'Se connecter'**
   String get profileGuestCta;
+
+  /// Titre de l'écran de partie locale
+  ///
+  /// In fr, this message translates to:
+  /// **'Duel local'**
+  String get gameTitle;
+
+  /// Indicateur affiché pendant le calcul du coup de l'IA
+  ///
+  /// In fr, this message translates to:
+  /// **'L\'IA réfléchit…'**
+  String get gameAiThinking;
+
+  /// Titre du sélecteur de difficulté
+  ///
+  /// In fr, this message translates to:
+  /// **'Difficulté de l\'IA'**
+  String get gameDifficultyTitle;
+
+  /// Libellé du niveau de difficulté facile
+  ///
+  /// In fr, this message translates to:
+  /// **'Débutant'**
+  String get gameDifficultyEasy;
+
+  /// Libellé du niveau de difficulté moyen
+  ///
+  /// In fr, this message translates to:
+  /// **'Intermédiaire'**
+  String get gameDifficultyMedium;
+
+  /// Libellé du niveau de difficulté difficile
+  ///
+  /// In fr, this message translates to:
+  /// **'Expert'**
+  String get gameDifficultyHard;
+
+  /// Titre du dialogue de fin de partie — le joueur gagne
+  ///
+  /// In fr, this message translates to:
+  /// **'Victoire !'**
+  String get gameOverWhiteWinsTitle;
+
+  /// Message du dialogue de fin de partie — le joueur gagne
+  ///
+  /// In fr, this message translates to:
+  /// **'Tu as gagné la partie.'**
+  String get gameOverWhiteWinsMessage;
+
+  /// Titre du dialogue de fin de partie — l'IA gagne
+  ///
+  /// In fr, this message translates to:
+  /// **'Défaite'**
+  String get gameOverBlackWinsTitle;
+
+  /// Message du dialogue de fin de partie — l'IA gagne
+  ///
+  /// In fr, this message translates to:
+  /// **'L\'IA a gagné cette partie.'**
+  String get gameOverBlackWinsMessage;
+
+  /// Titre du dialogue de fin de partie — match nul
+  ///
+  /// In fr, this message translates to:
+  /// **'Match nul'**
+  String get gameOverDrawTitle;
+
+  /// Message du dialogue de fin de partie — match nul
+  ///
+  /// In fr, this message translates to:
+  /// **'Aucun joueur n\'a pu l\'emporter.'**
+  String get gameOverDrawMessage;
+
+  /// Bouton pour relancer une nouvelle partie
+  ///
+  /// In fr, this message translates to:
+  /// **'Nouvelle partie'**
+  String get gameNewGameCta;
+
+  /// Bouton pour quitter l'écran de partie
+  ///
+  /// In fr, this message translates to:
+  /// **'Quitter'**
+  String get gameQuitCta;
+
+  /// Nom du camp noir (IA)
+  ///
+  /// In fr, this message translates to:
+  /// **'Noirs'**
+  String get gamePlayerBlack;
+
+  /// Nom du camp blanc (joueur)
+  ///
+  /// In fr, this message translates to:
+  /// **'Blancs'**
+  String get gamePlayerWhite;
+
+  /// Nombre de pions capturés par un joueur
+  ///
+  /// In fr, this message translates to:
+  /// **'{count, plural, =0{0 pion capturé} =1{1 pion capturé} other{{count} pions capturés}}'**
+  String gamePiecesCaptured(int count);
+
+  /// Tooltip du bouton d'annulation du dernier coup
+  ///
+  /// In fr, this message translates to:
+  /// **'Annuler le dernier coup'**
+  String get gameUndoCta;
+
+  /// Tooltip du bouton de redémarrage de la partie
+  ///
+  /// In fr, this message translates to:
+  /// **'Recommencer la partie'**
+  String get gameRestartCta;
+
+  /// Libellé court du badge d'édition sur la carte de profil
+  ///
+  /// In fr, this message translates to:
+  /// **'Modifier'**
+  String get profileEditCta;
+
+  /// Titre de la section de sélection du thème sur le profil
+  ///
+  /// In fr, this message translates to:
+  /// **'Apparence'**
+  String get profileAppearanceLabel;
+
+  /// Libellé de l'entrée menant à l'historique de partie
+  ///
+  /// In fr, this message translates to:
+  /// **'Activité'**
+  String get profileActivityTitle;
+
+  /// Titre de la page de configuration de partie
+  ///
+  /// In fr, this message translates to:
+  /// **'Nouvelle partie'**
+  String get gameLobbyTitle;
+
+  /// Mode solo contre l'IA
+  ///
+  /// In fr, this message translates to:
+  /// **'Solo'**
+  String get gameLobbyModeSolo;
+
+  /// Description courte du mode solo
+  ///
+  /// In fr, this message translates to:
+  /// **'Joue contre l\'IA'**
+  String get gameLobbyModeSoloDescription;
+
+  /// Mode multijoueur en ligne
+  ///
+  /// In fr, this message translates to:
+  /// **'En ligne'**
+  String get gameLobbyModeOnline;
+
+  /// Description courte du mode en ligne
+  ///
+  /// In fr, this message translates to:
+  /// **'Joue contre un ami'**
+  String get gameLobbyModeOnlineDescription;
+
+  /// Titre de la section de sélection du niveau de l'IA
+  ///
+  /// In fr, this message translates to:
+  /// **'Niveau de l\'IA'**
+  String get gameLobbyAiSection;
+
+  /// Bouton pour démarrer la partie après la configuration
+  ///
+  /// In fr, this message translates to:
+  /// **'Lancer la partie'**
+  String get gameLobbyStartCta;
+
+  /// Badge affiché sur les fonctionnalités non encore disponibles
+  ///
+  /// In fr, this message translates to:
+  /// **'Bientôt'**
+  String get gameLobbyComingSoon;
+
+  /// Titre de la section invitation dans le mode en ligne
+  ///
+  /// In fr, this message translates to:
+  /// **'Inviter un ami'**
+  String get gameLobbyInviteTitle;
+
+  /// Description de la fonctionnalité d'invitation par lien
+  ///
+  /// In fr, this message translates to:
+  /// **'Partage un lien pour jouer ensemble'**
+  String get gameLobbyInviteSubtitle;
+
+  /// Titre de la section amis connectés dans le mode en ligne
+  ///
+  /// In fr, this message translates to:
+  /// **'Amis en ligne'**
+  String get gameLobbyFriendsTitle;
+
+  /// Message affiché quand aucun ami n'est en ligne
+  ///
+  /// In fr, this message translates to:
+  /// **'Aucun ami en ligne pour l\'instant'**
+  String get gameLobbyFriendsEmpty;
+
+  /// Description du niveau facile
+  ///
+  /// In fr, this message translates to:
+  /// **'Parfait pour débuter'**
+  String get gameDifficultyEasyDescription;
+
+  /// Description du niveau moyen
+  ///
+  /// In fr, this message translates to:
+  /// **'Un vrai défi'**
+  String get gameDifficultyMediumDescription;
+
+  /// Description du niveau difficile
+  ///
+  /// In fr, this message translates to:
+  /// **'Pour les maîtres'**
+  String get gameDifficultyHardDescription;
+
+  /// Titre de la section de sélection du bot adversaire
+  ///
+  /// In fr, this message translates to:
+  /// **'Choisis ton adversaire'**
+  String get gameLobbySelectBot;
+
+  /// Bouton de confirmation du niveau de difficulté
+  ///
+  /// In fr, this message translates to:
+  /// **'Appliquer'**
+  String get gameDifficultyApply;
+
+  /// Libellé court du bouton d'annulation du dernier coup dans la barre d'actions
+  ///
+  /// In fr, this message translates to:
+  /// **'Annuler'**
+  String get gameActionUndo;
+
+  /// Libellé court du bouton de nouvelle partie dans la barre d'actions
+  ///
+  /// In fr, this message translates to:
+  /// **'Nouvelle'**
+  String get gameActionNew;
+
+  /// Libellé court du bouton d'options dans la barre d'actions
+  ///
+  /// In fr, this message translates to:
+  /// **'Options'**
+  String get gameActionOptions;
+
+  /// Titre du dialog de proposition de nul
+  ///
+  /// In fr, this message translates to:
+  /// **'Nul possible'**
+  String get gameDrawClaimTitle;
+
+  /// Message quand le nul est proposé par répétition de coup
+  ///
+  /// In fr, this message translates to:
+  /// **'Le même coup a été joué 3 fois. Voulez-vous accepter le nul ?'**
+  String get gameDrawClaimRepetitionMessage;
+
+  /// Message quand le nul est proposé par absence de capture
+  ///
+  /// In fr, this message translates to:
+  /// **'Aucune capture depuis {count} coups. Voulez-vous accepter le nul ?'**
+  String gameDrawClaimNoCaptureMessage(int count);
+
+  /// CTA pour accepter la proposition de nul
+  ///
+  /// In fr, this message translates to:
+  /// **'Accepter le nul'**
+  String get gameDrawClaimAccept;
+
+  /// CTA pour refuser la proposition de nul et continuer à jouer
+  ///
+  /// In fr, this message translates to:
+  /// **'Continuer'**
+  String get gameDrawClaimDecline;
+
+  /// Titre de la section des options visuelles du plateau
+  ///
+  /// In fr, this message translates to:
+  /// **'Affichage'**
+  String get gameOptionsVisualSection;
+
+  /// Toggle pour afficher / masquer les coups légaux sur le plateau
+  ///
+  /// In fr, this message translates to:
+  /// **'Coups possibles'**
+  String get gameOptionsMoveHints;
+
+  /// Toggle pour afficher / masquer le surlignage du dernier coup de l'IA
+  ///
+  /// In fr, this message translates to:
+  /// **'Dernier coup de l\'IA'**
+  String get gameOptionsLastAiMove;
+
+  /// Libellé de la carte de mode multijoueur local
+  ///
+  /// In fr, this message translates to:
+  /// **'2 Joueurs'**
+  String get gameLobbyModeLocal2p;
+
+  /// Description courte du mode 2 joueurs local
+  ///
+  /// In fr, this message translates to:
+  /// **'Face-à-face sur le même appareil'**
+  String get gameLobbyModeLocal2pDescription;
+
+  /// Titre de la section de configuration du mode 2 joueurs
+  ///
+  /// In fr, this message translates to:
+  /// **'Configuration'**
+  String get gameLobbyLocal2pSettings;
+
+  /// Toggle pour pivoter le plateau entre les tours
+  ///
+  /// In fr, this message translates to:
+  /// **'Retourner le plateau'**
+  String get gameLobbyLocal2pFlipBoard;
+
+  /// Titre de la section de sélection de la durée de la minuterie
+  ///
+  /// In fr, this message translates to:
+  /// **'Minuterie'**
+  String get gameLobbyLocal2pTimer;
+
+  /// Option de minuterie : aucune limite de temps
+  ///
+  /// In fr, this message translates to:
+  /// **'Sans limite'**
+  String get gameLobbyLocal2pTimerNone;
+
+  /// Option de minuterie avec durée en minutes
+  ///
+  /// In fr, this message translates to:
+  /// **'{minutes} min'**
+  String gameLobbyLocal2pTimerMin(int minutes);
 }
 
 class _AppLocalizationsDelegate

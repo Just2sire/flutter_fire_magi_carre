@@ -406,6 +406,22 @@ class AppLocalizationsEn extends AppLocalizations {
   String get authGuestWarning => 'Guest mode — progress not saved';
 
   @override
+  String get authGateTitle => 'Sign in to continue';
+
+  @override
+  String get authGateSubtitle =>
+      'Save your progress, play online, and climb the leaderboard.';
+
+  @override
+  String get authGateLoginWithEmail => 'Sign in with email';
+
+  @override
+  String get authGateCreateAccount => 'Create an account';
+
+  @override
+  String get authGateContinueAsGuest => 'Continue as guest';
+
+  @override
   String get authOnlineRequiresAccount =>
       'An account is required to play online.';
 
@@ -589,4 +605,189 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get profileGuestCta => 'Sign in';
+
+  @override
+  String get gameTitle => 'Local duel';
+
+  @override
+  String get gameAiThinking => 'AI is thinking…';
+
+  @override
+  String get gameDifficultyTitle => 'AI difficulty';
+
+  @override
+  String get gameDifficultyEasy => 'Beginner';
+
+  @override
+  String get gameDifficultyMedium => 'Intermediate';
+
+  @override
+  String get gameDifficultyHard => 'Expert';
+
+  @override
+  String get gameOverWhiteWinsTitle => 'Victory!';
+
+  @override
+  String get gameOverWhiteWinsMessage => 'You won the match.';
+
+  @override
+  String get gameOverBlackWinsTitle => 'Defeat';
+
+  @override
+  String get gameOverBlackWinsMessage => 'The AI won this match.';
+
+  @override
+  String get gameOverDrawTitle => 'Draw';
+
+  @override
+  String get gameOverDrawMessage => 'Neither player could win.';
+
+  @override
+  String get gameNewGameCta => 'New match';
+
+  @override
+  String get gameQuitCta => 'Quit';
+
+  @override
+  String get gamePlayerBlack => 'Black';
+
+  @override
+  String get gamePlayerWhite => 'White';
+
+  @override
+  String gamePiecesCaptured(int count) {
+    String _temp0 = intl.Intl.pluralLogic(
+      count,
+      locale: localeName,
+      other: '$count pieces captured',
+      one: '1 piece captured',
+      zero: '0 piece captured',
+    );
+    return '$_temp0';
+  }
+
+  @override
+  String get gameUndoCta => 'Undo last move';
+
+  @override
+  String get gameRestartCta => 'Restart match';
+
+  @override
+  String get profileEditCta => 'Edit';
+
+  @override
+  String get profileAppearanceLabel => 'Appearance';
+
+  @override
+  String get profileActivityTitle => 'Activity';
+
+  @override
+  String get gameLobbyTitle => 'New match';
+
+  @override
+  String get gameLobbyModeSolo => 'Solo';
+
+  @override
+  String get gameLobbyModeSoloDescription => 'Play against the AI';
+
+  @override
+  String get gameLobbyModeOnline => 'Online';
+
+  @override
+  String get gameLobbyModeOnlineDescription => 'Play against a friend';
+
+  @override
+  String get gameLobbyAiSection => 'AI level';
+
+  @override
+  String get gameLobbyStartCta => 'Start match';
+
+  @override
+  String get gameLobbyComingSoon => 'Coming soon';
+
+  @override
+  String get gameLobbyInviteTitle => 'Invite a friend';
+
+  @override
+  String get gameLobbyInviteSubtitle => 'Share a link to play together';
+
+  @override
+  String get gameLobbyFriendsTitle => 'Online friends';
+
+  @override
+  String get gameLobbyFriendsEmpty => 'No friends online right now';
+
+  @override
+  String get gameDifficultyEasyDescription => 'Perfect for beginners';
+
+  @override
+  String get gameDifficultyMediumDescription => 'A real challenge';
+
+  @override
+  String get gameDifficultyHardDescription => 'For the masters';
+
+  @override
+  String get gameLobbySelectBot => 'Choose your opponent';
+
+  @override
+  String get gameDifficultyApply => 'Apply';
+
+  @override
+  String get gameActionUndo => 'Undo';
+
+  @override
+  String get gameActionNew => 'New';
+
+  @override
+  String get gameActionOptions => 'Options';
+
+  @override
+  String get gameDrawClaimTitle => 'Draw available';
+
+  @override
+  String get gameDrawClaimRepetitionMessage =>
+      'The same move was played 3 times. Accept a draw?';
+
+  @override
+  String gameDrawClaimNoCaptureMessage(int count) {
+    return 'No capture in $count moves. Accept a draw?';
+  }
+
+  @override
+  String get gameDrawClaimAccept => 'Accept draw';
+
+  @override
+  String get gameDrawClaimDecline => 'Continue';
+
+  @override
+  String get gameOptionsVisualSection => 'Display';
+
+  @override
+  String get gameOptionsMoveHints => 'Legal move hints';
+
+  @override
+  String get gameOptionsLastAiMove => 'Last AI move';
+
+  @override
+  String get gameLobbyModeLocal2p => '2 Players';
+
+  @override
+  String get gameLobbyModeLocal2pDescription => 'Face off on the same device';
+
+  @override
+  String get gameLobbyLocal2pSettings => 'Settings';
+
+  @override
+  String get gameLobbyLocal2pFlipBoard => 'Flip board between turns';
+
+  @override
+  String get gameLobbyLocal2pTimer => 'Chess clock';
+
+  @override
+  String get gameLobbyLocal2pTimerNone => 'No limit';
+
+  @override
+  String gameLobbyLocal2pTimerMin(int minutes) {
+    return '$minutes min';
+  }
 }

@@ -410,6 +410,22 @@ class AppLocalizationsFr extends AppLocalizations {
   String get authGuestWarning => 'Mode invité — progression non sauvegardée';
 
   @override
+  String get authGateTitle => 'Connecte-toi pour continuer';
+
+  @override
+  String get authGateSubtitle =>
+      'Sauvegarde ta progression, joue en ligne et grimpe au classement.';
+
+  @override
+  String get authGateLoginWithEmail => 'Se connecter par e-mail';
+
+  @override
+  String get authGateCreateAccount => 'Créer un compte';
+
+  @override
+  String get authGateContinueAsGuest => 'Continuer en invité';
+
+  @override
   String get authOnlineRequiresAccount =>
       'Un compte est requis pour jouer en ligne.';
 
@@ -596,4 +612,190 @@ class AppLocalizationsFr extends AppLocalizations {
 
   @override
   String get profileGuestCta => 'Se connecter';
+
+  @override
+  String get gameTitle => 'Duel local';
+
+  @override
+  String get gameAiThinking => 'L\'IA réfléchit…';
+
+  @override
+  String get gameDifficultyTitle => 'Difficulté de l\'IA';
+
+  @override
+  String get gameDifficultyEasy => 'Débutant';
+
+  @override
+  String get gameDifficultyMedium => 'Intermédiaire';
+
+  @override
+  String get gameDifficultyHard => 'Expert';
+
+  @override
+  String get gameOverWhiteWinsTitle => 'Victoire !';
+
+  @override
+  String get gameOverWhiteWinsMessage => 'Tu as gagné la partie.';
+
+  @override
+  String get gameOverBlackWinsTitle => 'Défaite';
+
+  @override
+  String get gameOverBlackWinsMessage => 'L\'IA a gagné cette partie.';
+
+  @override
+  String get gameOverDrawTitle => 'Match nul';
+
+  @override
+  String get gameOverDrawMessage => 'Aucun joueur n\'a pu l\'emporter.';
+
+  @override
+  String get gameNewGameCta => 'Nouvelle partie';
+
+  @override
+  String get gameQuitCta => 'Quitter';
+
+  @override
+  String get gamePlayerBlack => 'Noirs';
+
+  @override
+  String get gamePlayerWhite => 'Blancs';
+
+  @override
+  String gamePiecesCaptured(int count) {
+    String _temp0 = intl.Intl.pluralLogic(
+      count,
+      locale: localeName,
+      other: '$count pions capturés',
+      one: '1 pion capturé',
+      zero: '0 pion capturé',
+    );
+    return '$_temp0';
+  }
+
+  @override
+  String get gameUndoCta => 'Annuler le dernier coup';
+
+  @override
+  String get gameRestartCta => 'Recommencer la partie';
+
+  @override
+  String get profileEditCta => 'Modifier';
+
+  @override
+  String get profileAppearanceLabel => 'Apparence';
+
+  @override
+  String get profileActivityTitle => 'Activité';
+
+  @override
+  String get gameLobbyTitle => 'Nouvelle partie';
+
+  @override
+  String get gameLobbyModeSolo => 'Solo';
+
+  @override
+  String get gameLobbyModeSoloDescription => 'Joue contre l\'IA';
+
+  @override
+  String get gameLobbyModeOnline => 'En ligne';
+
+  @override
+  String get gameLobbyModeOnlineDescription => 'Joue contre un ami';
+
+  @override
+  String get gameLobbyAiSection => 'Niveau de l\'IA';
+
+  @override
+  String get gameLobbyStartCta => 'Lancer la partie';
+
+  @override
+  String get gameLobbyComingSoon => 'Bientôt';
+
+  @override
+  String get gameLobbyInviteTitle => 'Inviter un ami';
+
+  @override
+  String get gameLobbyInviteSubtitle => 'Partage un lien pour jouer ensemble';
+
+  @override
+  String get gameLobbyFriendsTitle => 'Amis en ligne';
+
+  @override
+  String get gameLobbyFriendsEmpty => 'Aucun ami en ligne pour l\'instant';
+
+  @override
+  String get gameDifficultyEasyDescription => 'Parfait pour débuter';
+
+  @override
+  String get gameDifficultyMediumDescription => 'Un vrai défi';
+
+  @override
+  String get gameDifficultyHardDescription => 'Pour les maîtres';
+
+  @override
+  String get gameLobbySelectBot => 'Choisis ton adversaire';
+
+  @override
+  String get gameDifficultyApply => 'Appliquer';
+
+  @override
+  String get gameActionUndo => 'Annuler';
+
+  @override
+  String get gameActionNew => 'Nouvelle';
+
+  @override
+  String get gameActionOptions => 'Options';
+
+  @override
+  String get gameDrawClaimTitle => 'Nul possible';
+
+  @override
+  String get gameDrawClaimRepetitionMessage =>
+      'Le même coup a été joué 3 fois. Voulez-vous accepter le nul ?';
+
+  @override
+  String gameDrawClaimNoCaptureMessage(int count) {
+    return 'Aucune capture depuis $count coups. Voulez-vous accepter le nul ?';
+  }
+
+  @override
+  String get gameDrawClaimAccept => 'Accepter le nul';
+
+  @override
+  String get gameDrawClaimDecline => 'Continuer';
+
+  @override
+  String get gameOptionsVisualSection => 'Affichage';
+
+  @override
+  String get gameOptionsMoveHints => 'Coups possibles';
+
+  @override
+  String get gameOptionsLastAiMove => 'Dernier coup de l\'IA';
+
+  @override
+  String get gameLobbyModeLocal2p => '2 Joueurs';
+
+  @override
+  String get gameLobbyModeLocal2pDescription =>
+      'Face-à-face sur le même appareil';
+
+  @override
+  String get gameLobbyLocal2pSettings => 'Configuration';
+
+  @override
+  String get gameLobbyLocal2pFlipBoard => 'Retourner le plateau';
+
+  @override
+  String get gameLobbyLocal2pTimer => 'Minuterie';
+
+  @override
+  String get gameLobbyLocal2pTimerNone => 'Sans limite';
+
+  @override
+  String gameLobbyLocal2pTimerMin(int minutes) {
+    return '$minutes min';
+  }
 }

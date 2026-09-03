@@ -421,6 +421,21 @@
   "authGuestWarning": "Mode invité — progression non sauvegardée",
   "@authGuestWarning": { "description": "Bannière/chip affichée quand l'utilisateur est en mode invité" },
 
+  "authGateTitle": "Connecte-toi pour continuer",
+  "@authGateTitle": { "description": "Titre du bottom sheet d'invite à la connexion pour les invités" },
+
+  "authGateSubtitle": "Sauvegarde ta progression, joue en ligne et grimpe au classement.",
+  "@authGateSubtitle": { "description": "Sous-titre du bottom sheet d'invite à la connexion" },
+
+  "authGateLoginWithEmail": "Se connecter par e-mail",
+  "@authGateLoginWithEmail": { "description": "Bouton de connexion par e-mail dans le gate sheet" },
+
+  "authGateCreateAccount": "Créer un compte",
+  "@authGateCreateAccount": { "description": "Bouton d'inscription dans le gate sheet" },
+
+  "authGateContinueAsGuest": "Continuer en invité",
+  "@authGateContinueAsGuest": { "description": "Bouton pour fermer le gate sheet et rester invité" },
+
   "authOnlineRequiresAccount": "Un compte est requis pour jouer en ligne.",
   "@authOnlineRequiresAccount": { "description": "Message bloquant quand on tente d'accéder au jeu en ligne sans compte" },
 
@@ -636,5 +651,182 @@
   "@profileGuestMessage": { "description": "Message affiché sur /profile pour un utilisateur en mode invité" },
 
   "profileGuestCta": "Se connecter",
-  "@profileGuestCta": { "description": "Bouton de connexion affiché sur /profile en mode invité" }
+  "@profileGuestCta": { "description": "Bouton de connexion affiché sur /profile en mode invité" },
+
+  "@__sectionGame": {
+    "description": "━━━━ GAME — Partie locale solo vs IA ━━━━"
+  },
+  "gameTitle": "Duel local",
+  "@gameTitle": { "description": "Titre de l'écran de partie locale" },
+
+  "gameAiThinking": "L'IA réfléchit…",
+  "@gameAiThinking": { "description": "Indicateur affiché pendant le calcul du coup de l'IA" },
+
+  "gameDifficultyTitle": "Difficulté de l'IA",
+  "@gameDifficultyTitle": { "description": "Titre du sélecteur de difficulté" },
+
+  "gameDifficultyEasy": "Débutant",
+  "@gameDifficultyEasy": { "description": "Libellé du niveau de difficulté facile" },
+
+  "gameDifficultyMedium": "Intermédiaire",
+  "@gameDifficultyMedium": { "description": "Libellé du niveau de difficulté moyen" },
+
+  "gameDifficultyHard": "Expert",
+  "@gameDifficultyHard": { "description": "Libellé du niveau de difficulté difficile" },
+
+  "gameOverWhiteWinsTitle": "Victoire !",
+  "@gameOverWhiteWinsTitle": { "description": "Titre du dialogue de fin de partie — le joueur gagne" },
+
+  "gameOverWhiteWinsMessage": "Tu as gagné la partie.",
+  "@gameOverWhiteWinsMessage": { "description": "Message du dialogue de fin de partie — le joueur gagne" },
+
+  "gameOverBlackWinsTitle": "Défaite",
+  "@gameOverBlackWinsTitle": { "description": "Titre du dialogue de fin de partie — l'IA gagne" },
+
+  "gameOverBlackWinsMessage": "L'IA a gagné cette partie.",
+  "@gameOverBlackWinsMessage": { "description": "Message du dialogue de fin de partie — l'IA gagne" },
+
+  "gameOverDrawTitle": "Match nul",
+  "@gameOverDrawTitle": { "description": "Titre du dialogue de fin de partie — match nul" },
+
+  "gameOverDrawMessage": "Aucun joueur n'a pu l'emporter.",
+  "@gameOverDrawMessage": { "description": "Message du dialogue de fin de partie — match nul" },
+
+  "gameNewGameCta": "Nouvelle partie",
+  "@gameNewGameCta": { "description": "Bouton pour relancer une nouvelle partie" },
+
+  "gameQuitCta": "Quitter",
+  "@gameQuitCta": { "description": "Bouton pour quitter l'écran de partie" },
+
+  "gamePlayerBlack": "Noirs",
+  "@gamePlayerBlack": { "description": "Nom du camp noir (IA)" },
+
+  "gamePlayerWhite": "Blancs",
+  "@gamePlayerWhite": { "description": "Nom du camp blanc (joueur)" },
+
+  "gamePiecesCaptured": "{count, plural, =0{0 pion capturé} =1{1 pion capturé} other{{count} pions capturés}}",
+  "@gamePiecesCaptured": {
+    "description": "Nombre de pions capturés par un joueur",
+    "placeholders": { "count": { "type": "int" } }
+  },
+
+  "gameUndoCta": "Annuler le dernier coup",
+  "@gameUndoCta": { "description": "Tooltip du bouton d'annulation du dernier coup" },
+
+  "gameRestartCta": "Recommencer la partie",
+  "@gameRestartCta": { "description": "Tooltip du bouton de redémarrage de la partie" },
+
+  "profileEditCta": "Modifier",
+  "@profileEditCta": { "description": "Libellé court du badge d'édition sur la carte de profil" },
+
+  "profileAppearanceLabel": "Apparence",
+  "@profileAppearanceLabel": { "description": "Titre de la section de sélection du thème sur le profil" },
+
+  "profileActivityTitle": "Activité",
+  "@profileActivityTitle": { "description": "Libellé de l'entrée menant à l'historique de partie" },
+
+  "gameLobbyTitle": "Nouvelle partie",
+  "@gameLobbyTitle": { "description": "Titre de la page de configuration de partie" },
+
+  "gameLobbyModeSolo": "Solo",
+  "@gameLobbyModeSolo": { "description": "Mode solo contre l'IA" },
+
+  "gameLobbyModeSoloDescription": "Joue contre l'IA",
+  "@gameLobbyModeSoloDescription": { "description": "Description courte du mode solo" },
+
+  "gameLobbyModeOnline": "En ligne",
+  "@gameLobbyModeOnline": { "description": "Mode multijoueur en ligne" },
+
+  "gameLobbyModeOnlineDescription": "Joue contre un ami",
+  "@gameLobbyModeOnlineDescription": { "description": "Description courte du mode en ligne" },
+
+  "gameLobbyAiSection": "Niveau de l'IA",
+  "@gameLobbyAiSection": { "description": "Titre de la section de sélection du niveau de l'IA" },
+
+  "gameLobbyStartCta": "Lancer la partie",
+  "@gameLobbyStartCta": { "description": "Bouton pour démarrer la partie après la configuration" },
+
+  "gameLobbyComingSoon": "Bientôt",
+  "@gameLobbyComingSoon": { "description": "Badge affiché sur les fonctionnalités non encore disponibles" },
+
+  "gameLobbyInviteTitle": "Inviter un ami",
+  "@gameLobbyInviteTitle": { "description": "Titre de la section invitation dans le mode en ligne" },
+
+  "gameLobbyInviteSubtitle": "Partage un lien pour jouer ensemble",
+  "@gameLobbyInviteSubtitle": { "description": "Description de la fonctionnalité d'invitation par lien" },
+
+  "gameLobbyFriendsTitle": "Amis en ligne",
+  "@gameLobbyFriendsTitle": { "description": "Titre de la section amis connectés dans le mode en ligne" },
+
+  "gameLobbyFriendsEmpty": "Aucun ami en ligne pour l'instant",
+  "@gameLobbyFriendsEmpty": { "description": "Message affiché quand aucun ami n'est en ligne" },
+
+  "gameDifficultyEasyDescription": "Parfait pour débuter",
+  "@gameDifficultyEasyDescription": { "description": "Description du niveau facile" },
+
+  "gameDifficultyMediumDescription": "Un vrai défi",
+  "@gameDifficultyMediumDescription": { "description": "Description du niveau moyen" },
+
+  "gameDifficultyHardDescription": "Pour les maîtres",
+  "@gameDifficultyHardDescription": { "description": "Description du niveau difficile" },
+
+  "gameLobbySelectBot": "Choisis ton adversaire",
+  "@gameLobbySelectBot": { "description": "Titre de la section de sélection du bot adversaire" },
+
+  "gameDifficultyApply": "Appliquer",
+  "@gameDifficultyApply": { "description": "Bouton de confirmation du niveau de difficulté" },
+
+  "gameActionUndo": "Annuler",
+  "@gameActionUndo": { "description": "Libellé court du bouton d'annulation du dernier coup dans la barre d'actions" },
+
+  "gameActionNew": "Nouvelle",
+  "@gameActionNew": { "description": "Libellé court du bouton de nouvelle partie dans la barre d'actions" },
+
+  "gameActionOptions": "Options",
+  "@gameActionOptions": { "description": "Libellé court du bouton d'options dans la barre d'actions" },
+
+  "gameDrawClaimTitle": "Nul possible",
+  "@gameDrawClaimTitle": { "description": "Titre du dialog de proposition de nul" },
+  "gameDrawClaimRepetitionMessage": "Le même coup a été joué 3 fois. Voulez-vous accepter le nul ?",
+  "@gameDrawClaimRepetitionMessage": { "description": "Message quand le nul est proposé par répétition de coup" },
+  "gameDrawClaimNoCaptureMessage": "Aucune capture depuis {count} coups. Voulez-vous accepter le nul ?",
+  "@gameDrawClaimNoCaptureMessage": {
+    "description": "Message quand le nul est proposé par absence de capture",
+    "placeholders": { "count": { "type": "int" } }
+  },
+  "gameDrawClaimAccept": "Accepter le nul",
+  "@gameDrawClaimAccept": { "description": "CTA pour accepter la proposition de nul" },
+  "gameDrawClaimDecline": "Continuer",
+  "@gameDrawClaimDecline": { "description": "CTA pour refuser la proposition de nul et continuer à jouer" },
+
+  "@__sectionGameOptions": {
+    "description": "━━━━ OPTIONS DE PARTIE — toggles visuels ━━━━"
+  },
+  "gameOptionsVisualSection": "Affichage",
+  "@gameOptionsVisualSection": { "description": "Titre de la section des options visuelles du plateau" },
+  "gameOptionsMoveHints": "Coups possibles",
+  "@gameOptionsMoveHints": { "description": "Toggle pour afficher / masquer les coups légaux sur le plateau" },
+  "gameOptionsLastAiMove": "Dernier coup de l'IA",
+  "@gameOptionsLastAiMove": { "description": "Toggle pour afficher / masquer le surlignage du dernier coup de l'IA" },
+
+  "@__sectionLocal2P": {
+    "description": "━━━━ MODE 2 JOUEURS LOCAL ━━━━"
+  },
+  "gameLobbyModeLocal2p": "2 Joueurs",
+  "@gameLobbyModeLocal2p": { "description": "Libellé de la carte de mode multijoueur local" },
+  "gameLobbyModeLocal2pDescription": "Face-à-face sur le même appareil",
+  "@gameLobbyModeLocal2pDescription": { "description": "Description courte du mode 2 joueurs local" },
+  "gameLobbyLocal2pSettings": "Configuration",
+  "@gameLobbyLocal2pSettings": { "description": "Titre de la section de configuration du mode 2 joueurs" },
+  "gameLobbyLocal2pFlipBoard": "Retourner le plateau",
+  "@gameLobbyLocal2pFlipBoard": { "description": "Toggle pour pivoter le plateau entre les tours" },
+  "gameLobbyLocal2pTimer": "Minuterie",
+  "@gameLobbyLocal2pTimer": { "description": "Titre de la section de sélection de la durée de la minuterie" },
+  "gameLobbyLocal2pTimerNone": "Sans limite",
+  "@gameLobbyLocal2pTimerNone": { "description": "Option de minuterie : aucune limite de temps" },
+  "gameLobbyLocal2pTimerMin": "{minutes} min",
+  "@gameLobbyLocal2pTimerMin": {
+    "description": "Option de minuterie avec durée en minutes",
+    "placeholders": { "minutes": { "type": "int" } }
+  }
 }
