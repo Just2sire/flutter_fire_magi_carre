@@ -410,6 +410,22 @@ class AppLocalizationsFr extends AppLocalizations {
   String get authGuestWarning => 'Mode invité — progression non sauvegardée';
 
   @override
+  String get authGateTitle => 'Connecte-toi pour continuer';
+
+  @override
+  String get authGateSubtitle =>
+      'Sauvegarde ta progression, joue en ligne et grimpe au classement.';
+
+  @override
+  String get authGateLoginWithEmail => 'Se connecter par e-mail';
+
+  @override
+  String get authGateCreateAccount => 'Créer un compte';
+
+  @override
+  String get authGateContinueAsGuest => 'Continuer en invité';
+
+  @override
   String get authOnlineRequiresAccount =>
       'Un compte est requis pour jouer en ligne.';
 

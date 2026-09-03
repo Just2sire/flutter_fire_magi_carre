@@ -25,7 +25,6 @@ class LeaderboardPage extends ConsumerWidget {
     final myId = authState is AuthAuthenticated ? authState.profile.id : null;
 
     return AppScaffold(
-      scrollable: true,
       body: Column(
         // crossAxisAlignment: .stretch,
         children: [
@@ -54,30 +53,32 @@ class LeaderboardPage extends ConsumerWidget {
               final isMeVisible =
                   myId != null && entries.any((e) => e.userId == myId);
 
-              return Column(
-                crossAxisAlignment: .stretch,
-                children: [
-                  LeaderboardPodium(topThree: topThree),
-                  if (rest.isNotEmpty) ...[
-                    AppSpacing.gapVXxl,
-                    AppSectionLabel(text: l10n.leaderboardTop50),
-                    AppSpacing.gapVSm,
-                    for (final entry in rest)
-                      LeaderboardRow(
-                        entry: entry,
-                        isCurrentUser: entry.userId == myId,
-                      ),
+              return SingleChildScrollView(
+                child: Column(
+                  crossAxisAlignment: .stretch,
+                  children: [
+                    LeaderboardPodium(topThree: topThree),
+                    if (rest.isNotEmpty) ...[
+                      AppSpacing.gapVXxl,
+                      AppSectionLabel(text: l10n.leaderboardTop50),
+                      AppSpacing.gapVSm,
+                      for (final entry in rest)
+                        LeaderboardRow(
+                          entry: entry,
+                          isCurrentUser: entry.userId == myId,
+                        ),
+                    ],
+                    if (myId != null && !isMeVisible) ...[
+                      AppSpacing.gapVXl,
+                      const AppDivider(),
+                      AppSpacing.gapVMd,
+                      AppSectionLabel(text: l10n.leaderboardMyRank),
+                      AppSpacing.gapVSm,
+                      const _MyRankPinned(),
+                    ],
+                    AppSpacing.gapVLg,
                   ],
-                  if (myId != null && !isMeVisible) ...[
-                    AppSpacing.gapVXl,
-                    const AppDivider(),
-                    AppSpacing.gapVMd,
-                    AppSectionLabel(text: l10n.leaderboardMyRank),
-                    AppSpacing.gapVSm,
-                    const _MyRankPinned(),
-                  ],
-                  AppSpacing.gapVLg,
-                ],
+                ),
               );
             },
           ),

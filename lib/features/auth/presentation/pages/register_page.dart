@@ -252,6 +252,7 @@ class _RegisterPageState extends ConsumerState<RegisterPage> {
     );
     if (confirmed == true && mounted) {
       ref.read(authProvider.notifier).skipAuth();
+      if (mounted) context.goHome();
     }
   }
 

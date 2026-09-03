@@ -818,6 +818,36 @@ abstract class AppLocalizations {
   /// **'Mode invité — progression non sauvegardée'**
   String get authGuestWarning;
 
+  /// Titre du bottom sheet d'invite à la connexion pour les invités
+  ///
+  /// In fr, this message translates to:
+  /// **'Connecte-toi pour continuer'**
+  String get authGateTitle;
+
+  /// Sous-titre du bottom sheet d'invite à la connexion
+  ///
+  /// In fr, this message translates to:
+  /// **'Sauvegarde ta progression, joue en ligne et grimpe au classement.'**
+  String get authGateSubtitle;
+
+  /// Bouton de connexion par e-mail dans le gate sheet
+  ///
+  /// In fr, this message translates to:
+  /// **'Se connecter par e-mail'**
+  String get authGateLoginWithEmail;
+
+  /// Bouton d'inscription dans le gate sheet
+  ///
+  /// In fr, this message translates to:
+  /// **'Créer un compte'**
+  String get authGateCreateAccount;
+
+  /// Bouton pour fermer le gate sheet et rester invité
+  ///
+  /// In fr, this message translates to:
+  /// **'Continuer en invité'**
+  String get authGateContinueAsGuest;
+
   /// Message bloquant quand on tente d'accéder au jeu en ligne sans compte
   ///
   /// In fr, this message translates to:

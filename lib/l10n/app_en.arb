@@ -421,6 +421,21 @@
   "authGuestWarning": "Guest mode — progress not saved",
   "@authGuestWarning": { "description": "Banner/chip shown when user is in guest mode" },
 
+  "authGateTitle": "Sign in to continue",
+  "@authGateTitle": { "description": "Title of the auth gate bottom sheet for guests" },
+
+  "authGateSubtitle": "Save your progress, play online, and climb the leaderboard.",
+  "@authGateSubtitle": { "description": "Subtitle of the auth gate bottom sheet" },
+
+  "authGateLoginWithEmail": "Sign in with email",
+  "@authGateLoginWithEmail": { "description": "Email login button in the gate sheet" },
+
+  "authGateCreateAccount": "Create an account",
+  "@authGateCreateAccount": { "description": "Sign-up button in the gate sheet" },
+
+  "authGateContinueAsGuest": "Continue as guest",
+  "@authGateContinueAsGuest": { "description": "Button to dismiss the gate sheet and stay as guest" },
+
   "authOnlineRequiresAccount": "An account is required to play online.",
   "@authOnlineRequiresAccount": { "description": "Blocking message when trying to access online play without account" },
 

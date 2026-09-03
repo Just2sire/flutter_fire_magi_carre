@@ -421,6 +421,21 @@
   "authGuestWarning": "Mode invité — progression non sauvegardée",
   "@authGuestWarning": { "description": "Bannière/chip affichée quand l'utilisateur est en mode invité" },
 
+  "authGateTitle": "Connecte-toi pour continuer",
+  "@authGateTitle": { "description": "Titre du bottom sheet d'invite à la connexion pour les invités" },
+
+  "authGateSubtitle": "Sauvegarde ta progression, joue en ligne et grimpe au classement.",
+  "@authGateSubtitle": { "description": "Sous-titre du bottom sheet d'invite à la connexion" },
+
+  "authGateLoginWithEmail": "Se connecter par e-mail",
+  "@authGateLoginWithEmail": { "description": "Bouton de connexion par e-mail dans le gate sheet" },
+
+  "authGateCreateAccount": "Créer un compte",
+  "@authGateCreateAccount": { "description": "Bouton d'inscription dans le gate sheet" },
+
+  "authGateContinueAsGuest": "Continuer en invité",
+  "@authGateContinueAsGuest": { "description": "Bouton pour fermer le gate sheet et rester invité" },
+
   "authOnlineRequiresAccount": "Un compte est requis pour jouer en ligne.",
   "@authOnlineRequiresAccount": { "description": "Message bloquant quand on tente d'accéder au jeu en ligne sans compte" },
 
