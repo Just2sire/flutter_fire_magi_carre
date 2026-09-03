@@ -1291,6 +1291,96 @@ abstract class AppLocalizations {
   /// In fr, this message translates to:
   /// **'Activité'**
   String get profileActivityTitle;
+
+  /// Titre de la page de configuration de partie
+  ///
+  /// In fr, this message translates to:
+  /// **'Nouvelle partie'**
+  String get gameLobbyTitle;
+
+  /// Mode solo contre l'IA
+  ///
+  /// In fr, this message translates to:
+  /// **'Solo'**
+  String get gameLobbyModeSolo;
+
+  /// Description courte du mode solo
+  ///
+  /// In fr, this message translates to:
+  /// **'Joue contre l\'IA'**
+  String get gameLobbyModeSoloDescription;
+
+  /// Mode multijoueur en ligne
+  ///
+  /// In fr, this message translates to:
+  /// **'En ligne'**
+  String get gameLobbyModeOnline;
+
+  /// Description courte du mode en ligne
+  ///
+  /// In fr, this message translates to:
+  /// **'Joue contre un ami'**
+  String get gameLobbyModeOnlineDescription;
+
+  /// Titre de la section de sélection du niveau de l'IA
+  ///
+  /// In fr, this message translates to:
+  /// **'Niveau de l\'IA'**
+  String get gameLobbyAiSection;
+
+  /// Bouton pour démarrer la partie après la configuration
+  ///
+  /// In fr, this message translates to:
+  /// **'Lancer la partie'**
+  String get gameLobbyStartCta;
+
+  /// Badge affiché sur les fonctionnalités non encore disponibles
+  ///
+  /// In fr, this message translates to:
+  /// **'Bientôt'**
+  String get gameLobbyComingSoon;
+
+  /// Titre de la section invitation dans le mode en ligne
+  ///
+  /// In fr, this message translates to:
+  /// **'Inviter un ami'**
+  String get gameLobbyInviteTitle;
+
+  /// Description de la fonctionnalité d'invitation par lien
+  ///
+  /// In fr, this message translates to:
+  /// **'Partage un lien pour jouer ensemble'**
+  String get gameLobbyInviteSubtitle;
+
+  /// Titre de la section amis connectés dans le mode en ligne
+  ///
+  /// In fr, this message translates to:
+  /// **'Amis en ligne'**
+  String get gameLobbyFriendsTitle;
+
+  /// Message affiché quand aucun ami n'est en ligne
+  ///
+  /// In fr, this message translates to:
+  /// **'Aucun ami en ligne pour l\'instant'**
+  String get gameLobbyFriendsEmpty;
+
+  /// Description du niveau facile
+  ///
+  /// In fr, this message translates to:
+  /// **'Parfait pour débuter'**
+  String get gameDifficultyEasyDescription;
+
+  /// Description du niveau moyen
+  ///
+  /// In fr, this message translates to:
+  /// **'Un vrai défi'**
+  String get gameDifficultyMediumDescription;
+
+  /// Description du niveau difficile
+  ///
+  /// In fr, this message translates to:
+  /// **'Pour les maîtres'**
+  String get gameDifficultyHardDescription;
 }
 
 class _AppLocalizationsDelegate

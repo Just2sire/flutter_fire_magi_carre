@@ -105,6 +105,8 @@ class AppIcons {
   static const IconData crown = LucideIcons.crown;
 
   // ─── Jeu ──────────────────────────────────
+  static const IconData bot = LucideIcons.bot;
+  static const IconData link = LucideIcons.link;
   static const IconData difficultyEasy = LucideIcons.circle;
   static const IconData difficultyMedium = LucideIcons.circleDot;
   static const IconData difficultyHard = LucideIcons.flame;

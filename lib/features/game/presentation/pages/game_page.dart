@@ -1,6 +1,7 @@
 import "package:carre_magic_logic/carre_magic_logic.dart";
 import "package:flutter/material.dart";
 import "package:flutter_riverpod/flutter_riverpod.dart";
+import "package:go_router/go_router.dart";
 
 import "../../../../core/constants/app_icons.dart";
 import "../../../../core/extensions/index.dart"
@@ -26,6 +27,17 @@ class _GamePageState extends ConsumerState<GamePage> {
   Position? _selectedPosition;
   AiDifficulty _difficulty = AiDifficulty.medium;
   bool _aiMoveInFlight = false;
+  bool _difficultyInitialized = false;
+
+  @override
+  void didChangeDependencies() {
+    super.didChangeDependencies();
+    if (!_difficultyInitialized) {
+      _difficultyInitialized = true;
+      final extra = GoRouterState.of(context).extra;
+      if (extra is AiDifficulty) _difficulty = extra;
+    }
+  }
 
   @override
   Widget build(BuildContext context) {
