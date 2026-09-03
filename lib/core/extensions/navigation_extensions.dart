@@ -1,6 +1,10 @@
-import "package:flutter/widgets.dart";
+import "package:flutter/material.dart";
+import "package:flutter_riverpod/flutter_riverpod.dart";
 import "package:go_router/go_router.dart";
 
+import "../../features/auth/domain/entities/auth_state.dart";
+import "../../features/auth/presentation/providers/auth_providers.dart";
+import "../../features/auth/presentation/widgets/auth_gate_sheet.dart";
 import "../routing/app_routes.dart";
 
 /// Extensions de navigation MagiCarré — enveloppent GoRouter avec les
@@ -110,5 +114,31 @@ extension NavigationExtensions on BuildContext {
 
   void popScreen<T extends Object?>([T? result]) {
     if (canPop()) pop<T>(result);
+  }
+
+  // ─── Auth gate ────────────────────────────
+
+  /// Exécute [action] si l'utilisateur est authentifié, sinon affiche le
+  /// bottom sheet [AuthGateSheet] d'invite à la connexion.
+  ///
+  /// Retourne `true` si l'action a été déclenchée (utilisateur déjà connecté
+  /// ou connexion réussie via le sheet), `false` sinon.
+  Future<bool> requireAuth(WidgetRef ref, VoidCallback action) async {
+    final authState = ref.read(authProvider);
+    if (authState is AuthAuthenticated) {
+      action();
+      return true;
+    }
+    final didAuth = await showModalBottomSheet<bool>(
+      context: this,
+      isScrollControlled: true,
+      backgroundColor: Colors.transparent,
+      builder: (_) => const AuthGateSheet(),
+    );
+    if (didAuth == true) {
+      action();
+      return true;
+    }
+    return false;
   }
 }

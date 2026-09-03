@@ -406,6 +406,22 @@ class AppLocalizationsEn extends AppLocalizations {
   String get authGuestWarning => 'Guest mode — progress not saved';
 
   @override
+  String get authGateTitle => 'Sign in to continue';
+
+  @override
+  String get authGateSubtitle =>
+      'Save your progress, play online, and climb the leaderboard.';
+
+  @override
+  String get authGateLoginWithEmail => 'Sign in with email';
+
+  @override
+  String get authGateCreateAccount => 'Create an account';
+
+  @override
+  String get authGateContinueAsGuest => 'Continue as guest';
+
+  @override
   String get authOnlineRequiresAccount =>
       'An account is required to play online.';
 

@@ -60,8 +60,9 @@ GoRouter buildRouter(Ref ref) {
           location == AppRoutes.authResetPassword
               ? null
               : AppRoutes.authResetPassword,
-        AuthAuthenticated() ||
-        AuthGuest() => isAuthRoute || isBootstrapRoute ? AppRoutes.home : null,
+        AuthAuthenticated() =>
+          isAuthRoute || isBootstrapRoute ? AppRoutes.home : null,
+        AuthGuest() => isBootstrapRoute ? AppRoutes.home : null,
       };
     },
     routes: [
