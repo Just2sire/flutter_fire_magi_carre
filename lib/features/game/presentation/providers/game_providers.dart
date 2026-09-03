@@ -76,18 +76,38 @@ class GameNotifier extends _$GameNotifier {
     state = target;
   }
 
+  /// Abandonne la partie — [loser] perd, l'adversaire gagne.
+  /// Utilisé pour la perte sur le temps en mode 2 joueurs avec minuterie.
+  void forfeit(PlayerColor loser) {
+    final status = loser == PlayerColor.white
+        ? GameStatus.blackWins
+        : GameStatus.whiteWins;
+    state = state.copyWith(status: status);
+  }
+
+  /// Réclame le nul si [GameState.drawClaimAvailable] est vrai.
+  /// No-op si aucune condition de nul n'est active.
+  void claimDraw() {
+    final result = ClaimDraw.call(state);
+    if (result is Ok<GameState>) state = result.value;
+  }
+
   /// Calcule et joue le coup de l'IA pour le joueur courant. No-op si la
   /// partie est terminée ou qu'une promotion est en attente.
   ///
   /// Si le coup de l'IA déclenche elle-même une promotion, elle est
   /// auto-résolue (pas de choix humain pour l'IA) via
   /// [MinimaxEngine.resolvePendingPromotion].
-  Future<void> requestAiMove(AiDifficulty difficulty) async {
-    if (state.status.isOver || state.pendingPromotion != null) return;
-    final move = await ComputeAiMove.call(state, difficulty);
+  /// [level] : force de l'IA sur une échelle 1 (débutant) à 10 (maître),
+  /// interpolée via [AiConfigStrength.fromStrength].
+  Future<Move?> requestAiMove(int level) async {
+    if (state.status.isOver || state.pendingPromotion != null) return null;
+    final config = AiConfigStrength.fromStrength(level);
+    final move = await ComputeAiMove.callWithConfig(state, config);
     if (move != null) playMove(move);
     if (state.pendingPromotion != null) {
       state = MinimaxEngine.resolvePendingPromotion(state);
     }
+    return move;
   }
 }

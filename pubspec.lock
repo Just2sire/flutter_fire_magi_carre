@@ -151,7 +151,7 @@ packages:
       path: "C:/Users/Desire/Documents/Mobile/plugins/carre_magic_logic"
       relative: false
     source: path
-    version: "1.0.0"
+    version: "1.1.0"
   characters:
     dependency: transitive
     description:

@@ -237,9 +237,7 @@ class _RegisterPageState extends ConsumerState<RegisterPage> {
       case AuthFailureState(:final failure):
         context.showSnackBar(context.localizeFailure(failure));
       case AuthAuthenticated(:final profile):
-        context.showSnackBar(
-          context.l10n.authSignupSuccess(profile.username),
-        );
+        context.showSnackBar(context.l10n.authSignupSuccess(profile.username));
       default:
         break;
     }

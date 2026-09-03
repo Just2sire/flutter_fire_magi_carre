@@ -188,6 +188,12 @@ class AppColors {
   /// Case de promotion — Savane pulsée @ 40%.
   static const Color casePromotion = Color(0x663E7237);
 
+  /// Case d'origine du dernier coup IA — bleu @ 16%.
+  static const Color caseAiMoveFrom = Color(0x2A64B5F6);
+
+  /// Case de destination du dernier coup IA — bleu @ 31%.
+  static const Color caseAiMoveTo = Color(0x5064B5F6);
+
   // ───────────────────────────────────────────────
   // OMBRE FLOTTANTE
   // ───────────────────────────────────────────────

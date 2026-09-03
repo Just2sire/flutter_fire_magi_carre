@@ -753,5 +753,64 @@
   "@gameDifficultyMediumDescription": { "description": "Description of the medium difficulty" },
 
   "gameDifficultyHardDescription": "For the masters",
-  "@gameDifficultyHardDescription": { "description": "Description of the hard difficulty" }
+  "@gameDifficultyHardDescription": { "description": "Description of the hard difficulty" },
+
+  "gameLobbySelectBot": "Choose your opponent",
+  "@gameLobbySelectBot": { "description": "Section header for bot opponent selection" },
+
+  "gameDifficultyApply": "Apply",
+  "@gameDifficultyApply": { "description": "Confirm button for the difficulty selection sheet" },
+
+  "gameActionUndo": "Undo",
+  "@gameActionUndo": { "description": "Short label for the undo button in the game action bar" },
+
+  "gameActionNew": "New",
+  "@gameActionNew": { "description": "Short label for the new game button in the game action bar" },
+
+  "gameActionOptions": "Options",
+
+  "gameDrawClaimTitle": "Draw available",
+  "@gameDrawClaimTitle": { "description": "Title of the draw-claim dialog" },
+  "gameDrawClaimRepetitionMessage": "The same move was played 3 times. Accept a draw?",
+  "@gameDrawClaimRepetitionMessage": { "description": "Message when draw is offered by move repetition" },
+  "gameDrawClaimNoCaptureMessage": "No capture in {count} moves. Accept a draw?",
+  "@gameDrawClaimNoCaptureMessage": {
+    "description": "Message when draw is offered by no-capture streak",
+    "placeholders": { "count": { "type": "int" } }
+  },
+  "gameDrawClaimAccept": "Accept draw",
+  "@gameDrawClaimAccept": { "description": "CTA to accept the draw offer" },
+  "gameDrawClaimDecline": "Continue",
+  "@gameDrawClaimDecline": { "description": "CTA to decline the draw offer and keep playing" },
+
+  "@__sectionGameOptions": {
+    "description": "━━━━ GAME OPTIONS — visual toggles ━━━━"
+  },
+  "gameOptionsVisualSection": "Display",
+  "@gameOptionsVisualSection": { "description": "Section title for board visual options" },
+  "gameOptionsMoveHints": "Legal move hints",
+  "@gameOptionsMoveHints": { "description": "Toggle to show / hide legal move highlights on the board" },
+  "gameOptionsLastAiMove": "Last AI move",
+  "@gameOptionsLastAiMove": { "description": "Toggle to show / hide the last AI move highlight on the board" },
+
+  "@__sectionLocal2P": {
+    "description": "━━━━ LOCAL 2-PLAYER MODE ━━━━"
+  },
+  "gameLobbyModeLocal2p": "2 Players",
+  "@gameLobbyModeLocal2p": { "description": "Label for the local multiplayer mode card" },
+  "gameLobbyModeLocal2pDescription": "Face off on the same device",
+  "@gameLobbyModeLocal2pDescription": { "description": "Short description for the local 2-player mode" },
+  "gameLobbyLocal2pSettings": "Settings",
+  "@gameLobbyLocal2pSettings": { "description": "Section title for local 2-player configuration" },
+  "gameLobbyLocal2pFlipBoard": "Flip board between turns",
+  "@gameLobbyLocal2pFlipBoard": { "description": "Toggle to rotate the board 180° between turns" },
+  "gameLobbyLocal2pTimer": "Chess clock",
+  "@gameLobbyLocal2pTimer": { "description": "Section title for timer duration selection" },
+  "gameLobbyLocal2pTimerNone": "No limit",
+  "@gameLobbyLocal2pTimerNone": { "description": "Timer option: no time limit" },
+  "gameLobbyLocal2pTimerMin": "{minutes} min",
+  "@gameLobbyLocal2pTimerMin": {
+    "description": "Timer option chip label with duration in minutes",
+    "placeholders": { "minutes": { "type": "int" } }
+  }
 }

@@ -709,4 +709,69 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get gameDifficultyHardDescription => 'For the masters';
+
+  @override
+  String get gameLobbySelectBot => 'Choose your opponent';
+
+  @override
+  String get gameDifficultyApply => 'Apply';
+
+  @override
+  String get gameActionUndo => 'Undo';
+
+  @override
+  String get gameActionNew => 'New';
+
+  @override
+  String get gameActionOptions => 'Options';
+
+  @override
+  String get gameDrawClaimTitle => 'Draw available';
+
+  @override
+  String get gameDrawClaimRepetitionMessage =>
+      'The same move was played 3 times. Accept a draw?';
+
+  @override
+  String gameDrawClaimNoCaptureMessage(int count) {
+    return 'No capture in $count moves. Accept a draw?';
+  }
+
+  @override
+  String get gameDrawClaimAccept => 'Accept draw';
+
+  @override
+  String get gameDrawClaimDecline => 'Continue';
+
+  @override
+  String get gameOptionsVisualSection => 'Display';
+
+  @override
+  String get gameOptionsMoveHints => 'Legal move hints';
+
+  @override
+  String get gameOptionsLastAiMove => 'Last AI move';
+
+  @override
+  String get gameLobbyModeLocal2p => '2 Players';
+
+  @override
+  String get gameLobbyModeLocal2pDescription => 'Face off on the same device';
+
+  @override
+  String get gameLobbyLocal2pSettings => 'Settings';
+
+  @override
+  String get gameLobbyLocal2pFlipBoard => 'Flip board between turns';
+
+  @override
+  String get gameLobbyLocal2pTimer => 'Chess clock';
+
+  @override
+  String get gameLobbyLocal2pTimerNone => 'No limit';
+
+  @override
+  String gameLobbyLocal2pTimerMin(int minutes) {
+    return '$minutes min';
+  }
 }

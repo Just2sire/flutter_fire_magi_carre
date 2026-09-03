@@ -753,5 +753,65 @@
   "@gameDifficultyMediumDescription": { "description": "Description du niveau moyen" },
 
   "gameDifficultyHardDescription": "Pour les maîtres",
-  "@gameDifficultyHardDescription": { "description": "Description du niveau difficile" }
+  "@gameDifficultyHardDescription": { "description": "Description du niveau difficile" },
+
+  "gameLobbySelectBot": "Choisis ton adversaire",
+  "@gameLobbySelectBot": { "description": "Titre de la section de sélection du bot adversaire" },
+
+  "gameDifficultyApply": "Appliquer",
+  "@gameDifficultyApply": { "description": "Bouton de confirmation du niveau de difficulté" },
+
+  "gameActionUndo": "Annuler",
+  "@gameActionUndo": { "description": "Libellé court du bouton d'annulation du dernier coup dans la barre d'actions" },
+
+  "gameActionNew": "Nouvelle",
+  "@gameActionNew": { "description": "Libellé court du bouton de nouvelle partie dans la barre d'actions" },
+
+  "gameActionOptions": "Options",
+  "@gameActionOptions": { "description": "Libellé court du bouton d'options dans la barre d'actions" },
+
+  "gameDrawClaimTitle": "Nul possible",
+  "@gameDrawClaimTitle": { "description": "Titre du dialog de proposition de nul" },
+  "gameDrawClaimRepetitionMessage": "Le même coup a été joué 3 fois. Voulez-vous accepter le nul ?",
+  "@gameDrawClaimRepetitionMessage": { "description": "Message quand le nul est proposé par répétition de coup" },
+  "gameDrawClaimNoCaptureMessage": "Aucune capture depuis {count} coups. Voulez-vous accepter le nul ?",
+  "@gameDrawClaimNoCaptureMessage": {
+    "description": "Message quand le nul est proposé par absence de capture",
+    "placeholders": { "count": { "type": "int" } }
+  },
+  "gameDrawClaimAccept": "Accepter le nul",
+  "@gameDrawClaimAccept": { "description": "CTA pour accepter la proposition de nul" },
+  "gameDrawClaimDecline": "Continuer",
+  "@gameDrawClaimDecline": { "description": "CTA pour refuser la proposition de nul et continuer à jouer" },
+
+  "@__sectionGameOptions": {
+    "description": "━━━━ OPTIONS DE PARTIE — toggles visuels ━━━━"
+  },
+  "gameOptionsVisualSection": "Affichage",
+  "@gameOptionsVisualSection": { "description": "Titre de la section des options visuelles du plateau" },
+  "gameOptionsMoveHints": "Coups possibles",
+  "@gameOptionsMoveHints": { "description": "Toggle pour afficher / masquer les coups légaux sur le plateau" },
+  "gameOptionsLastAiMove": "Dernier coup de l'IA",
+  "@gameOptionsLastAiMove": { "description": "Toggle pour afficher / masquer le surlignage du dernier coup de l'IA" },
+
+  "@__sectionLocal2P": {
+    "description": "━━━━ MODE 2 JOUEURS LOCAL ━━━━"
+  },
+  "gameLobbyModeLocal2p": "2 Joueurs",
+  "@gameLobbyModeLocal2p": { "description": "Libellé de la carte de mode multijoueur local" },
+  "gameLobbyModeLocal2pDescription": "Face-à-face sur le même appareil",
+  "@gameLobbyModeLocal2pDescription": { "description": "Description courte du mode 2 joueurs local" },
+  "gameLobbyLocal2pSettings": "Configuration",
+  "@gameLobbyLocal2pSettings": { "description": "Titre de la section de configuration du mode 2 joueurs" },
+  "gameLobbyLocal2pFlipBoard": "Retourner le plateau",
+  "@gameLobbyLocal2pFlipBoard": { "description": "Toggle pour pivoter le plateau entre les tours" },
+  "gameLobbyLocal2pTimer": "Minuterie",
+  "@gameLobbyLocal2pTimer": { "description": "Titre de la section de sélection de la durée de la minuterie" },
+  "gameLobbyLocal2pTimerNone": "Sans limite",
+  "@gameLobbyLocal2pTimerNone": { "description": "Option de minuterie : aucune limite de temps" },
+  "gameLobbyLocal2pTimerMin": "{minutes} min",
+  "@gameLobbyLocal2pTimerMin": {
+    "description": "Option de minuterie avec durée en minutes",
+    "placeholders": { "minutes": { "type": "int" } }
+  }
 }
