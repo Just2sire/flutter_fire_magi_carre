@@ -708,5 +708,50 @@
   "@profileAppearanceLabel": { "description": "Titre de la section de sélection du thème sur le profil" },
 
   "profileActivityTitle": "Activité",
-  "@profileActivityTitle": { "description": "Libellé de l'entrée menant à l'historique de partie" }
+  "@profileActivityTitle": { "description": "Libellé de l'entrée menant à l'historique de partie" },
+
+  "gameLobbyTitle": "Nouvelle partie",
+  "@gameLobbyTitle": { "description": "Titre de la page de configuration de partie" },
+
+  "gameLobbyModeSolo": "Solo",
+  "@gameLobbyModeSolo": { "description": "Mode solo contre l'IA" },
+
+  "gameLobbyModeSoloDescription": "Joue contre l'IA",
+  "@gameLobbyModeSoloDescription": { "description": "Description courte du mode solo" },
+
+  "gameLobbyModeOnline": "En ligne",
+  "@gameLobbyModeOnline": { "description": "Mode multijoueur en ligne" },
+
+  "gameLobbyModeOnlineDescription": "Joue contre un ami",
+  "@gameLobbyModeOnlineDescription": { "description": "Description courte du mode en ligne" },
+
+  "gameLobbyAiSection": "Niveau de l'IA",
+  "@gameLobbyAiSection": { "description": "Titre de la section de sélection du niveau de l'IA" },
+
+  "gameLobbyStartCta": "Lancer la partie",
+  "@gameLobbyStartCta": { "description": "Bouton pour démarrer la partie après la configuration" },
+
+  "gameLobbyComingSoon": "Bientôt",
+  "@gameLobbyComingSoon": { "description": "Badge affiché sur les fonctionnalités non encore disponibles" },
+
+  "gameLobbyInviteTitle": "Inviter un ami",
+  "@gameLobbyInviteTitle": { "description": "Titre de la section invitation dans le mode en ligne" },
+
+  "gameLobbyInviteSubtitle": "Partage un lien pour jouer ensemble",
+  "@gameLobbyInviteSubtitle": { "description": "Description de la fonctionnalité d'invitation par lien" },
+
+  "gameLobbyFriendsTitle": "Amis en ligne",
+  "@gameLobbyFriendsTitle": { "description": "Titre de la section amis connectés dans le mode en ligne" },
+
+  "gameLobbyFriendsEmpty": "Aucun ami en ligne pour l'instant",
+  "@gameLobbyFriendsEmpty": { "description": "Message affiché quand aucun ami n'est en ligne" },
+
+  "gameDifficultyEasyDescription": "Parfait pour débuter",
+  "@gameDifficultyEasyDescription": { "description": "Description du niveau facile" },
+
+  "gameDifficultyMediumDescription": "Un vrai défi",
+  "@gameDifficultyMediumDescription": { "description": "Description du niveau moyen" },
+
+  "gameDifficultyHardDescription": "Pour les maîtres",
+  "@gameDifficultyHardDescription": { "description": "Description du niveau difficile" }
 }

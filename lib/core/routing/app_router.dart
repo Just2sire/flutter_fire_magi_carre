@@ -119,6 +119,18 @@ GoRouter buildRouter(Ref ref) {
         ),
       ),
 
+      // ─── Lobby de partie ─────────────────────────────────────────────
+      GoRoute(
+        path: AppRoutes.gameLobby,
+        parentNavigatorKey: AppNavigatorKey.instance,
+        pageBuilder: (context, state) => AppTransitions.slide(
+          context: context,
+          state: state,
+          begin: const Offset(0.0, 1.0),
+          child: const GameLobbyPage(),
+        ),
+      ),
+
       // ─── Partie locale — solo vs IA ────────────
       GoRoute(
         path: AppRoutes.gameLocal,
@@ -370,7 +382,7 @@ class _HomePlaceholder extends StatelessWidget {
               ),
               AppSpacing.gapVLg,
               ElevatedButton(
-                onPressed: () => context.pushGameLocal<void>(),
+                onPressed: () => context.pushGameLobby<void>(),
                 child: const Text("Jouer"),
               ),
             ],

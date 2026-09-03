@@ -708,5 +708,50 @@
   "@profileAppearanceLabel": { "description": "Title of the theme-picker section on the profile page" },
 
   "profileActivityTitle": "Activity",
-  "@profileActivityTitle": { "description": "Label for the entry leading to match history" }
+  "@profileActivityTitle": { "description": "Label for the entry leading to match history" },
+
+  "gameLobbyTitle": "New match",
+  "@gameLobbyTitle": { "description": "Title of the match configuration page" },
+
+  "gameLobbyModeSolo": "Solo",
+  "@gameLobbyModeSolo": { "description": "Solo mode against AI" },
+
+  "gameLobbyModeSoloDescription": "Play against the AI",
+  "@gameLobbyModeSoloDescription": { "description": "Short description of solo mode" },
+
+  "gameLobbyModeOnline": "Online",
+  "@gameLobbyModeOnline": { "description": "Online multiplayer mode" },
+
+  "gameLobbyModeOnlineDescription": "Play against a friend",
+  "@gameLobbyModeOnlineDescription": { "description": "Short description of online mode" },
+
+  "gameLobbyAiSection": "AI level",
+  "@gameLobbyAiSection": { "description": "Title of the AI difficulty selection section" },
+
+  "gameLobbyStartCta": "Start match",
+  "@gameLobbyStartCta": { "description": "Button to start the match after configuration" },
+
+  "gameLobbyComingSoon": "Coming soon",
+  "@gameLobbyComingSoon": { "description": "Badge shown on features not yet available" },
+
+  "gameLobbyInviteTitle": "Invite a friend",
+  "@gameLobbyInviteTitle": { "description": "Title of the invite section in online mode" },
+
+  "gameLobbyInviteSubtitle": "Share a link to play together",
+  "@gameLobbyInviteSubtitle": { "description": "Description of the invite-by-link feature" },
+
+  "gameLobbyFriendsTitle": "Online friends",
+  "@gameLobbyFriendsTitle": { "description": "Title of the connected friends section in online mode" },
+
+  "gameLobbyFriendsEmpty": "No friends online right now",
+  "@gameLobbyFriendsEmpty": { "description": "Message shown when no friends are online" },
+
+  "gameDifficultyEasyDescription": "Perfect for beginners",
+  "@gameDifficultyEasyDescription": { "description": "Description of the easy difficulty" },
+
+  "gameDifficultyMediumDescription": "A real challenge",
+  "@gameDifficultyMediumDescription": { "description": "Description of the medium difficulty" },
+
+  "gameDifficultyHardDescription": "For the masters",
+  "@gameDifficultyHardDescription": { "description": "Description of the hard difficulty" }
 }

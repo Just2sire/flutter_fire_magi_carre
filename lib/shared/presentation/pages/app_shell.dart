@@ -56,7 +56,7 @@ class AppShell extends StatelessWidget {
         backgroundColor: AppColors.primary,
         foregroundColor: AppColors.onPrimary,
         elevation: AppSpacing.elevationMd,
-        onPressed: () => context.pushGameLocal<void>(),
+        onPressed: () => context.pushGameLobby<void>(),
         tooltip: l10n.gameNewGameCta,
         child: const Icon(AppIcons.play, size: AppSpacing.iconMxl),
       ),

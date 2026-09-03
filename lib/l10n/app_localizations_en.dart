@@ -664,4 +664,49 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get profileActivityTitle => 'Activity';
+
+  @override
+  String get gameLobbyTitle => 'New match';
+
+  @override
+  String get gameLobbyModeSolo => 'Solo';
+
+  @override
+  String get gameLobbyModeSoloDescription => 'Play against the AI';
+
+  @override
+  String get gameLobbyModeOnline => 'Online';
+
+  @override
+  String get gameLobbyModeOnlineDescription => 'Play against a friend';
+
+  @override
+  String get gameLobbyAiSection => 'AI level';
+
+  @override
+  String get gameLobbyStartCta => 'Start match';
+
+  @override
+  String get gameLobbyComingSoon => 'Coming soon';
+
+  @override
+  String get gameLobbyInviteTitle => 'Invite a friend';
+
+  @override
+  String get gameLobbyInviteSubtitle => 'Share a link to play together';
+
+  @override
+  String get gameLobbyFriendsTitle => 'Online friends';
+
+  @override
+  String get gameLobbyFriendsEmpty => 'No friends online right now';
+
+  @override
+  String get gameDifficultyEasyDescription => 'Perfect for beginners';
+
+  @override
+  String get gameDifficultyMediumDescription => 'A real challenge';
+
+  @override
+  String get gameDifficultyHardDescription => 'For the masters';
 }

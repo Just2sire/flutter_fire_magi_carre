@@ -23,6 +23,7 @@ class AppRoutes {
   static const String gameResult = "/game/:gameId/result";
 
   // ─── Partie locale — solo vs IA ───────────
+  static const String gameLobby = "/game/lobby";
   static const String gameLocal = "/game/local";
 
   // ─── Lobby — sous-écrans ──────────────────
