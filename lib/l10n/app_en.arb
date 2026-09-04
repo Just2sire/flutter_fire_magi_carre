@@ -762,6 +762,8 @@
   "@profileHistoryOpponentAiHard": { "description": "Opponent label for hard AI in history" },
   "profileHistoryOpponentHuman": "Local 2P",
   "@profileHistoryOpponentHuman": { "description": "Opponent label for local 2-player mode in history" },
+  "profileHistoryOpponentOnline": "Online",
+  "@profileHistoryOpponentOnline": { "description": "Opponent label for online mode in history" },
 
   "gameLobbyTitle": "New match",
   "@gameLobbyTitle": { "description": "Title of the match configuration page" },

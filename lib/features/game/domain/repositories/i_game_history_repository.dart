@@ -10,7 +10,7 @@ abstract interface class IGameHistoryRepository {
     required String result,
     required int boardSize,
     required int moveCount,
-    required int durationSeconds,
+    String? aiDifficulty,
   });
 
   Future<Either<Failure, List<GameHistoryEntry>>> getGameHistory({

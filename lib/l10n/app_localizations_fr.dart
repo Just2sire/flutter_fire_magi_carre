@@ -737,6 +737,9 @@ class AppLocalizationsFr extends AppLocalizations {
   String get profileHistoryOpponentHuman => '2 Joueurs';
 
   @override
+  String get profileHistoryOpponentOnline => 'En ligne';
+
+  @override
   String get gameLobbyTitle => 'Nouvelle partie';
 
   @override

@@ -14,7 +14,7 @@ class RecordGameResult {
     required String result,
     required int boardSize,
     required int moveCount,
-    required int durationSeconds,
+    String? aiDifficulty,
   }) {
     return _repository.recordGameResult(
       playerId: playerId,
@@ -22,7 +22,7 @@ class RecordGameResult {
       result: result,
       boardSize: boardSize,
       moveCount: moveCount,
-      durationSeconds: durationSeconds,
+      aiDifficulty: aiDifficulty,
     );
   }
 }

@@ -54,8 +54,11 @@ class ProfileHistoryPage extends ConsumerWidget {
                         bottom: AppSpacing.bottomScrollablePadding,
                       ),
                       itemCount: entries.length,
-                      separatorBuilder: (_, _) =>
-                          const AppDivider(height: 1, indent: 72, endIndent: 16),
+                      separatorBuilder: (_, _) => const AppDivider(
+                        height: 1,
+                        indent: 72,
+                        endIndent: 16,
+                      ),
                       itemBuilder: (context, i) =>
                           _HistoryEntryRow(entry: entries[i]),
                     ),
@@ -133,9 +136,13 @@ class _HistoryEntryRow extends StatelessWidget {
     final locale = Localizations.localeOf(context).languageCode;
 
     final opponentLabel = switch (entry.opponentType) {
-      "ai_easy" => l10n.profileHistoryOpponentAiEasy,
-      "ai_medium" => l10n.profileHistoryOpponentAiMedium,
-      "ai_hard" => l10n.profileHistoryOpponentAiHard,
+      "ai" => switch (entry.aiDifficulty) {
+        "easy" => l10n.profileHistoryOpponentAiEasy,
+        "medium" => l10n.profileHistoryOpponentAiMedium,
+        "hard" => l10n.profileHistoryOpponentAiHard,
+        _ => "IA",
+      },
+      "online" => l10n.profileHistoryOpponentOnline,
       _ => l10n.profileHistoryOpponentHuman,
     };
 
@@ -163,7 +170,7 @@ class _HistoryEntryRow extends StatelessWidget {
       ),
       subtitle: Text(
         "${entry.boardSize}×${entry.boardSize}"
-        " · ${_formatDuration(entry.durationSeconds)}",
+        " · ${entry.moveCount} coups",
         style: tt.bodySmall?.copyWith(color: cs.onSurfaceVariant),
       ),
       trailing: Column(
@@ -178,7 +185,7 @@ class _HistoryEntryRow extends StatelessWidget {
             ),
           ),
           Text(
-            DateFormat("d MMM y", locale).format(entry.createdAt),
+            DateFormat("d MMM y", locale).format(entry.playedAt),
             style: tt.bodySmall?.copyWith(color: cs.onSurfaceVariant),
           ),
         ],
@@ -186,12 +193,7 @@ class _HistoryEntryRow extends StatelessWidget {
     );
   }
 
-  String _formatDuration(int seconds) {
-    final m = seconds ~/ 60;
-    final s = seconds % 60;
-    if (m == 0) return "${s}s";
-    return "${m}m ${s.toString().padLeft(2, "0")}s";
-  }
+
 }
 
 class _ResultBadge extends StatelessWidget {
