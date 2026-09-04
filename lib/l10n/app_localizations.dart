@@ -1412,6 +1412,12 @@ abstract class AppLocalizations {
   /// **'2 Joueurs'**
   String get profileHistoryOpponentHuman;
 
+  /// Libellé adversaire mode en ligne dans l'historique
+  ///
+  /// In fr, this message translates to:
+  /// **'En ligne'**
+  String get profileHistoryOpponentOnline;
+
   /// Titre de la page de configuration de partie
   ///
   /// In fr, this message translates to:

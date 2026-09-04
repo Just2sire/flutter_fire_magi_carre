@@ -730,6 +730,9 @@ class AppLocalizationsEn extends AppLocalizations {
   String get profileHistoryOpponentHuman => 'Local 2P';
 
   @override
+  String get profileHistoryOpponentOnline => 'Online';
+
+  @override
   String get gameLobbyTitle => 'New match';
 
   @override

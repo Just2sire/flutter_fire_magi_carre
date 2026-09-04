@@ -762,6 +762,8 @@
   "@profileHistoryOpponentAiHard": { "description": "Libellé adversaire IA niveau difficile dans l'historique" },
   "profileHistoryOpponentHuman": "2 Joueurs",
   "@profileHistoryOpponentHuman": { "description": "Libellé adversaire mode local 2 joueurs dans l'historique" },
+  "profileHistoryOpponentOnline": "En ligne",
+  "@profileHistoryOpponentOnline": { "description": "Libellé adversaire mode en ligne dans l'historique" },
 
   "gameLobbyTitle": "Nouvelle partie",
   "@gameLobbyTitle": { "description": "Titre de la page de configuration de partie" },

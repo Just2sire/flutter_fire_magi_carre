@@ -446,11 +446,10 @@ class _GamePageState extends ConsumerState<GamePage> {
     if (accepted == true) ref.read(gameProvider.notifier).claimDraw();
   }
 
-  /// Maps difficulty level (1–10) to an opponent type string for the RPC.
-  String _opponentType() {
-    if (_difficultyLevel <= 3) return "ai_easy";
-    if (_difficultyLevel <= 6) return "ai_medium";
-    return "ai_hard";
+  String? _aiDifficulty() {
+    if (_difficultyLevel <= 3) return "easy";
+    if (_difficultyLevel <= 6) return "medium";
+    return "hard";
   }
 
   Future<void> _showGameOverSheet(GameStatus status) async {
@@ -471,11 +470,11 @@ class _GamePageState extends ConsumerState<GamePage> {
             .read(recordGameResultUseCaseProvider)
             .call(
               playerId: authState.profile.id,
-              opponentType: _opponentType(),
+              opponentType: "ai",
               result: resultStr,
               boardSize: gameState.board.size,
               moveCount: gameState.moveHistory.length,
-              durationSeconds: _gameStopwatch.elapsed.inSeconds,
+              aiDifficulty: _aiDifficulty(),
             );
       }
     }

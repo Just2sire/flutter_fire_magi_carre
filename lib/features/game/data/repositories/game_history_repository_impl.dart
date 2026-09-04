@@ -18,7 +18,7 @@ class GameHistoryRepositoryImpl implements IGameHistoryRepository {
     required String result,
     required int boardSize,
     required int moveCount,
-    required int durationSeconds,
+    String? aiDifficulty,
   }) async {
     try {
       await _dataSource.recordGameResult(
@@ -27,7 +27,7 @@ class GameHistoryRepositoryImpl implements IGameHistoryRepository {
         result: result,
         boardSize: boardSize,
         moveCount: moveCount,
-        durationSeconds: durationSeconds,
+        aiDifficulty: aiDifficulty,
       );
       return const Right(null);
     } on Exception catch (e) {
