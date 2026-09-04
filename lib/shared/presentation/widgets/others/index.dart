@@ -1,5 +1,6 @@
 export "app_animated_switcher.dart";
 export "app_avatar.dart";
+export "app_dicebear_avatar.dart";
 export "app_grouped_card.dart";
 export "app_icon_switcher.dart";
 export "app_options_sheet.dart";

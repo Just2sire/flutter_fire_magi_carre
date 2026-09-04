@@ -581,6 +581,12 @@ class AppLocalizationsFr extends AppLocalizations {
   String get settingsAccountSection => 'Compte';
 
   @override
+  String get settingsGameSection => 'Jeu';
+
+  @override
+  String get settingsBoardTheme => 'Thème du plateau';
+
+  @override
   String get profileTitle => 'Profil';
 
   @override
@@ -798,4 +804,98 @@ class AppLocalizationsFr extends AppLocalizations {
   String gameLobbyLocal2pTimerMin(int minutes) {
     return '$minutes min';
   }
+
+  @override
+  String homeGreeting(String username) {
+    return 'Hey, $username !';
+  }
+
+  @override
+  String get homeGreetingSubtitle => 'Prêt à jouer ?';
+
+  @override
+  String get homeGuestUsername => 'Invité';
+
+  @override
+  String get homeStatStreak => 'Série';
+
+  @override
+  String get homeStatRating => 'ELO';
+
+  @override
+  String get homeStatRank => 'Rang';
+
+  @override
+  String get homeStatPlaceholder => '—';
+
+  @override
+  String get homePlayNowTitle => 'Nouvelle partie';
+
+  @override
+  String get homePlayNowSubtitle => 'Défie l\'IA ou un ami';
+
+  @override
+  String get homePlayNowCta => 'Jouer';
+
+  @override
+  String get homeQuickModesTitle => 'Modes rapides';
+
+  @override
+  String get homeModeBot => 'vs Bot';
+
+  @override
+  String get homeMode2p => '2 Joueurs';
+
+  @override
+  String get homeModeOnline => 'En ligne';
+
+  @override
+  String get homeModeOnlineSoon => 'Bientôt';
+
+  @override
+  String get homeLeaderboardTitle => 'Top classement';
+
+  @override
+  String get homeLeaderboardSeeAll => 'Voir tout';
+
+  @override
+  String get homeModeRules => 'Règles';
+
+  @override
+  String get learnTitle => 'Règles du jeu';
+
+  @override
+  String get learnGoalTitle => 'But du jeu';
+
+  @override
+  String get learnGoalBody =>
+      'Capturez toutes les pièces adverses, ou bloquez-les de sorte qu\'elles ne puissent plus bouger. Le dernier joueur à pouvoir se déplacer remporte la partie.';
+
+  @override
+  String get learnMoveTitle => 'Déplacement';
+
+  @override
+  String get learnMoveBody =>
+      'Vos pièces se déplacent d\'une intersection à la suivante, le long des lignes du plateau. Sur les intersections à 8 directions (rangée + colonne paires), le mouvement diagonal est aussi possible.';
+
+  @override
+  String get learnCaptureTitle => 'Capture';
+
+  @override
+  String get learnCaptureBody =>
+      'Pour capturer un pion adverse, sautez par-dessus lui en ligne droite. La case d\'atterrissage doit être libre. La pièce capturée est retirée du plateau.';
+
+  @override
+  String get learnChainTitle => 'Promotion';
+
+  @override
+  String get learnChainBody =>
+      'Quand votre pièce atteint la rangée adverse et que vous avez une pièce capturée en réserve, vous pouvez replacer une pièce supplémentaire sur une case vide de votre propre rangée de départ. Les cases dorées indiquent les emplacements disponibles.';
+
+  @override
+  String get learnPromotionTitle => 'Victoire';
+
+  @override
+  String get learnPromotionBody =>
+      'Capturez toutes les pièces adverses pour remporter la partie. Vous gagnez également si votre adversaire ne peut plus effectuer aucun déplacement.';
 }

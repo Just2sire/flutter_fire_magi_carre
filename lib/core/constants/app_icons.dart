@@ -117,6 +117,7 @@ class AppIcons {
   static const IconData zap = LucideIcons.zap;
   static const IconData trophy = LucideIcons.trophy;
   static const IconData equal = LucideIcons.equal;
+  static const IconData boardTheme = LucideIcons.grid3x3;
 
   // ─── États & Erreurs ──────────────────────
   static const IconData offline = LucideIcons.wifiOff;

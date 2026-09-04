@@ -59,7 +59,7 @@ final class GameNotifierProvider
   }
 }
 
-String _$gameNotifierHash() => r'9a33f7808e3a2ed1132658754303cff700663d1d';
+String _$gameNotifierHash() => r'1d765e094c9329f19102c7168131f3e7e47326b5';
 
 /// État d'une partie en cours, câblé sur le moteur pur `carre_magic_logic`.
 ///
