@@ -155,6 +155,17 @@ class ProfilePage extends ConsumerWidget {
             ),
           ),
           AppSpacing.gapVXxl,
+          AppSectionLabel(text: l10n.profileStatsSection),
+          AppSpacing.gapVSm,
+          _GameStatsCard(
+            wins: profile.wins,
+            losses: profile.losses,
+            draws: profile.draws,
+            winsLabel: l10n.profileWinsLabel,
+            lossesLabel: l10n.profileLossesLabel,
+            drawsLabel: l10n.profileDrawsLabel,
+          ),
+          AppSpacing.gapVXxl,
           AppSectionLabel(text: l10n.profileAppearanceLabel),
           AppSpacing.gapVSm,
           _ThemeModeSwitcher(
@@ -210,6 +221,164 @@ class ProfilePage extends ConsumerWidget {
     if (confirmed == true) {
       await ref.read(authProvider.notifier).logout();
     }
+  }
+}
+
+/// Carte de statistiques de jeu : victoires, défaites, nuls et taux de
+/// victoire calculé. S'adapte au thème clair/sombre via [ColorScheme].
+class _GameStatsCard extends StatelessWidget {
+  const _GameStatsCard({
+    required this.wins,
+    required this.losses,
+    required this.draws,
+    required this.winsLabel,
+    required this.lossesLabel,
+    required this.drawsLabel,
+  });
+
+  final int wins;
+  final int losses;
+  final int draws;
+  final String winsLabel;
+  final String lossesLabel;
+  final String drawsLabel;
+
+  int get _total => wins + losses + draws;
+
+  @override
+  Widget build(BuildContext context) {
+    final cs = context.colorScheme;
+    final tt = context.textTheme;
+
+    return DecoratedBox(
+      decoration: BoxDecoration(
+        color: cs.surfaceContainer,
+        borderRadius: AppSpacing.roundedXl,
+        border: Border.all(color: cs.outlineVariant),
+      ),
+      child: Column(
+        children: [
+          Padding(
+            padding: AppSpacing.insetMd,
+            child: Row(
+              children: [
+                Expanded(
+                  child: _StatItem(
+                    icon: AppIcons.trophy,
+                    value: "$wins",
+                    label: winsLabel,
+                    color: AppColors.primary,
+                  ),
+                ),
+                _VertDivider(color: cs.outlineVariant),
+                Expanded(
+                  child: _StatItem(
+                    icon: AppIcons.x,
+                    value: "$losses",
+                    label: lossesLabel,
+                    color: cs.error,
+                  ),
+                ),
+                _VertDivider(color: cs.outlineVariant),
+                Expanded(
+                  child: _StatItem(
+                    icon: AppIcons.equal,
+                    value: "$draws",
+                    label: drawsLabel,
+                    color: cs.onSurfaceVariant,
+                  ),
+                ),
+              ],
+            ),
+          ),
+          if (_total > 0) ...[
+            Divider(height: 1, color: cs.outlineVariant),
+            Padding(
+              padding: const EdgeInsets.symmetric(
+                horizontal: AppSpacing.lg,
+                vertical: AppSpacing.sm,
+              ),
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  Text(
+                    "$_total parties",
+                    style: tt.bodySmall?.copyWith(
+                      color: cs.onSurfaceVariant,
+                    ),
+                  ),
+                  Text(
+                    "${(wins / _total * 100).round()}% victoires",
+                    style: tt.bodySmall?.copyWith(
+                      color: AppColors.primary,
+                      fontWeight: FontWeight.w600,
+                    ),
+                  ),
+                ],
+              ),
+            ),
+          ],
+        ],
+      ),
+    );
+  }
+}
+
+class _StatItem extends StatelessWidget {
+  const _StatItem({
+    required this.icon,
+    required this.value,
+    required this.label,
+    required this.color,
+  });
+
+  final IconData icon;
+  final String value;
+  final String label;
+  final Color color;
+
+  @override
+  Widget build(BuildContext context) {
+    final tt = context.textTheme;
+    final cs = context.colorScheme;
+
+    return Column(
+      mainAxisSize: MainAxisSize.min,
+      children: [
+        Container(
+          padding: const EdgeInsets.all(AppSpacing.sm),
+          decoration: BoxDecoration(
+            color: color.withAlpha(25),
+            shape: BoxShape.circle,
+          ),
+          child: Icon(icon, size: AppSpacing.iconSm, color: color),
+        ),
+        AppSpacing.gapVXs,
+        Text(
+          value,
+          style: tt.titleLarge?.copyWith(fontWeight: FontWeight.w700),
+        ),
+        Text(
+          label,
+          style: tt.bodySmall?.copyWith(color: cs.onSurfaceVariant),
+        ),
+      ],
+    );
+  }
+}
+
+class _VertDivider extends StatelessWidget {
+  const _VertDivider({required this.color});
+
+  final Color color;
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      width: 1,
+      height: AppSpacing.xxxl,
+      color: color,
+    );
   }
 }
 

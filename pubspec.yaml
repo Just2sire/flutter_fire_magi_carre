@@ -12,6 +12,7 @@ dependencies:
   connectivity_plus: ^7.3.1
   dicebear_core: ^10.7.0
   dicebear_styles: ^10.6.0
+  cached_network_image: ^3.4.1
   flutter_svg: ^2.0.0
   dio: ^5.11.0
   flutter:

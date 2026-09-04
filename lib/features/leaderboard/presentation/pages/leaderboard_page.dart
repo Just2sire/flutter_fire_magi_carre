@@ -26,35 +26,34 @@ class LeaderboardPage extends ConsumerWidget {
 
     return AppScaffold(
       body: Column(
-        // crossAxisAlignment: .stretch,
         children: [
           AppTopbar(
             title: l10n.leaderboardTitle,
             subtitle: l10n.leaderboardSubtitle,
             showLeading: false,
           ),
-          AppSpacing.gapVXl,
-          entriesAsync.when(
-            loading: () => SkeletonList(
-              itemCount: 8,
-              separated: true,
-              itemBuilder: (_, _) => const SkeletonTile(),
-            ),
-            error: (error, stackTrace) => _LeaderboardError(
-              onRetry: () => ref.invalidate(topPlayersProvider),
-            ),
-            data: (entries) {
-              if (entries.isEmpty) return const _LeaderboardEmpty();
+          AppSpacing.gapVMd,
+          Expanded(
+            child: entriesAsync.when(
+              loading: () => SkeletonList(
+                itemCount: 8,
+                separated: true,
+                itemBuilder: (_, _) => const SkeletonTile(),
+              ),
+              error: (error, stackTrace) => _LeaderboardError(
+                onRetry: () => ref.invalidate(topPlayersProvider),
+              ),
+              data: (entries) {
+                if (entries.isEmpty) return const _LeaderboardEmpty();
 
-              final topThree = entries.take(3).toList();
-              final rest = entries.length > 3
-                  ? entries.sublist(3)
-                  : const <LeaderboardEntry>[];
-              final isMeVisible =
-                  myId != null && entries.any((e) => e.userId == myId);
+                final topThree = entries.take(3).toList();
+                final rest = entries.length > 3
+                    ? entries.sublist(3)
+                    : const <LeaderboardEntry>[];
+                final isMeVisible =
+                    myId != null && entries.any((e) => e.userId == myId);
 
-              return SingleChildScrollView(
-                child: Column(
+                return Column(
                   crossAxisAlignment: .stretch,
                   children: [
                     LeaderboardPodium(topThree: topThree),
@@ -78,9 +77,9 @@ class LeaderboardPage extends ConsumerWidget {
                     ],
                     AppSpacing.gapVLg,
                   ],
-                ),
-              );
-            },
+                );
+              },
+            ),
           ),
         ],
       ),

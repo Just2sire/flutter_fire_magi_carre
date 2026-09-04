@@ -152,29 +152,6 @@ class _GamePageState extends ConsumerState<GamePage> {
         gameState.currentPlayer == PlayerColor.black;
 
     return AppScaffold(
-      // bottomSafeArea: false,
-      // bottomNavigationBar: BottomAppBar(
-      //   child: Row(
-      //     mainAxisAlignment: MainAxisAlignment.spaceAround,
-      //     children: [
-      //       _GameAction(
-      //         icon: AppIcons.undo,
-      //         label: l10n.gameActionUndo,
-      //         onPressed: _aiMoveInFlight || !notifier.canUndo ? null : _undo,
-      //       ),
-      //       _GameAction(
-      //         icon: AppIcons.refresh,
-      //         label: l10n.gameActionNew,
-      //         onPressed: _aiMoveInFlight ? null : _restart,
-      //       ),
-      //       _GameAction(
-      //         icon: AppIcons.settings,
-      //         label: l10n.gameActionOptions,
-      //         onPressed: _aiMoveInFlight ? null : _pickDifficulty,
-      //       ),
-      //     ],
-      //   ),
-      // ),
       body: Column(
         children: [
           AppTopbar(title: l10n.gameTitle),
