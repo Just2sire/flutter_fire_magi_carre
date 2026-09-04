@@ -25,10 +25,14 @@ class AuthGateSheet extends ConsumerStatefulWidget {
 }
 
 class _AuthGateSheetState extends ConsumerState<AuthGateSheet> {
-  bool _isLoading = false;
-
   @override
   Widget build(BuildContext context) {
+    final authState = ref.watch(authProvider);
+    final isOAuthLoading = switch (authState) {
+      AuthOAuthPending() || AuthLoading() => true,
+      _ => false,
+    };
+
     ref.listen<AuthState>(authProvider, (_, next) {
       if (next is AuthAuthenticated && mounted) {
         Navigator.of(context).pop(true);
@@ -46,61 +50,82 @@ class _AuthGateSheetState extends ConsumerState<AuthGateSheet> {
       padding: EdgeInsets.only(
         bottom: MediaQuery.viewInsetsOf(context).bottom,
       ),
-      child: Column(
-        mainAxisSize: MainAxisSize.min,
+      child: Stack(
         children: [
-          const AppBottomSheetHandleBar(),
-          AppSpacing.gapVXxl,
-          Padding(
-            padding: AppSpacing.screenPaddingH,
+          AbsorbPointer(
+            absorbing: isOAuthLoading,
             child: Column(
-              crossAxisAlignment: CrossAxisAlignment.stretch,
+              mainAxisSize: MainAxisSize.min,
               children: [
-                Text(
-                  l10n.authGateTitle,
-                  style: context.textTheme.titleLarge?.copyWith(
-                    fontWeight: FontWeight.w800,
-                  ),
-                  textAlign: TextAlign.center,
-                ),
-                AppSpacing.gapVSm,
-                Text(
-                  l10n.authGateSubtitle,
-                  style: context.textTheme.bodyMedium?.copyWith(
-                    color: cc.onSurface.withValues(alpha: 0.6),
-                  ),
-                  textAlign: TextAlign.center,
-                ),
+                const AppBottomSheetHandleBar(),
                 AppSpacing.gapVXxl,
-                OauthButtonsRow(
-                  oauthProviders: _buildProviders(),
-                  showLabel: true,
-                  showAsRow: false,
-                ),
-                AppSpacing.gapVMd,
-                AppElevatedButton(
-                  onPressed: _isLoading ? null : _loginWithEmail,
-                  text: l10n.authGateLoginWithEmail,
-                ),
-                AppSpacing.gapVSm,
-                OutlinedButton(
-                  onPressed: _isLoading ? null : _createAccount,
-                  child: Text(l10n.authGateCreateAccount),
-                ),
-                AppSpacing.gapVMd,
-                TextButton(
-                  onPressed: () => Navigator.of(context).pop(false),
-                  child: Text(
-                    l10n.authGateContinueAsGuest,
-                    style: context.textTheme.bodySmall?.copyWith(
-                      color: cc.onSurface.withValues(alpha: 0.45),
-                    ),
+                Padding(
+                  padding: AppSpacing.screenPaddingH,
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.stretch,
+                    children: [
+                      Text(
+                        l10n.authGateTitle,
+                        style: context.textTheme.titleLarge?.copyWith(
+                          fontWeight: FontWeight.w800,
+                        ),
+                        textAlign: TextAlign.center,
+                      ),
+                      AppSpacing.gapVSm,
+                      Text(
+                        l10n.authGateSubtitle,
+                        style: context.textTheme.bodyMedium?.copyWith(
+                          color: cc.onSurface.withValues(alpha: 0.6),
+                        ),
+                        textAlign: TextAlign.center,
+                      ),
+                      AppSpacing.gapVXxl,
+                      OauthButtonsRow(
+                        oauthProviders: _buildProviders(),
+                        showLabel: true,
+                        showAsRow: false,
+                      ),
+                      AppSpacing.gapVMd,
+                      AppElevatedButton(
+                        onPressed: isOAuthLoading ? null : _loginWithEmail,
+                        text: l10n.authGateLoginWithEmail,
+                      ),
+                      AppSpacing.gapVSm,
+                      OutlinedButton(
+                        onPressed: isOAuthLoading ? null : _createAccount,
+                        child: Text(l10n.authGateCreateAccount),
+                      ),
+                      AppSpacing.gapVMd,
+                      TextButton(
+                        onPressed: isOAuthLoading
+                            ? null
+                            : () => Navigator.of(context).pop(false),
+                        child: Text(
+                          l10n.authGateContinueAsGuest,
+                          style: context.textTheme.bodySmall?.copyWith(
+                            color: cc.onSurface.withValues(alpha: 0.45),
+                          ),
+                        ),
+                      ),
+                      AppSpacing.gapVLg,
+                    ],
                   ),
                 ),
-                AppSpacing.gapVLg,
               ],
             ),
           ),
+          if (isOAuthLoading)
+            Positioned.fill(
+              child: ClipRRect(
+                borderRadius: AppSpacing.roundedTopXl,
+                child: ColoredBox(
+                  color: cc.surface.withValues(alpha: 0.75),
+                  child: const Center(
+                    child: CircularProgressIndicator.adaptive(),
+                  ),
+                ),
+              ),
+            ),
         ],
       ),
     );
@@ -126,23 +151,19 @@ class _AuthGateSheetState extends ConsumerState<AuthGateSheet> {
   }
 
   Future<void> _signInWithGoogle() async {
-    setState(() => _isLoading = true);
     await ref.read(authProvider.notifier).signInWithGoogle();
-    if (mounted) setState(() => _isLoading = false);
     if (!mounted) return;
-    final state = ref.read(authProvider);
-    if (state case AuthFailureState(:final failure)) {
+    final authState = ref.read(authProvider);
+    if (authState case AuthFailureState(:final failure)) {
       context.showSnackBar(context.localizeFailure(failure));
     }
   }
 
   Future<void> _signInWithGithub() async {
-    setState(() => _isLoading = true);
     await ref.read(authProvider.notifier).signInWithGithub();
-    if (mounted) setState(() => _isLoading = false);
     if (!mounted) return;
-    final state = ref.read(authProvider);
-    if (state case AuthFailureState(:final failure)) {
+    final authState = ref.read(authProvider);
+    if (authState case AuthFailureState(:final failure)) {
       context.showSnackBar(context.localizeFailure(failure));
     }
   }

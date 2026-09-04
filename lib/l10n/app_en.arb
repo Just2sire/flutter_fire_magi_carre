@@ -617,6 +617,12 @@
   "settingsAccountSection": "Account",
   "@settingsAccountSection": { "description": "Account section label (profile, password, logout)" },
 
+  "settingsGameSection": "Game",
+  "@settingsGameSection": { "description": "Game section label in settings (board theme, etc.)" },
+
+  "settingsBoardTheme": "Board theme",
+  "@settingsBoardTheme": { "description": "Label for the visual board theme picker option" },
+
   "@__sectionProfile": {
     "description": "━━━━ PROFILE — User profile ━━━━"
   },
@@ -827,5 +833,74 @@
   "@gameLobbyLocal2pTimerMin": {
     "description": "Timer option chip label with duration in minutes",
     "placeholders": { "minutes": { "type": "int" } }
-  }
+  },
+
+  "@__sectionHome": {
+    "description": "━━━━ HOME — Home screen ━━━━"
+  },
+  "homeGreeting": "Hey, {username}!",
+  "@homeGreeting": {
+    "description": "Personalised greeting on the home screen",
+    "placeholders": { "username": { "type": "String", "example": "Aria" } }
+  },
+  "homeGreetingSubtitle": "Ready to play?",
+  "@homeGreetingSubtitle": { "description": "Subtitle of the home greeting" },
+  "homeGuestUsername": "Guest",
+  "@homeGuestUsername": { "description": "Name shown when the user is in guest mode" },
+  "homeStatStreak": "Streak",
+  "@homeStatStreak": { "description": "Consecutive-days streak stat label" },
+  "homeStatRating": "ELO",
+  "@homeStatRating": { "description": "ELO rating stat label" },
+  "homeStatRank": "Rank",
+  "@homeStatRank": { "description": "Global leaderboard rank stat label" },
+  "homeStatPlaceholder": "—",
+  "@homeStatPlaceholder": { "description": "Value shown when a stat is not yet available" },
+  "homePlayNowTitle": "New game",
+  "@homePlayNowTitle": { "description": "Title of the main CTA card on home" },
+  "homePlayNowSubtitle": "Challenge the AI or a friend",
+  "@homePlayNowSubtitle": { "description": "Subtitle of the main CTA card" },
+  "homePlayNowCta": "Play",
+  "@homePlayNowCta": { "description": "Main CTA button text on home" },
+  "homeQuickModesTitle": "Quick modes",
+  "@homeQuickModesTitle": { "description": "Section title for quick mode chips" },
+  "homeModeBot": "vs Bot",
+  "@homeModeBot": { "description": "Solo vs AI mode chip" },
+  "homeMode2p": "2 Players",
+  "@homeMode2p": { "description": "Local 2-player mode chip" },
+  "homeModeOnline": "Online",
+  "@homeModeOnline": { "description": "Online mode chip" },
+  "homeModeOnlineSoon": "Soon",
+  "@homeModeOnlineSoon": { "description": "Badge on Online chip when the feature is not yet available" },
+  "homeLeaderboardTitle": "Top rankings",
+  "@homeLeaderboardTitle": { "description": "Leaderboard preview section title on home" },
+  "homeLeaderboardSeeAll": "See all",
+  "@homeLeaderboardSeeAll": { "description": "Link to the full leaderboard page from home" },
+
+  "@__sectionLearn": {
+    "description": "━━━━ LEARN — Game rules page ━━━━"
+  },
+  "homeModeRules": "Rules",
+  "@homeModeRules": { "description": "Rules chip on the home screen" },
+  "learnTitle": "Game Rules",
+  "@learnTitle": { "description": "Rules page title" },
+  "learnGoalTitle": "Goal",
+  "@learnGoalTitle": { "description": "Goal section title" },
+  "learnGoalBody": "Capture all of your opponent's pieces, or block them so they can no longer move. The last player able to move wins the game.",
+  "@learnGoalBody": { "description": "Goal section body" },
+  "learnMoveTitle": "Movement",
+  "@learnMoveTitle": { "description": "Movement section title" },
+  "learnMoveBody": "Pieces move one intersection at a time along the lines on the board. On 8-way intersections (even row + column), diagonal movement is also allowed.",
+  "@learnMoveBody": { "description": "Movement section body" },
+  "learnCaptureTitle": "Capture",
+  "@learnCaptureTitle": { "description": "Capture section title" },
+  "learnCaptureBody": "To capture an opponent's piece, jump over it in a straight line. The landing square must be empty. The captured piece is removed from the board.",
+  "@learnCaptureBody": { "description": "Capture section body" },
+  "learnChainTitle": "Promotion",
+  "@learnChainTitle": { "description": "Promotion section title" },
+  "learnChainBody": "When your piece reaches the opponent's back row and you have a captured piece in reserve, you may place an extra piece on an empty cell of your own starting row. The golden squares show the available spots.",
+  "@learnChainBody": { "description": "Promotion section body" },
+  "learnPromotionTitle": "Victory",
+  "@learnPromotionTitle": { "description": "Victory section title" },
+  "learnPromotionBody": "Capture all of your opponent's pieces to win. You also win if your opponent cannot make any more moves.",
+  "@learnPromotionBody": { "description": "Victory section body" }
 }

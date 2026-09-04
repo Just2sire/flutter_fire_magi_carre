@@ -1124,6 +1124,18 @@ abstract class AppLocalizations {
   /// **'Compte'**
   String get settingsAccountSection;
 
+  /// Libellé de la section Jeu dans les paramètres (thème du plateau, etc.)
+  ///
+  /// In fr, this message translates to:
+  /// **'Jeu'**
+  String get settingsGameSection;
+
+  /// Libellé de l'option de sélection du thème visuel du plateau
+  ///
+  /// In fr, this message translates to:
+  /// **'Thème du plateau'**
+  String get settingsBoardTheme;
+
   /// Titre de la page de profil
   ///
   /// In fr, this message translates to:
@@ -1531,6 +1543,180 @@ abstract class AppLocalizations {
   /// In fr, this message translates to:
   /// **'{minutes} min'**
   String gameLobbyLocal2pTimerMin(int minutes);
+
+  /// Salutation personnalisée sur l'écran d'accueil
+  ///
+  /// In fr, this message translates to:
+  /// **'Hey, {username} !'**
+  String homeGreeting(String username);
+
+  /// Sous-titre de la salutation sur l'écran d'accueil
+  ///
+  /// In fr, this message translates to:
+  /// **'Prêt à jouer ?'**
+  String get homeGreetingSubtitle;
+
+  /// Nom affiché quand l'utilisateur est en mode invité
+  ///
+  /// In fr, this message translates to:
+  /// **'Invité'**
+  String get homeGuestUsername;
+
+  /// Label de la stat série de jours consécutifs
+  ///
+  /// In fr, this message translates to:
+  /// **'Série'**
+  String get homeStatStreak;
+
+  /// Label de la stat ELO / classement
+  ///
+  /// In fr, this message translates to:
+  /// **'ELO'**
+  String get homeStatRating;
+
+  /// Label de la stat rang dans le classement
+  ///
+  /// In fr, this message translates to:
+  /// **'Rang'**
+  String get homeStatRank;
+
+  /// Valeur affichée quand une stat n'est pas encore disponible
+  ///
+  /// In fr, this message translates to:
+  /// **'—'**
+  String get homeStatPlaceholder;
+
+  /// Titre de la carte CTA principale du home
+  ///
+  /// In fr, this message translates to:
+  /// **'Nouvelle partie'**
+  String get homePlayNowTitle;
+
+  /// Sous-titre de la carte CTA principale
+  ///
+  /// In fr, this message translates to:
+  /// **'Défie l\'IA ou un ami'**
+  String get homePlayNowSubtitle;
+
+  /// Texte du bouton principal du home
+  ///
+  /// In fr, this message translates to:
+  /// **'Jouer'**
+  String get homePlayNowCta;
+
+  /// Titre de la section modes rapides
+  ///
+  /// In fr, this message translates to:
+  /// **'Modes rapides'**
+  String get homeQuickModesTitle;
+
+  /// Chip du mode solo contre l'IA
+  ///
+  /// In fr, this message translates to:
+  /// **'vs Bot'**
+  String get homeModeBot;
+
+  /// Chip du mode 2 joueurs local
+  ///
+  /// In fr, this message translates to:
+  /// **'2 Joueurs'**
+  String get homeMode2p;
+
+  /// Chip du mode en ligne
+  ///
+  /// In fr, this message translates to:
+  /// **'En ligne'**
+  String get homeModeOnline;
+
+  /// Badge affiché sur le chip En ligne quand la fonctionnalité n'est pas encore disponible
+  ///
+  /// In fr, this message translates to:
+  /// **'Bientôt'**
+  String get homeModeOnlineSoon;
+
+  /// Titre de la section aperçu du classement sur le home
+  ///
+  /// In fr, this message translates to:
+  /// **'Top classement'**
+  String get homeLeaderboardTitle;
+
+  /// Lien vers la page classement complète depuis le home
+  ///
+  /// In fr, this message translates to:
+  /// **'Voir tout'**
+  String get homeLeaderboardSeeAll;
+
+  /// Chip accès aux règles du jeu depuis le home
+  ///
+  /// In fr, this message translates to:
+  /// **'Règles'**
+  String get homeModeRules;
+
+  /// Titre de la page de règles
+  ///
+  /// In fr, this message translates to:
+  /// **'Règles du jeu'**
+  String get learnTitle;
+
+  /// Titre de la section objectif
+  ///
+  /// In fr, this message translates to:
+  /// **'But du jeu'**
+  String get learnGoalTitle;
+
+  /// Explication du but du jeu
+  ///
+  /// In fr, this message translates to:
+  /// **'Capturez toutes les pièces adverses, ou bloquez-les de sorte qu\'elles ne puissent plus bouger. Le dernier joueur à pouvoir se déplacer remporte la partie.'**
+  String get learnGoalBody;
+
+  /// Titre de la section déplacement
+  ///
+  /// In fr, this message translates to:
+  /// **'Déplacement'**
+  String get learnMoveTitle;
+
+  /// Explication du déplacement
+  ///
+  /// In fr, this message translates to:
+  /// **'Vos pièces se déplacent d\'une intersection à la suivante, le long des lignes du plateau. Sur les intersections à 8 directions (rangée + colonne paires), le mouvement diagonal est aussi possible.'**
+  String get learnMoveBody;
+
+  /// Titre de la section capture
+  ///
+  /// In fr, this message translates to:
+  /// **'Capture'**
+  String get learnCaptureTitle;
+
+  /// Explication de la capture
+  ///
+  /// In fr, this message translates to:
+  /// **'Pour capturer un pion adverse, sautez par-dessus lui en ligne droite. La case d\'atterrissage doit être libre. La pièce capturée est retirée du plateau.'**
+  String get learnCaptureBody;
+
+  /// Titre de la section promotion
+  ///
+  /// In fr, this message translates to:
+  /// **'Promotion'**
+  String get learnChainTitle;
+
+  /// Explication de la promotion
+  ///
+  /// In fr, this message translates to:
+  /// **'Quand votre pièce atteint la rangée adverse et que vous avez une pièce capturée en réserve, vous pouvez replacer une pièce supplémentaire sur une case vide de votre propre rangée de départ. Les cases dorées indiquent les emplacements disponibles.'**
+  String get learnChainBody;
+
+  /// Titre de la section victoire
+  ///
+  /// In fr, this message translates to:
+  /// **'Victoire'**
+  String get learnPromotionTitle;
+
+  /// Explication des conditions de victoire
+  ///
+  /// In fr, this message translates to:
+  /// **'Capturez toutes les pièces adverses pour remporter la partie. Vous gagnez également si votre adversaire ne peut plus effectuer aucun déplacement.'**
+  String get learnPromotionBody;
 }
 
 class _AppLocalizationsDelegate

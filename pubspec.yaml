@@ -10,6 +10,9 @@ dependencies:
   carre_magic_logic:
     path: C:/Users/Desire/Documents/Mobile/plugins/carre_magic_logic
   connectivity_plus: ^7.3.1
+  dicebear_core: ^10.7.0
+  dicebear_styles: ^10.6.0
+  flutter_svg: ^2.0.0
   dio: ^5.11.0
   flutter:
     sdk: flutter
@@ -47,6 +50,7 @@ flutter:
     - .env
     - assets/images/
     - assets/fonts/
+    - assets/avatars/bots/
 
   fonts:
     - family: Unbounded

@@ -1,8 +1,11 @@
+import "dart:ui" show lerpDouble;
+
 import "package:carre_magic_logic/carre_magic_logic.dart";
 import "package:flutter/material.dart";
 
 import "../../../../core/theme/app_colors.dart";
 import "../../../../core/theme/app_spacing.dart";
+import "../providers/board_theme_provider.dart";
 import "game_stone.dart";
 
 /// Rendu "plateau classique" façon Alquerque : fond bois, lignes de
@@ -10,7 +13,11 @@ import "game_stone.dart";
 /// paires) et pions sphériques posés aux intersections plutôt que dans des
 /// cases pleines. C'est le rendu par défaut de l'écran de jeu ; `GameBoard`
 /// (grille plate) reste disponible comme variante alternative.
-class ClassicGameBoard extends StatelessWidget {
+///
+/// Le dernier coup IA ([lastMove]) est surligné, et toute transition de
+/// [lastMove] vers une valeur non nulle déclenche une [SlideTransition]
+/// animée du pion depuis sa case d'origine jusqu'à sa destination.
+class ClassicGameBoard extends StatefulWidget {
   const ClassicGameBoard({
     required this.board,
     required this.onCellTap,
@@ -20,6 +27,7 @@ class ClassicGameBoard extends StatelessWidget {
     this.promotionSlots = const [],
     this.lastMove,
     this.showLabels = false,
+    this.boardTheme,
   });
 
   final Board board;
@@ -34,31 +42,97 @@ class ClassicGameBoard extends StatelessWidget {
   /// Cases où une promotion en attente peut être résolue.
   final List<Position> promotionSlots;
 
-  /// Dernier coup joué par l'IA — ses cases d'origine et de destination sont
-  /// surlignées d'un bleu subtil pour aider le joueur à suivre le jeu.
+  /// Dernier coup joué — ses cases d'origine et de destination sont
+  /// surlignées, et un changement de valeur déclenche l'animation de
+  /// déplacement du pion.
   final Move? lastMove;
 
   /// Affiche les labels de coordonnées algébriques (a–e, 1–5) autour du
   /// plateau.
   final bool showLabels;
 
+  /// Palette visuelle optionnelle — se substitue aux couleurs par défaut
+  /// (fond, lignes, pions des deux camps).
+  final BoardTheme? boardTheme;
+
   final ValueChanged<Position> onCellTap;
 
   @override
+  State<ClassicGameBoard> createState() => _ClassicGameBoardState();
+}
+
+class _ClassicGameBoardState extends State<ClassicGameBoard>
+    with SingleTickerProviderStateMixin {
+  late final AnimationController _moveController;
+  late final CurvedAnimation _moveAnimation;
+
+  // Coup en cours d'animation — null quand aucune animation n'est active.
+  Move? _animatingMove;
+  PlayerColor? _animatingPieceColor;
+
+  @override
+  void initState() {
+    super.initState();
+    _moveController = AnimationController(
+      vsync: this,
+      duration: const Duration(milliseconds: 380),
+    );
+    _moveAnimation = CurvedAnimation(
+      parent: _moveController,
+      curve: Curves.easeInOut,
+    );
+    _moveController.addStatusListener((status) {
+      if (status == AnimationStatus.completed) {
+        setState(() {
+          _animatingMove = null;
+          _animatingPieceColor = null;
+        });
+      }
+    });
+  }
+
+  @override
+  void didUpdateWidget(ClassicGameBoard oldWidget) {
+    super.didUpdateWidget(oldWidget);
+    // Déclenche l'animation dès qu'un nouveau coup est communiqué.
+    if (widget.lastMove != oldWidget.lastMove && widget.lastMove != null) {
+      final move = widget.lastMove!;
+      final piece = widget.board.pieceAt(move.to);
+      if (piece != null) {
+        setState(() {
+          _animatingMove = move;
+          _animatingPieceColor = piece.color;
+        });
+        _moveController.forward(from: 0);
+      }
+    }
+  }
+
+  @override
+  void dispose() {
+    _moveAnimation.dispose();
+    _moveController.dispose();
+    super.dispose();
+  }
+
+  BoardTheme get _theme => widget.boardTheme ?? BoardTheme.classic;
+
+  @override
   Widget build(BuildContext context) {
-    final size = board.size;
+    final size = widget.board.size;
+    final theme = _theme;
     return AspectRatio(
       aspectRatio: 1,
       child: Container(
         padding: const EdgeInsets.all(AppSpacing.lg),
-        decoration: const BoxDecoration(
+        decoration: BoxDecoration(
           borderRadius: AppSpacing.roundedLg,
           gradient: LinearGradient(
             begin: Alignment.topLeft,
             end: Alignment.bottomRight,
-            colors: [AppColors.neutral800, AppColors.neutral900],
+            colors: theme.boardColors,
           ),
-          boxShadow: [
+          boxShadow: const [
             BoxShadow(
               color: AppColors.shadowPlateau,
               blurRadius: 24,
@@ -69,15 +143,10 @@ class ClassicGameBoard extends StatelessWidget {
         child: LayoutBuilder(
           builder: (context, constraints) {
             final extent = constraints.maxWidth;
-            // `Stack` clippe par défaut (`Clip.hardEdge`) : sans marge, les
-            // pions des bords (row/col 0 et size-1) seraient coupés en deux
-            // par les bords du Stack, puisque leur centre tombe pile sur
-            // l'arête. On réserve donc une marge — assez large pour
-            // contenir la moitié de la zone de tap du plus gros pion —
-            // entre le Stack et la grille elle-même.
             final margin = extent * 0.1;
             final gridExtent = extent - margin * 2;
             final step = gridExtent / (size - 1);
+            final stoneSize = step * 0.72;
             return SizedBox(
               width: extent,
               height: extent,
@@ -90,22 +159,26 @@ class ClassicGameBoard extends StatelessWidget {
                       size: Size.square(gridExtent),
                       painter: _BoardLinesPainter(
                         gridSize: size,
-                        color: AppColors.primary.withValues(alpha: 0.55),
+                        color: theme.lineColor,
                       ),
                     ),
                   ),
                   for (var row = 0; row < size; row++)
                     for (var col = 0; col < size; col++)
-                      _pointAt(Position(row: row, col: col), step, margin),
-                  if (showLabels) ...[
-                    // File labels (a, b, c, …) — below the bottom row
+                      _pointAt(
+                        Position(row: row, col: col),
+                        step,
+                        margin,
+                        stoneSize,
+                        theme,
+                      ),
+                  if (widget.showLabels) ...[
                     for (var col = 0; col < size; col++)
                       _CoordLabel(
                         label: String.fromCharCode(97 + col),
                         left: margin + col * step,
                         top: margin + (size - 1) * step + margin * 0.35,
                       ),
-                    // Rank labels (5, 4, 3, …) — left of each row
                     for (var row = 0; row < size; row++)
                       _CoordLabel(
                         label: "${size - row}",
@@ -113,6 +186,37 @@ class ClassicGameBoard extends StatelessWidget {
                         top: margin + row * step,
                       ),
                   ],
+                  // Pion animé glissant de sa case d'origine à sa destination.
+                  if (_animatingMove != null && _animatingPieceColor != null)
+                    AnimatedBuilder(
+                      animation: _moveAnimation,
+                      builder: (context, _) {
+                        final from = _animatingMove!.from;
+                        final to = _animatingMove!.to;
+                        final t = _moveAnimation.value;
+                        final left = lerpDouble(
+                          margin + from.col * step,
+                          margin + to.col * step,
+                          t,
+                        )!;
+                        final top = lerpDouble(
+                          margin + from.row * step,
+                          margin + to.row * step,
+                          t,
+                        )!;
+                        return Positioned(
+                          left: left - stoneSize / 2,
+                          top: top - stoneSize / 2,
+                          width: stoneSize,
+                          height: stoneSize,
+                          child: _themedStone(
+                            _animatingPieceColor!,
+                            stoneSize,
+                            theme,
+                          ),
+                        );
+                      },
+                    ),
                 ],
               ),
             );
@@ -122,28 +226,57 @@ class ClassicGameBoard extends StatelessWidget {
     );
   }
 
-  Widget _pointAt(Position pos, double step, double origin) {
+  Widget _pointAt(
+    Position pos,
+    double step,
+    double origin,
+    double stoneSize,
+    BoardTheme theme,
+  ) {
+    // Masque le pion à la destination pendant l'animation (il est rendu
+    // par l'overlay animé).
+    final hideStone = _animatingMove != null && pos == _animatingMove!.to;
     return _BoardPoint(
       position: pos,
       step: step,
       origin: origin,
-      piece: board.pieceAt(pos),
-      isSelected: selectedPosition == pos,
-      isPromotionSlot: promotionSlots.contains(pos),
+      piece: hideStone ? null : widget.board.pieceAt(pos),
+      isSelected: widget.selectedPosition == pos,
+      isPromotionSlot: widget.promotionSlots.contains(pos),
       destinationMove: _destinationMoveTo(pos),
-      isLastMoveFrom: lastMove?.from == pos,
-      isLastMoveTo: lastMove?.to == pos,
-      onTap: onCellTap,
+      isLastMoveFrom: widget.lastMove?.from == pos,
+      isLastMoveTo: widget.lastMove?.to == pos,
+      boardTheme: theme,
+      onTap: widget.onCellTap,
     );
   }
 
   Move? _destinationMoveTo(Position pos) {
-    for (final move in legalMoves) {
+    for (final move in widget.legalMoves) {
       if (move.to == pos) return move;
     }
     return null;
   }
+
+  /// Builds a [GameStone] with colors resolved from [theme].
+  static Widget _themedStone(
+    PlayerColor color,
+    double size,
+    BoardTheme theme,
+  ) {
+    final isWhite = color == PlayerColor.white;
+    return GameStone(
+      color: color,
+      size: size,
+      overrideBase: isWhite ? theme.stone1Base : theme.stone2Base,
+      overrideHighlight:
+          isWhite ? theme.stone1Highlight : theme.stone2Highlight,
+      overrideEdge: isWhite ? theme.stone1Edge : theme.stone2Edge,
+    );
+  }
 }
+
+// ─── Coord label ─────────────────────────────────────────────────────────────
 
 /// Label de coordonnée algébrique (lettre de colonne ou chiffre de rangée)
 /// positionné par son centre dans le Stack du plateau.
@@ -181,6 +314,8 @@ class _CoordLabel extends StatelessWidget {
     );
   }
 }
+
+// ─── Lines painter ───────────────────────────────────────────────────────────
 
 /// Trace les lignes de connexion du plateau — horizontales/verticales entre
 /// toutes les intersections voisines, diagonales uniquement entre deux
@@ -235,6 +370,8 @@ class _BoardLinesPainter extends CustomPainter {
       oldDelegate.gridSize != gridSize || oldDelegate.color != color;
 }
 
+// ─── Board point ─────────────────────────────────────────────────────────────
+
 /// Une intersection du plateau : zone de tap, surbrillance d'état, pion ou
 /// simple point décoratif si la case est vide et neutre.
 class _BoardPoint extends StatelessWidget {
@@ -249,25 +386,20 @@ class _BoardPoint extends StatelessWidget {
     required this.isLastMoveFrom,
     required this.isLastMoveTo,
     required this.onTap,
+    required this.boardTheme,
   });
 
   final Position position;
   final double step;
-
-  /// Décalage du coin haut-gauche de la grille dans le `Stack` parent.
   final double origin;
   final Piece? piece;
   final bool isSelected;
   final bool isPromotionSlot;
   final Move? destinationMove;
-
-  /// Case d'origine du dernier coup de l'IA.
   final bool isLastMoveFrom;
-
-  /// Case de destination du dernier coup de l'IA.
   final bool isLastMoveTo;
-
   final ValueChanged<Position> onTap;
+  final BoardTheme boardTheme;
 
   @override
   Widget build(BuildContext context) {
@@ -316,7 +448,11 @@ class _BoardPoint extends StatelessWidget {
                   ),
                 ),
               if (piece != null)
-                GameStone(color: piece!.color, size: stoneSize)
+                _ClassicGameBoardState._themedStone(
+                  piece!.color,
+                  stoneSize,
+                  boardTheme,
+                )
               else if (destinationMove != null)
                 Container(
                   width: stoneSize * 0.3,

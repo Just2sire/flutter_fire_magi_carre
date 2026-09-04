@@ -574,6 +574,12 @@ class AppLocalizationsEn extends AppLocalizations {
   String get settingsAccountSection => 'Account';
 
   @override
+  String get settingsGameSection => 'Game';
+
+  @override
+  String get settingsBoardTheme => 'Board theme';
+
+  @override
   String get profileTitle => 'Profile';
 
   @override
@@ -790,4 +796,98 @@ class AppLocalizationsEn extends AppLocalizations {
   String gameLobbyLocal2pTimerMin(int minutes) {
     return '$minutes min';
   }
+
+  @override
+  String homeGreeting(String username) {
+    return 'Hey, $username!';
+  }
+
+  @override
+  String get homeGreetingSubtitle => 'Ready to play?';
+
+  @override
+  String get homeGuestUsername => 'Guest';
+
+  @override
+  String get homeStatStreak => 'Streak';
+
+  @override
+  String get homeStatRating => 'ELO';
+
+  @override
+  String get homeStatRank => 'Rank';
+
+  @override
+  String get homeStatPlaceholder => '—';
+
+  @override
+  String get homePlayNowTitle => 'New game';
+
+  @override
+  String get homePlayNowSubtitle => 'Challenge the AI or a friend';
+
+  @override
+  String get homePlayNowCta => 'Play';
+
+  @override
+  String get homeQuickModesTitle => 'Quick modes';
+
+  @override
+  String get homeModeBot => 'vs Bot';
+
+  @override
+  String get homeMode2p => '2 Players';
+
+  @override
+  String get homeModeOnline => 'Online';
+
+  @override
+  String get homeModeOnlineSoon => 'Soon';
+
+  @override
+  String get homeLeaderboardTitle => 'Top rankings';
+
+  @override
+  String get homeLeaderboardSeeAll => 'See all';
+
+  @override
+  String get homeModeRules => 'Rules';
+
+  @override
+  String get learnTitle => 'Game Rules';
+
+  @override
+  String get learnGoalTitle => 'Goal';
+
+  @override
+  String get learnGoalBody =>
+      'Capture all of your opponent\'s pieces, or block them so they can no longer move. The last player able to move wins the game.';
+
+  @override
+  String get learnMoveTitle => 'Movement';
+
+  @override
+  String get learnMoveBody =>
+      'Pieces move one intersection at a time along the lines on the board. On 8-way intersections (even row + column), diagonal movement is also allowed.';
+
+  @override
+  String get learnCaptureTitle => 'Capture';
+
+  @override
+  String get learnCaptureBody =>
+      'To capture an opponent\'s piece, jump over it in a straight line. The landing square must be empty. The captured piece is removed from the board.';
+
+  @override
+  String get learnChainTitle => 'Promotion';
+
+  @override
+  String get learnChainBody =>
+      'When your piece reaches the opponent\'s back row and you have a captured piece in reserve, you may place an extra piece on an empty cell of your own starting row. The golden squares show the available spots.';
+
+  @override
+  String get learnPromotionTitle => 'Victory';
+
+  @override
+  String get learnPromotionBody =>
+      'Capture all of your opponent\'s pieces to win. You also win if your opponent cannot make any more moves.';
 }

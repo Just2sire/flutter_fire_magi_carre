@@ -1,5 +1,6 @@
 import "package:flutter/material.dart";
 import "package:flutter_riverpod/flutter_riverpod.dart";
+import "package:flutter_svg/flutter_svg.dart";
 
 import "../../../../core/constants/app_icons.dart";
 import "../../../../core/extensions/index.dart"
@@ -21,6 +22,7 @@ class _BotCharacter {
     required this.catchphrase,
     required this.level,
     required this.color,
+    required this.assetPath,
   });
 
   final String name;
@@ -28,66 +30,79 @@ class _BotCharacter {
   final int level;
   final Color color;
 
+  /// Path to the pre-generated SVG asset bundled in assets/avatars/bots/.
+  final String assetPath;
+
   static const List<_BotCharacter> all = [
     _BotCharacter(
       name: "Ama",
       catchphrase: "C'est ma première partie !",
       level: 1,
       color: Color(0xFF4ADE80),
+      assetPath: "assets/avatars/bots/ama.svg",
     ),
     _BotCharacter(
       name: "Kofi",
       catchphrase: "Je fais de mon mieux.",
       level: 2,
       color: Color(0xFF60A5FA),
+      assetPath: "assets/avatars/bots/kofi.svg",
     ),
     _BotCharacter(
       name: "Yaa",
       catchphrase: "Je suis encore en apprentissage.",
       level: 3,
       color: Color(0xFFF87171),
+      assetPath: "assets/avatars/bots/yaa.svg",
     ),
     _BotCharacter(
       name: "Kwamé",
       catchphrase: "Je ne recule jamais !",
       level: 4,
       color: Color(0xFFFBBF24),
+      assetPath: "assets/avatars/bots/kwame.svg",
     ),
     _BotCharacter(
       name: "Abéna",
       catchphrase: "Chaque coup est une leçon.",
       level: 5,
       color: Color(0xFFA78BFA),
+      assetPath: "assets/avatars/bots/abena.svg",
     ),
     _BotCharacter(
       name: "Kojo",
       catchphrase: "Je connais bien ce plateau.",
       level: 6,
       color: Color(0xFFFB923C),
+      assetPath: "assets/avatars/bots/kojo.svg",
     ),
     _BotCharacter(
       name: "Akua",
       catchphrase: "Les pièges sont ma spécialité.",
       level: 7,
       color: Color(0xFFF472B6),
+      assetPath: "assets/avatars/bots/akua.svg",
     ),
     _BotCharacter(
       name: "Efua",
       catchphrase: "Je vois plusieurs coups d'avance.",
       level: 8,
       color: Color(0xFF2DD4BF),
+      assetPath: "assets/avatars/bots/efua.svg",
     ),
     _BotCharacter(
       name: "Yaw",
       catchphrase: "Tu devras te surpasser pour m'avoir.",
       level: 9,
       color: Color(0xFF818CF8),
+      assetPath: "assets/avatars/bots/yaw.svg",
     ),
     _BotCharacter(
       name: "Nana",
       catchphrase: "Le Carré n'a plus de secrets pour moi.",
       level: 10,
       color: Color(0xFFEAB308),
+      assetPath: "assets/avatars/bots/nana.svg",
     ),
   ];
 }
@@ -114,6 +129,7 @@ class _GameLobbyPageState extends ConsumerState<GameLobbyPage> {
   int _timerDurationSeconds = 0; // 0 = sans minuterie
   int _incrementSeconds = 0;
 
+
   @override
   Widget build(BuildContext context) {
     final l10n = context.l10n;
@@ -121,12 +137,12 @@ class _GameLobbyPageState extends ConsumerState<GameLobbyPage> {
     return AppScaffold(
       body: Column(
         children: [
+          AppTopbar(title: l10n.gameLobbyTitle),
+          AppSpacing.gapVMd,
           Expanded(
             child: SingleChildScrollView(
               child: Column(
                 children: [
-                  AppTopbar(title: l10n.gameLobbyTitle),
-                  // AppSpacing.gapVMd,
                   Row(
                     spacing: AppSpacing.md,
                     children: [
@@ -429,22 +445,11 @@ class _BotHeroCard extends StatelessWidget {
       child: Row(
         spacing: AppSpacing.md,
         children: [
-          Container(
+          SvgPicture.asset(
+            bot.assetPath,
             width: AppSpacing.avatarLg,
             height: AppSpacing.avatarLg,
-            alignment: .center,
-            decoration: BoxDecoration(
-              shape: BoxShape.circle,
-              color: bot.color.withAlpha(250),
-            ),
-            child: Text(
-              bot.name[0],
-              style: const TextStyle(
-                color: Colors.white,
-                fontSize: 24,
-                fontWeight: FontWeight.w700,
-              ),
-            ),
+            fit: BoxFit.cover,
           ),
           Expanded(
             child: Column(
@@ -590,7 +595,6 @@ class _BotPortrait extends StatelessWidget {
                 height: AppSpacing.peta,
                 decoration: BoxDecoration(
                   shape: BoxShape.circle,
-                  color: bot.color.withAlpha(200),
                   border: Border.all(
                     color: isSelected ? cs.primary : Colors.transparent,
                     width: AppSpacing.borderWidthThick,
@@ -605,15 +609,11 @@ class _BotPortrait extends StatelessWidget {
                         ]
                       : null,
                 ),
-                child: Center(
-                  child: Text(
-                    bot.name[0],
-                    style: const TextStyle(
-                      color: Colors.white,
-                      fontSize: 22,
-                      fontWeight: FontWeight.w700,
-                    ),
-                  ),
+                child: SvgPicture.asset(
+                  bot.assetPath,
+                  width: AppSpacing.peta,
+                  height: AppSpacing.peta,
+                  fit: BoxFit.cover,
                 ),
               ),
               Positioned(
