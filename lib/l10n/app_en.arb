@@ -653,6 +653,27 @@
   "profileFriendsLabel": "Friends",
   "@profileFriendsLabel": { "description": "Label for the friends count shown on the profile" },
 
+  "profileStatsSection": "Statistics",
+  "@profileStatsSection": { "description": "Title for the game statistics section" },
+  "profileWinsLabel": "Wins",
+  "@profileWinsLabel": { "description": "Label for wins count on the profile" },
+  "profileLossesLabel": "Losses",
+  "@profileLossesLabel": { "description": "Label for losses count on the profile" },
+  "profileDrawsLabel": "Draws",
+  "@profileDrawsLabel": { "description": "Label for draws count on the profile" },
+
+  "profileSetupTitle": "Welcome, {username}!",
+  "@profileSetupTitle": {
+    "description": "Title of the profile setup page",
+    "placeholders": { "username": { "type": "String" } }
+  },
+  "profileSetupSubtitle": "Tell us a bit about yourself to personalise your profile.",
+  "@profileSetupSubtitle": { "description": "Subtitle of the profile setup page" },
+  "profileSetupBioHint": "Tell us about yourself... (optional)",
+  "@profileSetupBioHint": { "description": "Placeholder for the bio field on setup page" },
+  "profileSetupCta": "Start playing",
+  "@profileSetupCta": { "description": "Submit button on the profile setup page" },
+
   "profileGuestMessage": "Sign in to access your profile.",
   "@profileGuestMessage": { "description": "Message shown on /profile for a guest-mode user" },
 
@@ -730,6 +751,17 @@
 
   "profileActivityTitle": "Activity",
   "@profileActivityTitle": { "description": "Label for the entry leading to match history" },
+
+  "profileHistoryEmpty": "No games played yet.",
+  "@profileHistoryEmpty": { "description": "Empty state message for game history" },
+  "profileHistoryOpponentAiEasy": "AI · Easy",
+  "@profileHistoryOpponentAiEasy": { "description": "Opponent label for easy AI in history" },
+  "profileHistoryOpponentAiMedium": "AI · Medium",
+  "@profileHistoryOpponentAiMedium": { "description": "Opponent label for medium AI in history" },
+  "profileHistoryOpponentAiHard": "AI · Hard",
+  "@profileHistoryOpponentAiHard": { "description": "Opponent label for hard AI in history" },
+  "profileHistoryOpponentHuman": "Local 2P",
+  "@profileHistoryOpponentHuman": { "description": "Opponent label for local 2-player mode in history" },
 
   "gameLobbyTitle": "New match",
   "@gameLobbyTitle": { "description": "Title of the match configuration page" },

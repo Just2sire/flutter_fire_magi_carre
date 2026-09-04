@@ -19,7 +19,7 @@ class LeaderboardEntryModel extends LeaderboardEntry {
       rank: rank,
       userId: json["id"] as String,
       username: json["username"] as String,
-      rating: json["rating"] as int? ?? 1000,
+      rating: json["rating"] as int? ?? 500,
       avatarUrl: json["avatar_url"] as String?,
     );
   }

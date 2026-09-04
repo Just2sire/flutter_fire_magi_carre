@@ -653,6 +653,27 @@
   "profileFriendsLabel": "Amis",
   "@profileFriendsLabel": { "description": "Label du nombre d'amis affiché sur le profil" },
 
+  "profileStatsSection": "Statistiques",
+  "@profileStatsSection": { "description": "Titre de la section statistiques de jeu" },
+  "profileWinsLabel": "Victoires",
+  "@profileWinsLabel": { "description": "Label des victoires sur le profil" },
+  "profileLossesLabel": "Défaites",
+  "@profileLossesLabel": { "description": "Label des défaites sur le profil" },
+  "profileDrawsLabel": "Nuls",
+  "@profileDrawsLabel": { "description": "Label des parties nulles sur le profil" },
+
+  "profileSetupTitle": "Bienvenue, {username} !",
+  "@profileSetupTitle": {
+    "description": "Titre de la page de configuration du profil",
+    "placeholders": { "username": { "type": "String" } }
+  },
+  "profileSetupSubtitle": "Dites-nous quelques mots sur vous pour personnaliser votre profil.",
+  "@profileSetupSubtitle": { "description": "Sous-titre de la page de configuration" },
+  "profileSetupBioHint": "Parlez de vous... (optionnel)",
+  "@profileSetupBioHint": { "description": "Placeholder du champ bio sur la page de setup" },
+  "profileSetupCta": "Commencer à jouer",
+  "@profileSetupCta": { "description": "Bouton de validation de la page de setup" },
+
   "profileGuestMessage": "Connecte-toi pour accéder à ton profil.",
   "@profileGuestMessage": { "description": "Message affiché sur /profile pour un utilisateur en mode invité" },
 
@@ -730,6 +751,17 @@
 
   "profileActivityTitle": "Activité",
   "@profileActivityTitle": { "description": "Libellé de l'entrée menant à l'historique de partie" },
+
+  "profileHistoryEmpty": "Pas encore de parties jouées.",
+  "@profileHistoryEmpty": { "description": "État vide de l'historique de parties" },
+  "profileHistoryOpponentAiEasy": "IA · Débutant",
+  "@profileHistoryOpponentAiEasy": { "description": "Libellé adversaire IA niveau facile dans l'historique" },
+  "profileHistoryOpponentAiMedium": "IA · Intermédiaire",
+  "@profileHistoryOpponentAiMedium": { "description": "Libellé adversaire IA niveau moyen dans l'historique" },
+  "profileHistoryOpponentAiHard": "IA · Expert",
+  "@profileHistoryOpponentAiHard": { "description": "Libellé adversaire IA niveau difficile dans l'historique" },
+  "profileHistoryOpponentHuman": "2 Joueurs",
+  "@profileHistoryOpponentHuman": { "description": "Libellé adversaire mode local 2 joueurs dans l'historique" },
 
   "gameLobbyTitle": "Nouvelle partie",
   "@gameLobbyTitle": { "description": "Titre de la page de configuration de partie" },

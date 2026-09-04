@@ -1,7 +1,8 @@
 import "../../../../shared/data/services/http_service/either.dart";
 import "../../../../shared/domain/failures/failure.dart";
+import "../entities/game_history_entry.dart";
 
-/// Contract for recording completed games to the backend.
+/// Contract for reading and writing game history to the backend.
 abstract interface class IGameHistoryRepository {
   Future<Either<Failure, void>> recordGameResult({
     required String playerId,
@@ -10,5 +11,11 @@ abstract interface class IGameHistoryRepository {
     required int boardSize,
     required int moveCount,
     required int durationSeconds,
+  });
+
+  Future<Either<Failure, List<GameHistoryEntry>>> getGameHistory({
+    required String playerId,
+    int limit = 30,
+    int offset = 0,
   });
 }

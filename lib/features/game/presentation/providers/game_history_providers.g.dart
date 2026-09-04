@@ -154,3 +154,131 @@ final class RecordGameResultUseCaseProvider
 
 String _$recordGameResultUseCaseHash() =>
     r'c6ae606ebc1a3662743c17bff9a86798bdf49fb5';
+
+@ProviderFor(getGameHistoryUseCase)
+final getGameHistoryUseCaseProvider = GetGameHistoryUseCaseProvider._();
+
+final class GetGameHistoryUseCaseProvider
+    extends $FunctionalProvider<GetGameHistory, GetGameHistory, GetGameHistory>
+    with $Provider<GetGameHistory> {
+  GetGameHistoryUseCaseProvider._()
+    : super(
+        from: null,
+        argument: null,
+        retry: null,
+        name: r'getGameHistoryUseCaseProvider',
+        isAutoDispose: true,
+        dependencies: null,
+        $allTransitiveDependencies: null,
+      );
+
+  @override
+  String debugGetCreateSourceHash() => _$getGameHistoryUseCaseHash();
+
+  @$internal
+  @override
+  $ProviderElement<GetGameHistory> $createElement($ProviderPointer pointer) =>
+      $ProviderElement(pointer);
+
+  @override
+  GetGameHistory create(Ref ref) {
+    return getGameHistoryUseCase(ref);
+  }
+
+  /// {@macro riverpod.override_with_value}
+  Override overrideWithValue(GetGameHistory value) {
+    return $ProviderOverride(
+      origin: this,
+      providerOverride: $SyncValueProvider<GetGameHistory>(value),
+    );
+  }
+}
+
+String _$getGameHistoryUseCaseHash() =>
+    r'e245a9a4016aa17c1b0a0e59cc77816648455a27';
+
+/// Historique de parties d'un joueur, trié du plus récent au plus ancien.
+
+@ProviderFor(playerHistory)
+final playerHistoryProvider = PlayerHistoryFamily._();
+
+/// Historique de parties d'un joueur, trié du plus récent au plus ancien.
+
+final class PlayerHistoryProvider
+    extends
+        $FunctionalProvider<
+          AsyncValue<List<GameHistoryEntry>>,
+          List<GameHistoryEntry>,
+          FutureOr<List<GameHistoryEntry>>
+        >
+    with
+        $FutureModifier<List<GameHistoryEntry>>,
+        $FutureProvider<List<GameHistoryEntry>> {
+  /// Historique de parties d'un joueur, trié du plus récent au plus ancien.
+  PlayerHistoryProvider._({
+    required PlayerHistoryFamily super.from,
+    required String super.argument,
+  }) : super(
+         retry: null,
+         name: r'playerHistoryProvider',
+         isAutoDispose: true,
+         dependencies: null,
+         $allTransitiveDependencies: null,
+       );
+
+  @override
+  String debugGetCreateSourceHash() => _$playerHistoryHash();
+
+  @override
+  String toString() {
+    return r'playerHistoryProvider'
+        ''
+        '($argument)';
+  }
+
+  @$internal
+  @override
+  $FutureProviderElement<List<GameHistoryEntry>> $createElement(
+    $ProviderPointer pointer,
+  ) => $FutureProviderElement(pointer);
+
+  @override
+  FutureOr<List<GameHistoryEntry>> create(Ref ref) {
+    final argument = this.argument as String;
+    return playerHistory(ref, argument);
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return other is PlayerHistoryProvider && other.argument == argument;
+  }
+
+  @override
+  int get hashCode {
+    return argument.hashCode;
+  }
+}
+
+String _$playerHistoryHash() => r'2ca9dce4c567e7a8e60301c68b11daeb7a3baee5';
+
+/// Historique de parties d'un joueur, trié du plus récent au plus ancien.
+
+final class PlayerHistoryFamily extends $Family
+    with $FunctionalFamilyOverride<FutureOr<List<GameHistoryEntry>>, String> {
+  PlayerHistoryFamily._()
+    : super(
+        retry: null,
+        name: r'playerHistoryProvider',
+        dependencies: null,
+        $allTransitiveDependencies: null,
+        isAutoDispose: true,
+      );
+
+  /// Historique de parties d'un joueur, trié du plus récent au plus ancien.
+
+  PlayerHistoryProvider call(String playerId) =>
+      PlayerHistoryProvider._(argument: playerId, from: this);
+
+  @override
+  String toString() => r'playerHistoryProvider';
+}

@@ -35,6 +35,7 @@ class AppRoutes {
   static const String learnChapter = "/learn/:chapterId";
 
   // ─── Profil — sous-écrans ─────────────────
+  static const String profileSetup = "/profile/setup";
   static const String profileEdit = "/profile/edit";
   static const String profileChangePassword = "/profile/change-password";
   static const String profileHistory = "/profile/history";

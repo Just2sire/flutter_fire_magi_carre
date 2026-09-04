@@ -607,6 +607,33 @@ class AppLocalizationsEn extends AppLocalizations {
   String get profileFriendsLabel => 'Friends';
 
   @override
+  String get profileStatsSection => 'Statistics';
+
+  @override
+  String get profileWinsLabel => 'Wins';
+
+  @override
+  String get profileLossesLabel => 'Losses';
+
+  @override
+  String get profileDrawsLabel => 'Draws';
+
+  @override
+  String profileSetupTitle(String username) {
+    return 'Welcome, $username!';
+  }
+
+  @override
+  String get profileSetupSubtitle =>
+      'Tell us a bit about yourself to personalise your profile.';
+
+  @override
+  String get profileSetupBioHint => 'Tell us about yourself... (optional)';
+
+  @override
+  String get profileSetupCta => 'Start playing';
+
+  @override
   String get profileGuestMessage => 'Sign in to access your profile.';
 
   @override
@@ -686,6 +713,21 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get profileActivityTitle => 'Activity';
+
+  @override
+  String get profileHistoryEmpty => 'No games played yet.';
+
+  @override
+  String get profileHistoryOpponentAiEasy => 'AI · Easy';
+
+  @override
+  String get profileHistoryOpponentAiMedium => 'AI · Medium';
+
+  @override
+  String get profileHistoryOpponentAiHard => 'AI · Hard';
+
+  @override
+  String get profileHistoryOpponentHuman => 'Local 2P';
 
   @override
   String get gameLobbyTitle => 'New match';

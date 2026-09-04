@@ -61,8 +61,17 @@ GoRouter buildRouter(Ref ref) {
           location == AppRoutes.authResetPassword
               ? null
               : AppRoutes.authResetPassword,
-        AuthAuthenticated() =>
-          isAuthRoute || isBootstrapRoute ? AppRoutes.home : null,
+        AuthAuthenticated(:final profile) => switch (true) {
+            _ when !profile.onboardingCompleted &&
+                location != AppRoutes.profileSetup =>
+              AppRoutes.profileSetup,
+            _ when profile.onboardingCompleted &&
+                (isAuthRoute ||
+                    isBootstrapRoute ||
+                    location == AppRoutes.profileSetup) =>
+              AppRoutes.home,
+            _ => null,
+          },
         AuthGuest() => isBootstrapRoute ? AppRoutes.home : null,
       };
     },
@@ -118,6 +127,17 @@ GoRouter buildRouter(Ref ref) {
           context: context,
           state: state,
           child: const ResetPassword(),
+        ),
+      ),
+
+      // ─── Setup profil post-inscription ───────────────────────────────
+      GoRoute(
+        path: AppRoutes.profileSetup,
+        parentNavigatorKey: AppNavigatorKey.instance,
+        pageBuilder: (context, state) => AppTransitions.fade(
+          context: context,
+          state: state,
+          child: const ProfileSetupPage(),
         ),
       ),
 
@@ -311,7 +331,7 @@ GoRouter buildRouter(Ref ref) {
                         AppTransitions.pushedScreen(
                           context: context,
                           state: state,
-                          child: const _Placeholder(title: "Historique"),
+                          child: const ProfileHistoryPage(),
                         ),
                   ),
                   GoRoute(

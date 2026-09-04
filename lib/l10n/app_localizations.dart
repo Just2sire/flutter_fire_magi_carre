@@ -1190,6 +1190,54 @@ abstract class AppLocalizations {
   /// **'Amis'**
   String get profileFriendsLabel;
 
+  /// Titre de la section statistiques de jeu
+  ///
+  /// In fr, this message translates to:
+  /// **'Statistiques'**
+  String get profileStatsSection;
+
+  /// Label des victoires sur le profil
+  ///
+  /// In fr, this message translates to:
+  /// **'Victoires'**
+  String get profileWinsLabel;
+
+  /// Label des défaites sur le profil
+  ///
+  /// In fr, this message translates to:
+  /// **'Défaites'**
+  String get profileLossesLabel;
+
+  /// Label des parties nulles sur le profil
+  ///
+  /// In fr, this message translates to:
+  /// **'Nuls'**
+  String get profileDrawsLabel;
+
+  /// Titre de la page de configuration du profil
+  ///
+  /// In fr, this message translates to:
+  /// **'Bienvenue, {username} !'**
+  String profileSetupTitle(String username);
+
+  /// Sous-titre de la page de configuration
+  ///
+  /// In fr, this message translates to:
+  /// **'Dites-nous quelques mots sur vous pour personnaliser votre profil.'**
+  String get profileSetupSubtitle;
+
+  /// Placeholder du champ bio sur la page de setup
+  ///
+  /// In fr, this message translates to:
+  /// **'Parlez de vous... (optionnel)'**
+  String get profileSetupBioHint;
+
+  /// Bouton de validation de la page de setup
+  ///
+  /// In fr, this message translates to:
+  /// **'Commencer à jouer'**
+  String get profileSetupCta;
+
   /// Message affiché sur /profile pour un utilisateur en mode invité
   ///
   /// In fr, this message translates to:
@@ -1333,6 +1381,36 @@ abstract class AppLocalizations {
   /// In fr, this message translates to:
   /// **'Activité'**
   String get profileActivityTitle;
+
+  /// État vide de l'historique de parties
+  ///
+  /// In fr, this message translates to:
+  /// **'Pas encore de parties jouées.'**
+  String get profileHistoryEmpty;
+
+  /// Libellé adversaire IA niveau facile dans l'historique
+  ///
+  /// In fr, this message translates to:
+  /// **'IA · Débutant'**
+  String get profileHistoryOpponentAiEasy;
+
+  /// Libellé adversaire IA niveau moyen dans l'historique
+  ///
+  /// In fr, this message translates to:
+  /// **'IA · Intermédiaire'**
+  String get profileHistoryOpponentAiMedium;
+
+  /// Libellé adversaire IA niveau difficile dans l'historique
+  ///
+  /// In fr, this message translates to:
+  /// **'IA · Expert'**
+  String get profileHistoryOpponentAiHard;
+
+  /// Libellé adversaire mode local 2 joueurs dans l'historique
+  ///
+  /// In fr, this message translates to:
+  /// **'2 Joueurs'**
+  String get profileHistoryOpponentHuman;
 
   /// Titre de la page de configuration de partie
   ///
