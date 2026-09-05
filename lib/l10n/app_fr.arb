@@ -892,8 +892,6 @@
   "@homeMode2p": { "description": "Chip du mode 2 joueurs local" },
   "homeModeOnline": "En ligne",
   "@homeModeOnline": { "description": "Chip du mode en ligne" },
-  "homeModeOnlineSoon": "Bientôt",
-  "@homeModeOnlineSoon": { "description": "Badge affiché sur le chip En ligne quand la fonctionnalité n'est pas encore disponible" },
   "homeLeaderboardTitle": "Top classement",
   "@homeLeaderboardTitle": { "description": "Titre de la section aperçu du classement sur le home" },
   "homeLeaderboardSeeAll": "Voir tout",

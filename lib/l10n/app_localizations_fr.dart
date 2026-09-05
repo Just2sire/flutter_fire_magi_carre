@@ -47,7 +47,8 @@ class AppLocalizationsFr extends AppLocalizations {
       'Connexion indisponible. Vérifie ta connexion internet.';
 
   @override
-  String get commonOfflineBanner => 'Hors-ligne — affichage des données en cache';
+  String get commonOfflineBanner =>
+      'Hors-ligne — affichage des données en cache';
 
   @override
   String get commonOr => 'Ou';
@@ -882,8 +883,6 @@ class AppLocalizationsFr extends AppLocalizations {
   @override
   String get homeModeOnline => 'En ligne';
 
-  @override
-  String get homeModeOnlineSoon => 'Bientôt';
 
   @override
   String get homeLeaderboardTitle => 'Top classement';
