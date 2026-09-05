@@ -170,6 +170,12 @@ abstract class AppLocalizations {
   /// **'Connexion indisponible. Vérifie ta connexion internet.'**
   String get commonNetworkError;
 
+  /// Bandeau affiché en haut d'un écran quand l'appareil est hors-ligne
+  ///
+  /// In fr, this message translates to:
+  /// **'Hors-ligne — affichage des données en cache'**
+  String get commonOfflineBanner;
+
   /// Séparateur générique entre deux options (ex: entre formulaire et OAuth)
   ///
   /// In fr, this message translates to:
@@ -1460,36 +1466,6 @@ abstract class AppLocalizations {
   /// **'Lancer la partie'**
   String get gameLobbyStartCta;
 
-  /// Badge affiché sur les fonctionnalités non encore disponibles
-  ///
-  /// In fr, this message translates to:
-  /// **'Bientôt'**
-  String get gameLobbyComingSoon;
-
-  /// Titre de la section invitation dans le mode en ligne
-  ///
-  /// In fr, this message translates to:
-  /// **'Inviter un ami'**
-  String get gameLobbyInviteTitle;
-
-  /// Description de la fonctionnalité d'invitation par lien
-  ///
-  /// In fr, this message translates to:
-  /// **'Partage un lien pour jouer ensemble'**
-  String get gameLobbyInviteSubtitle;
-
-  /// Titre de la section amis connectés dans le mode en ligne
-  ///
-  /// In fr, this message translates to:
-  /// **'Amis en ligne'**
-  String get gameLobbyFriendsTitle;
-
-  /// Message affiché quand aucun ami n'est en ligne
-  ///
-  /// In fr, this message translates to:
-  /// **'Aucun ami en ligne pour l\'instant'**
-  String get gameLobbyFriendsEmpty;
-
   /// Description du niveau facile
   ///
   /// In fr, this message translates to:
@@ -1801,6 +1777,192 @@ abstract class AppLocalizations {
   /// In fr, this message translates to:
   /// **'Capturez toutes les pièces adverses pour remporter la partie. Vous gagnez également si votre adversaire ne peut plus effectuer aucun déplacement.'**
   String get learnPromotionBody;
+
+  /// Titre de l'écran principal des parties en ligne
+  ///
+  /// In fr, this message translates to:
+  /// **'Partie en ligne'**
+  String get onlineLobbyTitle;
+
+  /// Titre de la section matchmaking aléatoire
+  ///
+  /// In fr, this message translates to:
+  /// **'Partie rapide'**
+  String get onlineLobbyQuickMatchTitle;
+
+  /// Bouton pour rejoindre la file de matchmaking
+  ///
+  /// In fr, this message translates to:
+  /// **'Chercher un adversaire'**
+  String get onlineLobbyQuickMatchCta;
+
+  /// Message affiché pendant la recherche d'un adversaire
+  ///
+  /// In fr, this message translates to:
+  /// **'Recherche d\'un adversaire…'**
+  String get onlineLobbySearching;
+
+  /// Bouton pour annuler la recherche de matchmaking
+  ///
+  /// In fr, this message translates to:
+  /// **'Annuler'**
+  String get onlineLobbyCancelSearch;
+
+  /// Titre de la section invitation par code
+  ///
+  /// In fr, this message translates to:
+  /// **'Inviter un ami'**
+  String get onlineLobbyInviteTitle;
+
+  /// Bouton pour créer une partie par invitation
+  ///
+  /// In fr, this message translates to:
+  /// **'Créer une invitation'**
+  String get onlineLobbyCreateInviteCta;
+
+  /// Libellé du champ de saisie du code d'invitation
+  ///
+  /// In fr, this message translates to:
+  /// **'Code d\'invitation'**
+  String get onlineLobbyJoinCodeLabel;
+
+  /// Bouton pour rejoindre une partie par code
+  ///
+  /// In fr, this message translates to:
+  /// **'Rejoindre'**
+  String get onlineLobbyJoinCta;
+
+  /// Erreur affichée quand le code d'invitation est invalide
+  ///
+  /// In fr, this message translates to:
+  /// **'Code invalide ou expiré'**
+  String get onlineLobbyInvalidCode;
+
+  /// Titre de la liste des parties en ligne à reprendre
+  ///
+  /// In fr, this message translates to:
+  /// **'Parties en cours'**
+  String get onlineLobbyResumeTitle;
+
+  /// Libellé générique d'une partie en ligne dans la liste à reprendre
+  ///
+  /// In fr, this message translates to:
+  /// **'Partie en ligne'**
+  String get onlineLobbyResumeMatch;
+
+  /// Sous-titre indiquant que le joueur est les blancs
+  ///
+  /// In fr, this message translates to:
+  /// **'Vous jouez les blancs'**
+  String get onlineLobbyResumeSubtitleWhite;
+
+  /// Sous-titre indiquant que le joueur est les noirs
+  ///
+  /// In fr, this message translates to:
+  /// **'Vous jouez les noirs'**
+  String get onlineLobbyResumeSubtitleBlack;
+
+  /// Titre de l'écran de création d'invitation
+  ///
+  /// In fr, this message translates to:
+  /// **'Créer une invitation'**
+  String get onlineInviteTitle;
+
+  /// Titre du sélecteur de cadence dans la création d'invitation
+  ///
+  /// In fr, this message translates to:
+  /// **'Cadence'**
+  String get onlineInviteTimerTitle;
+
+  /// Libellé du toggle partie classée/amicale
+  ///
+  /// In fr, this message translates to:
+  /// **'Partie classée'**
+  String get onlineInviteRatedToggle;
+
+  /// Explication de l'effet du toggle classé
+  ///
+  /// In fr, this message translates to:
+  /// **'Affecte votre classement ELO'**
+  String get onlineInviteRatedSubtitle;
+
+  /// Bouton pour générer le code d'invitation
+  ///
+  /// In fr, this message translates to:
+  /// **'Générer le code'**
+  String get onlineInviteGenerateCta;
+
+  /// Titre de l'écran d'attente affichant le code à partager
+  ///
+  /// In fr, this message translates to:
+  /// **'Partage ce code'**
+  String get onlineInviteShareTitle;
+
+  /// Bouton pour copier le code d'invitation
+  ///
+  /// In fr, this message translates to:
+  /// **'Copier'**
+  String get onlineInviteCopyCta;
+
+  /// Confirmation affichée après la copie du code
+  ///
+  /// In fr, this message translates to:
+  /// **'Code copié !'**
+  String get onlineInviteCopied;
+
+  /// Message affiché en attendant qu'un adversaire rejoigne l'invitation
+  ///
+  /// In fr, this message translates to:
+  /// **'En attente d\'un adversaire…'**
+  String get onlineInviteWaiting;
+
+  /// Titre de l'écran de jointure par code
+  ///
+  /// In fr, this message translates to:
+  /// **'Rejoindre une partie'**
+  String get onlineJoinTitle;
+
+  /// Texte d'aide du champ de code d'invitation
+  ///
+  /// In fr, this message translates to:
+  /// **'Entrez le code à 6 caractères'**
+  String get onlineJoinCodeHint;
+
+  /// Bouton pour rejoindre la partie depuis l'écran de jointure
+  ///
+  /// In fr, this message translates to:
+  /// **'Rejoindre'**
+  String get onlineJoinCta;
+
+  /// Libellé générique de l'adversaire dans une partie en ligne
+  ///
+  /// In fr, this message translates to:
+  /// **'Adversaire'**
+  String get onlineGameOpponent;
+
+  /// Bouton pour abandonner une partie en ligne
+  ///
+  /// In fr, this message translates to:
+  /// **'Abandonner'**
+  String get onlineGameResignCta;
+
+  /// Titre de la confirmation d'abandon
+  ///
+  /// In fr, this message translates to:
+  /// **'Abandonner la partie ?'**
+  String get onlineGameResignConfirmTitle;
+
+  /// Message de la confirmation d'abandon
+  ///
+  /// In fr, this message translates to:
+  /// **'Vous perdrez cette partie.'**
+  String get onlineGameResignConfirmMessage;
+
+  /// Bouton de retour au lobby après la fin d'une partie en ligne
+  ///
+  /// In fr, this message translates to:
+  /// **'Retour au lobby'**
+  String get onlineGameBackToLobbyCta;
 }
 
 class _AppLocalizationsDelegate

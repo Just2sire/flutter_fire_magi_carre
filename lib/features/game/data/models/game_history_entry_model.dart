@@ -32,4 +32,22 @@ class GameHistoryEntryModel extends GameHistoryEntry {
       playedAt: DateTime.parse(json["played_at"] as String),
     );
   }
+
+  factory GameHistoryEntryModel.fromCachedJson(Map<String, dynamic> json) =>
+      GameHistoryEntryModel.fromJson(json);
+
+  /// Sérialisation pour le cache local (Hive).
+  Map<String, dynamic> toCacheJson() => {
+    "id": id,
+    "player_id": playerId,
+    "opponent_type": opponentType,
+    "ai_difficulty": aiDifficulty,
+    "result": result,
+    "board_size": boardSize,
+    "move_count": moveCount,
+    "player_rating_before": playerRatingBefore,
+    "player_rating_after": playerRatingAfter,
+    "rating_delta": ratingDelta,
+    "played_at": playedAt.toIso8601String(),
+  };
 }

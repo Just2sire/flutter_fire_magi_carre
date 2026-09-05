@@ -1,5 +1,8 @@
 export "connectivity_provider.dart";
+export "dio_provider.dart";
+export "local_cache_provider.dart";
 export "locale_provider.dart";
+export "network_info_provider.dart";
 export "notification_providers.dart";
 export "router_provider.dart";
 export "storage_providers.dart";

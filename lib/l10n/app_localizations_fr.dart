@@ -47,6 +47,9 @@ class AppLocalizationsFr extends AppLocalizations {
       'Connexion indisponible. Vérifie ta connexion internet.';
 
   @override
+  String get commonOfflineBanner => 'Hors-ligne — affichage des données en cache';
+
+  @override
   String get commonOr => 'Ou';
 
   @override
@@ -761,21 +764,6 @@ class AppLocalizationsFr extends AppLocalizations {
   String get gameLobbyStartCta => 'Lancer la partie';
 
   @override
-  String get gameLobbyComingSoon => 'Bientôt';
-
-  @override
-  String get gameLobbyInviteTitle => 'Inviter un ami';
-
-  @override
-  String get gameLobbyInviteSubtitle => 'Partage un lien pour jouer ensemble';
-
-  @override
-  String get gameLobbyFriendsTitle => 'Amis en ligne';
-
-  @override
-  String get gameLobbyFriendsEmpty => 'Aucun ami en ligne pour l\'instant';
-
-  @override
   String get gameDifficultyEasyDescription => 'Parfait pour débuter';
 
   @override
@@ -943,4 +931,97 @@ class AppLocalizationsFr extends AppLocalizations {
   @override
   String get learnPromotionBody =>
       'Capturez toutes les pièces adverses pour remporter la partie. Vous gagnez également si votre adversaire ne peut plus effectuer aucun déplacement.';
+
+  @override
+  String get onlineLobbyTitle => 'Partie en ligne';
+
+  @override
+  String get onlineLobbyQuickMatchTitle => 'Partie rapide';
+
+  @override
+  String get onlineLobbyQuickMatchCta => 'Chercher un adversaire';
+
+  @override
+  String get onlineLobbySearching => 'Recherche d\'un adversaire…';
+
+  @override
+  String get onlineLobbyCancelSearch => 'Annuler';
+
+  @override
+  String get onlineLobbyInviteTitle => 'Inviter un ami';
+
+  @override
+  String get onlineLobbyCreateInviteCta => 'Créer une invitation';
+
+  @override
+  String get onlineLobbyJoinCodeLabel => 'Code d\'invitation';
+
+  @override
+  String get onlineLobbyJoinCta => 'Rejoindre';
+
+  @override
+  String get onlineLobbyInvalidCode => 'Code invalide ou expiré';
+
+  @override
+  String get onlineLobbyResumeTitle => 'Parties en cours';
+
+  @override
+  String get onlineLobbyResumeMatch => 'Partie en ligne';
+
+  @override
+  String get onlineLobbyResumeSubtitleWhite => 'Vous jouez les blancs';
+
+  @override
+  String get onlineLobbyResumeSubtitleBlack => 'Vous jouez les noirs';
+
+  @override
+  String get onlineInviteTitle => 'Créer une invitation';
+
+  @override
+  String get onlineInviteTimerTitle => 'Cadence';
+
+  @override
+  String get onlineInviteRatedToggle => 'Partie classée';
+
+  @override
+  String get onlineInviteRatedSubtitle => 'Affecte votre classement ELO';
+
+  @override
+  String get onlineInviteGenerateCta => 'Générer le code';
+
+  @override
+  String get onlineInviteShareTitle => 'Partage ce code';
+
+  @override
+  String get onlineInviteCopyCta => 'Copier';
+
+  @override
+  String get onlineInviteCopied => 'Code copié !';
+
+  @override
+  String get onlineInviteWaiting => 'En attente d\'un adversaire…';
+
+  @override
+  String get onlineJoinTitle => 'Rejoindre une partie';
+
+  @override
+  String get onlineJoinCodeHint => 'Entrez le code à 6 caractères';
+
+  @override
+  String get onlineJoinCta => 'Rejoindre';
+
+  @override
+  String get onlineGameOpponent => 'Adversaire';
+
+  @override
+  String get onlineGameResignCta => 'Abandonner';
+
+  @override
+  String get onlineGameResignConfirmTitle => 'Abandonner la partie ?';
+
+  @override
+  String get onlineGameResignConfirmMessage => 'Vous perdrez cette partie.';
+
+  @override
+  String get onlineGameBackToLobbyCta => 'Retour au lobby';
 }

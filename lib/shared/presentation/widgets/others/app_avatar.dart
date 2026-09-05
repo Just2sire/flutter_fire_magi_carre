@@ -1,4 +1,3 @@
-import "package:cached_network_image/cached_network_image.dart";
 import "package:flutter/material.dart";
 
 import "../../../../core/constants/app_icons.dart";
@@ -6,8 +5,8 @@ import "../../../../core/extensions/build_context_extensions.dart";
 import "../../../../core/theme/app_spacing.dart";
 
 /// Avatar circulaire — affiche l'image distante si présente, sinon une
-/// icône de repli. L'image est mise en cache sur disque dès le premier
-/// chargement et servie localement lors des ouvertures suivantes.
+/// icône de repli. Mise en cache mémoire standard de Flutter (`Image.network`)
+/// pour la durée de session, pas de cache disque entre sessions.
 class AppAvatar extends StatelessWidget {
   const AppAvatar({
     required this.avatarUrl,
@@ -33,19 +32,16 @@ class AppAvatar extends StatelessWidget {
       backgroundColor: cs.surfaceContainerHighest,
       child: url != null && url.isNotEmpty
           ? ClipOval(
-              child: CachedNetworkImage(
-                imageUrl: url,
+              child: Image.network(
+                url,
                 width: diameter,
                 height: diameter,
                 fit: BoxFit.cover,
-                placeholder: (_, _) => _Fallback(
-                  radius: radius,
-                  color: cs.onSurfaceVariant,
-                ),
-                errorWidget: (_, _, _) => _Fallback(
-                  radius: radius,
-                  color: cs.onSurfaceVariant,
-                ),
+                loadingBuilder: (_, child, progress) => progress == null
+                    ? child
+                    : _Fallback(radius: radius, color: cs.onSurfaceVariant),
+                errorBuilder: (_, _, _) =>
+                    _Fallback(radius: radius, color: cs.onSurfaceVariant),
               ),
             )
           : _Fallback(radius: radius, color: cs.onSurfaceVariant),

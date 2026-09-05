@@ -9,6 +9,7 @@ import "../../features/game/presentation/pages/index.dart";
 import "../../features/home/presentation/pages/index.dart";
 import "../../features/leaderboard/presentation/pages/leaderboard_page.dart";
 import "../../features/learn/presentation/pages/index.dart";
+import "../../features/online/presentation/pages/index.dart";
 import "../../features/profile/presentation/pages/index.dart";
 import "../../features/settings/presentation/pages/index.dart";
 import "../../features/welcome/presentation/pages/index.dart";
@@ -165,6 +166,20 @@ GoRouter buildRouter(Ref ref) {
         ),
       ),
 
+      // ─── Partie en ligne ────────────────────────
+      GoRoute(
+        path: AppRoutes.gameOnline,
+        parentNavigatorKey: AppNavigatorKey.instance,
+        pageBuilder: (context, state) => AppTransitions.slide(
+          context: context,
+          state: state,
+          begin: const Offset(0.0, 1.0),
+          child: OnlineGamePage(
+            matchId: state.pathParameters["matchId"]!,
+          ),
+        ),
+      ),
+
       // ─── Partie — plein écran hors-shell ──────
       GoRoute(
         path: AppRoutes.game,
@@ -252,7 +267,7 @@ GoRouter buildRouter(Ref ref) {
                 pageBuilder: (context, state) => AppTransitions.fade(
                   context: context,
                   state: state,
-                  child: const _Placeholder(title: "Lobby"),
+                  child: const LobbyPage(),
                 ),
                 routes: [
                   GoRoute(
@@ -261,7 +276,7 @@ GoRouter buildRouter(Ref ref) {
                         AppTransitions.pushedScreen(
                           context: context,
                           state: state,
-                          child: const _Placeholder(title: "Créer une partie"),
+                          child: const CreateInvitePage(),
                         ),
                   ),
                   GoRoute(
@@ -270,10 +285,7 @@ GoRouter buildRouter(Ref ref) {
                       return AppTransitions.pushedScreen(
                         context: context,
                         state: state,
-                        child: _Placeholder(
-                          title:
-                              "Rejoindre ${state.pathParameters['inviteCode']}",
-                        ),
+                        child: const JoinInvitePage(),
                       );
                     },
                   ),

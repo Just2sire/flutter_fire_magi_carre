@@ -7,7 +7,7 @@ import "../../../../core/extensions/navigation_extensions.dart";
 import "../../../../core/theme/app_colors.dart";
 import "../../../../core/theme/app_spacing.dart";
 import "../../../../shared/presentation/widgets/layouts/app_scaffold.dart";
-import "../../../../shared/presentation/widgets/others/app_dicebear_avatar.dart";
+import "../../../../shared/presentation/widgets/others/app_avatar.dart";
 import "../../../../shared/presentation/widgets/others/app_section_label.dart";
 import "../../../auth/domain/entities/auth_state.dart";
 import "../../../auth/domain/entities/user_profile.dart";
@@ -121,7 +121,7 @@ class _HeroHeader extends StatelessWidget {
             ),
           ),
           AppSpacing.gapHLg,
-          _AvatarBadge(username: username),
+          _AvatarBadge(avatarUrl: profile?.avatarUrl),
         ],
       ),
     );
@@ -129,9 +129,9 @@ class _HeroHeader extends StatelessWidget {
 }
 
 class _AvatarBadge extends StatefulWidget {
-  const _AvatarBadge({required this.username});
+  const _AvatarBadge({this.avatarUrl});
 
-  final String username;
+  final String? avatarUrl;
 
   @override
   State<_AvatarBadge> createState() => _AvatarBadgeState();
@@ -182,9 +182,9 @@ class _AvatarBadgeState extends State<_AvatarBadge>
             ),
           ],
         ),
-        child: AppDiceBearAvatar(
-          seed: widget.username,
-          size: AppSpacing.avatarXl,
+        child: AppAvatar(
+          avatarUrl: widget.avatarUrl,
+          radius: AppSpacing.avatarXl / 2,
         ),
       ),
     );
@@ -596,7 +596,7 @@ class _LeaderboardRow extends StatelessWidget {
                   textAlign: TextAlign.center,
                 ),
               ),
-              AppDiceBearAvatar(seed: entry.username),
+              AppAvatar(avatarUrl: entry.avatarUrl, radius: AppSpacing.xl),
               Expanded(
                 child: Text(
                   entry.username,
