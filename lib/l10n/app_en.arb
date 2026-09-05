@@ -891,8 +891,6 @@
   "@homeMode2p": { "description": "Local 2-player mode chip" },
   "homeModeOnline": "Online",
   "@homeModeOnline": { "description": "Online mode chip" },
-  "homeModeOnlineSoon": "Soon",
-  "@homeModeOnlineSoon": { "description": "Badge on Online chip when the feature is not yet available" },
   "homeLeaderboardTitle": "Top rankings",
   "@homeLeaderboardTitle": { "description": "Leaderboard preview section title on home" },
   "homeLeaderboardSeeAll": "See all",

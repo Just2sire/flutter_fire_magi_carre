@@ -1688,12 +1688,6 @@ abstract class AppLocalizations {
   /// **'En ligne'**
   String get homeModeOnline;
 
-  /// Badge affiché sur le chip En ligne quand la fonctionnalité n'est pas encore disponible
-  ///
-  /// In fr, this message translates to:
-  /// **'Bientôt'**
-  String get homeModeOnlineSoon;
-
   /// Titre de la section aperçu du classement sur le home
   ///
   /// In fr, this message translates to:
