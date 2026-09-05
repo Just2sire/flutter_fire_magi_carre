@@ -56,10 +56,19 @@ class _LoginPageState extends ConsumerState<LoginPage> {
     final l10n = context.l10n;
     final tt = context.textTheme;
     final cs = context.colorScheme;
+    final authState = ref.watch(authProvider);
+    final isOAuthLoading = switch (authState) {
+      AuthOAuthPending() || AuthLoading() when !_isLoading => true,
+      _ => false,
+    };
     return AppScaffold(
-      body: Column(
-        crossAxisAlignment: .start,
+      body: Stack(
         children: [
+          AbsorbPointer(
+            absorbing: isOAuthLoading,
+            child: Column(
+              crossAxisAlignment: .start,
+              children: [
           AppTopbar(
             leadingButtonTooltip: l10n.authSkipTitle,
             title: "",
@@ -167,6 +176,18 @@ class _LoginPageState extends ConsumerState<LoginPage> {
           AppDivider(label: l10n.authOrContinueWith),
           AppSpacing.gapVXxxl,
           OauthButtonsRow(oauthProviders: _getProviders()),
+              ],
+            ),
+          ),
+          if (isOAuthLoading)
+            Positioned.fill(
+              child: ColoredBox(
+                color: cs.surface.withValues(alpha: 0.75),
+                child: const Center(
+                  child: CircularProgressIndicator.adaptive(),
+                ),
+              ),
+            ),
         ],
       ),
     );
@@ -192,23 +213,19 @@ class _LoginPageState extends ConsumerState<LoginPage> {
   }
 
   Future<void> _googleSignUp() async {
-    setState(() => _isLoading = true);
     await ref.read(authProvider.notifier).signInWithGoogle();
-    if (mounted) setState(() => _isLoading = false);
     if (!mounted) return;
-    final state = ref.read(authProvider);
-    if (state case AuthFailureState(:final failure)) {
+    final authState = ref.read(authProvider);
+    if (authState case AuthFailureState(:final failure)) {
       context.showSnackBar(context.localizeFailure(failure));
     }
   }
 
   Future<void> _githubLogin() async {
-    setState(() => _isLoading = true);
     await ref.read(authProvider.notifier).signInWithGithub();
-    if (mounted) setState(() => _isLoading = false);
     if (!mounted) return;
-    final state = ref.read(authProvider);
-    if (state case AuthFailureState(:final failure)) {
+    final authState = ref.read(authProvider);
+    if (authState case AuthFailureState(:final failure)) {
       context.showSnackBar(context.localizeFailure(failure));
     }
   }

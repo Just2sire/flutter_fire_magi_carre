@@ -6,5 +6,6 @@ export "app_options_sheet.dart";
 export "app_section_label.dart";
 export "app_switcher_transitions.dart";
 export "app_tile_row.dart";
+export "offline_banner.dart";
 export "required_field_label.dart";
 export "skeleton.dart";

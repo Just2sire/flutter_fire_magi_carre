@@ -68,6 +68,11 @@ extension NavigationExtensions on BuildContext {
   Future<T?> pushGameLocal<T>({Object? extra}) =>
       push<T>(AppRoutes.gameLocal, extra: extra);
 
+  void goGameOnline(String matchId) =>
+      go(AppRoutes.gameOnlinePath(matchId));
+  Future<T?> pushGameOnline<T>(String matchId) =>
+      push<T>(AppRoutes.gameOnlinePath(matchId));
+
   // ─── Lobby — sous-écrans ──────────────────
 
   void goLobbyCreate() => go(AppRoutes.lobbyCreate);

@@ -26,6 +26,7 @@ class AppSpacing {
   static const double xl = unit * 5; // 20
   static const double xxl = unit * 6; // 24
   static const double xxxl = unit * 8; // 32
+  static const double large = unit * 9; // 36
   static const double huge = unit * 10; // 40
   static const double mega = unit * 12; // 48
   static const double giga = unit * 14; // 56

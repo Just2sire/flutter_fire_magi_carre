@@ -6,14 +6,16 @@ import "../../features/auth/domain/entities/auth_state.dart";
 import "../../features/auth/presentation/pages/index.dart";
 import "../../features/auth/presentation/providers/auth_providers.dart";
 import "../../features/game/presentation/pages/index.dart";
+import "../../features/home/presentation/pages/index.dart";
 import "../../features/leaderboard/presentation/pages/leaderboard_page.dart";
+import "../../features/learn/presentation/pages/index.dart";
+import "../../features/online/presentation/pages/index.dart";
 import "../../features/profile/presentation/pages/index.dart";
 import "../../features/settings/presentation/pages/index.dart";
 import "../../features/welcome/presentation/pages/index.dart";
 import "../../shared/presentation/pages/app_shell.dart";
 import "../configs/env.dart";
 import "../constants/app_icons.dart";
-import "../extensions/navigation_extensions.dart";
 import "../theme/index.dart" show AppSpacing, AppColors;
 import "app_navigator_key.dart";
 import "app_routes.dart";
@@ -60,8 +62,17 @@ GoRouter buildRouter(Ref ref) {
           location == AppRoutes.authResetPassword
               ? null
               : AppRoutes.authResetPassword,
-        AuthAuthenticated() =>
-          isAuthRoute || isBootstrapRoute ? AppRoutes.home : null,
+        AuthAuthenticated(:final profile) => switch (true) {
+            _ when !profile.onboardingCompleted &&
+                location != AppRoutes.profileSetup =>
+              AppRoutes.profileSetup,
+            _ when profile.onboardingCompleted &&
+                (isAuthRoute ||
+                    isBootstrapRoute ||
+                    location == AppRoutes.profileSetup) =>
+              AppRoutes.home,
+            _ => null,
+          },
         AuthGuest() => isBootstrapRoute ? AppRoutes.home : null,
       };
     },
@@ -120,6 +131,17 @@ GoRouter buildRouter(Ref ref) {
         ),
       ),
 
+      // ─── Setup profil post-inscription ───────────────────────────────
+      GoRoute(
+        path: AppRoutes.profileSetup,
+        parentNavigatorKey: AppNavigatorKey.instance,
+        pageBuilder: (context, state) => AppTransitions.fade(
+          context: context,
+          state: state,
+          child: const ProfileSetupPage(),
+        ),
+      ),
+
       // ─── Lobby de partie ─────────────────────────────────────────────
       GoRoute(
         path: AppRoutes.gameLobby,
@@ -141,6 +163,20 @@ GoRouter buildRouter(Ref ref) {
           state: state,
           begin: const Offset(0.0, 1.0), // monte depuis le bas
           child: const GamePage(),
+        ),
+      ),
+
+      // ─── Partie en ligne ────────────────────────
+      GoRoute(
+        path: AppRoutes.gameOnline,
+        parentNavigatorKey: AppNavigatorKey.instance,
+        pageBuilder: (context, state) => AppTransitions.slide(
+          context: context,
+          state: state,
+          begin: const Offset(0.0, 1.0),
+          child: OnlineGamePage(
+            matchId: state.pathParameters["matchId"]!,
+          ),
         ),
       ),
 
@@ -170,14 +206,14 @@ GoRouter buildRouter(Ref ref) {
         ],
       ),
 
-      // ─── Apprendre — hors-shell ───────────────
+      // ─── Règles du jeu — hors-shell ──────────
       GoRoute(
         path: AppRoutes.learn,
         parentNavigatorKey: AppNavigatorKey.instance,
         pageBuilder: (context, state) => AppTransitions.pushedScreen(
           context: context,
           state: state,
-          child: const _Placeholder(title: "Apprendre"),
+          child: const RulesPage(),
         ),
         routes: [
           GoRoute(
@@ -217,8 +253,7 @@ GoRouter buildRouter(Ref ref) {
                 pageBuilder: (context, state) => AppTransitions.fade(
                   context: context,
                   state: state,
-                  // TODO: retirer une fois un vrai écran d'accueil construit.
-                  child: const _HomePlaceholder(),
+                  child: const HomePage(),
                 ),
               ),
             ],
@@ -232,7 +267,7 @@ GoRouter buildRouter(Ref ref) {
                 pageBuilder: (context, state) => AppTransitions.fade(
                   context: context,
                   state: state,
-                  child: const _Placeholder(title: "Lobby"),
+                  child: const LobbyPage(),
                 ),
                 routes: [
                   GoRoute(
@@ -241,7 +276,7 @@ GoRouter buildRouter(Ref ref) {
                         AppTransitions.pushedScreen(
                           context: context,
                           state: state,
-                          child: const _Placeholder(title: "Créer une partie"),
+                          child: const CreateInvitePage(),
                         ),
                   ),
                   GoRoute(
@@ -250,10 +285,7 @@ GoRouter buildRouter(Ref ref) {
                       return AppTransitions.pushedScreen(
                         context: context,
                         state: state,
-                        child: _Placeholder(
-                          title:
-                              "Rejoindre ${state.pathParameters['inviteCode']}",
-                        ),
+                        child: const JoinInvitePage(),
                       );
                     },
                   ),
@@ -311,7 +343,7 @@ GoRouter buildRouter(Ref ref) {
                         AppTransitions.pushedScreen(
                           context: context,
                           state: state,
-                          child: const _Placeholder(title: "Historique"),
+                          child: const ProfileHistoryPage(),
                         ),
                   ),
                   GoRoute(
@@ -355,40 +387,6 @@ class _Placeholder extends StatelessWidget {
             textAlign: TextAlign.center,
             style: Theme.of(context).textTheme.bodyMedium
                 ?.copyWith(color: AppColors.textSecondary),
-          ),
-        ),
-      ),
-    );
-  }
-}
-
-/// Placeholder de l'accueil — avec un bouton "Jouer" temporaire vers la
-/// partie locale, en attendant un vrai écran d'accueil.
-class _HomePlaceholder extends StatelessWidget {
-  const _HomePlaceholder();
-
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(title: const Text("Accueil"), elevation: 0),
-      body: Center(
-        child: Padding(
-          padding: AppSpacing.screenPaddingH,
-          child: Column(
-            mainAxisSize: MainAxisSize.min,
-            children: [
-              Text(
-                "Accueil — bientôt.",
-                textAlign: TextAlign.center,
-                style: Theme.of(context).textTheme.bodyMedium
-                    ?.copyWith(color: AppColors.textSecondary),
-              ),
-              AppSpacing.gapVLg,
-              ElevatedButton(
-                onPressed: () => context.pushGameLobby<void>(),
-                child: const Text("Jouer"),
-              ),
-            ],
           ),
         ),
       ),

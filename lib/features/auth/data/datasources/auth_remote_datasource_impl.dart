@@ -43,7 +43,7 @@ class AuthRemoteDataSourceImpl implements AuthRemoteDataSource {
       "username": username,
       "bio": null,
       "avatar_url": null,
-      "rating": 1000,
+      "rating": 500,
       "onboarding_completed": false,
     });
 
@@ -149,7 +149,7 @@ class AuthRemoteDataSourceImpl implements AuthRemoteDataSource {
         "username": username,
         "bio": null,
         "avatar_url": avatarUrl,
-        "rating": 1000,
+        "rating": 500,
         "onboarding_completed": false,
       });
     } else {

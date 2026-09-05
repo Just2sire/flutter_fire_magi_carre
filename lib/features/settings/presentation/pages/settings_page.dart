@@ -1,3 +1,4 @@
+import "package:carre_magic_logic/carre_magic_logic.dart" show PlayerColor;
 import "package:flutter/material.dart";
 import "package:flutter_riverpod/flutter_riverpod.dart";
 
@@ -9,9 +10,12 @@ import "../../../../shared/presentation/providers/index.dart"
     show appThemeModeProvider, appLocaleProvider;
 import "../../../../shared/presentation/widgets/index.dart"
     show AppScaffold, AppTopbar;
+import "../../../../shared/presentation/widgets/material/app_bottom_sheet_handle_bar.dart";
 import "../../../../shared/presentation/widgets/others/index.dart"
     show AppSectionLabel, AppGroupedCard, AppTileRow, AppOptionsSheet;
 import "../../../auth/presentation/providers/auth_providers.dart";
+import "../../../game/presentation/providers/board_theme_provider.dart";
+import "../../../game/presentation/widgets/game_stone.dart";
 
 /// Écran des paramètres — apparence, langue et gestion du compte.
 class SettingsPage extends ConsumerWidget {
@@ -23,6 +27,7 @@ class SettingsPage extends ConsumerWidget {
     final cs = context.colorScheme;
     final themeMode = ref.watch(appThemeModeProvider);
     final locale = ref.watch(appLocaleProvider);
+    final boardTheme = ref.watch(boardThemeProvider);
 
     return AppScaffold(
       scrollable: true,
@@ -56,6 +61,20 @@ class SettingsPage extends ConsumerWidget {
                     ? l10n.settingsLanguageFr
                     : l10n.settingsLanguageEn,
                 onTap: () => _pickLocale(context, ref, locale),
+                isLast: true,
+              ),
+            ],
+          ),
+          AppSpacing.gapVXxl,
+          AppSectionLabel(text: l10n.settingsGameSection),
+          AppSpacing.gapVSm,
+          AppGroupedCard(
+            children: [
+              AppTileRow(
+                icon: AppIcons.boardTheme,
+                title: l10n.settingsBoardTheme,
+                subtitle: boardTheme.name,
+                onTap: () => _pickBoardTheme(context, ref, boardTheme),
                 isLast: true,
               ),
             ],
@@ -161,6 +180,20 @@ class SettingsPage extends ConsumerWidget {
     }
   }
 
+  Future<void> _pickBoardTheme(
+    BuildContext context,
+    WidgetRef ref,
+    BoardTheme current,
+  ) async {
+    final selected = await showModalBottomSheet<BoardTheme>(
+      context: context,
+      builder: (_) => _BoardThemeSheet(current: current),
+    );
+    if (selected != null) {
+      await ref.read(boardThemeProvider.notifier).setTheme(selected);
+    }
+  }
+
   Future<void> _logout(BuildContext context, WidgetRef ref) async {
     final confirmed = await context.showConfirmDialog(
       title: context.l10n.settingsLogoutConfirmTitle,
@@ -173,4 +206,149 @@ class SettingsPage extends ConsumerWidget {
       await ref.read(authProvider.notifier).logout();
     }
   }
+}
+
+// ─── Board theme picker ──────────────────────────────────────────────────────
+
+/// Bottom sheet showing a preview swatch for each [BoardTheme] preset.
+class _BoardThemeSheet extends StatelessWidget {
+  const _BoardThemeSheet({required this.current});
+
+  final BoardTheme current;
+
+  @override
+  Widget build(BuildContext context) {
+    final cs = context.colorScheme;
+
+    return SafeArea(
+      child: Column(
+        mainAxisSize: MainAxisSize.min,
+        children: [
+          const AppBottomSheetHandleBar(),
+          Padding(
+            padding: const EdgeInsets.all(AppSpacing.md),
+            child: Text(
+              context.l10n.settingsBoardTheme,
+              style: context.textTheme.titleMedium,
+            ),
+          ),
+          for (final theme in BoardTheme.all)
+            ListTile(
+              leading: _MiniBoardPreview(theme: theme),
+              title: Text(theme.name),
+              trailing: theme.id == current.id
+                  ? Icon(AppIcons.check, color: cs.primary)
+                  : null,
+              onTap: () => Navigator.of(context).pop(theme),
+            ),
+          AppSpacing.gapVSm,
+        ],
+      ),
+    );
+  }
+}
+
+// ─── Mini board preview ──────────────────────────────────────────────────────
+
+/// A tiny 2×2 board preview showing the given [BoardTheme]'s background,
+/// grid lines, and stones — used as the leading widget in the theme picker.
+class _MiniBoardPreview extends StatelessWidget {
+  const _MiniBoardPreview({required this.theme});
+
+  final BoardTheme theme;
+
+  static const double _size = 52;
+  static const double _padding = 8;
+  static const double _stoneSize = 13;
+
+  double get _step => _size - _padding * 2;
+
+  Widget _stoneAt(int row, int col, PlayerColor color) {
+    final cx = _padding + col * _step;
+    final cy = _padding + row * _step;
+    return Positioned(
+      left: cx - _stoneSize / 2,
+      top: cy - _stoneSize / 2,
+      width: _stoneSize,
+      height: _stoneSize,
+      child: GameStone(
+        color: color,
+        size: _stoneSize,
+        overrideBase: color == PlayerColor.white
+            ? theme.stone1Base
+            : theme.stone2Base,
+        overrideHighlight: color == PlayerColor.white
+            ? theme.stone1Highlight
+            : theme.stone2Highlight,
+        overrideEdge: color == PlayerColor.white
+            ? theme.stone1Edge
+            : theme.stone2Edge,
+      ),
+    );
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      width: _size,
+      height: _size,
+      clipBehavior: Clip.antiAlias,
+      decoration: BoxDecoration(
+        borderRadius: AppSpacing.roundedSm,
+        gradient: LinearGradient(
+          begin: Alignment.topLeft,
+          end: Alignment.bottomRight,
+          colors: theme.boardColors,
+        ),
+        boxShadow: [
+          BoxShadow(
+            color: theme.stone1Edge.withValues(alpha: 0.3),
+            blurRadius: 6,
+            offset: const Offset(0, 2),
+          ),
+        ],
+      ),
+      child: Stack(
+        children: [
+          Positioned(
+            left: _padding,
+            top: _padding,
+            child: CustomPaint(
+              size: Size.square(_step),
+              painter: _MiniBoardPainter(color: theme.lineColor),
+            ),
+          ),
+          _stoneAt(0, 0, PlayerColor.black),
+          _stoneAt(0, 1, PlayerColor.black),
+          _stoneAt(1, 0, PlayerColor.white),
+          _stoneAt(1, 1, PlayerColor.white),
+        ],
+      ),
+    );
+  }
+}
+
+class _MiniBoardPainter extends CustomPainter {
+  const _MiniBoardPainter({required this.color});
+
+  final Color color;
+
+  @override
+  void paint(Canvas canvas, Size size) {
+    final paint = Paint()
+      ..color = color
+      ..strokeWidth = 1.0
+      ..style = PaintingStyle.stroke;
+
+    final s = size.width;
+    canvas
+      ..drawLine(Offset.zero, Offset(s, 0), paint)
+      ..drawLine(Offset(0, s), Offset(s, s), paint)
+      ..drawLine(Offset.zero, Offset(0, s), paint)
+      ..drawLine(Offset(s, 0), Offset(s, s), paint)
+      ..drawLine(Offset.zero, Offset(s, s), paint);
+  }
+
+  @override
+  bool shouldRepaint(covariant _MiniBoardPainter old) => old.color != color;
 }

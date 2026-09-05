@@ -47,6 +47,9 @@ class AppLocalizationsFr extends AppLocalizations {
       'Connexion indisponible. Vérifie ta connexion internet.';
 
   @override
+  String get commonOfflineBanner => 'Hors-ligne — affichage des données en cache';
+
+  @override
   String get commonOr => 'Ou';
 
   @override
@@ -581,6 +584,12 @@ class AppLocalizationsFr extends AppLocalizations {
   String get settingsAccountSection => 'Compte';
 
   @override
+  String get settingsGameSection => 'Jeu';
+
+  @override
+  String get settingsBoardTheme => 'Thème du plateau';
+
+  @override
   String get profileTitle => 'Profil';
 
   @override
@@ -606,6 +615,33 @@ class AppLocalizationsFr extends AppLocalizations {
 
   @override
   String get profileFriendsLabel => 'Amis';
+
+  @override
+  String get profileStatsSection => 'Statistiques';
+
+  @override
+  String get profileWinsLabel => 'Victoires';
+
+  @override
+  String get profileLossesLabel => 'Défaites';
+
+  @override
+  String get profileDrawsLabel => 'Nuls';
+
+  @override
+  String profileSetupTitle(String username) {
+    return 'Bienvenue, $username !';
+  }
+
+  @override
+  String get profileSetupSubtitle =>
+      'Dites-nous quelques mots sur vous pour personnaliser votre profil.';
+
+  @override
+  String get profileSetupBioHint => 'Parlez de vous... (optionnel)';
+
+  @override
+  String get profileSetupCta => 'Commencer à jouer';
 
   @override
   String get profileGuestMessage => 'Connecte-toi pour accéder à ton profil.';
@@ -689,6 +725,24 @@ class AppLocalizationsFr extends AppLocalizations {
   String get profileActivityTitle => 'Activité';
 
   @override
+  String get profileHistoryEmpty => 'Pas encore de parties jouées.';
+
+  @override
+  String get profileHistoryOpponentAiEasy => 'IA · Débutant';
+
+  @override
+  String get profileHistoryOpponentAiMedium => 'IA · Intermédiaire';
+
+  @override
+  String get profileHistoryOpponentAiHard => 'IA · Expert';
+
+  @override
+  String get profileHistoryOpponentHuman => '2 Joueurs';
+
+  @override
+  String get profileHistoryOpponentOnline => 'En ligne';
+
+  @override
   String get gameLobbyTitle => 'Nouvelle partie';
 
   @override
@@ -708,21 +762,6 @@ class AppLocalizationsFr extends AppLocalizations {
 
   @override
   String get gameLobbyStartCta => 'Lancer la partie';
-
-  @override
-  String get gameLobbyComingSoon => 'Bientôt';
-
-  @override
-  String get gameLobbyInviteTitle => 'Inviter un ami';
-
-  @override
-  String get gameLobbyInviteSubtitle => 'Partage un lien pour jouer ensemble';
-
-  @override
-  String get gameLobbyFriendsTitle => 'Amis en ligne';
-
-  @override
-  String get gameLobbyFriendsEmpty => 'Aucun ami en ligne pour l\'instant';
 
   @override
   String get gameDifficultyEasyDescription => 'Parfait pour débuter';
@@ -798,4 +837,191 @@ class AppLocalizationsFr extends AppLocalizations {
   String gameLobbyLocal2pTimerMin(int minutes) {
     return '$minutes min';
   }
+
+  @override
+  String homeGreeting(String username) {
+    return 'Hey, $username !';
+  }
+
+  @override
+  String get homeGreetingSubtitle => 'Prêt à jouer ?';
+
+  @override
+  String get homeGuestUsername => 'Invité';
+
+  @override
+  String get homeStatStreak => 'Série';
+
+  @override
+  String get homeStatRating => 'ELO';
+
+  @override
+  String get homeStatRank => 'Rang';
+
+  @override
+  String get homeStatPlaceholder => '—';
+
+  @override
+  String get homePlayNowTitle => 'Nouvelle partie';
+
+  @override
+  String get homePlayNowSubtitle => 'Défie l\'IA ou un ami';
+
+  @override
+  String get homePlayNowCta => 'Jouer';
+
+  @override
+  String get homeQuickModesTitle => 'Modes rapides';
+
+  @override
+  String get homeModeBot => 'vs Bot';
+
+  @override
+  String get homeMode2p => '2 Joueurs';
+
+  @override
+  String get homeModeOnline => 'En ligne';
+
+  @override
+  String get homeModeOnlineSoon => 'Bientôt';
+
+  @override
+  String get homeLeaderboardTitle => 'Top classement';
+
+  @override
+  String get homeLeaderboardSeeAll => 'Voir tout';
+
+  @override
+  String get homeModeRules => 'Règles';
+
+  @override
+  String get learnTitle => 'Règles du jeu';
+
+  @override
+  String get learnGoalTitle => 'But du jeu';
+
+  @override
+  String get learnGoalBody =>
+      'Capturez toutes les pièces adverses, ou bloquez-les de sorte qu\'elles ne puissent plus bouger. Le dernier joueur à pouvoir se déplacer remporte la partie.';
+
+  @override
+  String get learnMoveTitle => 'Déplacement';
+
+  @override
+  String get learnMoveBody =>
+      'Vos pièces se déplacent d\'une intersection à la suivante, le long des lignes du plateau. Sur les intersections à 8 directions (rangée + colonne paires), le mouvement diagonal est aussi possible.';
+
+  @override
+  String get learnCaptureTitle => 'Capture';
+
+  @override
+  String get learnCaptureBody =>
+      'Pour capturer un pion adverse, sautez par-dessus lui en ligne droite. La case d\'atterrissage doit être libre. La pièce capturée est retirée du plateau.';
+
+  @override
+  String get learnChainTitle => 'Promotion';
+
+  @override
+  String get learnChainBody =>
+      'Quand votre pièce atteint la rangée adverse et que vous avez une pièce capturée en réserve, vous pouvez replacer une pièce supplémentaire sur une case vide de votre propre rangée de départ. Les cases dorées indiquent les emplacements disponibles.';
+
+  @override
+  String get learnPromotionTitle => 'Victoire';
+
+  @override
+  String get learnPromotionBody =>
+      'Capturez toutes les pièces adverses pour remporter la partie. Vous gagnez également si votre adversaire ne peut plus effectuer aucun déplacement.';
+
+  @override
+  String get onlineLobbyTitle => 'Partie en ligne';
+
+  @override
+  String get onlineLobbyQuickMatchTitle => 'Partie rapide';
+
+  @override
+  String get onlineLobbyQuickMatchCta => 'Chercher un adversaire';
+
+  @override
+  String get onlineLobbySearching => 'Recherche d\'un adversaire…';
+
+  @override
+  String get onlineLobbyCancelSearch => 'Annuler';
+
+  @override
+  String get onlineLobbyInviteTitle => 'Inviter un ami';
+
+  @override
+  String get onlineLobbyCreateInviteCta => 'Créer une invitation';
+
+  @override
+  String get onlineLobbyJoinCodeLabel => 'Code d\'invitation';
+
+  @override
+  String get onlineLobbyJoinCta => 'Rejoindre';
+
+  @override
+  String get onlineLobbyInvalidCode => 'Code invalide ou expiré';
+
+  @override
+  String get onlineLobbyResumeTitle => 'Parties en cours';
+
+  @override
+  String get onlineLobbyResumeMatch => 'Partie en ligne';
+
+  @override
+  String get onlineLobbyResumeSubtitleWhite => 'Vous jouez les blancs';
+
+  @override
+  String get onlineLobbyResumeSubtitleBlack => 'Vous jouez les noirs';
+
+  @override
+  String get onlineInviteTitle => 'Créer une invitation';
+
+  @override
+  String get onlineInviteTimerTitle => 'Cadence';
+
+  @override
+  String get onlineInviteRatedToggle => 'Partie classée';
+
+  @override
+  String get onlineInviteRatedSubtitle => 'Affecte votre classement ELO';
+
+  @override
+  String get onlineInviteGenerateCta => 'Générer le code';
+
+  @override
+  String get onlineInviteShareTitle => 'Partage ce code';
+
+  @override
+  String get onlineInviteCopyCta => 'Copier';
+
+  @override
+  String get onlineInviteCopied => 'Code copié !';
+
+  @override
+  String get onlineInviteWaiting => 'En attente d\'un adversaire…';
+
+  @override
+  String get onlineJoinTitle => 'Rejoindre une partie';
+
+  @override
+  String get onlineJoinCodeHint => 'Entrez le code à 6 caractères';
+
+  @override
+  String get onlineJoinCta => 'Rejoindre';
+
+  @override
+  String get onlineGameOpponent => 'Adversaire';
+
+  @override
+  String get onlineGameResignCta => 'Abandonner';
+
+  @override
+  String get onlineGameResignConfirmTitle => 'Abandonner la partie ?';
+
+  @override
+  String get onlineGameResignConfirmMessage => 'Vous perdrez cette partie.';
+
+  @override
+  String get onlineGameBackToLobbyCta => 'Retour au lobby';
 }

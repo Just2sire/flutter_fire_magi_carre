@@ -810,7 +810,7 @@ final class AuthNotifierProvider
   }
 }
 
-String _$authNotifierHash() => r'32a812221a3b2d1a620527882dfa83ba4549c940';
+String _$authNotifierHash() => r'108952cc9e2e3ad5593079a8d11d398c31edd3ff';
 
 /// Notifier central de l'état d'authentification.
 ///

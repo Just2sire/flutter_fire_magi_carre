@@ -170,6 +170,12 @@ abstract class AppLocalizations {
   /// **'Connexion indisponible. Vérifie ta connexion internet.'**
   String get commonNetworkError;
 
+  /// Bandeau affiché en haut d'un écran quand l'appareil est hors-ligne
+  ///
+  /// In fr, this message translates to:
+  /// **'Hors-ligne — affichage des données en cache'**
+  String get commonOfflineBanner;
+
   /// Séparateur générique entre deux options (ex: entre formulaire et OAuth)
   ///
   /// In fr, this message translates to:
@@ -1124,6 +1130,18 @@ abstract class AppLocalizations {
   /// **'Compte'**
   String get settingsAccountSection;
 
+  /// Libellé de la section Jeu dans les paramètres (thème du plateau, etc.)
+  ///
+  /// In fr, this message translates to:
+  /// **'Jeu'**
+  String get settingsGameSection;
+
+  /// Libellé de l'option de sélection du thème visuel du plateau
+  ///
+  /// In fr, this message translates to:
+  /// **'Thème du plateau'**
+  String get settingsBoardTheme;
+
   /// Titre de la page de profil
   ///
   /// In fr, this message translates to:
@@ -1177,6 +1195,54 @@ abstract class AppLocalizations {
   /// In fr, this message translates to:
   /// **'Amis'**
   String get profileFriendsLabel;
+
+  /// Titre de la section statistiques de jeu
+  ///
+  /// In fr, this message translates to:
+  /// **'Statistiques'**
+  String get profileStatsSection;
+
+  /// Label des victoires sur le profil
+  ///
+  /// In fr, this message translates to:
+  /// **'Victoires'**
+  String get profileWinsLabel;
+
+  /// Label des défaites sur le profil
+  ///
+  /// In fr, this message translates to:
+  /// **'Défaites'**
+  String get profileLossesLabel;
+
+  /// Label des parties nulles sur le profil
+  ///
+  /// In fr, this message translates to:
+  /// **'Nuls'**
+  String get profileDrawsLabel;
+
+  /// Titre de la page de configuration du profil
+  ///
+  /// In fr, this message translates to:
+  /// **'Bienvenue, {username} !'**
+  String profileSetupTitle(String username);
+
+  /// Sous-titre de la page de configuration
+  ///
+  /// In fr, this message translates to:
+  /// **'Dites-nous quelques mots sur vous pour personnaliser votre profil.'**
+  String get profileSetupSubtitle;
+
+  /// Placeholder du champ bio sur la page de setup
+  ///
+  /// In fr, this message translates to:
+  /// **'Parlez de vous... (optionnel)'**
+  String get profileSetupBioHint;
+
+  /// Bouton de validation de la page de setup
+  ///
+  /// In fr, this message translates to:
+  /// **'Commencer à jouer'**
+  String get profileSetupCta;
 
   /// Message affiché sur /profile pour un utilisateur en mode invité
   ///
@@ -1322,6 +1388,42 @@ abstract class AppLocalizations {
   /// **'Activité'**
   String get profileActivityTitle;
 
+  /// État vide de l'historique de parties
+  ///
+  /// In fr, this message translates to:
+  /// **'Pas encore de parties jouées.'**
+  String get profileHistoryEmpty;
+
+  /// Libellé adversaire IA niveau facile dans l'historique
+  ///
+  /// In fr, this message translates to:
+  /// **'IA · Débutant'**
+  String get profileHistoryOpponentAiEasy;
+
+  /// Libellé adversaire IA niveau moyen dans l'historique
+  ///
+  /// In fr, this message translates to:
+  /// **'IA · Intermédiaire'**
+  String get profileHistoryOpponentAiMedium;
+
+  /// Libellé adversaire IA niveau difficile dans l'historique
+  ///
+  /// In fr, this message translates to:
+  /// **'IA · Expert'**
+  String get profileHistoryOpponentAiHard;
+
+  /// Libellé adversaire mode local 2 joueurs dans l'historique
+  ///
+  /// In fr, this message translates to:
+  /// **'2 Joueurs'**
+  String get profileHistoryOpponentHuman;
+
+  /// Libellé adversaire mode en ligne dans l'historique
+  ///
+  /// In fr, this message translates to:
+  /// **'En ligne'**
+  String get profileHistoryOpponentOnline;
+
   /// Titre de la page de configuration de partie
   ///
   /// In fr, this message translates to:
@@ -1363,36 +1465,6 @@ abstract class AppLocalizations {
   /// In fr, this message translates to:
   /// **'Lancer la partie'**
   String get gameLobbyStartCta;
-
-  /// Badge affiché sur les fonctionnalités non encore disponibles
-  ///
-  /// In fr, this message translates to:
-  /// **'Bientôt'**
-  String get gameLobbyComingSoon;
-
-  /// Titre de la section invitation dans le mode en ligne
-  ///
-  /// In fr, this message translates to:
-  /// **'Inviter un ami'**
-  String get gameLobbyInviteTitle;
-
-  /// Description de la fonctionnalité d'invitation par lien
-  ///
-  /// In fr, this message translates to:
-  /// **'Partage un lien pour jouer ensemble'**
-  String get gameLobbyInviteSubtitle;
-
-  /// Titre de la section amis connectés dans le mode en ligne
-  ///
-  /// In fr, this message translates to:
-  /// **'Amis en ligne'**
-  String get gameLobbyFriendsTitle;
-
-  /// Message affiché quand aucun ami n'est en ligne
-  ///
-  /// In fr, this message translates to:
-  /// **'Aucun ami en ligne pour l\'instant'**
-  String get gameLobbyFriendsEmpty;
 
   /// Description du niveau facile
   ///
@@ -1531,6 +1603,366 @@ abstract class AppLocalizations {
   /// In fr, this message translates to:
   /// **'{minutes} min'**
   String gameLobbyLocal2pTimerMin(int minutes);
+
+  /// Salutation personnalisée sur l'écran d'accueil
+  ///
+  /// In fr, this message translates to:
+  /// **'Hey, {username} !'**
+  String homeGreeting(String username);
+
+  /// Sous-titre de la salutation sur l'écran d'accueil
+  ///
+  /// In fr, this message translates to:
+  /// **'Prêt à jouer ?'**
+  String get homeGreetingSubtitle;
+
+  /// Nom affiché quand l'utilisateur est en mode invité
+  ///
+  /// In fr, this message translates to:
+  /// **'Invité'**
+  String get homeGuestUsername;
+
+  /// Label de la stat série de jours consécutifs
+  ///
+  /// In fr, this message translates to:
+  /// **'Série'**
+  String get homeStatStreak;
+
+  /// Label de la stat ELO / classement
+  ///
+  /// In fr, this message translates to:
+  /// **'ELO'**
+  String get homeStatRating;
+
+  /// Label de la stat rang dans le classement
+  ///
+  /// In fr, this message translates to:
+  /// **'Rang'**
+  String get homeStatRank;
+
+  /// Valeur affichée quand une stat n'est pas encore disponible
+  ///
+  /// In fr, this message translates to:
+  /// **'—'**
+  String get homeStatPlaceholder;
+
+  /// Titre de la carte CTA principale du home
+  ///
+  /// In fr, this message translates to:
+  /// **'Nouvelle partie'**
+  String get homePlayNowTitle;
+
+  /// Sous-titre de la carte CTA principale
+  ///
+  /// In fr, this message translates to:
+  /// **'Défie l\'IA ou un ami'**
+  String get homePlayNowSubtitle;
+
+  /// Texte du bouton principal du home
+  ///
+  /// In fr, this message translates to:
+  /// **'Jouer'**
+  String get homePlayNowCta;
+
+  /// Titre de la section modes rapides
+  ///
+  /// In fr, this message translates to:
+  /// **'Modes rapides'**
+  String get homeQuickModesTitle;
+
+  /// Chip du mode solo contre l'IA
+  ///
+  /// In fr, this message translates to:
+  /// **'vs Bot'**
+  String get homeModeBot;
+
+  /// Chip du mode 2 joueurs local
+  ///
+  /// In fr, this message translates to:
+  /// **'2 Joueurs'**
+  String get homeMode2p;
+
+  /// Chip du mode en ligne
+  ///
+  /// In fr, this message translates to:
+  /// **'En ligne'**
+  String get homeModeOnline;
+
+  /// Badge affiché sur le chip En ligne quand la fonctionnalité n'est pas encore disponible
+  ///
+  /// In fr, this message translates to:
+  /// **'Bientôt'**
+  String get homeModeOnlineSoon;
+
+  /// Titre de la section aperçu du classement sur le home
+  ///
+  /// In fr, this message translates to:
+  /// **'Top classement'**
+  String get homeLeaderboardTitle;
+
+  /// Lien vers la page classement complète depuis le home
+  ///
+  /// In fr, this message translates to:
+  /// **'Voir tout'**
+  String get homeLeaderboardSeeAll;
+
+  /// Chip accès aux règles du jeu depuis le home
+  ///
+  /// In fr, this message translates to:
+  /// **'Règles'**
+  String get homeModeRules;
+
+  /// Titre de la page de règles
+  ///
+  /// In fr, this message translates to:
+  /// **'Règles du jeu'**
+  String get learnTitle;
+
+  /// Titre de la section objectif
+  ///
+  /// In fr, this message translates to:
+  /// **'But du jeu'**
+  String get learnGoalTitle;
+
+  /// Explication du but du jeu
+  ///
+  /// In fr, this message translates to:
+  /// **'Capturez toutes les pièces adverses, ou bloquez-les de sorte qu\'elles ne puissent plus bouger. Le dernier joueur à pouvoir se déplacer remporte la partie.'**
+  String get learnGoalBody;
+
+  /// Titre de la section déplacement
+  ///
+  /// In fr, this message translates to:
+  /// **'Déplacement'**
+  String get learnMoveTitle;
+
+  /// Explication du déplacement
+  ///
+  /// In fr, this message translates to:
+  /// **'Vos pièces se déplacent d\'une intersection à la suivante, le long des lignes du plateau. Sur les intersections à 8 directions (rangée + colonne paires), le mouvement diagonal est aussi possible.'**
+  String get learnMoveBody;
+
+  /// Titre de la section capture
+  ///
+  /// In fr, this message translates to:
+  /// **'Capture'**
+  String get learnCaptureTitle;
+
+  /// Explication de la capture
+  ///
+  /// In fr, this message translates to:
+  /// **'Pour capturer un pion adverse, sautez par-dessus lui en ligne droite. La case d\'atterrissage doit être libre. La pièce capturée est retirée du plateau.'**
+  String get learnCaptureBody;
+
+  /// Titre de la section promotion
+  ///
+  /// In fr, this message translates to:
+  /// **'Promotion'**
+  String get learnChainTitle;
+
+  /// Explication de la promotion
+  ///
+  /// In fr, this message translates to:
+  /// **'Quand votre pièce atteint la rangée adverse et que vous avez une pièce capturée en réserve, vous pouvez replacer une pièce supplémentaire sur une case vide de votre propre rangée de départ. Les cases dorées indiquent les emplacements disponibles.'**
+  String get learnChainBody;
+
+  /// Titre de la section victoire
+  ///
+  /// In fr, this message translates to:
+  /// **'Victoire'**
+  String get learnPromotionTitle;
+
+  /// Explication des conditions de victoire
+  ///
+  /// In fr, this message translates to:
+  /// **'Capturez toutes les pièces adverses pour remporter la partie. Vous gagnez également si votre adversaire ne peut plus effectuer aucun déplacement.'**
+  String get learnPromotionBody;
+
+  /// Titre de l'écran principal des parties en ligne
+  ///
+  /// In fr, this message translates to:
+  /// **'Partie en ligne'**
+  String get onlineLobbyTitle;
+
+  /// Titre de la section matchmaking aléatoire
+  ///
+  /// In fr, this message translates to:
+  /// **'Partie rapide'**
+  String get onlineLobbyQuickMatchTitle;
+
+  /// Bouton pour rejoindre la file de matchmaking
+  ///
+  /// In fr, this message translates to:
+  /// **'Chercher un adversaire'**
+  String get onlineLobbyQuickMatchCta;
+
+  /// Message affiché pendant la recherche d'un adversaire
+  ///
+  /// In fr, this message translates to:
+  /// **'Recherche d\'un adversaire…'**
+  String get onlineLobbySearching;
+
+  /// Bouton pour annuler la recherche de matchmaking
+  ///
+  /// In fr, this message translates to:
+  /// **'Annuler'**
+  String get onlineLobbyCancelSearch;
+
+  /// Titre de la section invitation par code
+  ///
+  /// In fr, this message translates to:
+  /// **'Inviter un ami'**
+  String get onlineLobbyInviteTitle;
+
+  /// Bouton pour créer une partie par invitation
+  ///
+  /// In fr, this message translates to:
+  /// **'Créer une invitation'**
+  String get onlineLobbyCreateInviteCta;
+
+  /// Libellé du champ de saisie du code d'invitation
+  ///
+  /// In fr, this message translates to:
+  /// **'Code d\'invitation'**
+  String get onlineLobbyJoinCodeLabel;
+
+  /// Bouton pour rejoindre une partie par code
+  ///
+  /// In fr, this message translates to:
+  /// **'Rejoindre'**
+  String get onlineLobbyJoinCta;
+
+  /// Erreur affichée quand le code d'invitation est invalide
+  ///
+  /// In fr, this message translates to:
+  /// **'Code invalide ou expiré'**
+  String get onlineLobbyInvalidCode;
+
+  /// Titre de la liste des parties en ligne à reprendre
+  ///
+  /// In fr, this message translates to:
+  /// **'Parties en cours'**
+  String get onlineLobbyResumeTitle;
+
+  /// Libellé générique d'une partie en ligne dans la liste à reprendre
+  ///
+  /// In fr, this message translates to:
+  /// **'Partie en ligne'**
+  String get onlineLobbyResumeMatch;
+
+  /// Sous-titre indiquant que le joueur est les blancs
+  ///
+  /// In fr, this message translates to:
+  /// **'Vous jouez les blancs'**
+  String get onlineLobbyResumeSubtitleWhite;
+
+  /// Sous-titre indiquant que le joueur est les noirs
+  ///
+  /// In fr, this message translates to:
+  /// **'Vous jouez les noirs'**
+  String get onlineLobbyResumeSubtitleBlack;
+
+  /// Titre de l'écran de création d'invitation
+  ///
+  /// In fr, this message translates to:
+  /// **'Créer une invitation'**
+  String get onlineInviteTitle;
+
+  /// Titre du sélecteur de cadence dans la création d'invitation
+  ///
+  /// In fr, this message translates to:
+  /// **'Cadence'**
+  String get onlineInviteTimerTitle;
+
+  /// Libellé du toggle partie classée/amicale
+  ///
+  /// In fr, this message translates to:
+  /// **'Partie classée'**
+  String get onlineInviteRatedToggle;
+
+  /// Explication de l'effet du toggle classé
+  ///
+  /// In fr, this message translates to:
+  /// **'Affecte votre classement ELO'**
+  String get onlineInviteRatedSubtitle;
+
+  /// Bouton pour générer le code d'invitation
+  ///
+  /// In fr, this message translates to:
+  /// **'Générer le code'**
+  String get onlineInviteGenerateCta;
+
+  /// Titre de l'écran d'attente affichant le code à partager
+  ///
+  /// In fr, this message translates to:
+  /// **'Partage ce code'**
+  String get onlineInviteShareTitle;
+
+  /// Bouton pour copier le code d'invitation
+  ///
+  /// In fr, this message translates to:
+  /// **'Copier'**
+  String get onlineInviteCopyCta;
+
+  /// Confirmation affichée après la copie du code
+  ///
+  /// In fr, this message translates to:
+  /// **'Code copié !'**
+  String get onlineInviteCopied;
+
+  /// Message affiché en attendant qu'un adversaire rejoigne l'invitation
+  ///
+  /// In fr, this message translates to:
+  /// **'En attente d\'un adversaire…'**
+  String get onlineInviteWaiting;
+
+  /// Titre de l'écran de jointure par code
+  ///
+  /// In fr, this message translates to:
+  /// **'Rejoindre une partie'**
+  String get onlineJoinTitle;
+
+  /// Texte d'aide du champ de code d'invitation
+  ///
+  /// In fr, this message translates to:
+  /// **'Entrez le code à 6 caractères'**
+  String get onlineJoinCodeHint;
+
+  /// Bouton pour rejoindre la partie depuis l'écran de jointure
+  ///
+  /// In fr, this message translates to:
+  /// **'Rejoindre'**
+  String get onlineJoinCta;
+
+  /// Libellé générique de l'adversaire dans une partie en ligne
+  ///
+  /// In fr, this message translates to:
+  /// **'Adversaire'**
+  String get onlineGameOpponent;
+
+  /// Bouton pour abandonner une partie en ligne
+  ///
+  /// In fr, this message translates to:
+  /// **'Abandonner'**
+  String get onlineGameResignCta;
+
+  /// Titre de la confirmation d'abandon
+  ///
+  /// In fr, this message translates to:
+  /// **'Abandonner la partie ?'**
+  String get onlineGameResignConfirmTitle;
+
+  /// Message de la confirmation d'abandon
+  ///
+  /// In fr, this message translates to:
+  /// **'Vous perdrez cette partie.'**
+  String get onlineGameResignConfirmMessage;
+
+  /// Bouton de retour au lobby après la fin d'une partie en ligne
+  ///
+  /// In fr, this message translates to:
+  /// **'Retour au lobby'**
+  String get onlineGameBackToLobbyCta;
 }
 
 class _AppLocalizationsDelegate

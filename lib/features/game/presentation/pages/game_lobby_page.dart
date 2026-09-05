@@ -1,15 +1,16 @@
 import "package:flutter/material.dart";
 import "package:flutter_riverpod/flutter_riverpod.dart";
+import "package:flutter_svg/flutter_svg.dart";
 
 import "../../../../core/constants/app_icons.dart";
 import "../../../../core/extensions/index.dart"
     show BuildContextExtensions, NavigationExtensions;
-import "../../../../core/theme/app_colors.dart";
 import "../../../../core/theme/app_spacing.dart";
 import "../../../../shared/presentation/widgets/index.dart"
     show AppElevatedButton, AppScaffold, AppTopbar, AppDivider;
 import "../../../../shared/presentation/widgets/others/index.dart"
     show AppGroupedCard, AppSectionLabel;
+import "../widgets/index.dart" show TimerPicker;
 import "game_start_config.dart";
 
 // ─── Bot data ──────────────────────────────────────────────────────────────
@@ -21,6 +22,7 @@ class _BotCharacter {
     required this.catchphrase,
     required this.level,
     required this.color,
+    required this.assetPath,
   });
 
   final String name;
@@ -28,66 +30,79 @@ class _BotCharacter {
   final int level;
   final Color color;
 
+  /// Path to the pre-generated SVG asset bundled in assets/avatars/bots/.
+  final String assetPath;
+
   static const List<_BotCharacter> all = [
     _BotCharacter(
       name: "Ama",
       catchphrase: "C'est ma première partie !",
       level: 1,
       color: Color(0xFF4ADE80),
+      assetPath: "assets/avatars/bots/ama.svg",
     ),
     _BotCharacter(
       name: "Kofi",
       catchphrase: "Je fais de mon mieux.",
       level: 2,
       color: Color(0xFF60A5FA),
+      assetPath: "assets/avatars/bots/kofi.svg",
     ),
     _BotCharacter(
       name: "Yaa",
       catchphrase: "Je suis encore en apprentissage.",
       level: 3,
       color: Color(0xFFF87171),
+      assetPath: "assets/avatars/bots/yaa.svg",
     ),
     _BotCharacter(
       name: "Kwamé",
       catchphrase: "Je ne recule jamais !",
       level: 4,
       color: Color(0xFFFBBF24),
+      assetPath: "assets/avatars/bots/kwame.svg",
     ),
     _BotCharacter(
       name: "Abéna",
       catchphrase: "Chaque coup est une leçon.",
       level: 5,
       color: Color(0xFFA78BFA),
+      assetPath: "assets/avatars/bots/abena.svg",
     ),
     _BotCharacter(
       name: "Kojo",
       catchphrase: "Je connais bien ce plateau.",
       level: 6,
       color: Color(0xFFFB923C),
+      assetPath: "assets/avatars/bots/kojo.svg",
     ),
     _BotCharacter(
       name: "Akua",
       catchphrase: "Les pièges sont ma spécialité.",
       level: 7,
       color: Color(0xFFF472B6),
+      assetPath: "assets/avatars/bots/akua.svg",
     ),
     _BotCharacter(
       name: "Efua",
       catchphrase: "Je vois plusieurs coups d'avance.",
       level: 8,
       color: Color(0xFF2DD4BF),
+      assetPath: "assets/avatars/bots/efua.svg",
     ),
     _BotCharacter(
       name: "Yaw",
       catchphrase: "Tu devras te surpasser pour m'avoir.",
       level: 9,
       color: Color(0xFF818CF8),
+      assetPath: "assets/avatars/bots/yaw.svg",
     ),
     _BotCharacter(
       name: "Nana",
       catchphrase: "Le Carré n'a plus de secrets pour moi.",
       level: 10,
       color: Color(0xFFEAB308),
+      assetPath: "assets/avatars/bots/nana.svg",
     ),
   ];
 }
@@ -114,6 +129,7 @@ class _GameLobbyPageState extends ConsumerState<GameLobbyPage> {
   int _timerDurationSeconds = 0; // 0 = sans minuterie
   int _incrementSeconds = 0;
 
+
   @override
   Widget build(BuildContext context) {
     final l10n = context.l10n;
@@ -121,12 +137,12 @@ class _GameLobbyPageState extends ConsumerState<GameLobbyPage> {
     return AppScaffold(
       body: Column(
         children: [
+          AppTopbar(title: l10n.gameLobbyTitle),
+          AppSpacing.gapVMd,
           Expanded(
             child: SingleChildScrollView(
               child: Column(
                 children: [
-                  AppTopbar(title: l10n.gameLobbyTitle),
-                  // AppSpacing.gapVMd,
                   Row(
                     spacing: AppSpacing.md,
                     children: [
@@ -155,7 +171,6 @@ class _GameLobbyPageState extends ConsumerState<GameLobbyPage> {
                           title: l10n.gameLobbyModeOnline,
                           subtitle: l10n.gameLobbyModeOnlineDescription,
                           selected: _mode == _GameMode.online,
-                          comingSoon: true,
                           onTap: () => setState(() => _mode = _GameMode.online),
                         ),
                       ),
@@ -183,7 +198,7 @@ class _GameLobbyPageState extends ConsumerState<GameLobbyPage> {
                           _incrementSeconds = inc;
                         }),
                       ),
-                      _GameMode.online => const _OnlineContent(
+                      _GameMode.online => const SizedBox.shrink(
                         key: ValueKey(_GameMode.online),
                       ),
                     },
@@ -198,7 +213,7 @@ class _GameLobbyPageState extends ConsumerState<GameLobbyPage> {
             onPressed: switch (_mode) {
               _GameMode.solo => _startSoloGame,
               _GameMode.local2p => _startLocal2PGame,
-              _GameMode.online => null,
+              _GameMode.online => () => context.goLobby(),
             },
           ),
         ],
@@ -236,14 +251,12 @@ class _ModeCard extends StatelessWidget {
     required this.subtitle,
     required this.selected,
     required this.onTap,
-    this.comingSoon = false,
   });
 
   final IconData icon;
   final String title;
   final String subtitle;
   final bool selected;
-  final bool comingSoon;
   final VoidCallback onTap;
 
   @override
@@ -270,18 +283,10 @@ class _ModeCard extends StatelessWidget {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            Row(
-              children: [
-                Icon(
-                  icon,
-                  size: AppSpacing.iconMd,
-                  color: selected ? cs.primary : cs.onSurfaceVariant,
-                ),
-                if (comingSoon) ...[
-                  AppSpacing.gapHSm,
-                  const _ComingSoonBadge(),
-                ],
-              ],
+            Icon(
+              icon,
+              size: AppSpacing.iconMd,
+              color: selected ? cs.primary : cs.onSurfaceVariant,
             ),
             AppSpacing.gapVSm,
             Text(
@@ -302,33 +307,6 @@ class _ModeCard extends StatelessWidget {
               overflow: .ellipsis,
             ),
           ],
-        ),
-      ),
-    );
-  }
-}
-
-// ─── Coming soon badge ─────────────────────────────────────────────────────
-
-class _ComingSoonBadge extends StatelessWidget {
-  const _ComingSoonBadge();
-
-  @override
-  Widget build(BuildContext context) {
-    return Container(
-      padding: const EdgeInsets.symmetric(
-        horizontal: AppSpacing.xs,
-        vertical: 2,
-      ),
-      decoration: BoxDecoration(
-        color: AppColors.primary.withAlpha(31),
-        borderRadius: AppSpacing.roundedSm,
-      ),
-      child: Text(
-        context.l10n.gameLobbyComingSoon,
-        style: context.textTheme.labelSmall?.copyWith(
-          color: AppColors.primary,
-          fontWeight: FontWeight.w600,
         ),
       ),
     );
@@ -429,22 +407,11 @@ class _BotHeroCard extends StatelessWidget {
       child: Row(
         spacing: AppSpacing.md,
         children: [
-          Container(
+          SvgPicture.asset(
+            bot.assetPath,
             width: AppSpacing.avatarLg,
             height: AppSpacing.avatarLg,
-            alignment: .center,
-            decoration: BoxDecoration(
-              shape: BoxShape.circle,
-              color: bot.color.withAlpha(250),
-            ),
-            child: Text(
-              bot.name[0],
-              style: const TextStyle(
-                color: Colors.white,
-                fontSize: 24,
-                fontWeight: FontWeight.w700,
-              ),
-            ),
+            fit: BoxFit.cover,
           ),
           Expanded(
             child: Column(
@@ -590,7 +557,6 @@ class _BotPortrait extends StatelessWidget {
                 height: AppSpacing.peta,
                 decoration: BoxDecoration(
                   shape: BoxShape.circle,
-                  color: bot.color.withAlpha(200),
                   border: Border.all(
                     color: isSelected ? cs.primary : Colors.transparent,
                     width: AppSpacing.borderWidthThick,
@@ -605,15 +571,11 @@ class _BotPortrait extends StatelessWidget {
                         ]
                       : null,
                 ),
-                child: Center(
-                  child: Text(
-                    bot.name[0],
-                    style: const TextStyle(
-                      color: Colors.white,
-                      fontSize: 22,
-                      fontWeight: FontWeight.w700,
-                    ),
-                  ),
+                child: SvgPicture.asset(
+                  bot.assetPath,
+                  width: AppSpacing.peta,
+                  height: AppSpacing.peta,
+                  fit: BoxFit.cover,
                 ),
               ),
               Positioned(
@@ -698,181 +660,12 @@ class _Local2PContent extends StatelessWidget {
         AppSpacing.gapVLg,
         AppSectionLabel(text: l10n.gameLobbyLocal2pTimer),
         AppSpacing.gapVSm,
-        _TimerPicker(
+        TimerPicker(
           selectedBase: timerDurationSeconds,
           selectedIncrement: incrementSeconds,
           onChanged: onTimerChanged,
         ),
       ],
-    );
-  }
-}
-
-// ─── Timer preset & category data ─────────────────────────────────────────
-
-/// Un preset de cadence : temps de base + incrément par coup (en secondes).
-class _TimerPreset {
-  const _TimerPreset(this.baseSeconds, this.incrementSeconds);
-
-  final int baseSeconds;
-  final int incrementSeconds;
-
-  /// Affichage : "1 min", "1 + 1", "3 + 2", "15 + 10"…
-  String get label {
-    final m = baseSeconds ~/ 60;
-    if (incrementSeconds == 0) return "$m min";
-    return "$m + $incrementSeconds";
-  }
-}
-
-class _TimerCategory {
-  const _TimerCategory({
-    required this.label,
-    required this.icon,
-    required this.presets,
-  });
-
-  final String label;
-  final IconData icon;
-  final List<_TimerPreset> presets;
-}
-
-// ─── Timer picker ──────────────────────────────────────────────────────────
-
-/// Sélecteur de cadence style chess — catégories Bullet / Blitz / Rapide
-/// avec boutons "X min" ou "X + Y" et option "Aucun".
-class _TimerPicker extends StatelessWidget {
-  const _TimerPicker({
-    required this.selectedBase,
-    required this.selectedIncrement,
-    required this.onChanged,
-  });
-
-  final int selectedBase;
-  final int selectedIncrement;
-  final void Function(int base, int increment) onChanged;
-
-  static const _categories = [
-    _TimerCategory(
-      label: "Bullet",
-      icon: AppIcons.bullet,
-      presets: [_TimerPreset(60, 0), _TimerPreset(60, 1), _TimerPreset(120, 1)],
-    ),
-    _TimerCategory(
-      label: "Blitz",
-      icon: AppIcons.zap,
-      presets: [
-        _TimerPreset(180, 0),
-        _TimerPreset(180, 2),
-        _TimerPreset(300, 0),
-      ],
-    ),
-    _TimerCategory(
-      label: "Rapide",
-      icon: AppIcons.timer,
-      presets: [
-        _TimerPreset(600, 0),
-        _TimerPreset(900, 10),
-        _TimerPreset(1800, 0),
-      ],
-    ),
-  ];
-
-  bool _isSelected(_TimerPreset p) =>
-      p.baseSeconds == selectedBase && p.incrementSeconds == selectedIncrement;
-
-  @override
-  Widget build(BuildContext context) {
-    final l10n = context.l10n;
-    final cs = context.colorScheme;
-    final tt = context.textTheme;
-
-    return Column(
-      crossAxisAlignment: CrossAxisAlignment.stretch,
-      children: [
-        // ── Pas de minuterie ─────────────────────────────────────────────
-        _TimerPresetButton(
-          label: l10n.gameLobbyLocal2pTimerNone,
-          isSelected: selectedBase == 0,
-          onTap: () => onChanged(0, 0),
-        ),
-        AppSpacing.gapVLg,
-        // ── Catégories ───────────────────────────────────────────────────
-        for (final cat in _categories) ...[
-          Row(
-            spacing: AppSpacing.xs,
-            children: [
-              Icon(cat.icon, size: 16, color: cs.onSurface),
-              Text(
-                cat.label,
-                style: tt.titleSmall?.copyWith(fontWeight: FontWeight.w700),
-              ),
-            ],
-          ),
-          AppSpacing.gapVSm,
-          Row(
-            spacing: AppSpacing.sm,
-            children: [
-              for (final preset in cat.presets)
-                Expanded(
-                  child: _TimerPresetButton(
-                    label: preset.label,
-                    isSelected: _isSelected(preset),
-                    onTap: () =>
-                        onChanged(preset.baseSeconds, preset.incrementSeconds),
-                  ),
-                ),
-            ],
-          ),
-          AppSpacing.gapVLg,
-        ],
-      ],
-    );
-  }
-}
-
-/// Bouton de sélection d'une durée de minuterie.
-class _TimerPresetButton extends StatelessWidget {
-  const _TimerPresetButton({
-    required this.label,
-    required this.isSelected,
-    required this.onTap,
-  });
-
-  final String label;
-  final bool isSelected;
-  final VoidCallback onTap;
-
-  @override
-  Widget build(BuildContext context) {
-    final cs = context.colorScheme;
-    final tt = context.textTheme;
-
-    return GestureDetector(
-      onTap: onTap,
-      child: AnimatedContainer(
-        duration: AppSpacing.durationFast,
-        padding: const EdgeInsets.symmetric(vertical: AppSpacing.sm + 2),
-        decoration: BoxDecoration(
-          color: isSelected ? cs.primaryContainer : cs.surfaceContainer,
-          borderRadius: AppSpacing.roundedMd,
-          border: Border.all(
-            color: isSelected ? cs.primary : cs.outlineVariant,
-            width: isSelected
-                ? AppSpacing.borderWidthMedium
-                : AppSpacing.borderWidthBase,
-          ),
-        ),
-        child: Center(
-          child: Text(
-            label,
-            style: tt.labelLarge?.copyWith(
-              color: isSelected ? cs.primary : cs.onSurface,
-              fontWeight: isSelected ? FontWeight.w700 : FontWeight.w500,
-            ),
-          ),
-        ),
-      ),
     );
   }
 }
@@ -907,106 +700,6 @@ class _Local2PToggleTile extends StatelessWidget {
           AppSpacing.gapHMd,
           Expanded(child: Text(label, style: tt.bodyMedium)),
           Switch(value: value, onChanged: onChanged),
-        ],
-      ),
-    );
-  }
-}
-
-// ─── Online mode content ───────────────────────────────────────────────────
-
-class _OnlineContent extends StatelessWidget {
-  const _OnlineContent({super.key});
-
-  @override
-  Widget build(BuildContext context) {
-    final l10n = context.l10n;
-
-    return Column(
-      crossAxisAlignment: CrossAxisAlignment.stretch,
-      children: [
-        AppSectionLabel(text: l10n.gameLobbyInviteTitle),
-        AppSpacing.gapVSm,
-        Opacity(
-          opacity: 0.55,
-          child: AppGroupedCard(
-            children: [
-              _OnlineTile(
-                icon: AppIcons.link,
-                title: l10n.gameLobbyInviteTitle,
-                subtitle: l10n.gameLobbyInviteSubtitle,
-              ),
-            ],
-          ),
-        ),
-        AppSpacing.gapVXxl,
-        AppSectionLabel(text: l10n.gameLobbyFriendsTitle),
-        AppSpacing.gapVSm,
-        Opacity(
-          opacity: 0.55,
-          child: AppGroupedCard(
-            children: [
-              _OnlineTile(
-                icon: AppIcons.users,
-                title: l10n.gameLobbyFriendsEmpty,
-              ),
-            ],
-          ),
-        ),
-        AppSpacing.gapVMd,
-        const Center(child: _ComingSoonBadge()),
-      ],
-    );
-  }
-}
-
-class _OnlineTile extends StatelessWidget {
-  const _OnlineTile({required this.icon, required this.title, this.subtitle});
-
-  final IconData icon;
-  final String title;
-  final String? subtitle;
-
-  @override
-  Widget build(BuildContext context) {
-    final cs = context.colorScheme;
-    final tt = context.textTheme;
-
-    return Padding(
-      padding: const EdgeInsets.symmetric(
-        horizontal: AppSpacing.lg,
-        vertical: AppSpacing.md,
-      ),
-      child: Row(
-        spacing: AppSpacing.md,
-        children: [
-          Container(
-            width: 36,
-            height: 36,
-            decoration: BoxDecoration(
-              color: cs.onSurfaceVariant.withAlpha(31),
-              borderRadius: AppSpacing.roundedMd,
-            ),
-            child: Icon(
-              icon,
-              size: AppSpacing.iconSm,
-              color: cs.onSurfaceVariant,
-            ),
-          ),
-          Expanded(
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              mainAxisSize: MainAxisSize.min,
-              children: [
-                Text(title, style: tt.labelLarge),
-                if (subtitle != null)
-                  Text(
-                    subtitle!,
-                    style: tt.bodySmall?.copyWith(color: cs.onSurfaceVariant),
-                  ),
-              ],
-            ),
-          ),
         ],
       ),
     );

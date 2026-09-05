@@ -46,6 +46,9 @@ class AppLocalizationsEn extends AppLocalizations {
   String get commonNetworkError => 'No connection. Check your internet.';
 
   @override
+  String get commonOfflineBanner => 'Offline — showing cached data';
+
+  @override
   String get commonOr => 'Or';
 
   @override
@@ -574,6 +577,12 @@ class AppLocalizationsEn extends AppLocalizations {
   String get settingsAccountSection => 'Account';
 
   @override
+  String get settingsGameSection => 'Game';
+
+  @override
+  String get settingsBoardTheme => 'Board theme';
+
+  @override
   String get profileTitle => 'Profile';
 
   @override
@@ -599,6 +608,33 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get profileFriendsLabel => 'Friends';
+
+  @override
+  String get profileStatsSection => 'Statistics';
+
+  @override
+  String get profileWinsLabel => 'Wins';
+
+  @override
+  String get profileLossesLabel => 'Losses';
+
+  @override
+  String get profileDrawsLabel => 'Draws';
+
+  @override
+  String profileSetupTitle(String username) {
+    return 'Welcome, $username!';
+  }
+
+  @override
+  String get profileSetupSubtitle =>
+      'Tell us a bit about yourself to personalise your profile.';
+
+  @override
+  String get profileSetupBioHint => 'Tell us about yourself... (optional)';
+
+  @override
+  String get profileSetupCta => 'Start playing';
 
   @override
   String get profileGuestMessage => 'Sign in to access your profile.';
@@ -682,6 +718,24 @@ class AppLocalizationsEn extends AppLocalizations {
   String get profileActivityTitle => 'Activity';
 
   @override
+  String get profileHistoryEmpty => 'No games played yet.';
+
+  @override
+  String get profileHistoryOpponentAiEasy => 'AI · Easy';
+
+  @override
+  String get profileHistoryOpponentAiMedium => 'AI · Medium';
+
+  @override
+  String get profileHistoryOpponentAiHard => 'AI · Hard';
+
+  @override
+  String get profileHistoryOpponentHuman => 'Local 2P';
+
+  @override
+  String get profileHistoryOpponentOnline => 'Online';
+
+  @override
   String get gameLobbyTitle => 'New match';
 
   @override
@@ -701,21 +755,6 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get gameLobbyStartCta => 'Start match';
-
-  @override
-  String get gameLobbyComingSoon => 'Coming soon';
-
-  @override
-  String get gameLobbyInviteTitle => 'Invite a friend';
-
-  @override
-  String get gameLobbyInviteSubtitle => 'Share a link to play together';
-
-  @override
-  String get gameLobbyFriendsTitle => 'Online friends';
-
-  @override
-  String get gameLobbyFriendsEmpty => 'No friends online right now';
 
   @override
   String get gameDifficultyEasyDescription => 'Perfect for beginners';
@@ -790,4 +829,191 @@ class AppLocalizationsEn extends AppLocalizations {
   String gameLobbyLocal2pTimerMin(int minutes) {
     return '$minutes min';
   }
+
+  @override
+  String homeGreeting(String username) {
+    return 'Hey, $username!';
+  }
+
+  @override
+  String get homeGreetingSubtitle => 'Ready to play?';
+
+  @override
+  String get homeGuestUsername => 'Guest';
+
+  @override
+  String get homeStatStreak => 'Streak';
+
+  @override
+  String get homeStatRating => 'ELO';
+
+  @override
+  String get homeStatRank => 'Rank';
+
+  @override
+  String get homeStatPlaceholder => '—';
+
+  @override
+  String get homePlayNowTitle => 'New game';
+
+  @override
+  String get homePlayNowSubtitle => 'Challenge the AI or a friend';
+
+  @override
+  String get homePlayNowCta => 'Play';
+
+  @override
+  String get homeQuickModesTitle => 'Quick modes';
+
+  @override
+  String get homeModeBot => 'vs Bot';
+
+  @override
+  String get homeMode2p => '2 Players';
+
+  @override
+  String get homeModeOnline => 'Online';
+
+  @override
+  String get homeModeOnlineSoon => 'Soon';
+
+  @override
+  String get homeLeaderboardTitle => 'Top rankings';
+
+  @override
+  String get homeLeaderboardSeeAll => 'See all';
+
+  @override
+  String get homeModeRules => 'Rules';
+
+  @override
+  String get learnTitle => 'Game Rules';
+
+  @override
+  String get learnGoalTitle => 'Goal';
+
+  @override
+  String get learnGoalBody =>
+      'Capture all of your opponent\'s pieces, or block them so they can no longer move. The last player able to move wins the game.';
+
+  @override
+  String get learnMoveTitle => 'Movement';
+
+  @override
+  String get learnMoveBody =>
+      'Pieces move one intersection at a time along the lines on the board. On 8-way intersections (even row + column), diagonal movement is also allowed.';
+
+  @override
+  String get learnCaptureTitle => 'Capture';
+
+  @override
+  String get learnCaptureBody =>
+      'To capture an opponent\'s piece, jump over it in a straight line. The landing square must be empty. The captured piece is removed from the board.';
+
+  @override
+  String get learnChainTitle => 'Promotion';
+
+  @override
+  String get learnChainBody =>
+      'When your piece reaches the opponent\'s back row and you have a captured piece in reserve, you may place an extra piece on an empty cell of your own starting row. The golden squares show the available spots.';
+
+  @override
+  String get learnPromotionTitle => 'Victory';
+
+  @override
+  String get learnPromotionBody =>
+      'Capture all of your opponent\'s pieces to win. You also win if your opponent cannot make any more moves.';
+
+  @override
+  String get onlineLobbyTitle => 'Online play';
+
+  @override
+  String get onlineLobbyQuickMatchTitle => 'Quick match';
+
+  @override
+  String get onlineLobbyQuickMatchCta => 'Find an opponent';
+
+  @override
+  String get onlineLobbySearching => 'Searching for an opponent…';
+
+  @override
+  String get onlineLobbyCancelSearch => 'Cancel';
+
+  @override
+  String get onlineLobbyInviteTitle => 'Invite a friend';
+
+  @override
+  String get onlineLobbyCreateInviteCta => 'Create an invite';
+
+  @override
+  String get onlineLobbyJoinCodeLabel => 'Invite code';
+
+  @override
+  String get onlineLobbyJoinCta => 'Join';
+
+  @override
+  String get onlineLobbyInvalidCode => 'Invalid or expired code';
+
+  @override
+  String get onlineLobbyResumeTitle => 'Ongoing matches';
+
+  @override
+  String get onlineLobbyResumeMatch => 'Online match';
+
+  @override
+  String get onlineLobbyResumeSubtitleWhite => 'You\'re playing white';
+
+  @override
+  String get onlineLobbyResumeSubtitleBlack => 'You\'re playing black';
+
+  @override
+  String get onlineInviteTitle => 'Create an invite';
+
+  @override
+  String get onlineInviteTimerTitle => 'Time control';
+
+  @override
+  String get onlineInviteRatedToggle => 'Rated match';
+
+  @override
+  String get onlineInviteRatedSubtitle => 'Affects your ELO rating';
+
+  @override
+  String get onlineInviteGenerateCta => 'Generate code';
+
+  @override
+  String get onlineInviteShareTitle => 'Share this code';
+
+  @override
+  String get onlineInviteCopyCta => 'Copy';
+
+  @override
+  String get onlineInviteCopied => 'Code copied!';
+
+  @override
+  String get onlineInviteWaiting => 'Waiting for an opponent…';
+
+  @override
+  String get onlineJoinTitle => 'Join a match';
+
+  @override
+  String get onlineJoinCodeHint => 'Enter the 6-character code';
+
+  @override
+  String get onlineJoinCta => 'Join';
+
+  @override
+  String get onlineGameOpponent => 'Opponent';
+
+  @override
+  String get onlineGameResignCta => 'Resign';
+
+  @override
+  String get onlineGameResignConfirmTitle => 'Resign the match?';
+
+  @override
+  String get onlineGameResignConfirmMessage => 'You will lose this match.';
+
+  @override
+  String get onlineGameBackToLobbyCta => 'Back to lobby';
 }

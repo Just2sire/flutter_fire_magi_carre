@@ -13,6 +13,10 @@ import "../../../../core/theme/app_colors.dart";
 import "../../../../core/theme/app_spacing.dart";
 import "../../../../shared/presentation/widgets/index.dart"
     show AppElevatedButton, AppScaffold, AppTopbar;
+import "../../../auth/domain/entities/auth_state.dart";
+import "../../../auth/presentation/providers/auth_providers.dart";
+import "../providers/board_theme_provider.dart";
+import "../providers/game_history_providers.dart";
 import "../providers/game_providers.dart";
 import "../widgets/index.dart";
 import "game_start_config.dart";
@@ -37,10 +41,17 @@ class _GamePageState extends ConsumerState<GamePage> {
   // Each false→true transition of drawClaimAvailable triggers one dialog.
   bool _prevDrawClaimAvailable = false;
 
+  // ─── Move notation ────────────────────────────────────────────────────────
+  Move? _lastMove;
+  int _halfMoveCount = 0;
+
   // Bot identity — filled from GameStartConfig extra.
   // Defaults to Abéna (niv. 5) when no config is provided.
   String _botName = "Abéna";
   Color _botColor = const Color(0xFFA78BFA);
+
+  // ─── Game duration tracking ───────────────────────────────────────────────
+  final Stopwatch _gameStopwatch = Stopwatch();
 
   // ─── 2-player local mode ──────────────────────────────────────────────────
   bool _isLocalMultiplayer = false;
@@ -63,6 +74,7 @@ class _GamePageState extends ConsumerState<GamePage> {
     super.didChangeDependencies();
     if (!_difficultyInitialized) {
       _difficultyInitialized = true;
+      _gameStopwatch.start();
       final extra = GoRouterState.of(context).extra;
       if (extra is GameStartConfig) {
         _difficultyLevel = extra.level;
@@ -89,6 +101,7 @@ class _GamePageState extends ConsumerState<GamePage> {
     final l10n = context.l10n;
     final gameState = ref.watch(gameProvider);
     final notifier = ref.read(gameProvider.notifier);
+    final boardTheme = ref.watch(boardThemeProvider);
 
     ref.listen<GameState>(gameProvider, (previous, next) {
       // AI move — solo mode only.
@@ -139,33 +152,10 @@ class _GamePageState extends ConsumerState<GamePage> {
         gameState.currentPlayer == PlayerColor.black;
 
     return AppScaffold(
-      // bottomSafeArea: false,
-      // bottomNavigationBar: BottomAppBar(
-      //   child: Row(
-      //     mainAxisAlignment: MainAxisAlignment.spaceAround,
-      //     children: [
-      //       _GameAction(
-      //         icon: AppIcons.undo,
-      //         label: l10n.gameActionUndo,
-      //         onPressed: _aiMoveInFlight || !notifier.canUndo ? null : _undo,
-      //       ),
-      //       _GameAction(
-      //         icon: AppIcons.refresh,
-      //         label: l10n.gameActionNew,
-      //         onPressed: _aiMoveInFlight ? null : _restart,
-      //       ),
-      //       _GameAction(
-      //         icon: AppIcons.settings,
-      //         label: l10n.gameActionOptions,
-      //         onPressed: _aiMoveInFlight ? null : _pickDifficulty,
-      //       ),
-      //     ],
-      //   ),
-      // ),
       body: Column(
         children: [
           AppTopbar(title: l10n.gameTitle),
-          AppSpacing.gapVMd,
+          AppSpacing.gapVXl,
           if (_isLocalMultiplayer)
             _Local2PPlayerCard(
               color: PlayerColor.black,
@@ -208,9 +198,15 @@ class _GamePageState extends ConsumerState<GamePage> {
                   : null,
               onCellTap: _onCellTap,
               showLabels: !shouldFlip,
+              boardTheme: boardTheme,
             ),
           ),
           AppSpacing.gapVSm,
+          _MoveNotationBar(
+            lastMove: _lastMove,
+            halfMoveCount: _halfMoveCount,
+            boardSize: gameState.board.size,
+          ),
           if (_isLocalMultiplayer)
             _Local2PPlayerCard(
               color: PlayerColor.white,
@@ -301,6 +297,8 @@ class _GamePageState extends ConsumerState<GamePage> {
         setState(() {
           _selectedPosition = null;
           _lastAiMove = null;
+          _lastMove = move;
+          _halfMoveCount++;
           _applyIncrement(playerWhoMoved);
         });
         return;
@@ -322,15 +320,21 @@ class _GamePageState extends ConsumerState<GamePage> {
     setState(() {
       _selectedPosition = null;
       _lastAiMove = null;
+      _lastMove = null;
     });
   }
 
   void _restart() {
     _clockTimer?.cancel();
+    _gameStopwatch
+      ..reset()
+      ..start();
     ref.read(gameProvider.notifier).newGame();
     setState(() {
       _selectedPosition = null;
       _lastAiMove = null;
+      _lastMove = null;
+      _halfMoveCount = 0;
       if (_timerEnabled) {
         _whiteTimeLeft = _timerDurationSeconds;
         _blackTimeLeft = _timerDurationSeconds;
@@ -382,6 +386,8 @@ class _GamePageState extends ConsumerState<GamePage> {
         _aiMoveInFlight = false;
         if (aiMove != null) {
           _lastAiMove = aiMove;
+          _lastMove = aiMove;
+          _halfMoveCount++;
           _applyIncrement(PlayerColor.black);
         }
       });
@@ -440,9 +446,40 @@ class _GamePageState extends ConsumerState<GamePage> {
     if (accepted == true) ref.read(gameProvider.notifier).claimDraw();
   }
 
+  String? _aiDifficulty() {
+    if (_difficultyLevel <= 3) return "easy";
+    if (_difficultyLevel <= 6) return "medium";
+    return "hard";
+  }
+
   Future<void> _showGameOverSheet(GameStatus status) async {
     if (!mounted) return;
+    _gameStopwatch.stop();
     final gameState = ref.read(gameProvider);
+
+    // Record result for authenticated users in solo mode only.
+    if (!_isLocalMultiplayer) {
+      final authState = ref.read(authProvider);
+      if (authState is AuthAuthenticated) {
+        final resultStr = switch (status) {
+          GameStatus.whiteWins => "win",
+          GameStatus.blackWins => "loss",
+          _ => "draw",
+        };
+        await ref
+            .read(recordGameResultUseCaseProvider)
+            .call(
+              playerId: authState.profile.id,
+              opponentType: "ai",
+              result: resultStr,
+              boardSize: gameState.board.size,
+              moveCount: gameState.moveHistory.length,
+              aiDifficulty: _aiDifficulty(),
+            );
+      }
+    }
+
+    if (!mounted) return;
     final result = await showModalBottomSheet<bool>(
       context: context,
       isDismissible: false,
@@ -462,6 +499,53 @@ class _GamePageState extends ConsumerState<GamePage> {
     } else {
       context.popScreen();
     }
+  }
+}
+
+// ─── Move notation bar ───────────────────────────────────────────────────────
+
+/// Displays algebraic notation of the last played move (e.g. "2. c3 — d4").
+/// Collapses to nothing when [lastMove] is null.
+class _MoveNotationBar extends StatelessWidget {
+  const _MoveNotationBar({
+    required this.lastMove,
+    required this.halfMoveCount,
+    required this.boardSize,
+  });
+
+  final Move? lastMove;
+  final int halfMoveCount;
+  final int boardSize;
+
+  String _notation() {
+    if (lastMove == null) return "";
+    final move = lastMove!;
+    final num = ((halfMoveCount - 1) ~/ 2) + 1;
+    final fromFile = String.fromCharCode(97 + move.from.col);
+    final fromRank = "${boardSize - move.from.row}";
+    final toFile = String.fromCharCode(97 + move.to.col);
+    final toRank = "${boardSize - move.to.row}";
+    return "$num. $fromFile$fromRank — $toFile$toRank";
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return AnimatedOpacity(
+      opacity: lastMove == null ? 0.0 : 1.0,
+      duration: AppSpacing.durationFast,
+      child: Padding(
+        padding: const EdgeInsets.symmetric(vertical: AppSpacing.xs),
+        child: Text(
+          _notation(),
+          style: context.textTheme.bodySmall?.copyWith(
+            color: AppColors.paleMint54,
+            fontWeight: FontWeight.w600,
+            letterSpacing: 0.5,
+          ),
+          textAlign: TextAlign.center,
+        ),
+      ),
+    );
   }
 }
 

@@ -8,13 +8,15 @@ part of 'leaderboard_providers.dart';
 
 // GENERATED CODE - DO NOT MODIFY BY HAND
 // ignore_for_file: type=lint, type=warning
-/// Datasource Supabase du classement.
+/// Datasource REST (Dio) du classement — voir
+/// [LeaderboardRemoteDataSourceImpl] pour le détail du client HTTP maison.
 
 @ProviderFor(leaderboardRemoteDataSource)
 final leaderboardRemoteDataSourceProvider =
     LeaderboardRemoteDataSourceProvider._();
 
-/// Datasource Supabase du classement.
+/// Datasource REST (Dio) du classement — voir
+/// [LeaderboardRemoteDataSourceImpl] pour le détail du client HTTP maison.
 
 final class LeaderboardRemoteDataSourceProvider
     extends
@@ -24,7 +26,8 @@ final class LeaderboardRemoteDataSourceProvider
           LeaderboardRemoteDataSourceImpl
         >
     with $Provider<LeaderboardRemoteDataSourceImpl> {
-  /// Datasource Supabase du classement.
+  /// Datasource REST (Dio) du classement — voir
+  /// [LeaderboardRemoteDataSourceImpl] pour le détail du client HTTP maison.
   LeaderboardRemoteDataSourceProvider._()
     : super(
         from: null,
@@ -62,14 +65,16 @@ final class LeaderboardRemoteDataSourceProvider
 }
 
 String _$leaderboardRemoteDataSourceHash() =>
-    r'cf5af06ff35e3eccd618cde63fab85b4798ab79d';
+    r'e96cf2e59b62638672ad5107b19f67837ab0c952';
 
-/// Implémentation [LeaderboardRepository] branchée sur Supabase.
+/// Implémentation [LeaderboardRepository] — REST + cache local + repli
+/// hors-ligne.
 
 @ProviderFor(leaderboardRepository)
 final leaderboardRepositoryProvider = LeaderboardRepositoryProvider._();
 
-/// Implémentation [LeaderboardRepository] branchée sur Supabase.
+/// Implémentation [LeaderboardRepository] — REST + cache local + repli
+/// hors-ligne.
 
 final class LeaderboardRepositoryProvider
     extends
@@ -79,7 +84,8 @@ final class LeaderboardRepositoryProvider
           LeaderboardRepository
         >
     with $Provider<LeaderboardRepository> {
-  /// Implémentation [LeaderboardRepository] branchée sur Supabase.
+  /// Implémentation [LeaderboardRepository] — REST + cache local + repli
+  /// hors-ligne.
   LeaderboardRepositoryProvider._()
     : super(
         from: null,
@@ -115,7 +121,7 @@ final class LeaderboardRepositoryProvider
 }
 
 String _$leaderboardRepositoryHash() =>
-    r'd7de6249149887f00484983f5c767a54cf68ee3e';
+    r'e225f1282eecd084051a17b3209d0953e45b5ab9';
 
 @ProviderFor(getLeaderboardUseCase)
 final getLeaderboardUseCaseProvider = GetLeaderboardUseCaseProvider._();

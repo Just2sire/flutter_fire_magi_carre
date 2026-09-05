@@ -42,6 +42,9 @@
   "commonNetworkError": "Connexion indisponible. Vérifie ta connexion internet.",
   "@commonNetworkError": { "description": "Message d'erreur réseau" },
 
+  "commonOfflineBanner": "Hors-ligne — affichage des données en cache",
+  "@commonOfflineBanner": { "description": "Bandeau affiché en haut d'un écran quand l'appareil est hors-ligne" },
+
   "commonOr": "Ou",
   "@commonOr": { "description": "Séparateur générique entre deux options (ex: entre formulaire et OAuth)" },
 
@@ -617,6 +620,12 @@
   "settingsAccountSection": "Compte",
   "@settingsAccountSection": { "description": "Libellé de la section Compte (profil, mot de passe, déconnexion)" },
 
+  "settingsGameSection": "Jeu",
+  "@settingsGameSection": { "description": "Libellé de la section Jeu dans les paramètres (thème du plateau, etc.)" },
+
+  "settingsBoardTheme": "Thème du plateau",
+  "@settingsBoardTheme": { "description": "Libellé de l'option de sélection du thème visuel du plateau" },
+
   "@__sectionProfile": {
     "description": "━━━━ PROFILE — Profil utilisateur ━━━━"
   },
@@ -646,6 +655,27 @@
 
   "profileFriendsLabel": "Amis",
   "@profileFriendsLabel": { "description": "Label du nombre d'amis affiché sur le profil" },
+
+  "profileStatsSection": "Statistiques",
+  "@profileStatsSection": { "description": "Titre de la section statistiques de jeu" },
+  "profileWinsLabel": "Victoires",
+  "@profileWinsLabel": { "description": "Label des victoires sur le profil" },
+  "profileLossesLabel": "Défaites",
+  "@profileLossesLabel": { "description": "Label des défaites sur le profil" },
+  "profileDrawsLabel": "Nuls",
+  "@profileDrawsLabel": { "description": "Label des parties nulles sur le profil" },
+
+  "profileSetupTitle": "Bienvenue, {username} !",
+  "@profileSetupTitle": {
+    "description": "Titre de la page de configuration du profil",
+    "placeholders": { "username": { "type": "String" } }
+  },
+  "profileSetupSubtitle": "Dites-nous quelques mots sur vous pour personnaliser votre profil.",
+  "@profileSetupSubtitle": { "description": "Sous-titre de la page de configuration" },
+  "profileSetupBioHint": "Parlez de vous... (optionnel)",
+  "@profileSetupBioHint": { "description": "Placeholder du champ bio sur la page de setup" },
+  "profileSetupCta": "Commencer à jouer",
+  "@profileSetupCta": { "description": "Bouton de validation de la page de setup" },
 
   "profileGuestMessage": "Connecte-toi pour accéder à ton profil.",
   "@profileGuestMessage": { "description": "Message affiché sur /profile pour un utilisateur en mode invité" },
@@ -725,6 +755,19 @@
   "profileActivityTitle": "Activité",
   "@profileActivityTitle": { "description": "Libellé de l'entrée menant à l'historique de partie" },
 
+  "profileHistoryEmpty": "Pas encore de parties jouées.",
+  "@profileHistoryEmpty": { "description": "État vide de l'historique de parties" },
+  "profileHistoryOpponentAiEasy": "IA · Débutant",
+  "@profileHistoryOpponentAiEasy": { "description": "Libellé adversaire IA niveau facile dans l'historique" },
+  "profileHistoryOpponentAiMedium": "IA · Intermédiaire",
+  "@profileHistoryOpponentAiMedium": { "description": "Libellé adversaire IA niveau moyen dans l'historique" },
+  "profileHistoryOpponentAiHard": "IA · Expert",
+  "@profileHistoryOpponentAiHard": { "description": "Libellé adversaire IA niveau difficile dans l'historique" },
+  "profileHistoryOpponentHuman": "2 Joueurs",
+  "@profileHistoryOpponentHuman": { "description": "Libellé adversaire mode local 2 joueurs dans l'historique" },
+  "profileHistoryOpponentOnline": "En ligne",
+  "@profileHistoryOpponentOnline": { "description": "Libellé adversaire mode en ligne dans l'historique" },
+
   "gameLobbyTitle": "Nouvelle partie",
   "@gameLobbyTitle": { "description": "Titre de la page de configuration de partie" },
 
@@ -745,21 +788,6 @@
 
   "gameLobbyStartCta": "Lancer la partie",
   "@gameLobbyStartCta": { "description": "Bouton pour démarrer la partie après la configuration" },
-
-  "gameLobbyComingSoon": "Bientôt",
-  "@gameLobbyComingSoon": { "description": "Badge affiché sur les fonctionnalités non encore disponibles" },
-
-  "gameLobbyInviteTitle": "Inviter un ami",
-  "@gameLobbyInviteTitle": { "description": "Titre de la section invitation dans le mode en ligne" },
-
-  "gameLobbyInviteSubtitle": "Partage un lien pour jouer ensemble",
-  "@gameLobbyInviteSubtitle": { "description": "Description de la fonctionnalité d'invitation par lien" },
-
-  "gameLobbyFriendsTitle": "Amis en ligne",
-  "@gameLobbyFriendsTitle": { "description": "Titre de la section amis connectés dans le mode en ligne" },
-
-  "gameLobbyFriendsEmpty": "Aucun ami en ligne pour l'instant",
-  "@gameLobbyFriendsEmpty": { "description": "Message affiché quand aucun ami n'est en ligne" },
 
   "gameDifficultyEasyDescription": "Parfait pour débuter",
   "@gameDifficultyEasyDescription": { "description": "Description du niveau facile" },
@@ -828,5 +856,142 @@
   "@gameLobbyLocal2pTimerMin": {
     "description": "Option de minuterie avec durée en minutes",
     "placeholders": { "minutes": { "type": "int" } }
-  }
+  },
+
+  "@__sectionHome": {
+    "description": "━━━━ HOME — Écran d'accueil ━━━━"
+  },
+  "homeGreeting": "Hey, {username} !",
+  "@homeGreeting": {
+    "description": "Salutation personnalisée sur l'écran d'accueil",
+    "placeholders": { "username": { "type": "String", "example": "Aria" } }
+  },
+  "homeGreetingSubtitle": "Prêt à jouer ?",
+  "@homeGreetingSubtitle": { "description": "Sous-titre de la salutation sur l'écran d'accueil" },
+  "homeGuestUsername": "Invité",
+  "@homeGuestUsername": { "description": "Nom affiché quand l'utilisateur est en mode invité" },
+  "homeStatStreak": "Série",
+  "@homeStatStreak": { "description": "Label de la stat série de jours consécutifs" },
+  "homeStatRating": "ELO",
+  "@homeStatRating": { "description": "Label de la stat ELO / classement" },
+  "homeStatRank": "Rang",
+  "@homeStatRank": { "description": "Label de la stat rang dans le classement" },
+  "homeStatPlaceholder": "—",
+  "@homeStatPlaceholder": { "description": "Valeur affichée quand une stat n'est pas encore disponible" },
+  "homePlayNowTitle": "Nouvelle partie",
+  "@homePlayNowTitle": { "description": "Titre de la carte CTA principale du home" },
+  "homePlayNowSubtitle": "Défie l'IA ou un ami",
+  "@homePlayNowSubtitle": { "description": "Sous-titre de la carte CTA principale" },
+  "homePlayNowCta": "Jouer",
+  "@homePlayNowCta": { "description": "Texte du bouton principal du home" },
+  "homeQuickModesTitle": "Modes rapides",
+  "@homeQuickModesTitle": { "description": "Titre de la section modes rapides" },
+  "homeModeBot": "vs Bot",
+  "@homeModeBot": { "description": "Chip du mode solo contre l'IA" },
+  "homeMode2p": "2 Joueurs",
+  "@homeMode2p": { "description": "Chip du mode 2 joueurs local" },
+  "homeModeOnline": "En ligne",
+  "@homeModeOnline": { "description": "Chip du mode en ligne" },
+  "homeModeOnlineSoon": "Bientôt",
+  "@homeModeOnlineSoon": { "description": "Badge affiché sur le chip En ligne quand la fonctionnalité n'est pas encore disponible" },
+  "homeLeaderboardTitle": "Top classement",
+  "@homeLeaderboardTitle": { "description": "Titre de la section aperçu du classement sur le home" },
+  "homeLeaderboardSeeAll": "Voir tout",
+  "@homeLeaderboardSeeAll": { "description": "Lien vers la page classement complète depuis le home" },
+
+  "@__sectionLearn": {
+    "description": "━━━━ LEARN — Page de règles du jeu ━━━━"
+  },
+  "homeModeRules": "Règles",
+  "@homeModeRules": { "description": "Chip accès aux règles du jeu depuis le home" },
+  "learnTitle": "Règles du jeu",
+  "@learnTitle": { "description": "Titre de la page de règles" },
+  "learnGoalTitle": "But du jeu",
+  "@learnGoalTitle": { "description": "Titre de la section objectif" },
+  "learnGoalBody": "Capturez toutes les pièces adverses, ou bloquez-les de sorte qu'elles ne puissent plus bouger. Le dernier joueur à pouvoir se déplacer remporte la partie.",
+  "@learnGoalBody": { "description": "Explication du but du jeu" },
+  "learnMoveTitle": "Déplacement",
+  "@learnMoveTitle": { "description": "Titre de la section déplacement" },
+  "learnMoveBody": "Vos pièces se déplacent d'une intersection à la suivante, le long des lignes du plateau. Sur les intersections à 8 directions (rangée + colonne paires), le mouvement diagonal est aussi possible.",
+  "@learnMoveBody": { "description": "Explication du déplacement" },
+  "learnCaptureTitle": "Capture",
+  "@learnCaptureTitle": { "description": "Titre de la section capture" },
+  "learnCaptureBody": "Pour capturer un pion adverse, sautez par-dessus lui en ligne droite. La case d'atterrissage doit être libre. La pièce capturée est retirée du plateau.",
+  "@learnCaptureBody": { "description": "Explication de la capture" },
+  "learnChainTitle": "Promotion",
+  "@learnChainTitle": { "description": "Titre de la section promotion" },
+  "learnChainBody": "Quand votre pièce atteint la rangée adverse et que vous avez une pièce capturée en réserve, vous pouvez replacer une pièce supplémentaire sur une case vide de votre propre rangée de départ. Les cases dorées indiquent les emplacements disponibles.",
+  "@learnChainBody": { "description": "Explication de la promotion" },
+  "learnPromotionTitle": "Victoire",
+  "@learnPromotionTitle": { "description": "Titre de la section victoire" },
+  "learnPromotionBody": "Capturez toutes les pièces adverses pour remporter la partie. Vous gagnez également si votre adversaire ne peut plus effectuer aucun déplacement.",
+  "@learnPromotionBody": { "description": "Explication des conditions de victoire" },
+
+  "@__sectionOnline": { "description": "━━━━ ONLINE — Matchmaking, invitations, partie en ligne ━━━━" },
+
+  "onlineLobbyTitle": "Partie en ligne",
+  "@onlineLobbyTitle": { "description": "Titre de l'écran principal des parties en ligne" },
+  "onlineLobbyQuickMatchTitle": "Partie rapide",
+  "@onlineLobbyQuickMatchTitle": { "description": "Titre de la section matchmaking aléatoire" },
+  "onlineLobbyQuickMatchCta": "Chercher un adversaire",
+  "@onlineLobbyQuickMatchCta": { "description": "Bouton pour rejoindre la file de matchmaking" },
+  "onlineLobbySearching": "Recherche d'un adversaire…",
+  "@onlineLobbySearching": { "description": "Message affiché pendant la recherche d'un adversaire" },
+  "onlineLobbyCancelSearch": "Annuler",
+  "@onlineLobbyCancelSearch": { "description": "Bouton pour annuler la recherche de matchmaking" },
+  "onlineLobbyInviteTitle": "Inviter un ami",
+  "@onlineLobbyInviteTitle": { "description": "Titre de la section invitation par code" },
+  "onlineLobbyCreateInviteCta": "Créer une invitation",
+  "@onlineLobbyCreateInviteCta": { "description": "Bouton pour créer une partie par invitation" },
+  "onlineLobbyJoinCodeLabel": "Code d'invitation",
+  "@onlineLobbyJoinCodeLabel": { "description": "Libellé du champ de saisie du code d'invitation" },
+  "onlineLobbyJoinCta": "Rejoindre",
+  "@onlineLobbyJoinCta": { "description": "Bouton pour rejoindre une partie par code" },
+  "onlineLobbyInvalidCode": "Code invalide ou expiré",
+  "@onlineLobbyInvalidCode": { "description": "Erreur affichée quand le code d'invitation est invalide" },
+  "onlineLobbyResumeTitle": "Parties en cours",
+  "@onlineLobbyResumeTitle": { "description": "Titre de la liste des parties en ligne à reprendre" },
+  "onlineLobbyResumeMatch": "Partie en ligne",
+  "@onlineLobbyResumeMatch": { "description": "Libellé générique d'une partie en ligne dans la liste à reprendre" },
+  "onlineLobbyResumeSubtitleWhite": "Vous jouez les blancs",
+  "@onlineLobbyResumeSubtitleWhite": { "description": "Sous-titre indiquant que le joueur est les blancs" },
+  "onlineLobbyResumeSubtitleBlack": "Vous jouez les noirs",
+  "@onlineLobbyResumeSubtitleBlack": { "description": "Sous-titre indiquant que le joueur est les noirs" },
+
+  "onlineInviteTitle": "Créer une invitation",
+  "@onlineInviteTitle": { "description": "Titre de l'écran de création d'invitation" },
+  "onlineInviteTimerTitle": "Cadence",
+  "@onlineInviteTimerTitle": { "description": "Titre du sélecteur de cadence dans la création d'invitation" },
+  "onlineInviteRatedToggle": "Partie classée",
+  "@onlineInviteRatedToggle": { "description": "Libellé du toggle partie classée/amicale" },
+  "onlineInviteRatedSubtitle": "Affecte votre classement ELO",
+  "@onlineInviteRatedSubtitle": { "description": "Explication de l'effet du toggle classé" },
+  "onlineInviteGenerateCta": "Générer le code",
+  "@onlineInviteGenerateCta": { "description": "Bouton pour générer le code d'invitation" },
+  "onlineInviteShareTitle": "Partage ce code",
+  "@onlineInviteShareTitle": { "description": "Titre de l'écran d'attente affichant le code à partager" },
+  "onlineInviteCopyCta": "Copier",
+  "@onlineInviteCopyCta": { "description": "Bouton pour copier le code d'invitation" },
+  "onlineInviteCopied": "Code copié !",
+  "@onlineInviteCopied": { "description": "Confirmation affichée après la copie du code" },
+  "onlineInviteWaiting": "En attente d'un adversaire…",
+  "@onlineInviteWaiting": { "description": "Message affiché en attendant qu'un adversaire rejoigne l'invitation" },
+
+  "onlineJoinTitle": "Rejoindre une partie",
+  "@onlineJoinTitle": { "description": "Titre de l'écran de jointure par code" },
+  "onlineJoinCodeHint": "Entrez le code à 6 caractères",
+  "@onlineJoinCodeHint": { "description": "Texte d'aide du champ de code d'invitation" },
+  "onlineJoinCta": "Rejoindre",
+  "@onlineJoinCta": { "description": "Bouton pour rejoindre la partie depuis l'écran de jointure" },
+
+  "onlineGameOpponent": "Adversaire",
+  "@onlineGameOpponent": { "description": "Libellé générique de l'adversaire dans une partie en ligne" },
+  "onlineGameResignCta": "Abandonner",
+  "@onlineGameResignCta": { "description": "Bouton pour abandonner une partie en ligne" },
+  "onlineGameResignConfirmTitle": "Abandonner la partie ?",
+  "@onlineGameResignConfirmTitle": { "description": "Titre de la confirmation d'abandon" },
+  "onlineGameResignConfirmMessage": "Vous perdrez cette partie.",
+  "@onlineGameResignConfirmMessage": { "description": "Message de la confirmation d'abandon" },
+  "onlineGameBackToLobbyCta": "Retour au lobby",
+  "@onlineGameBackToLobbyCta": { "description": "Bouton de retour au lobby après la fin d'une partie en ligne" }
 }

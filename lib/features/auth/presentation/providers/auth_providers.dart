@@ -268,11 +268,12 @@ class AuthNotifier extends _$AuthNotifier {
   }
 
   /// Marque l'onboarding comme terminé et met à jour le profil en state.
-  Future<void> completeOnboarding() async {
+  ///
+  /// Contrairement à [login]/[signup], un échec ne fait PAS basculer `state`
+  /// vers [AuthFailureState] — l'utilisateur reste authentifié.
+  Future<Either<Failure, UserProfile>> completeOnboarding() async {
     final result = await ref.read(completeOnboardingUseCaseProvider).call();
-    result.fold(
-      (failure) => state = AuthFailureState(failure),
-      (profile) => state = AuthAuthenticated(profile),
-    );
+    result.fold((_) {}, (profile) => state = AuthAuthenticated(profile));
+    return result;
   }
 }

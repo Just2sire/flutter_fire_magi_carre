@@ -26,6 +26,9 @@ class AppRoutes {
   static const String gameLobby = "/game/lobby";
   static const String gameLocal = "/game/local";
 
+  // ─── Partie en ligne ───────────────────────
+  static const String gameOnline = "/game/online/:matchId";
+
   // ─── Lobby — sous-écrans ──────────────────
   static const String lobbyCreate = "/lobby/create";
   static const String lobbyJoin = "/lobby/join/:inviteCode";
@@ -35,6 +38,7 @@ class AppRoutes {
   static const String learnChapter = "/learn/:chapterId";
 
   // ─── Profil — sous-écrans ─────────────────
+  static const String profileSetup = "/profile/setup";
   static const String profileEdit = "/profile/edit";
   static const String profileChangePassword = "/profile/change-password";
   static const String profileHistory = "/profile/history";
@@ -45,6 +49,7 @@ class AppRoutes {
 
   // ─── Helpers de construction ───────────────
   static String gamePath(String gameId) => "/game/$gameId";
+  static String gameOnlinePath(String matchId) => "/game/online/$matchId";
   static String gameResultPath(String gameId) => "/game/$gameId/result";
   static String lobbyJoinPath(String inviteCode) => "/lobby/join/$inviteCode";
   static String learnChapterPath(String chapterId) => "/learn/$chapterId";

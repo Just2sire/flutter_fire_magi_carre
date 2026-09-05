@@ -5,8 +5,8 @@ import "../../../../core/extensions/build_context_extensions.dart";
 import "../../../../core/theme/app_spacing.dart";
 
 /// Avatar circulaire — affiche l'image distante si présente, sinon une
-/// icône de repli. Utilisé pour tout profil affiché dans l'app (le sien,
-/// celui d'un autre joueur dans le classement, etc.).
+/// icône de repli. Mise en cache mémoire standard de Flutter (`Image.network`)
+/// pour la durée de session, pas de cache disque entre sessions.
 class AppAvatar extends StatelessWidget {
   const AppAvatar({
     required this.avatarUrl,
@@ -25,44 +25,69 @@ class AppAvatar extends StatelessWidget {
   Widget build(BuildContext context) {
     final cs = context.colorScheme;
     final url = avatarUrl;
+    final diameter = radius * 2;
+
+    final Widget avatar = CircleAvatar(
+      radius: radius,
+      backgroundColor: cs.surfaceContainerHighest,
+      child: url != null && url.isNotEmpty
+          ? ClipOval(
+              child: Image.network(
+                url,
+                width: diameter,
+                height: diameter,
+                fit: BoxFit.cover,
+                loadingBuilder: (_, child, progress) => progress == null
+                    ? child
+                    : _Fallback(radius: radius, color: cs.onSurfaceVariant),
+                errorBuilder: (_, _, _) =>
+                    _Fallback(radius: radius, color: cs.onSurfaceVariant),
+              ),
+            )
+          : _Fallback(radius: radius, color: cs.onSurfaceVariant),
+    );
+
+    if (!isEditable) return avatar;
 
     return Stack(
       children: [
-        CircleAvatar(
-          radius: radius,
-          backgroundColor: cs.surfaceContainerHighest,
-          backgroundImage: url != null && url.isNotEmpty
-              ? NetworkImage(url)
-              : null,
-          child: url == null || url.isEmpty
-              ? Icon(AppIcons.user, size: radius, color: cs.onSurfaceVariant)
-              : null,
-        ),
-        if (isEditable)
-          Positioned(
-            bottom: 0,
-            right: 0,
-            child: Tooltip(
-              message: context.l10n.profileEditCta,
-              child: InkWell(
-                onTap: onEdit,
-                borderRadius: AppSpacing.roundedFull,
-                child: Container(
-                  padding: AppSpacing.insetSm,
-                  decoration: BoxDecoration(
-                    color: cs.surfaceContainer,
-                    shape: .circle,
-                  ),
-                  child: Icon(
-                    AppIcons.edit,
-                    size: AppSpacing.iconMd,
-                    color: cs.onSurface,
-                  ),
+        avatar,
+        Positioned(
+          bottom: 0,
+          right: 0,
+          child: Tooltip(
+            message: context.l10n.profileEditCta,
+            child: InkWell(
+              onTap: onEdit,
+              borderRadius: AppSpacing.roundedFull,
+              child: Container(
+                padding: AppSpacing.insetSm,
+                decoration: BoxDecoration(
+                  color: cs.surfaceContainer,
+                  shape: BoxShape.circle,
+                ),
+                child: Icon(
+                  AppIcons.edit,
+                  size: AppSpacing.iconMd,
+                  color: cs.onSurface,
                 ),
               ),
             ),
           ),
+        ),
       ],
     );
+  }
+}
+
+class _Fallback extends StatelessWidget {
+  const _Fallback({required this.radius, required this.color});
+
+  final double radius;
+  final Color color;
+
+  @override
+  Widget build(BuildContext context) {
+    return Icon(AppIcons.user, size: radius, color: color);
   }
 }

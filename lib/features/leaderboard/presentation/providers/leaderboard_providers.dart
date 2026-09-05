@@ -1,5 +1,8 @@
 import "package:riverpod_annotation/riverpod_annotation.dart";
 
+import "../../../../shared/presentation/providers/dio_provider.dart";
+import "../../../../shared/presentation/providers/local_cache_provider.dart";
+import "../../../../shared/presentation/providers/network_info_provider.dart";
 import "../../../../shared/presentation/providers/supabase_provider.dart";
 import "../../data/datasources/leaderboard_remote_datasource_impl.dart";
 import "../../data/repositories/leaderboard_repository_impl.dart";
@@ -14,19 +17,24 @@ part "leaderboard_providers.g.dart";
 // Infrastructure
 // ---------------------------------------------------------------------------
 
-/// Datasource Supabase du classement.
+/// Datasource REST (Dio) du classement — voir
+/// [LeaderboardRemoteDataSourceImpl] pour le détail du client HTTP maison.
 @Riverpod(keepAlive: true)
 LeaderboardRemoteDataSourceImpl leaderboardRemoteDataSource(Ref ref) {
   return LeaderboardRemoteDataSourceImpl(
+    dio: ref.watch(supabaseRestDioProvider),
     supabaseClient: ref.watch(supabaseClientProvider),
   );
 }
 
-/// Implémentation [LeaderboardRepository] branchée sur Supabase.
+/// Implémentation [LeaderboardRepository] — REST + cache local + repli
+/// hors-ligne.
 @Riverpod(keepAlive: true)
 LeaderboardRepository leaderboardRepository(Ref ref) {
   return LeaderboardRepositoryImpl(
     remoteDataSource: ref.watch(leaderboardRemoteDataSourceProvider),
+    cache: ref.watch(localCacheServiceProvider),
+    networkInfo: ref.watch(networkInfoProvider),
   );
 }
 
