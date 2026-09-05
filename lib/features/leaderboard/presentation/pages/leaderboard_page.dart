@@ -7,7 +7,7 @@ import "../../../../core/theme/app_spacing.dart";
 import "../../../../shared/presentation/widgets/index.dart"
     show AppScaffold, AppTopbar, AppElevatedButton, AppDivider;
 import "../../../../shared/presentation/widgets/others/index.dart"
-    show AppSectionLabel, SkeletonList, SkeletonTile;
+    show AppSectionLabel, OfflineBanner, SkeletonList, SkeletonTile;
 import "../../../auth/domain/entities/auth_state.dart";
 import "../../../auth/presentation/providers/auth_providers.dart";
 import "../../domain/entities/leaderboard_entry.dart";
@@ -32,6 +32,7 @@ class LeaderboardPage extends ConsumerWidget {
             subtitle: l10n.leaderboardSubtitle,
             showLeading: false,
           ),
+          const OfflineBanner(),
           AppSpacing.gapVMd,
           Expanded(
             child: entriesAsync.when(

@@ -12,9 +12,13 @@ import "package:timezone/timezone.dart" as tz;
 import "app.dart";
 import "core/configs/index.dart";
 import "core/routing/app_navigator_key.dart";
+import "shared/data/services/local_cache_service.dart";
 import "shared/data/services/notification_service.dart";
 import "shared/presentation/providers/index.dart"
-    show sharedPreferencesProvider, flutterLocalNotificationsPluginProvider;
+    show
+        sharedPreferencesProvider,
+        flutterLocalNotificationsPluginProvider,
+        localCacheServiceProvider;
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -38,6 +42,10 @@ void main() async {
 
   // SharedPreferences doit être initialisé avant runApp
   final prefs = await SharedPreferences.getInstance();
+
+  // Cache local (Hive) — support du mode hors-ligne
+  final cacheBox = await LocalCacheService.init();
+  final localCacheService = LocalCacheService(cacheBox);
 
   // Timezone — requis pour zonedSchedule (notifications planifiées)
   tz.initializeTimeZones();
@@ -67,6 +75,7 @@ void main() async {
         flutterLocalNotificationsPluginProvider.overrideWithValue(
           notificationPlugin,
         ),
+        localCacheServiceProvider.overrideWithValue(localCacheService),
       ],
       child: const MainApp(),
     ),

@@ -12,6 +12,8 @@ abstract interface class GameHistoryRemoteDataSource {
     required int boardSize,
     required int moveCount,
     String? aiDifficulty,
+    String? opponentId,
+    bool rated = true,
   });
 
   Future<List<GameHistoryEntry>> getGameHistory({
@@ -37,16 +39,20 @@ class GameHistoryRemoteDataSourceImpl implements GameHistoryRemoteDataSource {
     required int boardSize,
     required int moveCount,
     String? aiDifficulty,
+    String? opponentId,
+    bool rated = true,
   }) async {
     await _supabase.rpc<void>(
       "record_game_result",
       params: {
         "p_player_id": playerId,
         "p_opponent_type": opponentType,
+        "p_opponent_id": opponentId,
         "p_ai_difficulty": aiDifficulty,
         "p_result": result,
         "p_board_size": boardSize,
         "p_move_count": moveCount,
+        "p_rated": rated,
       },
     );
   }

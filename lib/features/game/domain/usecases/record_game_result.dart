@@ -15,6 +15,8 @@ class RecordGameResult {
     required int boardSize,
     required int moveCount,
     String? aiDifficulty,
+    String? opponentId,
+    bool rated = true,
   }) {
     return _repository.recordGameResult(
       playerId: playerId,
@@ -23,6 +25,8 @@ class RecordGameResult {
       boardSize: boardSize,
       moveCount: moveCount,
       aiDifficulty: aiDifficulty,
+      opponentId: opponentId,
+      rated: rated,
     );
   }
 }

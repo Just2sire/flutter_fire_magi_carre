@@ -8,6 +8,8 @@ import "../../../../core/theme/app_colors.dart";
 import "../../../../core/theme/app_spacing.dart";
 import "../../../../shared/presentation/widgets/index.dart"
     show AppScaffold, AppTopbar, AppDivider;
+import "../../../../shared/presentation/widgets/others/index.dart"
+    show OfflineBanner;
 import "../../../auth/domain/entities/auth_state.dart";
 import "../../../auth/presentation/providers/auth_providers.dart";
 import "../../../game/domain/entities/game_history_entry.dart";
@@ -40,6 +42,7 @@ class ProfileHistoryPage extends ConsumerWidget {
       body: Column(
         children: [
           AppTopbar(title: l10n.profileActivityTitle),
+          const OfflineBanner(),
           Expanded(
             child: historyAsync.when(
               loading: () => const Center(child: CircularProgressIndicator()),

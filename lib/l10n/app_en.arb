@@ -42,6 +42,9 @@
   "commonNetworkError": "No connection. Check your internet.",
   "@commonNetworkError": { "description": "Network error message" },
 
+  "commonOfflineBanner": "Offline — showing cached data",
+  "@commonOfflineBanner": { "description": "Banner shown at the top of a screen when the device is offline" },
+
   "commonOr": "Or",
   "@commonOr": { "description": "Generic separator between two options (e.g. between form and OAuth)" },
 
@@ -786,21 +789,6 @@
   "gameLobbyStartCta": "Start match",
   "@gameLobbyStartCta": { "description": "Button to start the match after configuration" },
 
-  "gameLobbyComingSoon": "Coming soon",
-  "@gameLobbyComingSoon": { "description": "Badge shown on features not yet available" },
-
-  "gameLobbyInviteTitle": "Invite a friend",
-  "@gameLobbyInviteTitle": { "description": "Title of the invite section in online mode" },
-
-  "gameLobbyInviteSubtitle": "Share a link to play together",
-  "@gameLobbyInviteSubtitle": { "description": "Description of the invite-by-link feature" },
-
-  "gameLobbyFriendsTitle": "Online friends",
-  "@gameLobbyFriendsTitle": { "description": "Title of the connected friends section in online mode" },
-
-  "gameLobbyFriendsEmpty": "No friends online right now",
-  "@gameLobbyFriendsEmpty": { "description": "Message shown when no friends are online" },
-
   "gameDifficultyEasyDescription": "Perfect for beginners",
   "@gameDifficultyEasyDescription": { "description": "Description of the easy difficulty" },
 
@@ -936,5 +924,73 @@
   "learnPromotionTitle": "Victory",
   "@learnPromotionTitle": { "description": "Victory section title" },
   "learnPromotionBody": "Capture all of your opponent's pieces to win. You also win if your opponent cannot make any more moves.",
-  "@learnPromotionBody": { "description": "Victory section body" }
+  "@learnPromotionBody": { "description": "Victory section body" },
+
+  "@__sectionOnline": { "description": "━━━━ ONLINE — Matchmaking, invites, online match ━━━━" },
+
+  "onlineLobbyTitle": "Online play",
+  "@onlineLobbyTitle": { "description": "Title of the main online play screen" },
+  "onlineLobbyQuickMatchTitle": "Quick match",
+  "@onlineLobbyQuickMatchTitle": { "description": "Title of the random matchmaking section" },
+  "onlineLobbyQuickMatchCta": "Find an opponent",
+  "@onlineLobbyQuickMatchCta": { "description": "Button to join the matchmaking queue" },
+  "onlineLobbySearching": "Searching for an opponent…",
+  "@onlineLobbySearching": { "description": "Message shown while searching for an opponent" },
+  "onlineLobbyCancelSearch": "Cancel",
+  "@onlineLobbyCancelSearch": { "description": "Button to cancel the matchmaking search" },
+  "onlineLobbyInviteTitle": "Invite a friend",
+  "@onlineLobbyInviteTitle": { "description": "Title of the invite-by-code section" },
+  "onlineLobbyCreateInviteCta": "Create an invite",
+  "@onlineLobbyCreateInviteCta": { "description": "Button to create an invite match" },
+  "onlineLobbyJoinCodeLabel": "Invite code",
+  "@onlineLobbyJoinCodeLabel": { "description": "Label of the invite code input field" },
+  "onlineLobbyJoinCta": "Join",
+  "@onlineLobbyJoinCta": { "description": "Button to join a match by code" },
+  "onlineLobbyInvalidCode": "Invalid or expired code",
+  "@onlineLobbyInvalidCode": { "description": "Error shown when the invite code is invalid" },
+  "onlineLobbyResumeTitle": "Ongoing matches",
+  "@onlineLobbyResumeTitle": { "description": "Title of the resumable online matches list" },
+  "onlineLobbyResumeMatch": "Online match",
+  "@onlineLobbyResumeMatch": { "description": "Generic label for an online match in the resume list" },
+  "onlineLobbyResumeSubtitleWhite": "You're playing white",
+  "@onlineLobbyResumeSubtitleWhite": { "description": "Subtitle indicating the player is white" },
+  "onlineLobbyResumeSubtitleBlack": "You're playing black",
+  "@onlineLobbyResumeSubtitleBlack": { "description": "Subtitle indicating the player is black" },
+
+  "onlineInviteTitle": "Create an invite",
+  "@onlineInviteTitle": { "description": "Title of the create-invite screen" },
+  "onlineInviteTimerTitle": "Time control",
+  "@onlineInviteTimerTitle": { "description": "Title of the time control picker in the create-invite screen" },
+  "onlineInviteRatedToggle": "Rated match",
+  "@onlineInviteRatedToggle": { "description": "Label of the rated/casual toggle" },
+  "onlineInviteRatedSubtitle": "Affects your ELO rating",
+  "@onlineInviteRatedSubtitle": { "description": "Explanation of the rated toggle's effect" },
+  "onlineInviteGenerateCta": "Generate code",
+  "@onlineInviteGenerateCta": { "description": "Button to generate the invite code" },
+  "onlineInviteShareTitle": "Share this code",
+  "@onlineInviteShareTitle": { "description": "Title of the waiting screen showing the code to share" },
+  "onlineInviteCopyCta": "Copy",
+  "@onlineInviteCopyCta": { "description": "Button to copy the invite code" },
+  "onlineInviteCopied": "Code copied!",
+  "@onlineInviteCopied": { "description": "Confirmation shown after copying the code" },
+  "onlineInviteWaiting": "Waiting for an opponent…",
+  "@onlineInviteWaiting": { "description": "Message shown while waiting for someone to join the invite" },
+
+  "onlineJoinTitle": "Join a match",
+  "@onlineJoinTitle": { "description": "Title of the join-by-code screen" },
+  "onlineJoinCodeHint": "Enter the 6-character code",
+  "@onlineJoinCodeHint": { "description": "Hint text of the invite code field" },
+  "onlineJoinCta": "Join",
+  "@onlineJoinCta": { "description": "Button to join the match from the join screen" },
+
+  "onlineGameOpponent": "Opponent",
+  "@onlineGameOpponent": { "description": "Generic opponent label in an online match" },
+  "onlineGameResignCta": "Resign",
+  "@onlineGameResignCta": { "description": "Button to resign an online match" },
+  "onlineGameResignConfirmTitle": "Resign the match?",
+  "@onlineGameResignConfirmTitle": { "description": "Title of the resign confirmation" },
+  "onlineGameResignConfirmMessage": "You will lose this match.",
+  "@onlineGameResignConfirmMessage": { "description": "Message of the resign confirmation" },
+  "onlineGameBackToLobbyCta": "Back to lobby",
+  "@onlineGameBackToLobbyCta": { "description": "Button to return to the lobby after an online match ends" }
 }

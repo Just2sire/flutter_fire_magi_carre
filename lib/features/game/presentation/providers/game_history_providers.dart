@@ -1,5 +1,7 @@
 import "package:riverpod_annotation/riverpod_annotation.dart";
 
+import "../../../../shared/presentation/providers/local_cache_provider.dart";
+import "../../../../shared/presentation/providers/network_info_provider.dart";
 import "../../../../shared/presentation/providers/supabase_provider.dart";
 import "../../data/datasources/game_history_remote_datasource.dart";
 import "../../data/repositories/game_history_repository_impl.dart";
@@ -21,6 +23,8 @@ GameHistoryRemoteDataSourceImpl gameHistoryRemoteDataSource(Ref ref) {
 IGameHistoryRepository gameHistoryRepository(Ref ref) {
   return GameHistoryRepositoryImpl(
     dataSource: ref.watch(gameHistoryRemoteDataSourceProvider),
+    cache: ref.watch(localCacheServiceProvider),
+    networkInfo: ref.watch(networkInfoProvider),
   );
 }
 

@@ -1,26 +1,20 @@
-import "dart:async";
-
 import "package:dio/dio.dart";
-import "package:supabase_flutter/supabase_flutter.dart";
+import "package:supabase_flutter/supabase_flutter.dart" as sb;
 
 import "../../../../core/configs/logger.dart";
-import "../../repositories/storage_repository_impl.dart";
 
 /// Refresh JWT automatique sur 401 et rejeu de la requête.
 ///
 /// Étend [QueuedInterceptor] pour sérialiser les refreshes concurrents :
 /// si N requêtes échouent en 401 simultanément, une seule déclenche le
-/// refresh ; les autres attendent la résolution.
+/// refresh ; les autres attendent la résolution. Le refresh lui-même passe
+/// par `supabase_flutter` (`auth.refreshSession()`), qui persiste la
+/// nouvelle session — la requête rejouée lit ce même état via
+/// `AuthInterceptor`.
 class RefreshInterceptor extends QueuedInterceptor {
-  RefreshInterceptor({
-    required this.dio,
-    required this.secureStorage,
-    required this.sessionExpiredSink,
-  });
+  RefreshInterceptor({required this.dio});
 
   final Dio dio;
-  final StorageRepositoryImpl secureStorage;
-  final Sink<void> sessionExpiredSink;
 
   @override
   Future<void> onError(
@@ -35,27 +29,21 @@ class RefreshInterceptor extends QueuedInterceptor {
     }
 
     try {
-      final result = await Supabase.instance.client.auth.refreshSession();
-      final session = result.session;
-      if (session == null) {
-        throw const AuthException("No session after refresh");
+      final result = await sb.Supabase.instance.client.auth.refreshSession();
+      final newToken = result.session?.accessToken;
+      if (newToken == null) {
+        throw const sb.AuthException("No session after refresh");
       }
 
-      await secureStorage.saveTokens(
-        accessToken: session.accessToken,
-        refreshToken: session.refreshToken ?? "",
-      );
-
-      final retryOptions = err.requestOptions;
-      retryOptions.extra["retried"] = true;
-      retryOptions.headers["Authorization"] = "Bearer ${session.accessToken}";
+      final retryOptions = err.requestOptions
+        ..extra["retried"] = true
+        ..headers["Authorization"] = "Bearer $newToken";
 
       final retryResponse = await dio.fetch<dynamic>(retryOptions);
       return handler.resolve(retryResponse);
     } catch (e) {
       Log.w("RefreshInterceptor: refresh échoué, session expirée. Cause: $e");
-      await secureStorage.clearTokens();
-      sessionExpiredSink.add(null);
+      await sb.Supabase.instance.client.auth.signOut();
       return handler.reject(err);
     }
   }
