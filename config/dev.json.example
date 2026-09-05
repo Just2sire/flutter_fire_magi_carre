@@ -1,0 +1,7 @@
+{
+  "ENV": "development",
+  "SUPABASE_URL": "https://xxxxxxxx.supabase.co",
+  "SUPABASE_ANON_KEY": "eyJ...",
+  "GOOGLE_WEB_CLIENT_ID": "",
+  "GOOGLE_IOS_CLIENT_ID": ""
+}

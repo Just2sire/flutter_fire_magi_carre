@@ -49,5 +49,12 @@ app.*.map.json
 .widget_preview/
 
 .env
+
+# Per-environment dart-define config — contains real secrets (Supabase keys,
+# OAuth client IDs). Only the .example templates are committed.
+config/dev.json
+config/prod.json
+config/staging.json
+
 /docs
 docs

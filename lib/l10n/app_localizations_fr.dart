@@ -883,7 +883,6 @@ class AppLocalizationsFr extends AppLocalizations {
   @override
   String get homeModeOnline => 'En ligne';
 
-
   @override
   String get homeLeaderboardTitle => 'Top classement';
 

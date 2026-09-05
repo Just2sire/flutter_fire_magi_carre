@@ -6,7 +6,17 @@ enum Environment { development, staging, production }
 class Env {
   Env._();
 
-  static Environment current = Environment.development;
+  /// Clé `ENV` du fichier passé à --dart-define-from-file (voir
+  /// config/dev.json, config/prod.json). Vide (donc `development`) quand
+  /// l'app tourne sans dart-define, ex. `flutter run` direct.
+  // ignore: do_not_use_environment
+  static const _dartDefineEnv = String.fromEnvironment("ENV");
+
+  static Environment current = switch (_dartDefineEnv) {
+    "production" => Environment.production,
+    "staging" => Environment.staging,
+    _ => Environment.development,
+  };
 
   static bool get isDevelopment => current == Environment.development;
   static bool get isStaging => current == Environment.staging;

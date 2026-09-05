@@ -874,7 +874,6 @@ class AppLocalizationsEn extends AppLocalizations {
   @override
   String get homeModeOnline => 'Online';
 
-
   @override
   String get homeLeaderboardTitle => 'Top rankings';
 

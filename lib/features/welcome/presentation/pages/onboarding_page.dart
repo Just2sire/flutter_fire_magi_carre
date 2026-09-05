@@ -2,6 +2,7 @@ import "package:flutter/material.dart";
 import "package:flutter/services.dart" show SystemUiOverlayStyle;
 import "package:flutter_riverpod/flutter_riverpod.dart";
 
+import "../../../../core/configs/index.dart" show Log;
 import "../../../../core/constants/app_assets.dart";
 import "../../../../core/constants/app_icons.dart";
 import "../../../../core/constants/notification_channels.dart";
@@ -38,18 +39,29 @@ class _OnboardingPageState extends ConsumerState<OnboardingPage> {
   bool get _isLast => _current == _length - 1;
 
   Future<void> _finish() async {
-    await ref
-        .read(storageServiceProvider)
-        .writeBool(StorageKey.onboardingCompleted, true);
+    // Chaque étape est isolée : un échec (permission notification refusée,
+    // icône invalide, etc.) ne doit jamais empêcher la navigation vers
+    // l'auth — sinon le bouton "semble" ne rien faire (vécu en prod).
+    try {
+      await ref
+          .read(storageServiceProvider)
+          .writeBool(StorageKey.onboardingCompleted, true);
+    } on Object catch (e) {
+      Log.w("Échec sauvegarde onboardingCompleted : $e");
+    }
     if (!mounted) return;
     final l10n = context.l10n;
-    await ref
-        .read(notificationServiceProvider)
-        .show(
-          id: NotificationId.welcome,
-          title: l10n.onboardingNotificationTitle(l10n.appName),
-          body: l10n.onboardingNotificationBody,
-        );
+    try {
+      await ref
+          .read(notificationServiceProvider)
+          .show(
+            id: NotificationId.welcome,
+            title: l10n.onboardingNotificationTitle(l10n.appName),
+            body: l10n.onboardingNotificationBody,
+          );
+    } on Object catch (e) {
+      Log.w("Échec notification de bienvenue : $e");
+    }
     if (mounted) context.goAuthLogin();
   }
 

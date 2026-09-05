@@ -10,18 +10,55 @@ class AppConfig {
 
   static AppConfigData get instance => _instance;
 
-  static String get supabaseUrl => dotenv.env["SUPABASE_URL"]!;
+  // ─── Secrets ────────────────────────────────────────────────────────────
+  //
+  // Deux sources, dart-define prioritaire :
+  // 1. `--dart-define-from-file=config/<env>.json` — valeurs compilées en
+  //    dur dans le binaire, requis pour les builds obfusqués/CI/CD
+  //    (voir config/dev.json.example, config/prod.json.example).
+  // 2. `.env` (flutter_dotenv) — repli pratique pour `flutter run` sans
+  //    flag pendant le développement local.
+  //
+  // `String.fromEnvironment` renvoie "" quand la clé n'a pas été fournie au
+  // build, d'où le test `isNotEmpty` avant de retomber sur dotenv.
 
-  static String get supabaseAnonKey => dotenv.env["SUPABASE_ANON_KEY"]!;
+  // ignore: do_not_use_environment
+  static const _dartDefineSupabaseUrl = String.fromEnvironment(
+    "SUPABASE_URL",
+  );
+  // ignore: do_not_use_environment
+  static const _dartDefineSupabaseAnonKey = String.fromEnvironment(
+    "SUPABASE_ANON_KEY",
+  );
+  // ignore: do_not_use_environment
+  static const _dartDefineGoogleWebClientId = String.fromEnvironment(
+    "GOOGLE_WEB_CLIENT_ID",
+  );
+  // ignore: do_not_use_environment
+  static const _dartDefineGoogleIosClientId = String.fromEnvironment(
+    "GOOGLE_IOS_CLIENT_ID",
+  );
+
+  static String get supabaseUrl => _dartDefineSupabaseUrl.isNotEmpty
+      ? _dartDefineSupabaseUrl
+      : dotenv.env["SUPABASE_URL"]!;
+
+  static String get supabaseAnonKey => _dartDefineSupabaseAnonKey.isNotEmpty
+      ? _dartDefineSupabaseAnonKey
+      : dotenv.env["SUPABASE_ANON_KEY"]!;
 
   /// Client OAuth Web — requis par Google Sign-In natif même sur Android
   /// (voir `serverClientId` dans `GoogleSignIn.initialize`).
   static String get googleWebClientId =>
-      dotenv.env["GOOGLE_WEB_CLIENT_ID"] ?? "";
+      _dartDefineGoogleWebClientId.isNotEmpty
+      ? _dartDefineGoogleWebClientId
+      : dotenv.env["GOOGLE_WEB_CLIENT_ID"] ?? "";
 
   /// Client OAuth iOS — optionnel, uniquement nécessaire pour builder iOS.
   static String get googleIosClientId =>
-      dotenv.env["GOOGLE_IOS_CLIENT_ID"] ?? "";
+      _dartDefineGoogleIosClientId.isNotEmpty
+      ? _dartDefineGoogleIosClientId
+      : dotenv.env["GOOGLE_IOS_CLIENT_ID"] ?? "";
 
   static void initialize({
     required Environment environment,

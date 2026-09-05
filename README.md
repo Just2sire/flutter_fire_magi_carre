@@ -18,6 +18,7 @@ local.
 - [Authentification & sécurité réseau](#authentification--sécurité-réseau)
 - [Structure du projet](#structure-du-projet)
 - [Configuration du projet](#configuration-du-projet)
+- [Builds & environnements](#builds--environnements)
 - [Tests](#tests)
 - [Grille de l'exercice](#grille-de-lexercice)
 
@@ -236,7 +237,11 @@ flutter pub get
 
 ### 3. Variables d'environnement
 
-Copiez `.env.example` vers `.env` et complétez :
+Deux mécanismes cohabitent, `--dart-define-from-file` est prioritaire quand
+les deux sont présents (voir [Builds & environnements](#builds--environnements)
+pour le détail) :
+
+**Rapide, pour `flutter run` sans flag** — copiez `.env.example` vers `.env` :
 
 ```bash
 cp .env.example .env
@@ -247,6 +252,15 @@ SUPABASE_URL=https://xxxxxxxx.supabase.co
 SUPABASE_ANON_KEY=eyJ...
 GOOGLE_WEB_CLIENT_ID=          # optionnel, requis uniquement pour OAuth Google
 GOOGLE_IOS_CLIENT_ID=          # optionnel, build iOS uniquement
+```
+
+**Recommandé, notamment pour les builds release** — copiez les templates
+`config/*.json.example` :
+
+```bash
+cp config/dev.json.example config/dev.json
+cp config/prod.json.example config/prod.json
+# puis complétez SUPABASE_URL / SUPABASE_ANON_KEY / etc. dans chaque fichier
 ```
 
 ### 4. Génération de code
@@ -261,6 +275,88 @@ dart run build_runner build --delete-conflicting-outputs
 
 ```bash
 flutter run
+```
+
+## Builds & environnements
+
+### Configuration par environnement (`--dart-define-from-file`)
+
+Chaque environnement a son fichier de config sous `config/` :
+
+| Fichier | Contenu | Committé ? |
+|---|---|---|
+| `config/dev.json` | Vraies valeurs de dev | ❌ gitignoré |
+| `config/prod.json` | Vraies valeurs de prod | ❌ gitignoré |
+| `config/dev.json.example`, `config/prod.json.example` | Templates | ✅ |
+
+```bash
+flutter run --dart-define-from-file=config/dev.json
+```
+
+Dans le code, `AppConfig` (`lib/core/configs/app_config.dart`) lit ces valeurs
+via `String.fromEnvironment("SUPABASE_URL")` etc. — injectées à la
+**compilation**, donc pas de fichier secret embarqué dans le binaire final.
+`Env.current` (dev/staging/prod) suit la clé `"ENV"` du fichier de config et
+pilote les logs, le nom affiché de l'app, etc.
+
+Si `config/<env>.json` n'est pas fourni (ex. `flutter run` sans flag),
+`AppConfig` retombe sur `.env` (flutter_dotenv) — pratique pour itérer vite en
+local sans taper le flag à chaque fois, mais **pas utilisé pour les builds
+release**.
+
+### Obfuscation (production)
+
+`--obfuscate` remplace les noms de symboles Dart par des identifiants
+opaques dans le binaire livré — rend la rétro-ingénierie plus difficile.
+`--split-debug-info=<dossier>` sauvegarde la table de correspondance
+symbole ↔ nom original **séparément**, nécessaire pour désobfusquer une
+stack trace de crash plus tard (`flutter symbolize`). **Committez et
+conservez ce dossier pour chaque version publiée** — sans lui les rapports de
+crash en prod sont illisibles.
+
+### Split par ABI
+
+`--split-per-abi` génère un APK distinct par architecture CPU
+(`arm64-v8a`, `armeabi-v7a`, `x86_64`) au lieu d'un seul "fat APK" qui
+embarque les trois — chaque utilisateur télécharge seulement l'APK pour son
+appareil, nettement plus léger. Sans intérêt pour l'App Bundle (`.aab`) :
+Google Play fait déjà ce découpage lui-même à l'installation.
+
+### Scripts
+
+`scripts/build.ps1` (Windows) / `scripts/build.sh` (macOS/Linux/Git Bash)
+enchaînent tout ça :
+
+```bash
+# Debug rapide, config/dev.json, pas d'obfuscation
+./scripts/build.sh dev
+
+# Release Android : obfusqué, symboles sauvegardés, split par ABI, config/prod.json
+./scripts/build.sh prod
+
+# Release Play Store : App Bundle au lieu des APKs splittés
+./scripts/build.sh prod --bundle
+```
+
+```powershell
+.\scripts\build.ps1 dev
+.\scripts\build.ps1 prod
+.\scripts\build.ps1 prod -Bundle
+```
+
+### Commandes brutes (référence)
+
+```bash
+# Android
+flutter build apk --release --obfuscate \
+  --split-debug-info=build/app/outputs/symbols --split-per-abi \
+  --dart-define-from-file=config/prod.json
+
+# iOS (nécessite `flutter create --platforms=ios .` au préalable — le
+# projet n'a pas encore la plateforme iOS initialisée)
+flutter build ipa --obfuscate \
+  --split-debug-info=build/app/outputs/symbols \
+  --dart-define-from-file=config/prod.json
 ```
 
 ## Tests
