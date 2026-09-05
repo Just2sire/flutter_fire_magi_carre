@@ -13,12 +13,10 @@ import "../models/game_history_entry_model.dart";
 /// cache local (Hive) pour la lecture quand l'appareil est hors-ligne.
 class GameHistoryRepositoryImpl implements IGameHistoryRepository {
   const GameHistoryRepositoryImpl({
-    required GameHistoryRemoteDataSource dataSource,
-    required LocalCacheService cache,
-    required NetworkInfo networkInfo,
-  }) : _dataSource = dataSource,
-       _cache = cache,
-       _networkInfo = networkInfo;
+    required this._dataSource,
+    required this._cache,
+    required this._networkInfo,
+  });
 
   final GameHistoryRemoteDataSource _dataSource;
   final LocalCacheService _cache;

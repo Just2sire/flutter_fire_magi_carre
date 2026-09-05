@@ -13,12 +13,10 @@ import "../models/leaderboard_entry_model.dart";
 /// connectivité apparente.
 class LeaderboardRepositoryImpl implements LeaderboardRepository {
   const LeaderboardRepositoryImpl({
-    required LeaderboardRemoteDataSource remoteDataSource,
-    required LocalCacheService cache,
-    required NetworkInfo networkInfo,
-  }) : _remoteDataSource = remoteDataSource,
-       _cache = cache,
-       _networkInfo = networkInfo;
+    required this._remoteDataSource,
+    required this._cache,
+    required this._networkInfo,
+  });
 
   final LeaderboardRemoteDataSource _remoteDataSource;
   final LocalCacheService _cache;

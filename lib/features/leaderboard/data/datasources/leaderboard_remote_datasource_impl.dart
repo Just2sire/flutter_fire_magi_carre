@@ -14,10 +14,9 @@ import "leaderboard_remote_datasource.dart";
 /// passer par le SDK, seule la lecture des données change de canal.
 class LeaderboardRemoteDataSourceImpl implements LeaderboardRemoteDataSource {
   LeaderboardRemoteDataSourceImpl({
-    required Dio dio,
+    required this._dio,
     required sb.SupabaseClient supabaseClient,
-  }) : _dio = dio,
-       _supabase = supabaseClient;
+  }) : _supabase = supabaseClient;
 
   final Dio _dio;
   final sb.SupabaseClient _supabase;

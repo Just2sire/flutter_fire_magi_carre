@@ -169,11 +169,6 @@ class _AvatarBadgeState extends State<_AvatarBadge>
       child: Container(
         padding: const EdgeInsets.all(3),
         decoration: BoxDecoration(
-          borderRadius: AppSpacing.roundedLg,
-          border: Border.all(
-            color: AppColors.primary.withAlpha(50),
-            width: AppSpacing.borderWidthMedium,
-          ),
           boxShadow: [
             BoxShadow(
               color: AppColors.primary.withValues(alpha: 0.35),
@@ -429,8 +424,7 @@ class _QuickModesSection extends StatelessWidget {
             _ModeChip(
               icon: AppIcons.globe,
               label: l10n.homeModeOnline,
-              badge: l10n.homeModeOnlineSoon,
-              onTap: null,
+              onTap: () => context.goLobby(),
             ),
             _ModeChip(
               icon: AppIcons.bookOpen,
@@ -445,17 +439,11 @@ class _QuickModesSection extends StatelessWidget {
 }
 
 class _ModeChip extends StatelessWidget {
-  const _ModeChip({
-    required this.icon,
-    required this.label,
-    required this.onTap,
-    this.badge,
-  });
+  const _ModeChip({required this.icon, required this.label, this.onTap});
 
   final IconData icon;
   final String label;
   final VoidCallback? onTap;
-  final String? badge;
 
   @override
   Widget build(BuildContext context) {
@@ -499,13 +487,6 @@ class _ModeChip extends StatelessWidget {
                   textAlign: TextAlign.center,
                   maxLines: 1,
                   overflow: TextOverflow.ellipsis,
-                ),
-                Text(
-                  badge ?? "",
-                  style: tt.labelSmall?.copyWith(
-                    color: AppColors.semanticError,
-                    fontSize: 9,
-                  ),
                 ),
               ],
             ),

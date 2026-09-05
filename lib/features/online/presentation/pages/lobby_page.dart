@@ -7,7 +7,12 @@ import "../../../../core/extensions/index.dart"
     show BuildContextExtensions, NavigationExtensions;
 import "../../../../core/theme/app_spacing.dart";
 import "../../../../shared/presentation/widgets/index.dart"
-    show AppElevatedButton, AppOutlinedButton, AppScaffold, AppTopbar;
+    show
+        AppElevatedButton,
+        AppOutlinedButton,
+        AppScaffold,
+        AppTopbar,
+        AppTextFormField;
 import "../../../../shared/presentation/widgets/others/index.dart"
     show AppGroupedCard, AppSectionLabel, AppTileRow;
 import "../../../auth/domain/entities/auth_state.dart";
@@ -70,9 +75,8 @@ class _LobbyPageState extends ConsumerState<LobbyPage> {
           Expanded(
             child: matchmaking.status == MatchmakingStatus.searching
                 ? _SearchingView(
-                    onCancel: () => ref
-                        .read(matchmakingQueueProvider.notifier)
-                        .cancel(),
+                    onCancel: () =>
+                        ref.read(matchmakingQueueProvider.notifier).cancel(),
                   )
                 : ListView(
                     // padding: const EdgeInsets.only(
@@ -111,9 +115,7 @@ class _LobbyPageState extends ConsumerState<LobbyPage> {
                           AppElevatedButton(
                             text: l10n.onlineLobbyQuickMatchCta,
                             onPressed: () => ref
-                                .read(
-                                  matchmakingQueueProvider.notifier,
-                                )
+                                .read(matchmakingQueueProvider.notifier)
                                 .join(
                                   timerBaseSeconds: _timerBase,
                                   timerIncrementSeconds: _timerIncrement,
@@ -133,6 +135,7 @@ class _LobbyPageState extends ConsumerState<LobbyPage> {
                             errorText: _joinError,
                             onSubmit: _joinByCode,
                           ),
+                          AppSpacing.gapVXxxl,
                         ],
                       ),
                     ],
@@ -151,9 +154,7 @@ class _LobbyPageState extends ConsumerState<LobbyPage> {
       _joinError = null;
     });
 
-    final result = await ref
-        .read(joinInviteMatchUseCaseProvider)
-        .call(code);
+    final result = await ref.read(joinInviteMatchUseCaseProvider).call(code);
     if (!mounted) return;
 
     result.fold(
@@ -293,31 +294,33 @@ class _JoinByCodeField extends StatelessWidget {
   Widget build(BuildContext context) {
     final l10n = context.l10n;
 
-    return Row(
-      crossAxisAlignment: CrossAxisAlignment.start,
-      children: [
-        Expanded(
-          child: TextField(
-            controller: controller,
-            textCapitalization: TextCapitalization.characters,
-            decoration: InputDecoration(
+    return SizedBox(
+      height: AppSpacing.giga,
+      child: Row(
+        spacing: AppSpacing.sm,
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          Expanded(
+            flex: 4,
+            child: AppTextFormField(
+              controller: controller,
+              onFieldSubmitted: (_) => onSubmit(),
               labelText: l10n.onlineLobbyJoinCodeLabel,
-              errorText: errorText,
+              textCapitalization: TextCapitalization.characters,
             ),
-            onSubmitted: (_) => onSubmit(),
           ),
-        ),
-        AppSpacing.gapHSm,
-        Padding(
-          padding: const EdgeInsets.only(top: AppSpacing.xs),
-          child: AppElevatedButton(
-            text: l10n.onlineLobbyJoinCta,
-            isLoading: isLoading,
-            buttonSize: const Size(120, AppSpacing.buttonHeightLg),
-            onPressed: isLoading ? null : onSubmit,
+          Expanded(
+            flex: 3,
+            child: AppElevatedButton(
+              margin: .zero,
+              text: l10n.onlineLobbyJoinCta,
+              isLoading: isLoading,
+              // buttonSize: const Size(120, AppSpacing.buttonHeightLg),
+              onPressed: isLoading ? null : onSubmit,
+            ),
           ),
-        ),
-      ],
+        ],
+      ),
     );
   }
 }

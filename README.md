@@ -10,6 +10,7 @@ local.
 
 ## Sommaire
 
+- [Captures d'écran](#captures-décran)
 - [Fonctionnalités](#fonctionnalités)
 - [Architecture](#architecture)
 - [API & backend](#api--backend)
@@ -21,6 +22,39 @@ local.
 - [Grille de l'exercice](#grille-de-lexercice)
 
 ---
+
+## Captures d'écran
+
+<table>
+  <tr>
+    <td align="center" width="33%">
+      <img src="assets/screenshots/home.png" width="230"><br>
+      <sub><b>Accueil</b> — stats, accès rapide aux modes, aperçu du classement</sub>
+    </td>
+    <td align="center" width="33%">
+      <img src="assets/screenshots/lobby.png" width="230"><br>
+      <sub><b>Lobby en ligne</b> — partie rapide, invitation, parties à reprendre</sub>
+    </td>
+    <td align="center" width="33%">
+      <img src="assets/screenshots/game_board.jpg" width="230"><br>
+      <sub><b>Plateau de jeu</b> — rendu façon Alquerque, animé</sub>
+    </td>
+  </tr>
+  <tr>
+    <td align="center" width="33%">
+      <img src="assets/screenshots/ai_play.jpg" width="230"><br>
+      <sub><b>Partie solo</b> — contre l'IA, 10 niveaux de difficulté</sub>
+    </td>
+    <td align="center" width="33%">
+      <img src="assets/screenshots/rules.png" width="230"><br>
+      <sub><b>Règles interactives</b> — déplacement, capture, promotion, victoire</sub>
+    </td>
+    <td align="center" width="33%">
+      <img src="assets/screenshots/profile.png" width="230"><br>
+      <sub><b>Profil</b> — stats, historique de parties</sub>
+    </td>
+  </tr>
+</table>
 
 ## Fonctionnalités
 
